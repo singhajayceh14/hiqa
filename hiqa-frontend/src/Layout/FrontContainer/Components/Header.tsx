@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import styles from '@/styles//Components/FrontContainer/Header.module.scss';
+import { useRouter } from 'next/router';
 
 const Header = () => {
   const router = useRouter();
