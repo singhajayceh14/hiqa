@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
-
-import styles from '@/styles//Components/FrontContainer/Footer.module.scss';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -9,16 +8,16 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-md-6 footer-contact">
-              <h3>Mentor</h3>
+              <h3>HIQA</h3>
               <p>
                 A108 Adam Street <br />
-                New York, NY 535022
+                New Delhi, India 535022
                 <br />
-                United States <br />
+                India <br />
                 <br />
-                <strong>Phone:</strong> +1 5589 55488 55
+                <strong>Phone:</strong> +91 5589 55488 55
                 <br />
-                <strong>Email:</strong> info@example.com
+                <strong>Email:</strong> info@hiqa.com
                 <br />
               </p>
             </div>
@@ -27,40 +26,37 @@ const Footer = () => {
               <h4>Useful Links</h4>
               <ul>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Home</a>
+                  <i className="bx bx-chevron-right"></i><Link href={'/'}>Home</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">About us</a>
+                  <i className="bx bx-chevron-right"></i> <Link href={'/about'}>About us</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Services</a>
+                  <i className="bx bx-chevron-right"></i> <Link href={'/terms-condition'}>Terms & Condition</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Terms of service</a>
-                </li>
-                <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Privacy policy</a>
+                  <i className="bx bx-chevron-right"></i> <Link href={'/privacy-policy'}>Privacy policy</Link>
                 </li>
               </ul>
             </div>
 
             <div className="col-lg-3 col-md-6 footer-links">
-              <h4>Our Services</h4>
+              <h4>Course</h4>
               <ul>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Web Design</a>
+                  <i className="bx bx-chevron-right"></i> <Link href="#">Web Design</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Web Development</a>
+                  <i className="bx bx-chevron-right"></i> <Link href="#">Web Development</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Product Management</a>
+                  <i className="bx bx-chevron-right"></i> <Link href="#">Product Management</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Marketing</a>
+                  <i className="bx bx-chevron-right"></i> <Link href="#">Marketing</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Graphic Design</a>
+                  <i className="bx bx-chevron-right"></i> <Link href="#">Graphic Design</Link>
                 </li>
               </ul>
             </div>
@@ -73,31 +69,27 @@ const Footer = () => {
           <div className="copyright">
             &copy; Copyright{' '}
             <strong>
-              <span>Mentor</span>
+              <span>HIQA</span>
             </strong>
             . All Rights Reserved
           </div>
-          <div className="credits">
-            {' '}
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-          </div>
         </div>
         <div className="social-links text-center text-md-right pt-3 pt-md-0">
-          <a href="#" className="twitter">
+          <Link href="#" className="twitter">
             <i className="bx bxl-twitter"></i>
-          </a>
-          <a href="#" className="facebook">
+          </Link>
+          <Link href="#" className="facebook">
             <i className="bx bxl-facebook"></i>
-          </a>
-          <a href="#" className="instagram">
+          </Link>
+          <Link href="#" className="instagram">
             <i className="bx bxl-instagram"></i>
-          </a>
-          <a href="#" className="google-plus">
+          </Link>
+          <Link href="#" className="google-plus">
             <i className="bx bxl-skype"></i>
-          </a>
-          <a href="#" className="linkedin">
+          </Link>
+          <Link href="#" className="linkedin">
             <i className="bx bxl-linkedin"></i>
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

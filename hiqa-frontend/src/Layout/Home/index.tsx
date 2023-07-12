@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import Head from 'next/head';
-import FrontCantainer from '@/Layout/FrontCantainer';
+import FrontContainer from '@/Layout/FrontContainer';
 
 //const pure = new PureCounter();
 
@@ -13,7 +13,7 @@ function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <FrontCantainer>
+      <FrontContainer>
         <section id="hero" className="d-flex justify-content-center align-items-center">
           <div className="container position-relative" data-aos="zoom-in" data-aos-delay="100">
             <h1>
@@ -446,7 +446,7 @@ function Index() {
             </div>
           </section>
         </main>
-      </FrontCantainer>
+      </FrontContainer>
     </>
   );
 }

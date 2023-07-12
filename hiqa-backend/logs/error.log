@@ -23,3 +23,15 @@ SyntaxError: Unexpected identifier
     at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\front-page\index.js:1:18)
 [2023-07-12T13:00:05.528Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'description' in 'field list'
 [2023-07-12T13:00:05.533Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! SequelizeDatabaseError: Unknown column 'description' in 'field list'
+[2023-07-12T17:50:42.802Z] [error]: uncaughtException: listen EADDRINUSE: address already in use :::5000
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1372:16)
+    at listenInCluster (node:net:1420:12)
+    at Server.listen (node:net:1508:7)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\server.js:51:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)
+    at node:internal/main/run_main_module:17:47

@@ -137,6 +137,8 @@ h6 {
 
 #header .logo a {
   color: #5fcf80;
+  font-size: 30px;
+  font-weight: 600;
 }
 
 #header .logo img {
