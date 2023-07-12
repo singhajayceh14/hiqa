@@ -5,6 +5,8 @@ import Link from 'next/link';
 import styles from '@/styles//Components/FrontContainer/Header.module.scss';
 
 const Header = () => {
+  const router = useRouter();
+  console.log(router.pathname)
   return (
     <header id="header" className="fixed-top">
       <div className="container d-flex align-items-center">
@@ -16,35 +18,22 @@ const Header = () => {
         <nav id="navbar" className="navbar order-last order-lg-0">
           <ul>
             <li>
-              <a className="active" href="index.html">
+              <Link className={ router.pathname === '/' ? 'active' : ''} href={'/'}>
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="about.html">About</a>
+              <Link className={ router.pathname === '/about' ? 'active' : ''} href={'/about'}>About</Link>
             </li>
-            <li>
-              <a href="courses.html">Courses</a>
-            </li>
-            <li>
-              <a href="trainers.html">Trainers</a>
-            </li>
-            <li>
-              <a href="events.html">Events</a>
-            </li>
-            <li>
-              <a href="pricing.html">Pricing</a>
-            </li>
-
             <li className="dropdown">
-              <a href="#">
-                <span>Drop Down</span> <i className="bi bi-chevron-down"></i>
+              <a className={ router.pathname === '/courses' ? 'active' : ''} href="#">
+                <span>Courses</span> <i className="bi bi-chevron-down"></i>
               </a>
               <ul>
                 <li>
                   <a href="#">Drop Down 1</a>
                 </li>
-                <li className="dropdown">
+                {/* <li className="dropdown">
                   <a href="#">
                     <span>Deep Drop Down</span> <i className="bi bi-chevron-right"></i>
                   </a>
@@ -65,7 +54,7 @@ const Header = () => {
                       <a href="#">Deep Drop Down 5</a>
                     </li>
                   </ul>
-                </li>
+                </li> */}
                 <li>
                   <a href="#">Drop Down 2</a>
                 </li>
@@ -78,14 +67,14 @@ const Header = () => {
               </ul>
             </li>
             <li>
-              <a href="contact.html">Contact</a>
+              <Link className={ router.pathname === '/contact' ? 'active' : ''} href={'/contact'}>Contact</Link>
             </li>
           </ul>
           <i className="bi bi-list mobile-nav-toggle"></i>
         </nav>
-        <a href="courses.html" className="get-started-btn">
-          Get Started
-        </a>
+        <Link href={'/register'} className="get-started-btn">
+          Register
+        </Link>
       </div>
     </header>
   );
