@@ -269,16 +269,16 @@ function Index() {
                     <img src="assets/img/course-1.jpg" className="img-fluid" alt="..." />
                     <div className="course-content">
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <h4>Web Development</h4>
+                        <h4>NDT INSPECTOR</h4>
                         <p className="price">$169</p>
                       </div>
 
                       <h3>
-                        <a href="course-details.html">Website Design</a>
+                        <a href="course-details.html">Training Period: 60 Days</a>
                       </h3>
                       <p>
-                        Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem
-                        tempore.
+                      Duration Of Internship: Minimum 60 Days <br/>
+                      Total Seats Yearly: 120 <br/>
                       </p>
                       <div className="trainer d-flex justify-content-between align-items-center">
                         <div className="trainer-profile d-flex align-items-center">
@@ -299,16 +299,16 @@ function Index() {
                     <img src="assets/img/course-2.jpg" className="img-fluid" alt="..." />
                     <div className="course-content">
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <h4>Marketing</h4>
+                        <h4>ADVANCED NDT INSPECTOR</h4>
                         <p className="price">$250</p>
                       </div>
 
                       <h3>
-                        <a href="course-details.html">Search Engine Optimization</a>
+                        <a href="course-details.html">Training Peroid: 60 Days</a>
                       </h3>
                       <p>
-                        Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem
-                        tempore.
+                      Duration Of Internship: Minimum 60 Days <br/>
+                      Total Seats Yearly: 120 <br/>
                       </p>
                       <div className="trainer d-flex justify-content-between align-items-center">
                         <div className="trainer-profile d-flex align-items-center">
@@ -329,16 +329,16 @@ function Index() {
                     <img src="assets/img/course-3.jpg" className="img-fluid" alt="..." />
                     <div className="course-content">
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <h4>Content</h4>
+                        <h4>THIRD PARTY INSPECTOR</h4>
                         <p className="price">$180</p>
                       </div>
 
                       <h3>
-                        <a href="course-details.html">Copywriting</a>
+                        <a href="course-details.html">Training Peroid: 60 Days</a>
                       </h3>
                       <p>
-                        Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem
-                        tempore.
+                      Duration Of Internship: Minimum 60 Days <br/>
+                      Total Seats Yearly: 120 <br/>
                       </p>
                       <div className="trainer d-flex justify-content-between align-items-center">
                         <div className="trainer-profile d-flex align-items-center">

@@ -1,4 +1,6 @@
 import React, { memo } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import styles from '@/styles//Components/FrontContainer/Header.module.scss';
 
@@ -7,7 +9,9 @@ const Header = () => {
     <header id="header" className="fixed-top">
       <div className="container d-flex align-items-center">
         <h1 className="logo me-auto">
-          <a href="index.html">Mentor</a>
+        <Link href="/">
+            <Image priority src="/assets/images/hiqa_logo.png" height={180} width={300} alt="" />
+            </Link>
         </h1>
         <nav id="navbar" className="navbar order-last order-lg-0">
           <ul>

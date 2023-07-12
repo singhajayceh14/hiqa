@@ -9,16 +9,16 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-md-6 footer-contact">
-              <h3>Mentor</h3>
+              <h5><b>HINDUSTAN</b> INSTITUTE OF QUALITY ASSURANCE </h5>
               <p>
-                A108 Adam Street <br />
-                New York, NY 535022
-                <br />
-                United States <br />
+                308 Royal Tower,<br />
+                Shipra Suncity, Indirapuram,<br />
+                Ghaziabad, UP, 201014<br />
+                India<br />
                 <br />
                 <strong>Phone:</strong> +1 5589 55488 55
                 <br />
-                <strong>Email:</strong> info@example.com
+                <strong>Email:</strong> info@hiqa.in
                 <br />
               </p>
             </div>
