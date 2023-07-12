@@ -1,0 +1,47 @@
+@import '../../variables.scss';
+.welcomeHead {
+  padding-bottom: 30px;
+}
+.WelcomeModel {
+  max-width: 1465px !important;
+  position: $absolute;
+  width: 100%;
+  top: 40px;
+  @media (max-width: $xxl) {
+    width: 95% !important;
+    left: 0;
+    right: 0;
+    margin: 0px auto;
+  }
+}
+
+.welcomeArea {
+  max-width: 520px;
+  margin: 0px auto;
+  text-align: center;
+  // padding-bottom: 130px;
+  padding-bottom: 85px;
+}
+.welcomeArea {
+  h1 {
+    position: $relative;
+    &::after {
+      position: $absolute;
+      width: 266px;
+      height: 2px;
+      background-color: $lightRed;
+      content: '';
+      bottom: 21px;
+      margin: 0px auto;
+      left: 0;
+      right: 0;
+    }
+  }
+  p {
+  }
+}
+
+.welcomeLogo {
+  margin-bottom: 48px;
+  text-align: center;
+}

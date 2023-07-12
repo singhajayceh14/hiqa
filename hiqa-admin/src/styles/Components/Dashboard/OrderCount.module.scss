@@ -1,0 +1,191 @@
+@import '../../variables.scss';
+
+.blue {
+  background-color: $blue;
+}
+
+.gold {
+  background-color: $gold;
+}
+
+.blueText {
+  color: $blue;
+}
+
+.brightBlue {
+  background-color: $brightBlue;
+}
+
+.brightBlueText {
+  color: $brightBlue;
+}
+
+.pink {
+  background-color: $pink;
+}
+
+.red {
+  background-color: red;
+}
+
+.redText {
+  color: red;
+}
+
+.pinkText {
+  color: $pink;
+}
+
+.purple {
+  background-color: $purple;
+}
+
+.purpleText {
+  color: $purple;
+}
+
+.yellow {
+  background-color: $yellow;
+}
+
+.yellowText {
+  color: $yellow;
+}
+
+.green {
+  background-color: $green;
+}
+
+.greenText {
+  color: $green;
+}
+
+.countDetail {
+  background: $white;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+  .countText {
+    padding: $space10;
+    font-size: $fs15;
+  }
+  .countIcon {
+    padding-top: 10px;
+  }
+}
+.countDetailBlue {
+  border-top: none;
+  border: solid 1px $blue;
+}
+.countDetailGreen {
+  border-top: none;
+  border: solid 1px $green;
+}
+.orderCount {
+  padding-top: 1rem;
+  div[class*='col-'] {
+    @media (max-width: $xl) {
+      margin-bottom: $space10;
+    }
+  }
+  .countNumber {
+    color: $white;
+    padding: 0 !important;
+    padding-right: 5px !important;
+    display: $flex;
+    align-items: $alignCenter;
+    justify-content: space-between;
+    border-radius: $border-radius * 3;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @media (max-width: $xxxxl) {
+      padding: $space20;
+    }
+    @media (max-width: $xxxl) {
+      padding: $space20 - 5;
+    }
+    @media (max-width: $xxl) {
+      padding: $space10;
+      border-radius: $border-radius * 2;
+    }
+
+    .orderIcon {
+      width: 57px;
+      height: 57px;
+      line-height: 57px;
+      text-align: center;
+      border-radius: $border-radius * 3;
+      display: block;
+
+      @media (max-width: $xxxl) {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+      }
+      @media (max-width: $xxl) {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: $border-radius * 2;
+      }
+      i {
+        font-size: $fs30;
+        padding-top: 5px;
+      }
+      img {
+        @media (max-width: $xxxl) {
+          width: 27px;
+        }
+        @media (max-width: $xxl) {
+          width: 22px;
+        }
+      }
+    }
+
+    .orderText {
+      // padding-left: $space20 - 5;
+      // width: calc(100% - 57px);
+
+      strong {
+        font-size: $fs30 - 2;
+        display: $block;
+        letter-spacing: 0.5px;
+
+        @media (max-width: $xxxl) {
+          font-size: $fs20 + 2;
+        }
+        @media (max-width: $xxl) {
+          font-size: $fs20 - 2;
+        }
+      }
+
+      span {
+        font-size: $fs15 - 3;
+        font-weight: $font-weight-bold;
+        color: $white;
+        letter-spacing: 1px;
+        text-transform: $text-uppercase;
+        .requestCount {
+          padding: 0;
+          text-align: right;
+        }
+        .requestMsg {
+          padding: 0;
+        }
+        @media (max-width: $xxxl) {
+          font-size: $fs15 - 5;
+        }
+      }
+
+      // @media (max-width: $xxxl) {
+      //   width: calc(100% - 48px);
+      //   padding-left: $space10;
+      // }
+    }
+  }
+}

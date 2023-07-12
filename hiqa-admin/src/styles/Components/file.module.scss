@@ -1,0 +1,39 @@
+@import '../variables.scss';
+
+.ImageUpload {
+  position: relative;
+  font-size: $fs14;
+  width: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  height: 148px;
+  text-align: center;
+  padding: 50px 0px;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: transparent;
+  border-radius: 0px;
+  &:hover {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.6);
+    border: 1px solid $primary;
+    cursor: pointer;
+  }
+  &:active {
+    background-color: transparent !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid $primary !important;
+  }
+  input {
+    position: absolute;
+    font-size: $fs30 + 20;
+    opacity: 0;
+    right: 0;
+    top: 0;
+  }
+}
+
+.Click {
+  color: $primary;
+  font-weight: $font-weight-semibold;
+}

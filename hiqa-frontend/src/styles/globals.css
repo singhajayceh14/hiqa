@@ -1,0 +1,14 @@
+@import './variables.scss';
+
+body { background-color: $offgray; overflow-x: hidden; margin:0; padding:0; min-height: 100vh; }
+
+
+h1 {
+    font-size: $fs20 + 4;
+    font-weight: $font-weight-semibold;
+    padding-bottom: $space30;
+    color: $dGray;
+    margin: 0;
+  
+   
+  }

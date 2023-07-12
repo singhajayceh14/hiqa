@@ -1,0 +1,40 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.truckerKpi {
+  background: $white;
+  padding: $space20 $space30;
+  border-radius: $border-radius * 3;
+
+  @media (max-width: $xxl) {
+    padding: $space10 + 5;
+  }
+}
+
+.activityRoute {
+  div[class*='col-'] {
+    &:first-child {
+      @media (max-width: $lg) {
+        margin-bottom: $space20 + 5;
+      }
+    }
+  }
+}
+
+.graphBlock {
+  @media (max-width: $xl) {
+    margin-top: -10px;
+  }
+
+  div[class*='col-'] {
+    &:first-child {
+      @media (max-width: $lg) {
+        margin-bottom: $space20 + 5;
+      }
+    }
+  }
+}
+
+.graph {
+  height: 100%;
+}

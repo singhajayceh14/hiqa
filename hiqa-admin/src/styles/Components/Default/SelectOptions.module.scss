@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+.customStatusList {
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+  font-size: $fs14;
+  padding: 0;
+  width: 150px;
+  right: 0;
+  z-index: 10;
+  opacity: 1.1;
+  background: white;
+  border: solid 1px #eaf0f6;
+  li {
+    padding: 10px 5px 5px 10px;
+    &:hover {
+      color: rgba(0, 0, 0, 0.54);
+      background-color: #0000000d;
+    }
+  }
+}

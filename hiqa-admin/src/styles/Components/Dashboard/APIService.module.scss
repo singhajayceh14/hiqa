@@ -1,0 +1,22 @@
+.warningActivity {
+  background: red;
+  margin-bottom: 10px;
+  .warningHead {
+    letter-spacing: 0.18px;
+  }
+  i,
+  p,
+  h3 {
+    text-align: center;
+    // font: normal normal bold 22px/30px Open Sans;
+    // letter-spacing: 0.22px;
+    color: #ffffff;
+  }
+}
+.errorReason {
+  padding-top: 10px;
+  p {
+    text-align: right;
+    line-height: 10px;
+  }
+}

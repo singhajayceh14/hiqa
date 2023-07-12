@@ -1,0 +1,45 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.companyProfile {
+  margin-bottom: $space30;
+}
+
+.companyImg {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: $block;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+.companyInformation {
+  padding-left: $space10 + 5;
+}
+
+.companyName {
+  font-size: $fs15 + 1;
+  color: $grey;
+  display: $block;
+  margin-bottom: $space10 + 5;
+}
+
+.greenBtn {
+  background: $green;
+  border-color: $green;
+}
+
+.tabImage {
+  img {
+    margin-right: $space10 - 2;
+
+    @media (max-width: $xxxl) {
+      margin-right: $space10 - 5;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import '../../variables.scss';
+
+.settingsArea {
+  max-width: 1184px;
+  margin: 0px auto;
+  h3 {
+    color: #000;
+    text-transform: inherit;
+    letter-spacing: 0.14px;
+  }
+
+  .WhiteBox {
+    padding: 27px;
+  }
+}

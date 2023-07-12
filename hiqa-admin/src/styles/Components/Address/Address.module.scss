@@ -1,0 +1,60 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+
+.mapImg {
+  border-radius: $border-radius * 3;
+  background: $white;
+  overflow: hidden;
+  margin-top: $space10 + 5;
+
+  img {
+    display: $block;
+    width: 100%;
+  }
+}
+.addressDefault {
+  width: 40px;
+  border-radius: 2rem;
+  height: 12px;
+  font-weight: 100;
+  padding: 0px;
+  line-height: 13.5px;
+  font-size: 8px;
+  color: #fff;
+  background-color: #3299cc !important;
+}
+.addForm {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.orderInfoHd {
+  font-size: $fs15 - 1;
+  font-weight: $font-weight-semibold;
+  color: $grey;
+  margin-bottom: $space10 - 5;
+  display: $block;
+
+  @media (max-width: $xl) {
+    font-size: $fs15 - 2;
+  }
+}
+.mapImg {
+  border-radius: $border-radius * 3;
+  background: $white;
+  overflow: hidden;
+  margin-top: $space10 + 5;
+
+  img {
+    display: $block;
+    width: 100%;
+  }
+}
+
+.formField {
+  border-bottom: 1px solid $bdrGrey;
+  margin-bottom: $space20;
+  padding-bottom: $space10 - 5;
+}
+

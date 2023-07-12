@@ -1,0 +1,25 @@
+[2023-07-12T04:50:09.680Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-12T12:11:56.390Z] [error]: uncaughtException: Unexpected identifier
+D:\hiqa\hiqa-backend\src\admin-routes\front-page\frontPage.controller.js:80
+        status: 1,
+        ^^^^^^
+
+SyntaxError: Unexpected identifier
+    at Object.compileFunction (node:vm:360:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1055:15)
+    at Module._compile (node:internal/modules/cjs/loader:1090:27)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\front-page\frontPage.routes.js:2:29)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\front-page\index.js:1:18)
+[2023-07-12T13:00:05.528Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'description' in 'field list'
+[2023-07-12T13:00:05.533Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! SequelizeDatabaseError: Unknown column 'description' in 'field list'
