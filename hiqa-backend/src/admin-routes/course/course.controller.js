@@ -1,10 +1,12 @@
 var _ = require("lodash");
+var slug = require("slug");
 //Model
 const db = require("../../../lib/models");
 const Courses = require("../../../lib/models").courses;
 // Model Schema Function
 const TableSchema = require("../../services");
 const Op = db.Sequelize.Op;
+
 const {
   getPagination,
   getPaginationData,
@@ -72,7 +74,6 @@ class CoursesController {
         req.body || {}
       );
 
-      console.log(params);
       const {
         name,
         short_description,
@@ -84,6 +85,7 @@ class CoursesController {
       } = params;
       const createPayload = {
         name: name,
+        slug: slug(name),
         short_description: short_description,
         long_description: long_description,
         duraion_course: duraion_course,
@@ -148,6 +150,7 @@ class CoursesController {
       }
       const updatePayload = {
         name: name,
+        slug: slug(name),
         short_description: short_description,
         long_description: long_description,
         duraion_course: duraion_course,

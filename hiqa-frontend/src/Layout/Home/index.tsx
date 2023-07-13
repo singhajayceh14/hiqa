@@ -1,10 +1,31 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback, useEffect} from 'react';
 import Head from 'next/head';
 import FrontContainer from '@/Layout/FrontContainer';
-
-//const pure = new PureCounter();
+import { useRequest } from '@/components/App';
+import { REQUEST } from '@/types/interfaces';
+import { useCommonReducer } from '@/components/App/reducer';
 
 function Index() {
+  const { request } = useRequest();
+  const { state: globalState, dispatch: globalDispatch } = useCommonReducer();
+
+  
+  const getFrontPage = useCallback(async () => {
+    const res = (await request('getFrontPage', {})) as REQUEST;
+    if (res?.data) {
+      const resData: any = res.data;
+      globalDispatch({
+          ...(resData as any),
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    getFrontPage();
+  }, [getFrontPage]);
+
+  console.log(globalState)
   return (
     <>
       <Head>
@@ -18,8 +39,6 @@ function Index() {
           <div className="container position-relative" data-aos="zoom-in" data-aos-delay="100">
             <h1>
               Learning Today,
-              <br />
-              Leading Tomorrow
             </h1>
             <h2>We are team of talented designers making websites with Bootstrap</h2>
             <a href="courses.html" className="btn-get-started">

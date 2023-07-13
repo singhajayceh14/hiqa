@@ -29,6 +29,7 @@
     "nodemon": "^2.0.22",
     "path": "^0.12.7",
     "sequelize": "^6.30.0",
+    "slug": "^8.2.2",
     "swagger-ui-express": "^4.6.2",
     "winston": "^3.8.2"
   }

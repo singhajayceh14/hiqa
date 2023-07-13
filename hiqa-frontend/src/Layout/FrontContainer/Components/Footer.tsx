@@ -1,7 +1,11 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
+import { useApp } from '@/components/App';
+ import { COURSE } from "@/types/interfaces";
+
 
 const Footer = () => {
+  const { state } = useApp();
   return (
     <footer id="footer">
       <div className="footer-top">
@@ -10,14 +14,11 @@ const Footer = () => {
             <div className="col-lg-3 col-md-6 footer-contact">
               <h5><b>HINDUSTAN</b> INSTITUTE OF QUALITY ASSURANCE </h5>
               <p>
-                308 Royal Tower,<br />
-                Shipra Suncity, Indirapuram,<br />
-                Ghaziabad, UP, 201014<br />
-                India<br />
+                {state.setting_data.address}
                 <br />
-                <strong>Phone:</strong> +91 5589 55488 55
+                <strong>Phone:</strong> {state.setting_data.phone}
                 <br />
-                <strong>Email:</strong> info@hiqa.in
+                <strong>Email:</strong> {state.setting_data.email}
                 <br />
               </p>
             </div>
@@ -43,21 +44,11 @@ const Footer = () => {
             <div className="col-lg-3 col-md-6 footer-links">
               <h4>Course</h4>
               <ul>
-                <li>
-                  <i className="bx bx-chevron-right"></i> <Link href="#">Web Design</Link>
-                </li>
-                <li>
-                  <i className="bx bx-chevron-right"></i> <Link href="#">Web Development</Link>
-                </li>
-                <li>
-                  <i className="bx bx-chevron-right"></i> <Link href="#">Product Management</Link>
-                </li>
-                <li>
-                  <i className="bx bx-chevron-right"></i> <Link href="#">Marketing</Link>
-                </li>
-                <li>
-                  <i className="bx bx-chevron-right"></i> <Link href="#">Graphic Design</Link>
-                </li>
+                {state?.courseList && state?.courseList.map((course: COURSE, index:string)=>
+                  <li key={index}>
+                    <i className="bx bx-chevron-right"></i> <Link href="#">{course.name}</Link>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
@@ -67,7 +58,7 @@ const Footer = () => {
       <div className="container d-md-flex py-4">
         <div className="me-md-auto text-center text-md-start">
           <div className="copyright">
-            &copy; Copyright{' '}
+            &copy; Copyright
             <strong>
               <span>HIQA</span>
             </strong>
@@ -75,19 +66,19 @@ const Footer = () => {
           </div>
         </div>
         <div className="social-links text-center text-md-right pt-3 pt-md-0">
-          <Link href="#" className="twitter">
+          <Link href={state.setting_data.twitter_url} className="twitter">
             <i className="bx bxl-twitter"></i>
           </Link>
-          <Link href="#" className="facebook">
+          <Link href={state.setting_data.facebook_url} className="facebook">
             <i className="bx bxl-facebook"></i>
           </Link>
-          <Link href="#" className="instagram">
+          <Link href={state.setting_data.instagram_url} className="instagram">
             <i className="bx bxl-instagram"></i>
           </Link>
-          <Link href="#" className="google-plus">
+          <Link href={state.setting_data.skype_url} className="google-plus">
             <i className="bx bxl-skype"></i>
           </Link>
-          <Link href="#" className="linkedin">
+          <Link href={state.setting_data.linkedin_url} className="linkedin">
             <i className="bx bxl-linkedin"></i>
           </Link>
         </div>

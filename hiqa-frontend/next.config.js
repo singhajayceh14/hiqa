@@ -4,8 +4,8 @@ const path = require('path');
 const rewrites = () => {
   return [
     {
-      source: '/v1/api/',
-      destination: process.env.BACKEND_URL+'/v1/api/',
+      source: '/v1/front/api/',
+      destination: 'http://localhost:5000/v1/front/api/',
     },
   ];
 };
@@ -20,6 +20,7 @@ const nextConfig = {
   },
   env: {
     REACT_APP_API_UPLOADS: process.env.REACT_APP_API_UPLOADS,
+    BACKEND_API_URL: '/v1/front/api/',
   },
   rewrites,
 };

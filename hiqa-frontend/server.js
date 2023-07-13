@@ -15,7 +15,14 @@ app.prepare().then(() => {
   const server = express();
 
   server.use(
-    '/v1/api',
+    '/v1/admin/api',
+    createProxyMiddleware({
+      target: process.env.BACKEND_URL,
+      changeOrigin: true,
+    }),
+  );
+  server.use(
+    '/v1/front/api',
     createProxyMiddleware({
       target: process.env.BACKEND_URL,
       changeOrigin: true,

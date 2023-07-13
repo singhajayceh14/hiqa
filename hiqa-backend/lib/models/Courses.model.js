@@ -2,6 +2,10 @@ module.exports = function (sequelize, DataTypes) {
   const Courses = sequelize.define(
     "courses",
     {
+      slug: {
+        type: DataTypes.TEXT,
+        defaultValue: null,
+      },
       name: {
         type: DataTypes.STRING(255),
         defaultValue: null,

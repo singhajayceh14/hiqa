@@ -27,14 +27,14 @@ export const ContainerContextProvider = ({ children }: Props) => {
     dispatch,
   };
 
-  useEffect(() => {
-    if (!validateAuthentication()) router.push('/login');
-    const { decoded, isValid } = getDecodedToken();
-    if (isValid) {
-      dispatch({ profileDetail: decoded });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.asPath]);
+  // useEffect(() => {
+  //   if (!validateAuthentication()) router.push('/login');
+  //   const { decoded, isValid } = getDecodedToken();
+  //   if (isValid) {
+  //     dispatch({ profileDetail: decoded });
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [router.asPath]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

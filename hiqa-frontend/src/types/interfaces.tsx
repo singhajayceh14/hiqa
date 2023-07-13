@@ -88,3 +88,11 @@ export interface ADDRESS_PROPS {
   };
   edit?: boolean;
 }
+
+
+// COURSE LIST 
+export interface COURSE {
+  id: string;
+  name: string;
+  slug: string;
+}
