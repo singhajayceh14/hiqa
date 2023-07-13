@@ -22,6 +22,11 @@ const sideBarRoutes = [
     url: '/front-page',
     iconName: 'fa fa-user',
   },
+  {
+    title: 'Settings',
+    url: '/settings',
+    iconName: 'fa fa-user',
+  },
 ];
 function Sidebar() {
   return (

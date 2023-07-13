@@ -5814,3 +5814,141 @@ Error: Route.post() requires a callback function but got a [object Undefined]
     at Function.Module._load (node:internal/modules/cjs/loader:839:12)
     at Module.require (node:internal/modules/cjs/loader:1028:19)
     at require (node:internal/modules/cjs/helpers:102:18)
+[2023-07-13T12:20:43.551Z] [error]: uncaughtException: Cannot find module './frontPage.routes'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+Error: Cannot find module './frontPage.routes'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:956:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:804:27)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at D:\hiqa\hiqa-backend\src\admin-routes\index.js:8:29
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\index.js:6:8)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+[2023-07-13T12:20:48.658Z] [error]: uncaughtException: Cannot find module './frontPage.controller'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\settings\settings.routes.js
+- D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+Error: Cannot find module './frontPage.controller'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\settings\settings.routes.js
+- D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:956:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:804:27)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\settings\settings.routes.js:2:29)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+[2023-07-13T12:20:50.974Z] [error]: uncaughtException: Cannot find module './frontPage.controller'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\settings\settings.routes.js
+- D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+Error: Cannot find module './frontPage.controller'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\settings\settings.routes.js
+- D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:956:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:804:27)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\settings\settings.routes.js:2:29)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+[2023-07-13T12:21:15.102Z] [error]: uncaughtException: FrontPageController is not defined
+ReferenceError: FrontPageController is not defined
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\settings\settings.routes.js:7:36)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at D:\hiqa\hiqa-backend\src\admin-routes\index.js:8:29
+    at Array.forEach (<anonymous>)
+[2023-07-13T12:23:09.195Z] [error]: uncaughtException: Route.post() requires a callback function but got a [object Undefined]
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\route.js:211:15)
+    at Function.proto.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\index.js:521:19)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\settings\settings.routes.js:8:8)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+[2023-07-13T12:25:24.433Z] [error]: uncaughtException: Route.post() requires a callback function but got a [object Undefined]
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\route.js:211:15)
+    at Function.proto.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\index.js:521:19)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\settings\settings.routes.js:8:8)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\settings\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+[2023-07-13T12:38:20.335Z] [error]: 500 - [ 'Error' ] - ReferenceError: FrontPages is not defined
+[2023-07-13T12:38:21.468Z] [error]: 500 - [ 'Error' ] - ReferenceError: FrontPages is not defined

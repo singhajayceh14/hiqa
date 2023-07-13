@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { SuspenseLoader } from '@/components/App/Loader';
 
 // Components
-const Profile = dynamic(() => import('@/Layout/Settings'), {
+const Settings = dynamic(() => import('@/Layout/Settings'), {
   loading: () => <SuspenseLoader color={'#002e6e'} />,
   ssr: false,
 });
@@ -12,7 +12,7 @@ const Profile = dynamic(() => import('@/Layout/Settings'), {
 function Index() {
   return (
     <>
-      <Profile />
+      <Settings />
     </>
   );
 }
@@ -20,6 +20,6 @@ function Index() {
 Index.auth = true;
 
 Index.meta = {
-  title: 'My Profile',
+  title: 'Settings',
 };
 export default Index;

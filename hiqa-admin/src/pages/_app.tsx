@@ -1,7 +1,6 @@
 import React from 'react';
 import '@/styles/globals.scss';
 import '@/styles/App.scss';
-import '@ckeditor/ckeditor5-clipboard/theme/clipboard.css'
 import type { NextComponentType } from 'next';
 import type { AppProps } from 'next/app';
 import SSRProvider from 'react-bootstrap/SSRProvider';

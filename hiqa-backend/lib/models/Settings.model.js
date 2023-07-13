@@ -2,6 +2,14 @@ module.exports = function (sequelize, DataTypes) {
   const Settings = sequelize.define(
     "settings",
     {
+      title: {
+        type: DataTypes.TEXT,
+        defaultValue: null,
+      },
+      sub_title: {
+        type: DataTypes.TEXT,
+        defaultValue: null,
+      },
       address: {
         type: DataTypes.TEXT,
         defaultValue: null,
@@ -48,6 +56,8 @@ module.exports = function (sequelize, DataTypes) {
   Settings.selectFields = function () {
     return [
       "id",
+      "title",
+      "sub_title",
       "address",
       "latitude",
       "longitude",
