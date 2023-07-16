@@ -215,3 +215,145 @@ Error: Route.post() requires a callback function but got a [object Undefined]
     at require (node:internal/modules/cjs/helpers:102:18)
 [2023-07-13T12:38:20.335Z] [error]: 500 - [ 'Error' ] - ReferenceError: FrontPages is not defined
 [2023-07-13T12:38:21.468Z] [error]: 500 - [ 'Error' ] - ReferenceError: FrontPages is not defined
+[2023-07-13T15:07:24.928Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-13T15:07:38.380Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-13T15:07:39.929Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-16T03:40:29.387Z] [error]: uncaughtException: Cannot find module './course.controller'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\course.routes.js
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+Error: Cannot find module './course.controller'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\course.routes.js
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\banners\course.routes.js:2:26)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+[2023-07-16T03:40:35.373Z] [error]: uncaughtException: Cannot find module './course.controller'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\course.routes.js
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+Error: Cannot find module './course.controller'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\course.routes.js
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\banners\course.routes.js:2:26)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+[2023-07-16T03:40:48.378Z] [error]: uncaughtException: Cannot find module './course.routes'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+Error: Cannot find module './course.routes'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at D:\hiqa\hiqa-backend\src\admin-routes\index.js:8:29
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\index.js:6:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+[2023-07-16T03:41:00.478Z] [error]: uncaughtException: Cannot find module './course.routes'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+Error: Cannot find module './course.routes'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at D:\hiqa\hiqa-backend\src\admin-routes\index.js:8:29
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\index.js:6:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+[2023-07-16T03:41:09.282Z] [error]: uncaughtException: Cannot find module './course.controller'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\banners.routes.js
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+Error: Cannot find module './course.controller'
+Require stack:
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\banners.routes.js
+- D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js
+- D:\hiqa\hiqa-backend\src\admin-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\banners\banners.routes.js:2:26)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\admin-routes\banners\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+[2023-07-16T04:57:15.583Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-16T04:57:47.584Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-16T04:57:48.973Z] [error]: 500 - [ 'Error' ] - null

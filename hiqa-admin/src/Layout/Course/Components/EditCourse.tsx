@@ -37,7 +37,6 @@ function EditCourse() {
         </div>
       </div>
       {globalState?.courseDetail && <CourseForm {...{ state: globalState, edit: true }} />}
-      
     </div>
   );
 }

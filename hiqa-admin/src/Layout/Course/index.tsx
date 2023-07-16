@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import DefaultTable from '@/components/Default/Table';
 import { useContainerContext } from '@/Layout/Container/context';
-import styles from '@/styles/Components/Address/Address.module.scss';
 import { confirmDialog } from '@/utils/helpers';
 import { REQUEST, COURSE } from '@/types/interfaces';
 import { useRequest } from '@/components/App';
@@ -47,9 +46,11 @@ function Index() {
       globalState?.getCourse && globalState?.getCourse?.result
         ? globalState?.getCourse?.result?.map((course: COURSE) => ({
             ...course,
-            image:(<>
-              <img src={course.image} alt="Course Image" style={{width:'50px',height:"50px"}}/>
-            </>),
+            image: (
+              <>
+                <img src={course.image} alt="Course Image" style={{ width: '50px', height: '50px' }} />
+              </>
+            ),
             action: (
               <>
                 <span className="pr-1">

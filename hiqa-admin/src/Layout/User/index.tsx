@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import DefaultTable from '@/components/Default/Table';
 import { useContainerContext } from '@/Layout/Container/context';
-import styles from '@/styles/Components/Address/Address.module.scss';
 import { confirmDialog } from '@/utils/helpers';
 import { REQUEST, USER } from '@/types/interfaces';
 import { useRequest } from '@/components/App';

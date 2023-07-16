@@ -6,6 +6,7 @@ import { REQUEST } from '@/types/interfaces';
 import { useRequest } from '@/components/App';
 
 import FrontPageForm from './FrontPageForm';
+
 function EditFrontPage() {
   const { query } = useRouter();
   const { state: globalState, dispatch: globalDispatch } = useContainerContext();
@@ -36,8 +37,7 @@ function EditFrontPage() {
           <h2>Edit Front Page</h2>
         </div>
       </div>
-      {globalState?.frontPageDetail &&  <FrontPageForm {...{ state: globalState, edit: true }} />}
-     
+      {globalState?.frontPageDetail && <FrontPageForm {...{ state: globalState, edit: true }} />}
     </div>
   );
 }

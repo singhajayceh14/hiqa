@@ -19,7 +19,7 @@ function Header() {
     <header className={`${styles.header} headerMenu`}>
       <div>
         <Link href="/dashboard" className={styles.logo}>
-          <img style={{width:'30px',height:"30px",}} src="/assets/images/logo.jpg" alt="logo" />
+          <img style={{ width: '30px', height: '30px' }} src="/assets/images/logo.jpg" alt="logo" />
         </Link>
       </div>
       <div onClick={toggalClass}>
@@ -38,9 +38,7 @@ function Header() {
                       currentTarget.src = '/assets/images/user-profile.png';
                     }}
                     src={
-                      state?.profileDetail?.image
-                        ? `${state?.profileDetail?.image}`
-                        : '/assets/images/user-profile.png'
+                      state?.profileDetail?.image ? `${state?.profileDetail?.image}` : '/assets/images/user-profile.png'
                     }
                     alt="User profile"
                   />
@@ -48,9 +46,15 @@ function Header() {
               }
               position={'absolute'}
             >
-              <Link href="/dashboard" style={{color:"#757575"}}>Dashboard</Link>
-              <Link href="/profile" style={{color:"#757575"}}>My Profile</Link>
-              <Button variant="link" style={{fontSize:'14px',color:"#757575"}} onClick={logout}>Logout</Button>
+              <Link href="/dashboard" style={{ color: '#757575' }}>
+                Dashboard
+              </Link>
+              <Link href="/profile" style={{ color: '#757575' }}>
+                My Profile
+              </Link>
+              <Button variant="link" style={{ fontSize: '14px', color: '#757575' }} onClick={logout}>
+                Logout
+              </Button>
             </LoadStatusList>
           </div>
         </div>

@@ -1,5 +1,6 @@
 // Components
 import dynamic from 'next/dynamic';
+
 import { SuspenseLoader } from '@/components/App/Loader';
 
 // Components

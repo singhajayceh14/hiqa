@@ -16,9 +16,9 @@ const Footer = () => {
               <p>
                 {state.setting_data.address}
                 <br />
-                <strong>Phone:</strong> {state.setting_data.phone}
+                <strong>Phone:</strong> {state?.setting_data?.phone}
                 <br />
-                <strong>Email:</strong> {state.setting_data.email}
+                <strong>Email:</strong> {state?.setting_data?.email}
                 <br />
               </p>
             </div>
@@ -46,7 +46,7 @@ const Footer = () => {
               <ul>
                 {state?.courseList && state?.courseList.map((course: COURSE, index:string)=>
                   <li key={index}>
-                    <i className="bx bx-chevron-right"></i> <Link href="#">{course.name}</Link>
+                    <i className="bx bx-chevron-right"></i> <Link href="#">{course?.name}</Link>
                   </li>
                 )}
               </ul>
@@ -55,30 +55,30 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="container d-md-flex py-4">
+      <div className="container d-md-flex py-4 footer-bottom">
         <div className="me-md-auto text-center text-md-start">
           <div className="copyright">
             &copy; Copyright
             <strong>
-              <span>HIQA</span>
+              <span> HIQA</span>
             </strong>
             . All Rights Reserved
           </div>
         </div>
         <div className="social-links text-center text-md-right pt-3 pt-md-0">
-          <Link href={state.setting_data.twitter_url} className="twitter">
+          <Link href={state?.setting_data?.twitter_url} className="twitter">
             <i className="bx bxl-twitter"></i>
           </Link>
-          <Link href={state.setting_data.facebook_url} className="facebook">
+          <Link href={state?.setting_data?.facebook_url} className="facebook">
             <i className="bx bxl-facebook"></i>
           </Link>
-          <Link href={state.setting_data.instagram_url} className="instagram">
+          <Link href={state?.setting_data?.instagram_url} className="instagram">
             <i className="bx bxl-instagram"></i>
           </Link>
-          <Link href={state.setting_data.skype_url} className="google-plus">
+          <Link href={state?.setting_data?.skype_url} className="google-plus">
             <i className="bx bxl-skype"></i>
           </Link>
-          <Link href={state.setting_data.linkedin_url} className="linkedin">
+          <Link href={state?.setting_data?.linkedin_url} className="linkedin">
             <i className="bx bxl-linkedin"></i>
           </Link>
         </div>

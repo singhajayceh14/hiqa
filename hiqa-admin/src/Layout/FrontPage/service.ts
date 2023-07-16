@@ -1,7 +1,7 @@
 import { api } from '@/utils/axiosInterceptor';
 import { ACTION } from '@/types/interfaces';
 import { handleErrors, toastr } from '@/utils/helpers';
-const API_URL =  process.env.BACKEND_API_URL + 'front-page/'
+const API_URL = process.env.BACKEND_API_URL + 'front-page/';
 /* Get Front Page */
 
 //eslint-disable-next-line no-unused-vars
@@ -19,7 +19,10 @@ export async function getFrontPage(action: ACTION): Promise<unknown> {
 /* Create Front Page */
 export async function addFrontPage(action: ACTION): Promise<unknown> {
   const { payload } = action;
-  const res: ReturnType<any> = await api(`${API_URL}add`, 'POST', { data: payload, headers: { 'Content-Type': 'multipart/form-data' } });
+  const res: ReturnType<any> = await api(`${API_URL}add`, 'POST', {
+    data: payload,
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
   if (res.status) {
     toastr('Front Page Successfully Added', 'success');
     return res;
@@ -46,7 +49,7 @@ export async function updateFrontPage(action: ACTION): Promise<unknown> {
   const { payload } = action;
   const res: ReturnType<any> = await api(`${API_URL}update`, 'POST', {
     data: payload,
-    headers: { 'Content-Type': 'multipart/form-data' }
+    headers: { 'Content-Type': 'multipart/form-data' },
   });
   if (res.status) {
     toastr('Front Page Successfully Updated', 'success');

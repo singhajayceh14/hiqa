@@ -89,10 +89,34 @@ export interface ADDRESS_PROPS {
   edit?: boolean;
 }
 
-
 // COURSE LIST 
 export interface COURSE {
   id: string;
   name: string;
   slug: string;
+}
+// Banner
+export interface BANNER {
+  id: string;
+  title: string;
+  image: string;
+}
+
+// BANNER LIST
+export interface SECTION_DATA {
+  id: string;
+  title: string;
+  image: string;
+  description: string;
+}
+
+export interface COURSE_DATA {
+  id: string;
+  name: string;
+  short_description?: string;
+  long_description?: string;
+  duraion_course?: string;
+  total_seat?: string;
+  site_visits?: string;
+  image?: string;
 }

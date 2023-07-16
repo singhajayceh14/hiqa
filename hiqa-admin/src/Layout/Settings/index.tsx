@@ -3,12 +3,10 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { SuspenseLoader } from '@/components/App/Loader';
 import { useRequest, useLoading } from '@/components/App';
 import { REQUEST } from '@/types/interfaces';
 import { useCommonReducer } from '@/components/App/reducer';
-import { toastr, phoneRegExp } from '@/utils/helpers';
-import styles from '@/styles/Components/Profile/Profile.module.scss';
+import { phoneRegExp } from '@/utils/helpers';
 import GoogleAutoComplete from '@/components/Default/Maps/Autocomplete';
 
 const ProfilePersonalSchema = Yup.object().shape({
@@ -33,17 +31,6 @@ function Index() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // const onFileChange = async (event: any) => {
-  //   const file = event.target.files[0];
-  //   const fileTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/bmp'];
-  //   if (!fileTypes.includes(file.type)) return toastr('InvalidImage', 'warning');
-  //   const formData: FormData = new FormData();
-  //   formData.append('profile_picture', file, file.name);
-  //   const res = (await request('updateProfileUserDetail', formData)) as REQUEST;
-  //   if (res?.status) {
-  //     dispatch({ profileDetail: res.data });
-  //   }
-  // };
   useEffect(() => {
     getSettingsDetail();
   }, [getSettingsDetail]);
@@ -125,10 +112,10 @@ function Index() {
           }
         }}
       >
-        {({ handleSubmit, handleChange, values, errors,setFieldValue, setErrors  }) => (
+        {({ handleSubmit, handleChange, values, errors, setFieldValue, setErrors }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Row>
-            <Col md={6} lg={6}>
+              <Col md={6} lg={6}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>{'Title *'}</Form.Label>
                   <Form.Control
@@ -140,9 +127,7 @@ function Index() {
                     value={values.title}
                     isInvalid={!!errors.title}
                   />
-                  {errors.title ? (
-                    <Form.Control.Feedback type="invalid">{errors.title}</Form.Control.Feedback>
-                  ) : null}
+                  {errors?.title ? <Form.Control.Feedback type="invalid">{errors.title}</Form.Control.Feedback> : null}
                 </Form.Group>
               </Col>
               <Col md={6} lg={6}>
@@ -177,8 +162,7 @@ function Index() {
                   {errors?.email ? <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback> : null}
                 </Form.Group>
               </Col>
-             
-            
+
               <Col lg={6}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>{'Phone *'}</Form.Label>
@@ -283,19 +267,19 @@ function Index() {
               <Col md={6} lg={6}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <GoogleAutoComplete
-                        name="address"
-                        type="text"
-                        autoComplete="off"
-                        placeholder="Enter Address *"
-                        onChange={handleChange}
-                        value={values.address}
-                        isInvalid={!!errors.address}
-                        onSelectOption={(address: {formattedAddress:string,lat:number,lng:number}) => {
-                          setFieldValue('address', address.formattedAddress, true);
-                          setFieldValue('latitude', address.lat, true);
-                          setFieldValue('longitude', address.lng, true);
-                        }}
-                      />
+                    name="address"
+                    type="text"
+                    autoComplete="off"
+                    placeholder="Enter Address *"
+                    onChange={handleChange}
+                    value={values.address}
+                    isInvalid={!!errors.address}
+                    onSelectOption={(address: { formattedAddress: string; lat: number; lng: number }) => {
+                      setFieldValue('address', address.formattedAddress, true);
+                      setFieldValue('latitude', address.lat, true);
+                      setFieldValue('longitude', address.lng, true);
+                    }}
+                  />
                   {errors.skype_url ? (
                     <Form.Control.Feedback type="invalid">{errors.skype_url}</Form.Control.Feedback>
                   ) : null}

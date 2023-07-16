@@ -586,7 +586,7 @@ table {
             &:before {
               position: absolute;
               width: 3px;
-              background-color: #2cd889;
+              background-color: $primary;
               height: 100%;
               left: 0;
               content: '';
@@ -606,7 +606,7 @@ table {
             &:before {
               position: absolute;
               width: 3px;
-              background-color: #2cd889;
+              background-color: $primary;
               height: 100%;
               left: 0;
               content: '';

@@ -10,7 +10,7 @@ function AddCourse() {
           <h2>Add Course</h2>
         </div>
       </div>
-      <CourseForm />
+      <CourseForm state={{}} />
     </div>
   );
 }

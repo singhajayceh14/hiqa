@@ -18,15 +18,9 @@ function index() {
   return (
     <div className="container-fluid">
       {/* <ActivityCount /> */}
-      <div className="col-md-12 row">
-        {/* <APIServiceStatus /> */}
-      </div>
-      <div className="col-md-8 row">
-        {/* <LastErrorActivity /> */}
-      </div>
-      <div className="col-md-12 row mt-5">
-        {/* <LastAppActivity /> */}
-      </div>
+      <div className="col-md-12 row">{/* <APIServiceStatus /> */}</div>
+      <div className="col-md-8 row">{/* <LastErrorActivity /> */}</div>
+      <div className="col-md-12 row mt-5">{/* <LastAppActivity /> */}</div>
     </div>
   );
 }

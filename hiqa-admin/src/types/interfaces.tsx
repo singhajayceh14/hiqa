@@ -89,9 +89,8 @@ export interface ADDRESS_PROPS {
   edit?: boolean;
 }
 
-
 // user List Add Interface
-export interface USER  {
+export interface USER {
   id: string;
   name: string;
   action?: JSX.Element;
@@ -112,14 +111,14 @@ export interface USER_PROPS {
 
 // Course List Add Interface
 
-export interface COURSE  {
+export interface COURSE {
   id: string;
   name: string;
-  short_description?:string;
-  long_description?:string;
-  duraion_course?:string;
-  total_seat?:string;
-  site_visits?:string;
+  short_description?: string;
+  long_description?: string;
+  duraion_course?: string;
+  total_seat?: string;
+  site_visits?: string;
   action?: JSX.Element;
   status?: boolean;
   image?: string;
@@ -133,15 +132,13 @@ export interface COURSE_PROPS {
   edit?: boolean;
 }
 
-
-
 // Front Page List Add Interface
 
-export interface FRONTPAGE  {
+export interface FRONTPAGE {
   id: string;
   type: string;
-  title?:string;
-  description?:string;
+  title?: string;
+  description?: string;
   action?: JSX.Element;
   status?: boolean;
   image?: string;
@@ -151,6 +148,24 @@ export interface FRONTPAGE_PROPS {
   component?: (data: { [key: string]: unknown }) => void;
   state: {
     [key: string]: FRONTPAGE;
+  };
+  edit?: boolean;
+}
+
+//Banner List Add Interface
+
+export interface BANNER {
+  id: string;
+  title?: string;
+  action?: JSX.Element;
+  status?: boolean;
+  image?: string;
+}
+export interface BANNER_PROPS {
+  [key: string]: unknown;
+  component?: (data: { [key: string]: unknown }) => void;
+  state: {
+    [key: string]: BANNER;
   };
   edit?: boolean;
 }

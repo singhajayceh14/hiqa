@@ -60,11 +60,7 @@ function Index() {
               currentTarget.onerror = null; // prevents looping
               currentTarget.src = '/assets/images/user-profile.png';
             }}
-            src={
-              state?.profileDetail?.image
-                ? `${state?.profileDetail?.image}`
-                : '/assets/images/user-profile.png'
-            }
+            src={state?.profileDetail?.image ? `${state?.profileDetail?.image}` : '/assets/images/user-profile.png'}
             alt="company-profile"
           />
         </span>
@@ -133,7 +129,7 @@ function Index() {
                   {errors?.email ? <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback> : null}
                 </Form.Group>
               </Col>
-             
+
               <Col md={6} lg={6}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>{'Name *'}</Form.Label>
@@ -146,12 +142,10 @@ function Index() {
                     value={values.name}
                     isInvalid={!!errors.name}
                   />
-                  {errors.name ? (
-                    <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
-                  ) : null}
+                  {errors.name ? <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback> : null}
                 </Form.Group>
               </Col>
-           
+
               <Col lg={6}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>{'Phone *'}</Form.Label>

@@ -1,9 +1,11 @@
+@import '../../variables.scss';
+
 .loadStatusListLabel {
   width: 48px;
   height: 30px;
   line-height: 30px;
-  background: #2cd889;
-  border-color: #2cd889;
+  background: $primary;
+  border-color: $primary;
   border-radius: 0.25rem;
   text-align: center;
   padding: 0;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
-
-import JoditReact from "jodit-react-ts";
+import JoditReact from 'jodit-react-ts';
 import 'jodit/build/jodit.min.css';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -10,37 +9,34 @@ import { useRouter } from 'next/router';
 import styles from '@/styles/Components/Address/Address.module.scss';
 import { REQUEST, FRONTPAGE_PROPS } from '@/types/interfaces';
 import { useRequest, useLoading } from '@/components/App';
-import { toastr, genrateRendomString} from '@/utils/helpers';
+import { toastr } from '@/utils/helpers';
 const FormikSchema = Yup.object().shape({
   type: Yup.string(),
   title: Yup.string().trim().min(2, 'Too Short!').required('Required'),
   description: Yup.string().trim().min(2, 'Too Short!'),
 });
 
-
-
 function FrontPageForm(props: FRONTPAGE_PROPS) {
- 
   const router = useRouter();
   const { request, loading } = useRequest();
   const { ButtonLoader } = useLoading();
   const { state } = props;
   const [fileData, setfileData] = useState<{
-    file:File | null,
-    preView:string,
+    file: File | null;
+    preView: string;
   }>({
-    file:null,
-    preView:state?.frontPageDetail.image ?? ''
-  })
-  const [description, setdescription] = useState<string>('')
+    file: null,
+    preView: state?.frontPageDetail?.image ?? '/assets/images/user-profile.png',
+  });
+  const [description, setdescription] = useState<string>('');
   const onFileChange = async (event: any) => {
     const file = event.target.files[0];
     const fileTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/bmp'];
     if (!fileTypes.includes(file.type)) return toastr('InvalidImage', 'warning');
     setfileData({
-      file:file,
-      preView:URL.createObjectURL(file)
-    })
+      file: file,
+      preView: URL.createObjectURL(file),
+    });
   };
   return (
     <Formik
@@ -53,16 +49,15 @@ function FrontPageForm(props: FRONTPAGE_PROPS) {
       validationSchema={FormikSchema}
       onSubmit={async values => {
         const formData: FormData = new FormData();
-        if(fileData.file){
+        if (fileData.file) {
           formData.append('image', fileData.file);
         }
         formData.append('type', values.type);
         formData.append('description', description);
-        formData.append('title',  values.title); 
+        formData.append('title', values.title);
         if (props?.edit) {
-          formData.append('id', state?.frontPageDetail?.id);   
+          formData.append('id', state?.frontPageDetail?.id);
         }
-        console.log(formData)
         if (request) {
           if (props?.edit) {
             const req = (await request('updateFrontPage', formData)) as REQUEST;
@@ -93,15 +88,10 @@ function FrontPageForm(props: FRONTPAGE_PROPS) {
                     value={values.title}
                     isInvalid={!!errors.title}
                   />
-                  {errors.title ? (
-                    <Form.Control.Feedback type="invalid">{errors.title}</Form.Control.Feedback>
-                  ) : null}
+                  {errors.title ? <Form.Control.Feedback type="invalid">{errors.title}</Form.Control.Feedback> : null}
                 </Form.Group>
               </Col>
-             
-             
-           
-            
+
               <Col md={6}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Image *</Form.Label>
@@ -115,7 +105,6 @@ function FrontPageForm(props: FRONTPAGE_PROPS) {
                       alt="company-profile"
                       width={100}
                       height={100}
-                      
                     />
                   </span>
                   <div className={styles.companyInformation}>
@@ -124,7 +113,7 @@ function FrontPageForm(props: FRONTPAGE_PROPS) {
                       className={'form-control'}
                       id="chooseProfilePicture"
                       type="file"
-                      onChange={onFileChange}                      
+                      onChange={onFileChange}
                       style={{ display: 'none' }}
                     />
                     <label
@@ -134,30 +123,30 @@ function FrontPageForm(props: FRONTPAGE_PROPS) {
                       }}
                       htmlFor="chooseProfilePicture"
                     >
-                      Upload Image 
+                      Upload Image
                     </label>
-                </div>
+                  </div>
                 </Form.Group>
               </Col>
-              
+
               <Col md={12}>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Description *</Form.Label>
-                    <JoditReact
-                          config={{
-                            readonly: false,
-                            toolbar: true,
-                            showXPathInStatusbar: false,
-                            askBeforePasteHTML: false,
-                            askBeforePasteFromWord: false,
-                            askBeforePasteText: false,
-                          }}
-                          defaultValue={ values.description }
-                          onChange={(content) => {
-                            setdescription(content);
-                          }}
-                      />
-                  </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Description *</Form.Label>
+                  <JoditReact
+                    config={{
+                      readonly: false,
+                      toolbar: true,
+                      showXPathInStatusbar: false,
+                      askBeforePasteHTML: false,
+                      askBeforePasteFromWord: false,
+                      askBeforePasteText: false,
+                    }}
+                    defaultValue={values.description}
+                    onChange={content => {
+                      setdescription(content);
+                    }}
+                  />
+                </Form.Group>
               </Col>
             </Row>
           </div>

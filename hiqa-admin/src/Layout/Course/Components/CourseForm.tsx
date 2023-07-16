@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
-import JoditReact from "jodit-react-ts";
+import JoditReact from 'jodit-react-ts';
 import 'jodit/build/jodit.min.css';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -9,46 +9,42 @@ import { useRouter } from 'next/router';
 import styles from '@/styles/Components/Address/Address.module.scss';
 import { REQUEST, COURSE_PROPS } from '@/types/interfaces';
 import { useRequest, useLoading } from '@/components/App';
-import { toastr, genrateRendomString} from '@/utils/helpers';
+import { toastr } from '@/utils/helpers';
 
 const FormikSchema = Yup.object().shape({
   name: Yup.string().trim().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
   short_description: Yup.string().trim().min(2, 'Too Short!'),
   long_description: Yup.string().trim().min(2, 'Too Short!'),
-  image:Yup.string(),
-  duraion_course:Yup.string().required('Required'),
-  total_seat:Yup.string().required('Required'),
-  site_visits:Yup.string().required('Required'),
+  image: Yup.string(),
+  duraion_course: Yup.string().required('Required'),
+  total_seat: Yup.string().required('Required'),
+  site_visits: Yup.string().required('Required'),
 });
 
-
-
 function CourseForm(props: COURSE_PROPS) {
- 
   const router = useRouter();
   const { request, loading } = useRequest();
   const { ButtonLoader } = useLoading();
   const { state } = props;
   const [fileData, setfileData] = useState<{
-    file:File | null,
-    preView:string,
+    file: File | null;
+    preView: string;
   }>({
-    file:null,
-    preView:state?.courseDetail.image ?? ''
-  })
-  const [shortDescription, setshortDescription] = useState('')
-  const [longDescription, setlongDescription] = useState('')
+    file: null,
+    preView: state?.courseDetail?.image ?? '/assets/images/user-profile.png',
+  });
+  const [shortDescription, setshortDescription] = useState('');
+  const [longDescription, setlongDescription] = useState('');
   const onFileChange = async (event: any) => {
     const file = event.target.files[0];
     const fileTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/bmp'];
     if (!fileTypes.includes(file.type)) return toastr('InvalidImage', 'warning');
     setfileData({
-      file:file,
-      preView:URL.createObjectURL(file)
-    })
+      file: file,
+      preView: URL.createObjectURL(file),
+    });
   };
 
-  
   return (
     <Formik
       enableReinitialize={true}
@@ -56,26 +52,25 @@ function CourseForm(props: COURSE_PROPS) {
         name: (state?.courseDetail?.name || '') as string,
         short_description: (state?.courseDetail?.short_description || '') as string,
         long_description: (state?.courseDetail?.long_description || '') as string,
-        duraion_course:(state?.courseDetail?.duraion_course || '') as string,
-        total_seat:(state?.courseDetail?.total_seat || '') as string,
-        site_visits:(state?.courseDetail?.site_visits || '') as string,
+        duraion_course: (state?.courseDetail?.duraion_course || '') as string,
+        total_seat: (state?.courseDetail?.total_seat || '') as string,
+        site_visits: (state?.courseDetail?.site_visits || '') as string,
       }}
       validationSchema={FormikSchema}
       onSubmit={async values => {
         const formData: FormData = new FormData();
-        if(fileData.file){
+        if (fileData.file) {
           formData.append('image', fileData.file);
         }
         formData.append('name', values.name);
         formData.append('short_description', shortDescription);
         formData.append('long_description', longDescription);
-        formData.append('duraion_course',  values.duraion_course);
-        formData.append('total_seat',  values.total_seat);
-        formData.append('site_visits',  values.site_visits);   
+        formData.append('duraion_course', values.duraion_course);
+        formData.append('total_seat', values.total_seat);
+        formData.append('site_visits', values.site_visits);
         if (props?.edit) {
-          formData.append('id', state?.courseDetail?.id || '');   
+          formData.append('id', state?.courseDetail?.id || '');
         }
-        console.log(values)
         if (request) {
           if (props?.edit) {
             const req = (await request('updateCourse', formData)) as REQUEST;
@@ -91,7 +86,7 @@ function CourseForm(props: COURSE_PROPS) {
         }
       }}
     >
-      {({ handleSubmit, handleChange, values, errors, setFieldValue, setErrors }) => (
+      {({ handleSubmit, handleChange, values, errors }) => (
         <Form noValidate onSubmit={handleSubmit} id="addForm">
           <div className={styles.formField}>
             <Row>
@@ -106,17 +101,15 @@ function CourseForm(props: COURSE_PROPS) {
                     value={values.name}
                     isInvalid={!!errors.name}
                   />
-                  {errors.name ? (
-                    <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
-                  ) : null}
+                  {errors.name ? <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback> : null}
                 </Form.Group>
               </Col>
-             
+
               <Col md={6}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Duraion course *</Form.Label>
+                  <Form.Label>Duration course *</Form.Label>
                   <Form.Control
-                    placeholder="Duraion course"
+                    placeholder="Duration course"
                     name="duraion_course"
                     type="text"
                     onChange={handleChange}
@@ -170,8 +163,7 @@ function CourseForm(props: COURSE_PROPS) {
                         currentTarget.src = '/assets/images/user-profile.png';
                       }}
                       src={fileData.preView}
-                      alt="company-profile"
-
+                      alt="Course Image"
                     />
                   </span>
                   <div className={styles.companyInformation}>
@@ -180,7 +172,7 @@ function CourseForm(props: COURSE_PROPS) {
                       className={'form-control'}
                       id="chooseProfilePicture"
                       type="file"
-                      onChange={onFileChange}                      
+                      onChange={onFileChange}
                       style={{ display: 'none' }}
                     />
                     <label
@@ -190,53 +182,49 @@ function CourseForm(props: COURSE_PROPS) {
                       }}
                       htmlFor="chooseProfilePicture"
                     >
-                      Upload Image 
+                      Upload Image
                     </label>
-                </div>
+                  </div>
                 </Form.Group>
               </Col>
-              
+
               <Col md={6}>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Short Description *</Form.Label>
-                       <JoditReact
-                          config={{
-                            readonly: false,
-                            toolbar: true,
-                            showXPathInStatusbar: false,
-                            askBeforePasteHTML: false,
-                            askBeforePasteFromWord: false,
-                            askBeforePasteText: false,
-                          }}
-                          defaultValue={
-                            values.short_description 
-                          }
-                          onChange={(content) => {
-                            setshortDescription(content);
-                          }}
-                      />
-                  </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Short Description *</Form.Label>
+                  <JoditReact
+                    config={{
+                      readonly: false,
+                      toolbar: true,
+                      showXPathInStatusbar: false,
+                      askBeforePasteHTML: false,
+                      askBeforePasteFromWord: false,
+                      askBeforePasteText: false,
+                    }}
+                    defaultValue={values.short_description}
+                    onChange={content => {
+                      setshortDescription(content);
+                    }}
+                  />
+                </Form.Group>
               </Col>
               <Col md={12}>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Long Description *</Form.Label>
-                    <JoditReact
-                          config={{
-                            readonly: false,
-                            toolbar: true,
-                            showXPathInStatusbar: false,
-                            askBeforePasteHTML: false,
-                            askBeforePasteFromWord: false,
-                            askBeforePasteText: false,
-                          }}
-                          defaultValue={
-                            values.long_description
-                          }
-                          onChange={(content) => {
-                            setlongDescription(content);
-                          }}
-                      />
-                  </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Long Description *</Form.Label>
+                  <JoditReact
+                    config={{
+                      readonly: false,
+                      toolbar: true,
+                      showXPathInStatusbar: false,
+                      askBeforePasteHTML: false,
+                      askBeforePasteFromWord: false,
+                      askBeforePasteText: false,
+                    }}
+                    defaultValue={values.long_description}
+                    onChange={content => {
+                      setlongDescription(content);
+                    }}
+                  />
+                </Form.Group>
               </Col>
             </Row>
           </div>

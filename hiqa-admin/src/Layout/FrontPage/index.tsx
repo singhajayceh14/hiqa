@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import DefaultTable from '@/components/Default/Table';
 import { useContainerContext } from '@/Layout/Container/context';
-import styles from '@/styles/Components/Address/Address.module.scss';
 import { confirmDialog } from '@/utils/helpers';
 import { REQUEST, FRONTPAGE } from '@/types/interfaces';
 import { useRequest } from '@/components/App';
@@ -51,9 +50,11 @@ function Index() {
       globalState?.getFrontPage && globalState?.getFrontPage?.result
         ? globalState?.getFrontPage?.result?.map((front: FRONTPAGE) => ({
             ...front,
-            image:(<>
-              <img src={front.image} alt="Front Page Image" style={{width:'50px',height:"50px"}}/>
-            </>),
+            image: (
+              <>
+                <img src={front.image} alt="Front Page Image" style={{ width: '50px', height: '50px' }} />
+              </>
+            ),
             action: (
               <>
                 <span className="pr-1">

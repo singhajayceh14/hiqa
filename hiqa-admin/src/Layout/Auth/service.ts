@@ -2,7 +2,7 @@ import { api } from '@/utils/axiosInterceptor';
 import { ACTION } from '@/types/interfaces';
 import { handleErrors, setHeader, toastr } from '@/utils/helpers';
 // import { registerService } from '@/store/services';
-const API_URL =  process.env.BACKEND_API_URL + 'auth/'
+const API_URL = process.env.BACKEND_API_URL + 'auth/';
 /* Login User */
 export async function LoginUser(action: ACTION): Promise<unknown> {
   const { payload } = action;

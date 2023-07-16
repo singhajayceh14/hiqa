@@ -3,6 +3,7 @@ var _ = require("lodash");
 const Courses = require("../../../lib/models").courses;
 const Settings = require("../../../lib/models").settings;
 const FrontPages = require("../../../lib/models").front_pages;
+const Banners = require("../../../lib/models"). banners;
 
 // Model Schema Function
 const TableSchema = require("../../services");
@@ -44,11 +45,18 @@ class HomeController {
       let frontData = await TableSchema.getAll(
         {
           where: { status: "1" },
+          limit: 2
         },
         FrontPages
       );
+      let bannersData =  await TableSchema.getAll(
+        {
+          where: { status: "1" },
+        },
+        Banners
+      );
       return res.success(
-        { courses_list: courseData, front_data: frontData },
+        { courses_list: courseData, section_data: frontData,banners:bannersData },
         req.__("GET_LIST_FOUND")
       );
     } catch (error) {

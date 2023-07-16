@@ -134,7 +134,7 @@ function Index(props: Props) {
 
   const searchDatatable = useCallback((event: React.ChangeEvent) => {
     const { value } = event.target as HTMLInputElement;
-      dispatch({
+    dispatch({
       type: 'SET_DATA',
       data: {
         ...state,

@@ -19,7 +19,7 @@ export const useWebPush = () => {
           //public vapid key
           applicationServerKey: urlBase64ToUint8Array(process.env.REACT_APP_WEB_PUSH_PUBLIC_KEY as string),
         });
-       
+
         return subscription;
       } else {
         return null;

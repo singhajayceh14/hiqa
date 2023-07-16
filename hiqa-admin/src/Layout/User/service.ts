@@ -1,7 +1,7 @@
 import { api } from '@/utils/axiosInterceptor';
 import { ACTION } from '@/types/interfaces';
 import { handleErrors, toastr } from '@/utils/helpers';
-const API_URL =  process.env.BACKEND_API_URL + 'user/'
+const API_URL = process.env.BACKEND_API_URL + 'user/';
 /* Get User */
 
 //eslint-disable-next-line no-unused-vars

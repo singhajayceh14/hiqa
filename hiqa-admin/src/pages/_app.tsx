@@ -21,7 +21,7 @@ interface AppComponentProps extends AppProps {
 export default function App({ Component, pageProps }: AppComponentProps) {
   const Layout = Component.auth
     ? ({ children }: { children: React.ReactElement<any> }) => <Container meta={Component.meta}>{children}</Container>
-    : ({ children }: { children: React.ReactElement<any> }) =>children;
+    : ({ children }: { children: React.ReactElement<any> }) => children;
 
   return (
     <ErrorBoundary>

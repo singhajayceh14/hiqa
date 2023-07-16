@@ -37,6 +37,3 @@ export const useCommonReducer = (initialValue?: InitialValue) => {
   const [state, dispatch] = useReducer(commonReducer, initialValue || {});
   return { state, dispatch };
 };
-
-
-

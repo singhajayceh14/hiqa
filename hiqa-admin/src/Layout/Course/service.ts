@@ -1,7 +1,7 @@
 import { api } from '@/utils/axiosInterceptor';
 import { ACTION } from '@/types/interfaces';
 import { handleErrors, toastr } from '@/utils/helpers';
-const API_URL =  process.env.BACKEND_API_URL + 'course/'
+const API_URL = process.env.BACKEND_API_URL + 'course/';
 /* Get Course */
 
 //eslint-disable-next-line no-unused-vars
@@ -19,7 +19,10 @@ export async function getCourse(action: ACTION): Promise<unknown> {
 /* Create  Course */
 export async function addCourse(action: ACTION): Promise<unknown> {
   const { payload } = action;
-  const res: ReturnType<any> = await api(`${API_URL}add`, 'POST', { data: payload,headers: { 'Content-Type': 'multipart/form-data' }, });
+  const res: ReturnType<any> = await api(`${API_URL}add`, 'POST', {
+    data: payload,
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
   if (res.status) {
     toastr('Course Successfully Added', 'success');
     return res;

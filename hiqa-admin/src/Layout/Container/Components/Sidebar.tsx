@@ -23,6 +23,11 @@ const sideBarRoutes = [
     iconName: 'fa fa-user',
   },
   {
+    title: 'Banner',
+    url: '/banner',
+    iconName: 'fa fa-user',
+  },
+  {
     title: 'Settings',
     url: '/settings',
     iconName: 'fa fa-user',

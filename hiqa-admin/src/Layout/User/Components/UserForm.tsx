@@ -37,7 +37,6 @@ const EidtFormikSchema = Yup.object().shape({
     .required('Required'),
 });
 
-
 function UserForm(props: USER_PROPS) {
   const router = useRouter();
   const { request, loading } = useRequest();
@@ -52,10 +51,10 @@ function UserForm(props: USER_PROPS) {
         name: (state?.userDetail?.name || '') as string,
         email: (state?.userDetail?.email || '') as string,
         phone: (state?.userDetail?.mobile_number || '') as string,
-        password:"",
-        confirmPassword:"",
+        password: '',
+        confirmPassword: '',
       }}
-      validationSchema={props?.edit ?EidtFormikSchema : FormikSchema}
+      validationSchema={props?.edit ? EidtFormikSchema : FormikSchema}
       onSubmit={async values => {
         const payload = {
           name: values.name,
@@ -81,12 +80,10 @@ function UserForm(props: USER_PROPS) {
         }
       }}
     >
-      {({ handleSubmit, handleChange, values, errors, setFieldValue, setErrors }) => (
+      {({ handleSubmit, handleChange, values, errors }) => (
         <Form noValidate onSubmit={handleSubmit} id="addForm">
           <div className={styles.formField}>
-           
             <Row>
-
               <Col md={6}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Name *</Form.Label>
@@ -98,12 +95,10 @@ function UserForm(props: USER_PROPS) {
                     value={values.name}
                     isInvalid={!!errors.name}
                   />
-                  {errors.name ? (
-                    <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
-                  ) : null}
+                  {errors.name ? <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback> : null}
                 </Form.Group>
               </Col>
-             
+
               <Col md={6} lg={6}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>{'Email *'}</Form.Label>
@@ -132,58 +127,62 @@ function UserForm(props: USER_PROPS) {
                   {errors.phone ? <Form.Control.Feedback type="invalid">{errors.phone}</Form.Control.Feedback> : null}
                 </Form.Group>
               </Col>
-              {props?.edit ? null : <> <Col md={6}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>{'Password *'}</Form.Label>
-                  <InputGroup className="mb-3">
-                    <Form.Control
-                      type={passwordType == true ? 'password' : 'text'}
-                      name="password"
-                      placeholder="Password"
-                      onChange={handleChange}
-                      value={values.password}
-                      isInvalid={!!errors.password}
-                    />
-                    <InputGroup.Text>
-                      <i
-                        role="button"
-                        className={passwordType === true ? 'fa fa-eye-slash' : 'fa fa-eye'}
-                        onClick={() => setPasswordType(!passwordType)}
-                      ></i>
-                    </InputGroup.Text>
-                    {errors.password ? (
-                      <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
-                    ) : null}
-                  </InputGroup>
-                </Form.Group>
-              </Col>
-              <Col md={6}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>{'Confirm Password *'}</Form.Label>
+              {props?.edit ? null : (
+                <>
+                  {' '}
+                  <Col md={6}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Label>{'Password *'}</Form.Label>
+                      <InputGroup className="mb-3">
+                        <Form.Control
+                          type={passwordType == true ? 'password' : 'text'}
+                          name="password"
+                          placeholder="Password"
+                          onChange={handleChange}
+                          value={values.password}
+                          isInvalid={!!errors.password}
+                        />
+                        <InputGroup.Text>
+                          <i
+                            role="button"
+                            className={passwordType === true ? 'fa fa-eye-slash' : 'fa fa-eye'}
+                            onClick={() => setPasswordType(!passwordType)}
+                          ></i>
+                        </InputGroup.Text>
+                        {errors.password ? (
+                          <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+                        ) : null}
+                      </InputGroup>
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Label>{'Confirm Password *'}</Form.Label>
 
-                  <InputGroup className="mb-3">
-                    <Form.Control
-                      type={confirmPasswordType == true ? 'password' : 'text'}
-                      name="confirmPassword"
-                      placeholder="Confirm Password"
-                      onChange={handleChange}
-                      value={values.confirmPassword}
-                      isInvalid={!!errors.confirmPassword}
-                    />
-                    <InputGroup.Text>
-                      <i
-                        role="button"
-                        className={confirmPasswordType == true ? 'fa fa-eye-slash' : 'fa fa-eye'}
-                        onClick={() => setConfirmPasswordType(!confirmPasswordType)}
-                      ></i>
-                    </InputGroup.Text>
-                    {errors.confirmPassword ? (
-                      <Form.Control.Feedback type="invalid">{errors.confirmPassword}</Form.Control.Feedback>
-                    ) : null}
-                  </InputGroup>
-                </Form.Group>
-              </Col> </>}
-             
+                      <InputGroup className="mb-3">
+                        <Form.Control
+                          type={confirmPasswordType == true ? 'password' : 'text'}
+                          name="confirmPassword"
+                          placeholder="Confirm Password"
+                          onChange={handleChange}
+                          value={values.confirmPassword}
+                          isInvalid={!!errors.confirmPassword}
+                        />
+                        <InputGroup.Text>
+                          <i
+                            role="button"
+                            className={confirmPasswordType == true ? 'fa fa-eye-slash' : 'fa fa-eye'}
+                            onClick={() => setConfirmPasswordType(!confirmPasswordType)}
+                          ></i>
+                        </InputGroup.Text>
+                        {errors.confirmPassword ? (
+                          <Form.Control.Feedback type="invalid">{errors.confirmPassword}</Form.Control.Feedback>
+                        ) : null}
+                      </InputGroup>
+                    </Form.Group>
+                  </Col>{' '}
+                </>
+              )}
             </Row>
           </div>
           <Row>
