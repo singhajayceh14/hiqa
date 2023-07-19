@@ -21,6 +21,20 @@ const OurImpectPage = dynamic(() => import('./Components/OurImpectPage'), {
   ssr: false,
 });
 
+const OurSiteVisitPage = dynamic(() => import('./Components/OurSiteVisitPage'), {
+  loading: () => <div></div>,
+  ssr: false,
+});
+
+const WhoParticipatePage = dynamic(() => import('./Components/WhoParticipatePage'), {
+  loading: () => <div></div>,
+  ssr: false,
+});
+
+const OpportunityPage = dynamic(() => import('./Components/OpportunityPage'), {
+  loading: () => <div></div>,
+  ssr: false,
+});
 
 const CoursePage = dynamic(() => import('./Components/CoursePage'), {
   loading: () => <div></div>,
@@ -92,6 +106,9 @@ function Index() {
         <SliderPage />
         <AboutPage />
         <OurImpectPage />
+        <OurSiteVisitPage />
+        <WhoParticipatePage />
+        <OpportunityPage />
         <CoursePage />
         <EventPage />
         <VideoPage />

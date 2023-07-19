@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import Link from 'next/link';
 
-const OurImpectPage = () => {
+const OurSiteVisitPage = () => {
   return (
     <>
       <section
@@ -30,21 +30,23 @@ const OurImpectPage = () => {
                 data-delay=".4s"
               >
                 <div className="about-title second-title pb-25">
-                  <h2>Our Impect on Society</h2>
+                  <h2>Our International Site Visit & Training Programe</h2>
                 </div>
                 <p className="txt-clr">
-                  Generating 60+ Students every month and 720+ Students every Year with best training and in hand
-                  experience for Free of Cost in a single state.
+                  We are dedicated towards our special courses which provides special training and opportunity to visit
+                  international sites.
                 </p>
                 <p className="txt-clr">
-                  6 to 12 Months Schedule where a students learns and earns and get explored to various National &
-                  International Industrial Opportunities.
+                  We are in associational with International private and government organizations for student exchange
+                  program, In which each Indian Student shall be exchanged with International Student for training
+                  purpose during the program.
                 </p>
                 <p className="txt-clr">
-                  Supporting National and Inter-State Industrial Development by providing expertized manpower.
+                  To get trained as per international work culture and to explore different work style.
                 </p>
                 <p className="txt-clr">
-                  Developing Opportunities for Training & Employment for well deserved students in State.
+                  Our association with different organizations globally not only supports for training but also support
+                  us for Visa, Travelling, Local Support, Food & accommodation
                 </p>
               </div>
             </div>
@@ -54,4 +56,4 @@ const OurImpectPage = () => {
     </>
   );
 };
-export default memo(OurImpectPage);
+export default memo(OurSiteVisitPage);
