@@ -121,7 +121,7 @@ CREATE TABLE `settings` (
   `facebook_url` text,
   `twitter_url` text,
   `instagram_url` text,
-  `skype_url` text,
+  `youtube_url` text,
   `linkedin_url` text,
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -131,7 +131,7 @@ CREATE TABLE `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `title`, `sub_title`, `address`, `latitude`, `longitude`, `email`, `phone`, `facebook_url`, `twitter_url`, `instagram_url`, `skype_url`, `linkedin_url`, `createdAt`, `updatedAt`) VALUES
+INSERT INTO `settings` (`id`, `title`, `sub_title`, `address`, `latitude`, `longitude`, `email`, `phone`, `facebook_url`, `twitter_url`, `instagram_url`, `youtube_url`, `linkedin_url`, `createdAt`, `updatedAt`) VALUES
 (1, 'asdasdasdasdasd', 'asdasdasdasd', 'RTF -04,Royal, tower market, Shipra Suncity, Indirapuram, Ghaziabad, Uttar Pradesh 201012, India', '28.6377532', '77.3780633', 'info@hiqa.in', '96098981231', 'https://www.facebook.com/', 'https://twitter.com/i/flow/login?redirect_after_login=%2F', 'https://www.instagram.com/', 'https://www.skype.com/en/', 'https://www.linkedin.com/home?original_referer=https%3A%2F%2Fwww%2Egoogle%2Ecom%2F&originalSubdomain=in', '2023-07-13 16:56:01', '2023-07-13 20:40:42');
 
 -- --------------------------------------------------------
