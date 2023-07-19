@@ -35,7 +35,7 @@ const BlogPage = () => {
               data-delay=".4s"
             >
               <div className="blog-thumb2">
-                <Link href="/blog-details">
+                <Link href="blog/blog-details">
                   <img src="assets/img/blog/inner_b1.jpg" alt="img" />
                 </Link>
                 <div className="date-home">
@@ -43,26 +43,14 @@ const BlogPage = () => {
                 </div>
               </div>
               <div className="blog-content2">
-                <div className="b-meta">
-                  <div className="meta-info">
-                    <ul>
-                      <li>
-                        <i className="fal fa-user" /> By Admin{' '}
-                      </li>
-                      <li>
-                        <i className="fal fa-comments" /> 3 Comments
-                      </li>
-                    </ul>
-                  </div>
-                </div>
                 <h4>
-                  <Link href="/blog-details">Cras accumsan nulla nec lacus ultricies placerat.</Link>
+                  <Link href="blog/blog-details">Cras accumsan nulla nec lacus ultricies placerat.</Link>
                 </h4>
                 <p>
                   Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.
                 </p>
                 <div className="blog-btn">
-                  <Link href="/blog-details">
+                  <Link href="blog/blog-details">
                     Read More <i className="fal fa-long-arrow-right" />
                   </Link>
                 </div>
@@ -76,7 +64,7 @@ const BlogPage = () => {
               data-delay=".4s"
             >
               <div className="blog-thumb2">
-                <Link href="/blog-details">
+                <Link href="blog/blog-details">
                   <img src="assets/img/blog/inner_b2.jpg" alt="img" />
                 </Link>
                 <div className="date-home">
@@ -84,26 +72,14 @@ const BlogPage = () => {
                 </div>
               </div>
               <div className="blog-content2">
-                <div className="b-meta">
-                  <div className="meta-info">
-                    <ul>
-                      <li>
-                        <i className="fal fa-user" /> By Admin{' '}
-                      </li>
-                      <li>
-                        <i className="fal fa-comments" /> 3 Comments
-                      </li>
-                    </ul>
-                  </div>
-                </div>
                 <h4>
-                  <Link href="/blog-details">Dras accumsan nulla nec lacus ultricies placerat.</Link>
+                  <Link href="blog/blog-details">Dras accumsan nulla nec lacus ultricies placerat.</Link>
                 </h4>
                 <p>
                   Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.
                 </p>
                 <div className="blog-btn">
-                  <Link href="/blog-details">
+                  <Link href="blog/blog-details">
                     Read More <i className="fal fa-long-arrow-right" />
                   </Link>
                 </div>
@@ -117,7 +93,7 @@ const BlogPage = () => {
               data-delay=".4s"
             >
               <div className="blog-thumb2">
-                <Link href="/blog-details">
+                <Link href="blog/blog-details">
                   <img src="assets/img/blog/inner_b3.jpg" alt="img" />
                 </Link>
                 <div className="date-home">
@@ -125,26 +101,14 @@ const BlogPage = () => {
                 </div>
               </div>
               <div className="blog-content2">
-                <div className="b-meta">
-                  <div className="meta-info">
-                    <ul>
-                      <li>
-                        <i className="fal fa-user" /> By Admin{' '}
-                      </li>
-                      <li>
-                        <i className="fal fa-comments" /> 3 Comments
-                      </li>
-                    </ul>
-                  </div>
-                </div>
                 <h4>
-                  <Link href="/blog-details">Seas accumsan nulla nec lacus ultricies placerat.</Link>
+                  <Link href="blog/blog-details">Seas accumsan nulla nec lacus ultricies placerat.</Link>
                 </h4>
                 <p>
                   Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.
                 </p>
                 <div className="blog-btn">
-                  <Link href="/blog-details">
+                  <Link href="blog/blog-details">
                     Read More <i className="fal fa-long-arrow-right" />
                   </Link>
                 </div>

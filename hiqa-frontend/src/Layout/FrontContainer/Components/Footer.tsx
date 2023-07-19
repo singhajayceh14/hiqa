@@ -72,35 +72,6 @@ const Footer = () => {
             <div className="col-xl-3 col-lg-3 col-sm-6">
               <div className="footer-widget mb-30">
                 <div className="f-widget-title">
-                  <h2>Latest Post</h2>
-                </div>
-                <div className="recent-blog-footer">
-                  <ul>
-                    <li>
-                      <div className="thum">
-                        <img src="assets/img/blog/s-blogimg-01.png" alt="img" />
-                      </div>
-                      <div className="text">
-                        <Link href="/blog-details">Nothing impossble to need hard work</Link>
-                        <span>7 March, 2020</span>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="thum">
-                        <img src="assets/img/blog/s-blogimg-02.png" alt="img" />
-                      </div>
-                      <div className="text">
-                        <Link href="/blog-details">Nothing impossble to need hard work</Link>
-                        <span>7 March, 2020</span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-lg-3 col-sm-6">
-              <div className="footer-widget mb-30">
-                <div className="f-widget-title">
                   <h2>Contact Us</h2>
                 </div>
                 <div className="f-contact">

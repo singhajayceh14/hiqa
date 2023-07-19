@@ -88,12 +88,10 @@ function Index() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console;
   useEffect(() => {
     getFrontPage();
   }, [getFrontPage]);
 
-  console.log(globalState);
   return (
     <>
       <Head>
@@ -102,14 +100,14 @@ function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <FrontContainer>
+      <FrontContainer breadcrumbStatus={false}>
         <SliderPage />
         <AboutPage />
-        <OurImpectPage />
+        {/* <OurImpectPage />
         <OurSiteVisitPage />
         <WhoParticipatePage />
-        <OpportunityPage />
-        <CoursePage />
+        <OpportunityPage /> */}
+        <CoursePage course_data={globalState.courses_list}/>
         <EventPage />
         <VideoPage />
         <AdmissionPage />

@@ -40,7 +40,7 @@ const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
                   <li>
                     <div className="call-box">
                       <div className="icon">
-                        <img src="assets/img/icon/phone-call.png" alt="img" />
+                        <img src="/assets/img/icon/phone-call.png" alt="img" />
                       </div>
                       <div className="text">
                         <span>Call Now !</span>
@@ -53,7 +53,7 @@ const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
                   <li>
                     <div className="call-box">
                       <div className="icon">
-                        <img src="assets/img/icon/mailing.png" alt="img" />
+                        <img src="/assets/img/icon/mailing.png" alt="img" />
                       </div>
                       <div className="text">
                         <span>Email Now</span>

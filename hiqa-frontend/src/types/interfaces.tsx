@@ -113,6 +113,7 @@ export interface SECTION_DATA {
 export interface COURSE_DATA {
   id: string;
   name: string;
+  slug: string;
   short_description?: string;
   long_description?: string;
   duraion_course?: string;

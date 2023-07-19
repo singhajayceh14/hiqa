@@ -12,10 +12,10 @@ const ScholarshipPage = () => {
               data-animation="fadeInDown animated"
               data-delay=".2s"
             >
-              <h2>Scholarship Programs</h2>
+              <h2>Placement Programs</h2>
               <p>
-                At Estuidar University, we prepare you to launch your career by providing a supportive, creative, and
-                professional environment from which to learn practical skills and build a network of industry contacts.
+                A wide range of opportunities open in Nation & International market after getting trained by our
+                institute for following industries:
               </p>
             </div>
           </div>
@@ -26,7 +26,7 @@ const ScholarshipPage = () => {
               data-delay=".2s"
             >
               <Link href="/about" className="btn ss-btn smoth-scroll">
-                Financial Aid <i className="fal fa-long-arrow-right" />
+                More Info <i className="fal fa-long-arrow-right" />
               </Link>
             </div>
           </div>

@@ -30,16 +30,21 @@ const AdmissionPage = () => {
                 data-delay=".4s"
               >
                 <div className="about-title second-title pb-25">
-                  <h2>Admission &amp; Aid</h2>
+                  <h2>International Site Visit & Training Program</h2>
                 </div>
                 <p className="txt-clr">
-                  Our community is being called to reimagine the future. As the only university where a renowned design
-                  school comes together with premier colleges, we are making learning more relevant and
-                  transformational.
+                  We are dedicated towards our special courses which provides special training and opportunity to visit
+                  international sites.
                 </p>
                 <p className="txt-clr">
-                  At Estuidar University, we prepare you to launch your career by pro supportive, creative, and
-                  professional environment from which to learn practical skills, build a network of industry contacts.
+                  We are in associational with International private and government organizations for student exchange
+                  program, In which each Indian Student shall be exchanged with International Student for training
+                  purpose during the program.
+                </p>
+                <p className="txt-clr">
+                  To get trained as per international work culture and to explore different work style. Our association
+                  with different organizations globally not only supports for training but also support us for Visa,
+                  Travelling, Local Support, Food & accommodation
                 </p>
                 <div className="slider-btn mt-20">
                   <Link href="/about" className="btn ss-btn smoth-scroll">

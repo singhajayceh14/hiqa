@@ -2,6 +2,8 @@ import { memo, MouseEventHandler } from 'react';
 import Slider from 'react-slick';
 import Link from 'next/link';
 
+import { COURSE_DATA } from '@/types/interfaces';
+
 function NextArrow(props: { className: string; style: any; onClick: MouseEventHandler<HTMLButtonElement> }) {
   const { className, style, onClick } = props;
   return (
@@ -19,51 +21,8 @@ function PrevArrow(props: { className: string; style: any; onClick: MouseEventHa
     </button>
   );
 }
-const CoursePage = () => {
-  const courses = [
-    {
-      category: 'Sciences',
-      title: 'Biochemistry',
-      description: 'Seamlessly visualize quality intellectual capital without superior collaboration and idea tically',
-      link: '/single-courses',
-      img: 'assets/img/bg/couress-img-1.jpg',
-    },
-    {
-      category: 'Economics',
-      title: 'Major in Economics',
-      description: 'Seamlessly visualize quality intellectual capital without superior collaboration and idea tically',
-      link: '/single-courses',
-      img: 'assets/img/bg/couress-img-2.jpg',
-    },
-    {
-      category: 'Media',
-      title: 'Business Media',
-      description: 'Seamlessly visualize quality intellectual capital without superior collaboration and idea tically',
-      link: '/single-courses',
-      img: 'assets/img/bg/couress-img-3.jpg',
-    },
-    {
-      category: 'Public',
-      title: 'Public Administration',
-      description: 'Seamlessly visualize quality intellectual capital without superior collaboration and idea tically',
-      link: '/single-courses',
-      img: 'assets/img/bg/couress-img-4.jpg',
-    },
-    {
-      category: 'Sciences',
-      title: 'Biotechnology',
-      description: 'Seamlessly visualize quality intellectual capital without superior collaboration and idea tically',
-      link: '/single-courses',
-      img: 'assets/img/bg/couress-img-5.jpg',
-    },
-    {
-      category: 'Finance',
-      title: 'Corporate Finance',
-      description: 'Seamlessly visualize quality intellectual capital without superior collaboration and idea tically',
-      link: '/single-courses',
-      img: 'assets/img/bg/couress-img-6.jpg',
-    },
-  ];
+const CoursePage = (props: COURSE_DATA[]) => {
+  const { course_data } = props;
 
   const settings = {
     dots: false,
@@ -122,23 +81,23 @@ const CoursePage = () => {
             </div>
           </div>
           <Slider className="row class-active" {...settings}>
-            {courses.map((course, index) => (
+            {course_data.map((course: COURSE_DATA, index: number) => (
               <div key={index} className="col-lg-4 col-md-6 ">
                 <div className="courses-item mb-30 hover-zoomin">
                   <div className="thumb fix">
-                    <Link href={course.link}>
-                      <img src={course.img} alt="contact-bg-an-01" />
+                    <Link href={'course/' + course.slug}>
+                      <img src={course.image} alt="contact-bg-an-01" />
                     </Link>
                   </div>
                   <div className="courses-content">
-                    <div className="cat">
+                    {/* <div className="cat">
                       <i className="fal fa-graduation-cap" /> {course.category}
-                    </div>
+                    </div> */}
                     <h3>
-                      <Link href={course.link}>{course.title}</Link>
+                      <Link href={'course/' + course.slug}>{course.name}</Link>
                     </h3>
-                    <p>{course.description}</p>
-                    <Link href={course.link} className="readmore">
+                    <p dangerouslySetInnerHTML={{ __html: course?.short_description ?? '' }} />
+                    <Link href={'course/' + course.slug} className="readmore">
                       Read More <i className="fal fa-long-arrow-right" />
                     </Link>
                   </div>
