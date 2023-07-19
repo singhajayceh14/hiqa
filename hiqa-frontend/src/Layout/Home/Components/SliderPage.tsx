@@ -49,7 +49,7 @@ function SliderPage() {
                   <div className="col-lg-7 col-md-7">
                     <div className="slider-content s-slider-content mt-130">
                       <h5 data-animation="fadeInUp" data-delay=".4s">
-                        welcome To Qeducato
+                        welcome To HIQA
                       </h5>
                       <h2 data-animation="fadeInUp" data-delay=".4s">
                         Education is the best key success in life
@@ -88,10 +88,10 @@ function SliderPage() {
                   <div className="col-lg-7 col-md-7">
                     <div className="slider-content s-slider-content mt-130">
                       <h5 data-animation="fadeInUp" data-delay=".4s">
-                        welcome To Qeducato
+                        welcome To HIQA
                       </h5>
                       <h2 data-animation="fadeInUp" data-delay=".4s">
-                        Education is the best key success in life
+                        Reinforcing the youth and empowering the country
                       </h2>
                       <p data-animation="fadeInUp" data-delay=".6s">
                         Donec vitae libero non enim placerat eleifend aliquam erat volutpat. Curabitur diam ex, dapibus
@@ -131,15 +131,12 @@ function SliderPage() {
                   </div>
                   <div className="text">
                     <h5>
-                      <Link href="/about">Education Services</Link>
+                      <Link href="/about">FREE TRAINING & CERTIFICATION</Link>
                     </h5>
                     <p>
-                      Seamlessly visualize quality ellectual capital without superior collaboration and idea sharing
-                      listically
+                      We are providing free training and certifications for the students. Including Theoretical,
+                      Practical and On-Site Training
                     </p>
-                    <Link href="/about">
-                      Read More <i className="fal fa-long-arrow-right" />
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -148,19 +145,16 @@ function SliderPage() {
               <div className="services-box07 active">
                 <div className="sr-contner">
                   <div className="icon">
-                    <img src="assets/img/icon/sve-icon5.png" alt="icon01" />
+                    <img src="assets/img/icon/sve-icon6.png" alt="icon01" />
                   </div>
                   <div className="text">
                     <h5>
-                      <Link href="/about">International Hubs</Link>
+                      <Link href="/about">GUARANTEED PAID INTERNSHIP</Link>
                     </h5>
                     <p>
-                      Seamlessly visualize quality ellectual capital without superior collaboration and idea sharing
-                      listically
+                      A paid internship program shall be provided to each student, where student can work and get
+                      experience as well as earn for a defined period and a chance for International Visit
                     </p>
-                    <Link href="/about">
-                      Read More <i className="fal fa-long-arrow-right" />
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -169,19 +163,16 @@ function SliderPage() {
               <div className="services-box07">
                 <div className="sr-contner">
                   <div className="icon">
-                    <img src="assets/img/icon/sve-icon6.png" alt="icon01" />
+                    <img src="assets/img/icon/sve-icon5.png" alt="icon01" />
                   </div>
                   <div className="text">
                     <h5>
-                      <Link href="/about">Bachelor’s and Master’s</Link>
+                      <Link href="/about">FREE ACCOMODATION & FOOD</Link>
                     </h5>
                     <p>
-                      Seamlessly visualize quality ellectual capital without superior collaboration and idea sharing
-                      listically
+                      Free Accommodation & Food is provided to the students during their training period at the training
+                      centre as well as during the Paid Internship Period
                     </p>
-                    <Link href="/about">
-                      Read More <i className="fal fa-long-arrow-right" />
-                    </Link>
                   </div>
                 </div>
               </div>

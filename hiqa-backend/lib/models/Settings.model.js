@@ -42,7 +42,7 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
         defaultValue: null,
       },
-      skype_url: {
+      youtube_url: {
         type: DataTypes.TEXT,
         defaultValue: null,
       },

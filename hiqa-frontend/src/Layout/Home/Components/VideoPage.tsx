@@ -17,7 +17,7 @@ const VideoPage = () => {
               >
                 <h2>
                   {' '}
-                  We're <span>Qeducato</span> &amp; We're Diffirent
+                  We're <span>HIQA</span> &amp; We're Diffirent
                 </h2>
                 <p>
                   Our community is being called to reimagine the future. As the only university where a renowned design

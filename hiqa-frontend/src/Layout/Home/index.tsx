@@ -16,6 +16,12 @@ const AboutPage = dynamic(() => import('./Components/AboutPage'), {
   ssr: false,
 });
 
+const OurImpectPage = dynamic(() => import('./Components/OurImpectPage'), {
+  loading: () => <div></div>,
+  ssr: false,
+});
+
+
 const CoursePage = dynamic(() => import('./Components/CoursePage'), {
   loading: () => <div></div>,
   ssr: false,
@@ -85,6 +91,7 @@ function Index() {
       <FrontContainer>
         <SliderPage />
         <AboutPage />
+        <OurImpectPage />
         <CoursePage />
         <EventPage />
         <VideoPage />

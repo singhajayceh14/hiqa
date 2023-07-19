@@ -128,6 +128,6 @@ export interface SETTINGS_DATA {
   instagram_url: string;
   linkedin_url: string;
   phone: string;
-  skype_url: string;
+  youtube_url: string;
   twitter_url: string;
 }

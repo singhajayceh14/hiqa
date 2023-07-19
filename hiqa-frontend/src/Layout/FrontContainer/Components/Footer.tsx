@@ -37,8 +37,8 @@ const Footer = () => {
                   <Link href={state?.setting_data?.linkedin_url} title="LinkedIn">
                     <i className="fab fa-linkedin-in" />
                   </Link>
-                  <Link href={state?.setting_data?.skype_url} title="Skype">
-                    <i className="fab fa-skype" />
+                  <Link href={state?.setting_data?.youtube_url} title="Youtube">
+                    <i className="fab fa-youtube" />
                   </Link>
                 </div>
               </div>

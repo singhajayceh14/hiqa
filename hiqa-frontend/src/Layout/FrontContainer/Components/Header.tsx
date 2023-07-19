@@ -40,7 +40,7 @@ const Header = () => {
                 <div className="col-xl-3 col-lg-3">
                   <div className="logo">
                     <Link href="/">
-                      <img src="assets/img/logo/logo.png" alt="logo" />
+                      <img src="assets/img/logo/11.png" alt="logo" />
                     </Link>
                   </div>
                 </div>
@@ -98,7 +98,7 @@ const Header = () => {
                         <div className="second-header-btn">
                           <Link href="/contact" className="btn">
                             {' '}
-                            admission open{' '}
+                            registration open{' '}
                           </Link>
                         </div>
                       </li>

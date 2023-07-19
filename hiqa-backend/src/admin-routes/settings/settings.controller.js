@@ -51,7 +51,7 @@ class FrontPageController {
         phone,
         facebook_url,
         twitter_url,
-        skype_url,
+        youtube_url,
         linkedin_url,
         instagram_url,
       } = params;
@@ -65,7 +65,7 @@ class FrontPageController {
         phone: phone,
         facebook_url: facebook_url,
         twitter_url: twitter_url,
-        skype_url: skype_url,
+        youtube_url: youtube_url,
         linkedin_url: linkedin_url,
         instagram_url: instagram_url,
       };
