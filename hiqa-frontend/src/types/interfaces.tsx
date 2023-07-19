@@ -120,3 +120,14 @@ export interface COURSE_DATA {
   site_visits?: string;
   image?: string;
 }
+
+export interface SETTINGS_DATA {
+  address: string;
+  email: string;
+  facebook_url: string;
+  instagram_url: string;
+  linkedin_url: string;
+  phone: string;
+  skype_url: string;
+  twitter_url: string;
+}
