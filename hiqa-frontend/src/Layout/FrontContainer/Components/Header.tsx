@@ -2,6 +2,7 @@ import React, { memo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
+import Modal from '@/components/Default/Modal';
 import { useApp } from '@/components/App';
 import { COURSE } from '@/types/interfaces';
 const TopHeader = dynamic(() => import('./TopHeader'), {
@@ -15,24 +16,37 @@ const Header = () => {
   const [News, setNews] = useState<boolean>(false);
   const [Services, setServices] = useState<boolean>(false);
   const [Blog, setblog] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(false);
 
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const { state } = useApp();
+
+  const closeModal = () => {
+    setShow(false);
+  };
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       setIsScrolled(scrollTop > 0);
     };
-
+    handleOpen();
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const handleOpen = () => {
+    const timer = setTimeout(() => {
+      setShow(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  };
+
   return (
     <>
       <header className="header-area header-three">
-        <TopHeader personalData={state.setting_data}/>
+        <TopHeader personalData={state.setting_data} />
         <div id="header-sticky" className={`menu-area${isScrolled ? 'menu-area sticky-menu' : ''}`}>
           <div className="container">
             <div className="second-menu">
@@ -266,6 +280,9 @@ const Header = () => {
             </div>
           </div>
         </div>
+        <Modal id="viewload" title={''} width="lg" show={show} onClose={() => closeModal()}>
+          <div>asdasdasda</div>
+        </Modal>
       </header>
       {Btnshow && (
         <>

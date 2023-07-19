@@ -16,19 +16,19 @@ const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
               <div className="header-social">
                 <span>
                   Follow us:-
-                  <Link href={facebook_url} title="Facebook">
+                  <Link href={facebook_url?? '#'} title="Facebook">
                     <i className="fab fa-facebook-f" />
                   </Link>
-                  <Link href={instagram_url} title="Instagram">
+                  <Link href={instagram_url?? '#'} title="Instagram">
                     <i className="fab fa-instagram" />
                   </Link>
-                  <Link href={twitter_url} title="Twitter">
+                  <Link href={twitter_url?? '#'} title="Twitter">
                     <i className="fab fa-twitter" />
                   </Link>
-                  <Link href={linkedin_url} title="LinkedIn">
+                  <Link href={linkedin_url?? '#'} title="LinkedIn">
                     <i className="fab fa-linkedin-in" />
                   </Link>
-                  <Link href={youtube_url} title="Youtube">
+                  <Link href={youtube_url?? '#'} title="Youtube">
                     <i className="fab fa-youtube" />
                   </Link>
                 </span>
@@ -58,7 +58,7 @@ const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
                       <div className="text">
                         <span>Email Now</span>
                         <strong>
-                          <Link href={'mailto:' + email}> {email}</Link>
+                          <Link href={'mailto:'}> {email}</Link>
                         </strong>
                       </div>
                     </div>

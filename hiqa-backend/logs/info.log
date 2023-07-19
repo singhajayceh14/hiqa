@@ -6094,3 +6094,7 @@ Require stack:
 [2023-07-16T04:57:15.583Z] [error]: 500 - [ 'Error' ] - null
 [2023-07-16T04:57:47.584Z] [error]: 500 - [ 'Error' ] - null
 [2023-07-16T04:57:48.973Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-19T15:02:14.249Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'youtube_url' in 'field list'
+[2023-07-19T15:02:14.259Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! SequelizeDatabaseError: Unknown column 'youtube_url' in 'field list'
+[2023-07-19T15:02:14.387Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'youtube_url' in 'field list'
+[2023-07-19T15:02:14.418Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! SequelizeDatabaseError: Unknown column 'youtube_url' in 'field list'

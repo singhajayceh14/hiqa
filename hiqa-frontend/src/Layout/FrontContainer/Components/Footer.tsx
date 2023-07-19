@@ -25,19 +25,19 @@ const Footer = () => {
                   </p>
                 </div>
                 <div className="footer-social mt-10">
-                  <Link href={state?.setting_data?.facebook_url} title="Facebook">
+                  <Link href={state?.setting_data?.facebook_url ?? '#'} title="Facebook">
                     <i className="fab fa-facebook-f" />
                   </Link>
-                  <Link href={state?.setting_data?.instagram_url} title="Instagram">
+                  <Link href={state?.setting_data?.instagram_url ?? '#'} title="Instagram">
                     <i className="fab fa-instagram" />
                   </Link>
-                  <Link href={state?.setting_data?.twitter_url} title="Twitter">
+                  <Link href={state?.setting_data?.twitter_url ?? '#'} title="Twitter">
                     <i className="fab fa-twitter" />
                   </Link>
-                  <Link href={state?.setting_data?.linkedin_url} title="LinkedIn">
+                  <Link href={state?.setting_data?.linkedin_url ?? '#'} title="LinkedIn">
                     <i className="fab fa-linkedin-in" />
                   </Link>
-                  <Link href={state?.setting_data?.youtube_url} title="Youtube">
+                  <Link href={state?.setting_data?.youtube_url ?? '#'} title="Youtube">
                     <i className="fab fa-youtube" />
                   </Link>
                 </div>
@@ -108,17 +108,17 @@ const Footer = () => {
                     <li>
                       <i className="icon fal fa-phone" />
                       <span>
-                        <Link href={'tel:' + state?.setting_data?.phone}>{state?.setting_data?.phone}</Link>
+                        <Link href={'tel:'}>{state?.setting_data?.phone}</Link>
                         <br />
-                        <Link href={'tel:' + state?.setting_data?.phone}>{state?.setting_data?.phone}</Link>
+                        <Link href={'tel:'}>{state?.setting_data?.phone}</Link>
                       </span>
                     </li>
                     <li>
                       <i className="icon fal fa-envelope" />
                       <span>
-                        <Link href={'mailto:' + state?.setting_data?.email}>{state?.setting_data?.email}</Link>
+                        <Link href={'mailto:'}>{state?.setting_data?.email}</Link>
                         <br />
-                        <Link href={'mailto:' + state?.setting_data?.email}>{state?.setting_data?.email}</Link>
+                        <Link href={'mailto:'}>{state?.setting_data?.email}</Link>
                       </span>
                     </li>
                     <li>
