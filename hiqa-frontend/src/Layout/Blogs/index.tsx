@@ -13,7 +13,7 @@ function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <FrontContainer breadcrumbStatus={true} breadcrumbTitle="Home" breadcrumbSubtitle="Blogs">
+      <FrontContainer>
         <section className="inner-blog pt-120 pb-120">
           <div className="container">
             <div className="row">

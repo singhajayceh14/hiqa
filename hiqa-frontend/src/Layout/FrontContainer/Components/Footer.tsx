@@ -109,7 +109,7 @@ const Footer = () => {
             <div className="col-lg-4">
               <div className="copy-text">
                 <Link href="/">
-                  <img src="assets/img/logo/f_logo.png" alt="img" />
+                  <img src="/assets/img/logo/f_logo.png" alt="img" />
                 </Link>
               </div>
             </div>

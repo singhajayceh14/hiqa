@@ -16,16 +16,11 @@ const Breadcrumb = dynamic(() => import('./Components/Breadcrumb'), {
 });
 type Props = {
   children: JSX.Element | string | JSX.Element[];
-  breadcrumbStatus?: boolean;
-  breadcrumbTitle?: string;
-  breadcrumbSubtitle?: string;
-  
 };
-function Container({ children, breadcrumbStatus, breadcrumbTitle, breadcrumbSubtitle}: Props) {
+function Container({ children }: Props) {
   return (
     <>
       <Header />
-      {breadcrumbStatus ?? <Breadcrumb title={breadcrumbTitle} subtitle={breadcrumbSubtitle} />}
       {children}
       <Footer />
     </>
