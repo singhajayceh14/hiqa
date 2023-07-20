@@ -84,7 +84,7 @@ export const AppProvider = ({ children }: Props) => {
 
   useEffect(() => {
     getCourseList()
-  },[getCourseList])
+  },[])
   const value: CONTEXTVALUE = { state, alert, validateZipCode};
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

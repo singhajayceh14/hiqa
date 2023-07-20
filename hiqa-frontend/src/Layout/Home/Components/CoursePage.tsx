@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { COURSE_DATA } from '@/types/interfaces';
 
-function NextArrow(props: { className: string; style: any; onClick: MouseEventHandler<HTMLButtonElement> }) {
+function NextArrow(props: { className?: string; style?: any; onClick?: MouseEventHandler<HTMLButtonElement> }) {
   const { className, style, onClick } = props;
   return (
     <button type="button" className={`slick-next ${className}`} style={{ ...style }} onClick={onClick}>
@@ -13,7 +13,7 @@ function NextArrow(props: { className: string; style: any; onClick: MouseEventHa
   );
 }
 
-function PrevArrow(props: { className: string; style: any; onClick: MouseEventHandler<HTMLButtonElement> }) {
+function PrevArrow(props: { className?: string; style?: any; onClick?: MouseEventHandler<HTMLButtonElement> }) {
   const { className, style, onClick } = props;
   return (
     <button type="button" className={`slick-prev ${className}`} style={{ ...style }} onClick={onClick}>
@@ -21,9 +21,7 @@ function PrevArrow(props: { className: string; style: any; onClick: MouseEventHa
     </button>
   );
 }
-const CoursePage = (props: COURSE_DATA[]) => {
-  const { course_data } = props;
-
+const CoursePage = ({course_data}: {course_data:COURSE_DATA[]}) => {
   const settings = {
     dots: false,
     infinite: true,

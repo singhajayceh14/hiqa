@@ -1,87 +1,38 @@
-import React, { memo, useCallback, useEffect } from 'react';
+import React, { memo, useCallback, useEffect, useState, useMemo } from 'react';
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
 
 import FrontContainer from '@/Layout/FrontContainer';
 import { useRequest } from '@/components/App';
 import { REQUEST } from '@/types/interfaces';
 import { useCommonReducer } from '@/components/App/reducer';
+import Modal from '@/components/Default/Modal';
+import SliderPage from './Components/SliderPage';
+import AboutPage from './Components/AboutPage';
+import CoursePage from './Components/CoursePage';
 
-const SliderPage = dynamic(() => import('./Components/SliderPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-const AboutPage = dynamic(() => import('./Components/AboutPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
+import AdmissionPage from './Components/AdmissionPage';
+import BlogPage from './Components/BlogPage';
+import ScholarshipPage from './Components/ScholarshipPage';
+import EventPage from './Components/EventPage';
+import VideoPage from './Components/VideoPage';
+import LogoSliderPage from './Components/LogoSliderPage';
+import FaqPage from './Components/FaqPage';
+import SubscribePage from './Components/SubscribePage';
 
-const OurImpectPage = dynamic(() => import('./Components/OurImpectPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
+import { SuspenseLoader } from '@/components/App/Loader';
 
-const OurSiteVisitPage = dynamic(() => import('./Components/OurSiteVisitPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-
-const WhoParticipatePage = dynamic(() => import('./Components/WhoParticipatePage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-
-const OpportunityPage = dynamic(() => import('./Components/OpportunityPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-
-const CoursePage = dynamic(() => import('./Components/CoursePage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-
-const AdmissionPage = dynamic(() => import('./Components/AdmissionPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-const BlogPage = dynamic(() => import('./Components/BlogPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-const ScholarshipPage = dynamic(() => import('./Components/ScholarshipPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-const EventPage = dynamic(() => import('./Components/EventPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-const VideoPage = dynamic(() => import('./Components/VideoPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-
-const LogoSliderPage = dynamic(() => import('./Components/LogoSliderPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-const FaqPage = dynamic(() => import('./Components/FaqPage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
-const SubscribePage = dynamic(() => import('./Components/SubscribePage'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
 function Index() {
-  const { request, loading } = useRequest();
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const { request } = useRequest();
   const { state: globalState, dispatch: globalDispatch } = useCommonReducer();
+  const [show, setShow] = useState<boolean>(false);
 
   const getFrontPage = useCallback(async () => {
     const res = (await request('getFrontPage', {})) as REQUEST;
     if (res?.data) {
       const resData: any = res.data;
+      setLoading(false);
       globalDispatch({
         ...(resData as any),
       });
@@ -90,7 +41,22 @@ function Index() {
   }, []);
   useEffect(() => {
     getFrontPage();
-  }, [getFrontPage]);
+    handleOpen();
+  }, []);
+
+  const closeModal = () => {
+    setShow(false);
+  };
+  const handleOpen = () => {
+    const timer = setTimeout(() => {
+      setShow(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  };
+  const coursePage = useMemo(
+    () => <CoursePage course_data={globalState?.courses_list ?? []} />,
+    [globalState?.courses_list],
+  );
 
   return (
     <>
@@ -100,23 +66,28 @@ function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <FrontContainer breadcrumbStatus={false}>
-        <SliderPage />
-        <AboutPage />
-        {/* <OurImpectPage />
-        <OurSiteVisitPage />
-        <WhoParticipatePage />
-        <OpportunityPage /> */}
-        <CoursePage course_data={globalState.courses_list}/>
-        <EventPage />
-        <VideoPage />
-        <AdmissionPage />
-        <LogoSliderPage />
-        <BlogPage />
-        <ScholarshipPage />
-        <FaqPage />
-        <SubscribePage />
+      <FrontContainer>
+        {loading ? (
+          <SuspenseLoader color={'#002e6e'} />
+        ) : (
+          <React.Fragment>
+            <SliderPage />
+            <AboutPage />
+            {coursePage}
+            <EventPage />
+            <VideoPage />
+            <AdmissionPage />
+            <LogoSliderPage />
+            <BlogPage />
+            <ScholarshipPage />
+            <FaqPage />
+            <SubscribePage />
+          </React.Fragment>
+        )}
       </FrontContainer>
+      <Modal id="viewload" title={''} width="lg" show={show} onClose={() => closeModal()}>
+        <div>asdasdasda</div>
+      </Modal>
     </>
   );
 }

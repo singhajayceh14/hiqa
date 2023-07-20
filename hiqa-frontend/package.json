@@ -8,9 +8,7 @@
     "build": "next build",
     "start": "NODE_ENV=production & node server.js",
     "lint": "next lint",
-    "prepare": "husky install",
     "lint:fix": "eslint --fix src",
-    "postinstall": "husky install",
     "lint:staged": "lint-staged",
     "pretty": "prettier --write src/**/*.{ts,tsx} --ignore-unknown"
   },

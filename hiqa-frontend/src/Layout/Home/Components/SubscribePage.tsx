@@ -1,4 +1,5 @@
 import { memo } from 'react';
+
 const SubscribePage = () => {
   return (
     <section className="newslater-area pt-60 pb-60" style={{ backgroundColor: '#125875' }}>
