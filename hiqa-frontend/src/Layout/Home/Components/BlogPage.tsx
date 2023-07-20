@@ -1,7 +1,9 @@
 import { memo } from 'react';
 import Link from 'next/link';
 
-const BlogPage = () => {
+import { BLOG_DATA } from '@/types/interfaces';
+
+const BlogPage = ({ blog_data }: { blog_data: BLOG_DATA[] }) => {
   return (
     <section
       id="blog"
@@ -28,93 +30,35 @@ const BlogPage = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-4 col-md-6">
-            <div
-              className="single-post2 hover-zoomin mb-30 wow fadeInUp animated"
-              data-animation="fadeInUp"
-              data-delay=".4s"
-            >
-              <div className="blog-thumb2">
-                <Link href="blog/blog-details">
-                  <img src="assets/img/blog/inner_b1.jpg" alt="img" />
-                </Link>
-                <div className="date-home">
-                  <i className="fal fa-calendar-alt" /> 24th March 2023
-                </div>
-              </div>
-              <div className="blog-content2">
-                <h4>
-                  <Link href="blog/blog-details">Cras accumsan nulla nec lacus ultricies placerat.</Link>
-                </h4>
-                <p>
-                  Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.
-                </p>
-                <div className="blog-btn">
-                  <Link href="blog/blog-details">
-                    Read More <i className="fal fa-long-arrow-right" />
+          {blog_data.map((blog: BLOG_DATA, index: number) => (
+            <div key={index} className="col-lg-4 col-md-6">
+              <div
+                className="single-post2 hover-zoomin mb-30 wow fadeInUp animated"
+                data-animation="fadeInUp"
+                data-delay=".4s"
+              >
+                <div className="blog-thumb2">
+                  <Link href={'blog/' + blog.slug}>
+                    <img src={blog.image} alt="img" />
                   </Link>
+                  <div className="date-home">
+                    <i className="fal fa-calendar-alt" /> 24th March 2023
+                  </div>
+                </div>
+                <div className="blog-content2">
+                  <h4>
+                    <Link href={'blog/' + blog.slug}>{blog.title}</Link>
+                  </h4>
+                  <p>{blog.short_description}</p>
+                  <div className="blog-btn">
+                    <Link href={'blog/' + blog.slug}>
+                      Read More <i className="fal fa-long-arrow-right" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <div
-              className="single-post2 mb-30 hover-zoomin wow fadeInUp animated"
-              data-animation="fadeInUp"
-              data-delay=".4s"
-            >
-              <div className="blog-thumb2">
-                <Link href="blog/blog-details">
-                  <img src="assets/img/blog/inner_b2.jpg" alt="img" />
-                </Link>
-                <div className="date-home">
-                  <i className="fal fa-calendar-alt" /> 24th March 2023
-                </div>
-              </div>
-              <div className="blog-content2">
-                <h4>
-                  <Link href="blog/blog-details">Dras accumsan nulla nec lacus ultricies placerat.</Link>
-                </h4>
-                <p>
-                  Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.
-                </p>
-                <div className="blog-btn">
-                  <Link href="blog/blog-details">
-                    Read More <i className="fal fa-long-arrow-right" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <div
-              className="single-post2 mb-30 hover-zoomin wow fadeInUp animated"
-              data-animation="fadeInUp"
-              data-delay=".4s"
-            >
-              <div className="blog-thumb2">
-                <Link href="blog/blog-details">
-                  <img src="assets/img/blog/inner_b3.jpg" alt="img" />
-                </Link>
-                <div className="date-home">
-                  <i className="fal fa-calendar-alt" /> 24th March 2023
-                </div>
-              </div>
-              <div className="blog-content2">
-                <h4>
-                  <Link href="blog/blog-details">Seas accumsan nulla nec lacus ultricies placerat.</Link>
-                </h4>
-                <p>
-                  Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.
-                </p>
-                <div className="blog-btn">
-                  <Link href="blog/blog-details">
-                    Read More <i className="fal fa-long-arrow-right" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

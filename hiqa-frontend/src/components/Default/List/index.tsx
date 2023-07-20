@@ -17,6 +17,7 @@ function List(props: PROPS) {
   const handleScroll = useCallback(() => {
     const scrollContainer: HTMLDivElement | any = scrollContainerRef.current;
     // Check if the user has scrolled to the end of the container
+    console.log(scrollContainer)
     if (direction === 'vertical') {
       if (
         scrollContainer.scrollHeight - scrollContainer.scrollTop <=

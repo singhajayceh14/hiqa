@@ -21,7 +21,7 @@ function PrevArrow(props: { className?: string; style?: any; onClick?: MouseEven
     </button>
   );
 }
-const CoursePage = ({course_data}: {course_data:COURSE_DATA[]}) => {
+const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
   const settings = {
     dots: false,
     infinite: true,

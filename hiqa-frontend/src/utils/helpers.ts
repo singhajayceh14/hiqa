@@ -157,9 +157,29 @@ export const handleErrors = (errors: HANDLE_ERRORS) => {
 export const formatDate = (date: string | Date, type?: string) => {
   if (!date) return '';
   if (!moment(date).isValid()) return '';
-  date = new Date(date);
-  date = date.toLocaleString('en-US', { timeZone: 'Australia/Sydney' });
-  return moment(date).format(type || 'DD/MM/YYYY hh:mm:ss a');
+  if (type == 'custom') {
+    const month = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    date = new Date(date);
+    return `<strong>${date.getDate()}</strong> ${month[date.getMonth()]}, ${date.getFullYear()}`;
+  } else {
+    date = new Date(date);
+    date = date.toLocaleString('en-US', { timeZone: 'Asia/Calcutta' });
+    return moment(date).format(type || 'DD/MM/YYYY hh:mm:ss a');
+  }
+
 };
 
 export const getPDFFromBuffer = (bufferArray: number[], filename?: string) => {

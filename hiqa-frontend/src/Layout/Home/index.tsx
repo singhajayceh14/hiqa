@@ -58,6 +58,8 @@ function Index() {
     [globalState?.courses_list],
   );
 
+  const blogPage = useMemo(() => <BlogPage blog_data={globalState?.blogs ?? []} />, [globalState?.blogs]);
+  const eventPage = useMemo(() => <EventPage event_data={globalState?.events ?? []} />, [globalState?.events]);
   return (
     <>
       <Head>
@@ -74,19 +76,19 @@ function Index() {
             <SliderPage />
             <AboutPage />
             {coursePage}
-            <EventPage />
+            {eventPage}
             <VideoPage />
             <AdmissionPage />
             <LogoSliderPage />
-            <BlogPage />
+            {blogPage}
             <ScholarshipPage />
             <FaqPage />
             <SubscribePage />
           </React.Fragment>
         )}
       </FrontContainer>
-      <Modal id="viewload" title={''} width="lg" show={show} onClose={() => closeModal()}>
-        <div>asdasdasda</div>
+      <Modal id="viewload" title={''} width="" show={show} onClose={() => closeModal()}>
+        <img src="assets/img/popup/2.png" alt="contact-bg-an-01" />
       </Modal>
     </>
   );

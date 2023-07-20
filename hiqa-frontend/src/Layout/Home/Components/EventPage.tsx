@@ -1,7 +1,10 @@
 import { memo } from 'react';
 import Link from 'next/link';
 
-const EventPage = () => {
+import { EVENT_DATA } from '@/types/interfaces';
+import { formatDate } from '@/utils/helpers';
+
+const EventPage = ({ event_data }: { event_data: EVENT_DATA[] }) => {
   return (
     <>
       <section className="event pb-90 p-relative fix">
@@ -33,70 +36,36 @@ const EventPage = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-4 col-md-6  wow fadeInUp animated" data-animation="fadeInUp" data-delay=".4s">
-              <div className="event-item mb-30 hover-zoomin">
-                <div className="thumb">
-                  <Link href="/single-event">
-                    <img src="assets/img/bg/evn-img-1.jpg" alt="contact-bg-an-01" />
-                  </Link>
-                </div>
-                <div className="event-content">
-                  <div className="date">
-                    <strong>7</strong> Aug, 2023
+            {event_data.map((event: EVENT_DATA, index: number) => (
+              <div
+                key={index}
+                className="col-lg-4 col-md-6  wow fadeInUp animated"
+                data-animation="fadeInUp"
+                data-delay=".4s"
+              >
+                <div className="event-item mb-30 hover-zoomin">
+                  <div className="thumb">
+                    <Link href={'events/' + event.slug}>
+                      <img src={event.image} alt="contact-bg-an-01" />
+                    </Link>
                   </div>
-                  <h3>
-                    <Link href="/single-event"> 33rd Annual Conference & Exhibition on Non-Destructive Evaluation (NDE 2023)</Link>
-                  </h3>
-                  <p>The Annual Conference of Indian Society for Non-Destructive Testing (ISNT), the Official Technical Society for NDT/NDE in India, NDE 2023, is organised every year</p>
-                  <div className="time">
-                    3:30 pm - 4:30 pm <i className="fal fa-long-arrow-right" /> <strong>Pune, India</strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6  wow fadeInUp animated" data-animation="fadeInUp" data-delay=".4s">
-              <div className="event-item mb-30 hover-zoomin">
-                <div className="thumb">
-                  <Link href="/single-event">
-                    <img src="assets/img/bg/evn-img-2.jpg" alt="contact-bg-an-01" />
-                  </Link>
-                </div>
-                <div className="event-content">
-                  <div className="date">
-                    <strong>20</strong> Sep, 2023
-                  </div>
-                  <h3>
-                    <Link href="/single-event">Virtual Conference & Exhibition, 09-11 Dec 2021 by Indian Society for NDT 2023</Link>
-                  </h3>
-                  <p>The Annual Conference of Indian Society for Non-Destructive Testing (ISNT), the Official Technical Society for NDT/NDE in India, NDE 2023, is organised every year</p>
-                  
-                  <div className="time">
-                    3:30 pm - 4:30 pm <i className="fal fa-long-arrow-right" /> <strong>Delhi ,India</strong>
+                  <div className="event-content">
+                    <div
+                      className="date"
+                      dangerouslySetInnerHTML={{ __html: formatDate(event?.event_date, 'custom') }}
+                    ></div>
+                    <h3>
+                      <Link href={'events/' + event.slug}>{event.title}</Link>
+                    </h3>
+                    <p>{event.short_description} </p>
+                    <div className="time">
+                      {event.event_start_time} - {event.event_end_time} <i className="fal fa-long-arrow-right" />{' '}
+                      <strong>{event.event_address}</strong>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-md-6  wow fadeInUp animated" data-animation="fadeInUp" data-delay=".4s">
-              <div className="event-item mb-30 hover-zoomin">
-                <div className="thumb">
-                  <Link href="/single-event">
-                    <img src="assets/img/bg/evn-img-3.jpg" alt="contact-bg-an-01" />
-                  </Link>
-                </div>
-                <div className="event-content">
-                  <div className="date">
-                    <strong>22</strong> Dec, 2023
-                  </div>
-                  <h3>
-                    <Link href="/single-event">Conference & Exhibition, 5-7 Dec 2019, Bengaluru, India (NDE-India 2023)</Link>
-                  </h3>
-                  <p>The Annual Conference of Indian Society for Non-Destructive Testing (ISNT), the Official Technical Society for NDT/NDE in India, NDE 2023, is organised every year</p>
-                  <div className="time">
-                    3:30 pm - 4:30 pm <i className="fal fa-long-arrow-right" /> <strong>Bengaluru, India</strong>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

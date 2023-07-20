@@ -132,3 +132,28 @@ export interface SETTINGS_DATA {
   youtube_url: string;
   twitter_url: string;
 }
+
+export interface EVENT_DATA {
+  id: string;
+  title: string;
+  slug: string;
+  short_description: string;
+  image: string;
+  event_date: string;
+  event_address: string;
+  long_description?: string;
+  event_start_time?: string;
+  event_end_time?: string;
+  event_facebook_url?: string;
+  event_instagram_url?: string;
+  event_twitter_url?: string;
+}
+
+export interface BLOG_DATA {
+  id: string;
+  title: string;
+  slug: string;
+  short_description: string;
+  image: string;
+  long_description?: string;
+}
