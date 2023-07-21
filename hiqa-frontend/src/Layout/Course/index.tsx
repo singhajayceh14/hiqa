@@ -3,9 +3,8 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 import FrontContainer from '@/Layout/FrontContainer';
-import List from '@/components/Default/List';
 import { useLoading, useRequest } from '@/components/App';
-import { REQUEST, BLOG_DATA } from '@/types/interfaces';
+import { REQUEST, COURSE_DATA } from '@/types/interfaces';
 
 function Index() {
   const { loading, request } = useRequest();
@@ -27,12 +26,6 @@ function Index() {
   useEffect(() => {
     initialize();
   }, [initialize]);
-  const onReachEnd = useCallback(() => {
-    console.log('Loading...');
-    if (!loading?.getCoursePage_LOADING) {
-      setPage(p => p + 1);
-    }
-  }, [loading]);
 
   const children = useMemo(() => {
     return (
@@ -42,20 +35,25 @@ function Index() {
         ) : data.length === 0 ? (
           <span>There is no course found.</span>
         ) : (
-          data?.map((e: BLOG_DATA, key: number) => (
-            <div key={key} className="bsingle__post mb-50">
-              <div className="bsingle__post-thumb">
-                <img src={e.image} alt={e.title} />
-              </div>
-              <div className="bsingle__content">
-                <h2>
-                  <Link href={'blog/' + e.slug}>{e.title}</Link>
-                </h2>
-                <p>{e.short_description}</p>
-                <div className="blog__btn">
-                  <Link href={'blog/' + e.slug} className="btn">
+          data?.map((course: COURSE_DATA, key: number) => (
+            <div className="col-lg-4 col-md-6" key={key}>
+              <div className="courses-item mb-30 hover-zoomin">
+                <div className="thumb fix">
+                  <Link href={'course/' + course.slug}>
+                    <img src={course.image} alt="course-img" />
+                  </Link>
+                </div>
+                <div className="courses-content">
+                  <h3>
+                    <Link href={'course/' + course.slug}>{course.name}</Link>
+                  </h3>
+                  <p>{course.short_description}</p>
+                  <Link href={'course/' + course.slug} className="readmore">
                     Read More <i className="fal fa-long-arrow-right" />
                   </Link>
+                </div>
+                <div className="icon">
+                  <img src="assets/img/icon/cou-icon.png" alt="icon" />
                 </div>
               </div>
             </div>
@@ -73,59 +71,9 @@ function Index() {
         <link rel="icon" href="favicon.ico" />
       </Head>
       <FrontContainer>
-        <section className="inner-blog pt-120">
+        <section className="shop-area pt-120 pb-120 p-relative " data-animation="fadeInUp animated" data-delay=".2s">
           <div className="container">
-            <div className="row">
-              <div className="col-lg-8">
-                <List onReachEnd={onReachEnd} style={{ height: '90%' }}>
-                  {children}
-                </List>
-              </div>
-              <div className="col-sm-12 col-md-12 col-lg-4">
-                <aside className="sidebar-widget">
-                  <section id="custom_html-5" className="widget_text widget widget_custom_html">
-                    <h2 className="widget-title">Follow Us</h2>
-                    <div className="textwidget custom-html-widget">
-                      <div className="widget-social">
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                        <a href="#">
-                          <i className="fab fa-pinterest-p" />
-                        </a>
-                        <a href="#">
-                          <i className="fab fa-facebook-f" />
-                        </a>
-                        <a href="#">
-                          <i className="fab fa-instagram" />
-                        </a>
-                        <a href="#">
-                          <i className="fab fa-wordpress" />
-                        </a>
-                      </div>
-                    </div>
-                  </section>
-
-                  <section id="recent-posts-4" className="widget widget_recent_entries">
-                    <h2 className="widget-title">Recent Posts</h2>
-                    <ul>
-                      <li>
-                        <Link href="#">User Experience Psychology And Performance Smshing</Link>
-                        <span className="post-date">August 19, 2020</span>
-                      </li>
-                      <li>
-                        <Link href="#">Monthly Web Development Up Cost Of JavaScript</Link>
-                        <span className="post-date">August 19, 2020</span>
-                      </li>
-                      <li>
-                        <Link href="#">There are many variation passages of like available.</Link>
-                        <span className="post-date">August 19, 2020</span>
-                      </li>
-                    </ul>
-                  </section>
-                </aside>
-              </div>
-            </div>
+            <div className="row align-items-center">{children}</div>
           </div>
         </section>
       </FrontContainer>

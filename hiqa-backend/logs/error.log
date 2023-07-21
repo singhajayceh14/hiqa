@@ -425,3 +425,13 @@ Error: Route.post() requires a callback function but got a [object Undefined]
 [2023-07-20T19:36:29.610Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! TypeError: Cannot read properties of undefined (reading '_modelAttribute')
 [2023-07-20T19:36:29.649Z] [error]: 500 - [ 'TableSchemaError' ] - TypeError: Cannot read properties of undefined (reading '_modelAttribute')
 [2023-07-20T19:36:29.652Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! TypeError: Cannot read properties of undefined (reading '_modelAttribute')
+[2023-07-21T09:22:13.488Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T09:22:13.496Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T09:22:13.512Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T09:22:13.517Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T09:29:18.687Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T09:29:18.698Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T09:29:18.701Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T09:29:18.703Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T09:30:38.391Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T09:30:38.395Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'

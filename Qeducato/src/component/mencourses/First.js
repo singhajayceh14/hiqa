@@ -1,49 +1,49 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 function First() {
   const courses = [
     {
-      imgSrc: 'assets/img/bg/couress-img-1.jpg',
-      category: 'Sciences',
-      title: 'Biochemistry',
+      imgSrc: "assets/img/bg/couress-img-1.jpg",
+      category: "Sciences",
+      title: "Biochemistry",
       description:
-        'Seamlessly visualize quality ellectual capital without superior collaboration and idea tically',
+        "Seamlessly visualize quality ellectual capital without superior collaboration and idea tically",
     },
     {
-      imgSrc: 'assets/img/bg/couress-img-2.jpg',
-      category: 'Economics',
-      title: 'Major in Economics',
+      imgSrc: "assets/img/bg/couress-img-2.jpg",
+      category: "Economics",
+      title: "Major in Economics",
       description:
-        'Seamlessly visualize quality ellectual capital without superior collaboration and idea tically',
+        "Seamlessly visualize quality ellectual capital without superior collaboration and idea tically",
     },
     {
-      imgSrc: 'assets/img/bg/couress-img-3.jpg',
-      category: 'Media',
-      title: 'Business Media',
+      imgSrc: "assets/img/bg/couress-img-3.jpg",
+      category: "Media",
+      title: "Business Media",
       description:
-        'Seamlessly visualize quality ellectual capital without superior collaboration and idea tically',
+        "Seamlessly visualize quality ellectual capital without superior collaboration and idea tically",
     },
     {
-      imgSrc: 'assets/img/bg/couress-img-4.jpg',
-      category: 'Public',
-      title: 'Public Administration',
+      imgSrc: "assets/img/bg/couress-img-4.jpg",
+      category: "Public",
+      title: "Public Administration",
       description:
-        'Seamlessly visualize quality ellectual capital without superior collaboration and idea tically',
+        "Seamlessly visualize quality ellectual capital without superior collaboration and idea tically",
     },
     {
-      imgSrc: 'assets/img/bg/couress-img-5.jpg',
-      category: 'Sciences',
-      title: 'Biotechnology',
+      imgSrc: "assets/img/bg/couress-img-5.jpg",
+      category: "Sciences",
+      title: "Biotechnology",
       description:
-        'Seamlessly visualize quality ellectual capital without superior collaboration and idea tically',
+        "Seamlessly visualize quality ellectual capital without superior collaboration and idea tically",
     },
     {
-      imgSrc: 'assets/img/bg/couress-img-6.jpg',
-      category: 'Finance',
-      title: 'Corporate Finance',
+      imgSrc: "assets/img/bg/couress-img-6.jpg",
+      category: "Finance",
+      title: "Corporate Finance",
       description:
-        'Seamlessly visualize quality ellectual capital without superior collaboration and idea tically',
+        "Seamlessly visualize quality ellectual capital without superior collaboration and idea tically",
     },
   ];
 
@@ -60,7 +60,11 @@ function First() {
               <h6 className="mt-20 mb-50">Showing 1–9 of 10 results</h6>
             </div>
             <div className="col-lg-6 col-sm-6 text-right">
-              <select name="orderby" className="orderby" aria-label="Shop order">
+              <select
+                name="orderby"
+                className="orderby"
+                aria-label="Shop order"
+              >
                 <option value="menu_order">Default sorting</option>
                 <option value="popularity">Sort by popularity</option>
                 <option value="rating">Sort by average rating</option>
