@@ -1,0 +1,6 @@
+NODE_ENV=development
+BACKEND_URL=http://localhost:5000
+PORT=3002
+REACT_APP_WEB_PUSH_PUBLIC_KEY=BLij1VLaME12ITjANJUN7eevGlDbeno-dZ7GafJN4Al4QbXHsvce_tJxRkzD3W4mrIKmCE63n6TtSY-igygF25Q
+HOSTNAME=localhost
+REACT_APP_API_UPLOADS=http://localhost:5000/uploads/

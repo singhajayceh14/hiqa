@@ -34,9 +34,9 @@ function AboutPage() {
               >
                 <div className="about-title second-title pb-25">
                   <h5>
-                    <i className="fal fa-graduation-cap" /> About Our University
+                    <i className="fal fa-graduation-cap" /> About Our Institute
                   </h5>
-                  <h2>A Few Words About the University</h2>
+                  <h2>A Few Words About the Institute</h2>
                 </div>
                 <p className="txt-clr">
                   Our community is being called to reimagine the future. As the only university where a renowned design

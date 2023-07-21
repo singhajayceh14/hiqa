@@ -74,7 +74,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
                 <h5>
                   <i className="fal fa-graduation-cap" /> Our Courses
                 </h5>
-                <h2>Graduate Programs</h2>
+                <h2>Training Programs</h2>
               </div>
             </div>
           </div>

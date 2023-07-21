@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { useApp } from '@/components/App';
 import { COURSE } from '@/types/interfaces';
+
 import TopHeader from './TopHeader';
 
 const Header = () => {
@@ -58,7 +59,7 @@ const Header = () => {
                             {state?.courseList &&
                               state?.courseList.map((course: COURSE, index: string) => (
                                 <li key={index}>
-                                  <Link href="#">{course.name}</Link>
+                                  <Link href={`/coursedetails?name=${course.slug}`}>{course.name}</Link>
                                 </li>
                               ))}
                           </ul>
