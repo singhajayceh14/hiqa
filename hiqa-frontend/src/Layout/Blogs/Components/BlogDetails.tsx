@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
 import FrontContainer from '@/Layout/FrontContainer';
 
-function Index() {
+function BlogDetails() {
   return (
     <>
       <Head>
@@ -85,7 +85,6 @@ function Index() {
                         ullamco laboris nisi ut aliquip ex ea commodo consequat.
                       </p>
                     </figure>
-                    
                   </div>
                   <div className="posts_navigation pt-35 pb-35">
                     <div className="row align-items-center">
@@ -205,4 +204,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default memo(BlogDetails);

@@ -13,7 +13,7 @@ function Index() {
   const { ButtonLoader } = useLoading();
   const [data, setData]: any = useState(null);
   const initialize = useCallback(async () => {
-    const req: any = (await request('getBlogPage', { page })) as REQUEST;
+    const req: any = (await request('getCoursePage', { page })) as REQUEST;
     console.log(req?.data);
     if (req?.status) {
       if (page === 1) {
@@ -29,7 +29,7 @@ function Index() {
   }, [initialize]);
   const onReachEnd = useCallback(() => {
     console.log('Loading...');
-    if (!loading?.getBlogPage_LOADING) {
+    if (!loading?.getCoursePage_LOADING) {
       setPage(p => p + 1);
     }
   }, [loading]);
@@ -40,7 +40,7 @@ function Index() {
         {!data ? (
           ButtonLoader({ color: '#101828' })
         ) : data.length === 0 ? (
-          <span>There is no blogs found.</span>
+          <span>There is no course found.</span>
         ) : (
           data?.map((e: BLOG_DATA, key: number) => (
             <div key={key} className="bsingle__post mb-50">
@@ -67,8 +67,8 @@ function Index() {
   return (
     <>
       <Head>
-        <title>Blogs</title>
-        <meta name="description" content={'Blogs' || 'HIQA'} />
+        <title>Course</title>
+        <meta name="description" content={'Course' || 'HIQA'} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>

@@ -1,9 +1,9 @@
-import BlogDetails from '@/Layout/Blogs/Components/BlogDetails';
+import Course from '@/Layout/Course';
 
 function Index() {
   return (
     <>
-      <BlogDetails />
+      <Course />
     </>
   );
 }
@@ -11,6 +11,6 @@ function Index() {
 Index.auth = false;
 
 Index.meta = {
-  title: 'Blog Details',
+  title: 'Course',
 };
 export default Index;

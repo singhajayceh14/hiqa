@@ -7,6 +7,7 @@ interface PROPS {
   direction?: 'horizontal' | 'vertical';
   children: JSX.Element | JSX.Element[] | any;
   style?: CSSProperties;
+  className?: string;
   onEndReachedThreshold?: number;
 }
 
@@ -17,7 +18,7 @@ function List(props: PROPS) {
   const handleScroll = useCallback(() => {
     const scrollContainer: HTMLDivElement | any = scrollContainerRef.current;
     // Check if the user has scrolled to the end of the container
-    console.log(scrollContainer)
+    console.log(scrollContainer);
     if (direction === 'vertical') {
       if (
         scrollContainer.scrollHeight - scrollContainer.scrollTop <=
@@ -57,7 +58,7 @@ function List(props: PROPS) {
   }, [direction]);
 
   return (
-    <div ref={scrollContainerRef} style={{ ...style, ...(props.style ?? {}) }}>
+    <div className={props.className} ref={scrollContainerRef} style={{ ...style, ...(props.style ?? {}) }}>
       {props.children}
     </div>
   );

@@ -1,37 +1,31 @@
 import React, { memo, useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 
-
 import { useApp } from '@/components/App';
 import { COURSE } from '@/types/interfaces';
 import TopHeader from './TopHeader';
 
-
 const Header = () => {
   const [Btnshow, setBtnshow] = useState<boolean>(false);
   const [mobile, setmobile] = useState<boolean>(false);
-  const [Events, setEvent] = useState<boolean>(false);
   const [News, setNews] = useState<boolean>(false);
-  const [Services, setServices] = useState<boolean>(false);
-  const [Blog, setblog] = useState<boolean>(false);
- 
+
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const { state } = useApp();
 
- 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       setIsScrolled(scrollTop > 0);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  const topBar = useMemo(()=><TopHeader personalData={state?.setting_data ?? {}}/>,[state?.setting_data])
+  const topBar = useMemo(() => <TopHeader personalData={state?.setting_data ?? {}} />, [state?.setting_data]);
 
   return (
     <>
@@ -59,7 +53,7 @@ const Header = () => {
                           <Link href="/about">About Us</Link>
                         </li>
                         <li className="has-sub">
-                          <Link href="/courses">Courses</Link>
+                          <Link href="/course">Courses</Link>
                           <ul>
                             {state?.courseList &&
                               state?.courseList.map((course: COURSE, index: string) => (
@@ -101,8 +95,7 @@ const Header = () => {
                       <li>
                         <div className="second-header-btn">
                           <Link href="/contact" className="btn">
-                            {' '}
-                            registration open{' '}
+                            Registration open
                           </Link>
                         </div>
                       </li>
@@ -131,54 +124,22 @@ const Header = () => {
                       {mobile && (
                         <nav className="mean-nav">
                           <ul style={{ display: 'block' }}>
-                            <li className="has-sub">
-                              <a href="/">Home</a>
-                              {Events && (
-                                <ul style={{ display: 'block' }}>
-                                  <li>
-                                    <Link href="/">University</Link>
-                                  </li>
-                                  <li>
-                                    <Link href="/home-two">Kindergarten</Link>
-                                  </li>
-                                  <li>
-                                    <Link href="/home-three">High School</Link>
-                                  </li>
-                                </ul>
-                              )}
-                              <a
-                                className={`mean-expand ${mobile && 'mean-clicked'}`}
-                                onClick={() => {
-                                  setEvent(!Events);
-                                }}
-                                href="#"
-                                style={{ fontSize: 18 }}
-                              >
-                                {Events ? '-' : '+'}
-                              </a>
+                            <li>
+                              <Link href="/">Home</Link>
                             </li>
                             <li>
                               <Link href="/about">About Us</Link>
                             </li>
                             <li className="has-sub">
-                              <Link href="/courses">Courses</Link>
+                              <Link href="/course">Courses</Link>
                               {News && (
                                 <ul style={{ display: 'block' }}>
-                                  <li>
-                                    <Link href="/courses">Courses</Link>
-                                  </li>
-                                  <li>
-                                    {' '}
-                                    <Link href="/courses-2">Courses 02</Link>
-                                  </li>
-                                  <li>
-                                    {' '}
-                                    <Link href="/single-courses">Course Details</Link>
-                                  </li>
-                                  <li>
-                                    {' '}
-                                    <Link href="/single-courses-2">Course Details 02</Link>
-                                  </li>
+                                  {state?.courseList &&
+                                    state?.courseList.map((course: COURSE, index: string) => (
+                                      <li key={index}>
+                                        <Link href="#">{course.name}</Link>
+                                      </li>
+                                    ))}
                                 </ul>
                               )}
 
@@ -193,69 +154,8 @@ const Header = () => {
                                 {News ? '-' : '+'}
                               </a>
                             </li>
-                            <li className="has-sub">
-                              <a href="#">Pages</a>
-                              {Services && (
-                                <ul style={{ display: 'block' }}>
-                                  <li>
-                                    <Link href="/event">Event</Link>
-                                  </li>
-                                  <li>
-                                    <Link href="/single-event">Event Details</Link>
-                                  </li>
-                                  <li>
-                                    <Link href="/projects">Gallery</Link>
-                                  </li>
-                                  <li>
-                                    <Link href="/pricing">Pricing</Link>
-                                  </li>
-                                  <li>
-                                    <Link href="/faq">Faq</Link>
-                                  </li>
-                                  <li>
-                                    <Link href="/team">Teacher</Link>
-                                  </li>
-                                  <li>
-                                    <Link href="/team-single">Teacher Details</Link>
-                                  </li>
-                                  <li>
-                                    <Link href="/404-error">404 Error</Link>
-                                  </li>
-                                </ul>
-                              )}
-                              <a
-                                className={`mean-expand ${mobile && 'mean-clicked'}`}
-                                onClick={() => {
-                                  setServices(!Services);
-                                }}
-                                href="#"
-                                style={{ fontSize: 18 }}
-                              >
-                                {Services ? '-' : '+'}
-                              </a>
-                            </li>
-                            <li className="has-sub">
+                            <li>
                               <Link href="/blog">Blog</Link>
-                              {Blog && (
-                                <ul style={{ display: 'block' }}>
-                                  <li>
-                                    <Link href="/blog">Blog</Link>
-                                  </li>
-                                  <li>
-                                    <Link href="/blog-details">Blog Details</Link>
-                                  </li>
-                                </ul>
-                              )}
-                              <a
-                                className={`mean-expand ${mobile && 'mean-clicked'}`}
-                                onClick={() => {
-                                  setblog(!Blog);
-                                }}
-                                href="#"
-                                style={{ fontSize: 18 }}
-                              >
-                                {Blog ? '-' : '+'}
-                              </a>
                             </li>
                             <li className="mean-last">
                               <Link href="/contact">Contact</Link>
@@ -270,7 +170,6 @@ const Header = () => {
             </div>
           </div>
         </div>
-       
       </header>
       {Btnshow && (
         <>
@@ -287,16 +186,7 @@ const Header = () => {
                   <Link href="/about">About Us</Link>
                 </li>
                 <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link href="/courses">Courses</Link>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link href="/pricing">Pricing </Link>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link href="/team">Teacher</Link>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link href="/projects">Gallery</Link>
+                  <Link href="/course">Courses</Link>
                 </li>
                 <li className="menu-item menu-item-type-custom menu-item-object-custom">
                   <Link href="/blog">Blog</Link>
