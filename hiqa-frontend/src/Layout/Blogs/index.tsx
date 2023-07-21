@@ -79,11 +79,11 @@ function Index() {
         <link rel="icon" href="favicon.ico" />
       </Head>
       <FrontContainer>
-        <section className="inner-blog pt-120 pb-120">
+        <section className="inner-blog pt-120">
           <div className="container">
             <div className="row">
               <div className="col-lg-8">
-                <List onReachEnd={onReachEnd} style={{ paddingBottom: 10 }}>
+                <List onReachEnd={onReachEnd} style={{ paddingBottom: '10px', height: '90%' }}>
                   {children}
                 </List>
               </div>
