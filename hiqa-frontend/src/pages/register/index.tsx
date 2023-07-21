@@ -1,9 +1,9 @@
-import Home from '@/Layout/Home';
+import Register from '@/Layout/Register';
 
 function Index() {
   return (
     <>
-      <Home />
+      <Register />
     </>
   );
 }
