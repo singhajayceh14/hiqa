@@ -1,14 +1,14 @@
-import CourseDetails from '@/Layout/CourseDetails';
+import NotFound from '@/Layout/NotFound';
 
 function Index() {
   return (
     <>
-      <CourseDetails />
+      <NotFound />
     </>
   );
 }
 Index.auth = false;
 Index.meta = {
-  title: 'Course Details',
+  title: 'Not Found',
 };
 export default Index;

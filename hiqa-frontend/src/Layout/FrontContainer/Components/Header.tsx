@@ -1,18 +1,17 @@
 import React, { memo, useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 
+import TopHeader from './TopHeader';
+
 import { useApp } from '@/components/App';
 import { COURSE } from '@/types/interfaces';
 
-import TopHeader from './TopHeader';
-
 const Header = () => {
+  const { state } = useApp();
   const [Btnshow, setBtnshow] = useState<boolean>(false);
   const [mobile, setmobile] = useState<boolean>(false);
   const [News, setNews] = useState<boolean>(false);
-
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const { state } = useApp();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,22 +49,26 @@ const Header = () => {
                         <li>
                           <Link href="/">Home</Link>
                         </li>
-                        <li>
-                          <Link href="/about">About Us</Link>
-                        </li>
+
                         <li className="has-sub">
                           <Link href="/course">Courses</Link>
                           <ul>
                             {state?.courseList &&
                               state?.courseList.map((course: COURSE, index: string) => (
                                 <li key={index}>
-                                  <Link href={`/coursedetails?name=${course.slug}`}>{course.name}</Link>
+                                  <Link href={'/course/' + course.slug}>{course.name}</Link>
                                 </li>
                               ))}
                           </ul>
                         </li>
                         <li>
+                          <Link href="/events">Events</Link>
+                        </li>
+                        <li>
                           <Link href="/blog">Blog</Link>
+                        </li>
+                        <li>
+                          <Link href="/about">About Us</Link>
                         </li>
                         <li>
                           <Link href="/contact">Contact</Link>
@@ -79,7 +82,7 @@ const Header = () => {
                     <ul>
                       <li>
                         <Link
-                          href="#"
+                          href=""
                           className="menu-tigger"
                           onClick={() => {
                             setBtnshow(true);
@@ -96,7 +99,7 @@ const Header = () => {
                       <li>
                         <div className="second-header-btn">
                           <Link href="/contact" className="btn">
-                            Registration open
+                            Register Now
                           </Link>
                         </div>
                       </li>
@@ -128,9 +131,7 @@ const Header = () => {
                             <li>
                               <Link href="/">Home</Link>
                             </li>
-                            <li>
-                              <Link href="/about">About Us</Link>
-                            </li>
+
                             <li className="has-sub">
                               <Link href="/course">Courses</Link>
                               {News && (
@@ -138,7 +139,7 @@ const Header = () => {
                                   {state?.courseList &&
                                     state?.courseList.map((course: COURSE, index: string) => (
                                       <li key={index}>
-                                        <Link href="#">{course.name}</Link>
+                                        <Link href={'/course/' + course.slug}>{course.name}</Link>
                                       </li>
                                     ))}
                                 </ul>
@@ -156,7 +157,13 @@ const Header = () => {
                               </a>
                             </li>
                             <li>
+                              <Link href="/events">Events</Link>
+                            </li>
+                            <li>
                               <Link href="/blog">Blog</Link>
+                            </li>
+                            <li>
+                              <Link href="/about">About Us</Link>
                             </li>
                             <li className="mean-last">
                               <Link href="/contact">Contact</Link>
@@ -184,16 +191,26 @@ const Header = () => {
                   <Link href="/">Home</Link>
                 </li>
                 <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link href="/about">About Us</Link>
+                  <Link href="/course">Courses</Link>
                 </li>
                 <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                  <Link href="/course">Courses</Link>
+                  <Link href="/events">Events</Link>
                 </li>
                 <li className="menu-item menu-item-type-custom menu-item-object-custom">
                   <Link href="/blog">Blog</Link>
                 </li>
                 <li className="menu-item menu-item-type-custom menu-item-object-custom">
+                  <Link href="/about">About Us</Link>
+                </li>
+                <li className="menu-item menu-item-type-custom menu-item-object-custom">
                   <Link href="/contact">Contact</Link>
+                </li>
+                <li className="menu-item menu-item-type-custom menu-item-object-custom">
+                  <div className="second-header-btn">
+                    <Link href="/contact" className="btn">
+                      Login
+                    </Link>
+                  </div>
                 </li>
               </ul>
             </div>

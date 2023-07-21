@@ -1,20 +1,11 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
 
-import FrontContainer from '@/Layout/FrontContainer';
-
-function BlogDetails() {
+import { BLOG_DATA } from '@/types/interfaces';
+function BlogDetails({ details }: { details: BLOG_DATA }) {
   return (
     <>
-      <Head>
-        <title>Blog Details</title>
-        <meta name="description" content={'Blog Details' || 'HIQA'} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
-      </Head>
-      <FrontContainer>
-        <section className="inner-blog b-details-p pt-120 pb-120">
+       <section className="inner-blog b-details-p pt-120 pb-120">
           <div className="container">
             <div className="row">
               <div className="col-lg-8">
@@ -199,7 +190,6 @@ function BlogDetails() {
             </div>
           </div>
         </section>
-      </FrontContainer>
     </>
   );
 }

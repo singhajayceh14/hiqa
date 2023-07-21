@@ -9,7 +9,7 @@ function About() {
                 <div className="row justify-content-center align-items-center">
                 <div className="col-lg-6 col-md-12 col-sm-12">
                     <div className="s-about-img3 p-relative  wow fadeInLeft animated" data-animation="fadeInLeft" data-delay=".4s" >
-                        <img src="assets/img/features/about_img_04.png" alt="img" />
+                        <img src="/assets/img/features/about_img_02.png" alt="img" />
                     </div>
                 </div>
                 <div className="col-lg-6 col-md-12 col-sm-12">

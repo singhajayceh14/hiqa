@@ -1,12 +1,19 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 import Head from 'next/head';
 
-import FrontContainer from '@/Layout/FrontContainer';
 import TouchPage from './Components/TouchPage';
 import MapPage from './Components/MapPage';
 import ContactForm from './Components/ContactForm';
 
+import FrontContainer from '@/Layout/FrontContainer';
+import { useApp } from '@/components/App';
+
 function Index() {
+  const { state } = useApp();
+
+  const touch = useMemo(() => <TouchPage personalData={state?.setting_data ?? {}} />, [state?.setting_data]);
+  const map = useMemo(() => <MapPage personalData={state?.setting_data ?? {}} />, [state?.setting_data]);
+
   return (
     <>
       <Head>
@@ -16,8 +23,8 @@ function Index() {
         <link rel="icon" href="favicon.ico" />
       </Head>
       <FrontContainer>
-        <TouchPage />
-        <MapPage />
+        {touch}
+        {map}
         <ContactForm />
       </FrontContainer>
     </>

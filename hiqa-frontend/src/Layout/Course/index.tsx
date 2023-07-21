@@ -5,21 +5,25 @@ import Head from 'next/head';
 import FrontContainer from '@/Layout/FrontContainer';
 import { useLoading, useRequest } from '@/components/App';
 import { REQUEST, COURSE_DATA } from '@/types/interfaces';
+import Pagination from '@/components/Default/Pagination/Pagination';
 
 function Index() {
   const { loading, request } = useRequest();
   const [page, setPage] = useState(1);
   const { ButtonLoader } = useLoading();
+  const [lastPage, setLastPage] = useState(1);
+  const [maxLength, setMaxLength] = useState(7);
   const [data, setData]: any = useState(null);
   const initialize = useCallback(async () => {
     const req: any = (await request('getCoursePage', { page })) as REQUEST;
-    console.log(req?.data);
     if (req?.status) {
       if (page === 1) {
         setData(req?.data?.result);
       } else {
         setData((p: any) => [...p, ...(req?.data?.result ?? [])]);
       }
+      setLastPage(req?.data?.page);
+      setMaxLength(req?.data?.total);
     }
   }, [page]);
 
@@ -29,7 +33,7 @@ function Index() {
 
   const children = useMemo(() => {
     return (
-      <div>
+      <div className="row align-items-center">
         {!data ? (
           ButtonLoader({ color: '#101828' })
         ) : data.length === 0 ? (
@@ -47,7 +51,7 @@ function Index() {
                   <h3>
                     <Link href={'course/' + course.slug}>{course.name}</Link>
                   </h3>
-                  <p>{course.short_description}</p>
+                  <p dangerouslySetInnerHTML={{ __html: course?.short_description ?? '' }} />
                   <Link href={'course/' + course.slug} className="readmore">
                     Read More <i className="fal fa-long-arrow-right" />
                   </Link>
@@ -71,9 +75,24 @@ function Index() {
         <link rel="icon" href="favicon.ico" />
       </Head>
       <FrontContainer>
-        <section className="shop-area pt-120 pb-120 p-relative " data-animation="fadeInUp animated" data-delay=".2s">
+        <section className="shop-area pt-50 pb-50  p-relative " data-animation="fadeInUp animated" data-delay=".2s">
           <div className="container">
-            <div className="row align-items-center">{children}</div>
+            <div className="row align-items-center">
+              <div className="col-lg-12">
+                <div
+                  className="section-title center-align mb-50 text-center wow fadeInDown animated"
+                  data-animation="fadeInDown"
+                  data-delay=".4s"
+                >
+                  <h5>
+                    <i className="fal fa-graduation-cap" /> Our Courses
+                  </h5>
+                  <h2>Training Programs</h2>
+                </div>
+              </div>
+            </div>
+            {children}
+            <Pagination currentPage={page} lastPage={lastPage} maxLength={maxLength} setCurrentPage={setPage} />
           </div>
         </section>
       </FrontContainer>

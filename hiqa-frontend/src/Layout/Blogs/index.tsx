@@ -3,36 +3,34 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 import FrontContainer from '@/Layout/FrontContainer';
-import List from '@/components/Default/List';
 import { useLoading, useRequest } from '@/components/App';
 import { REQUEST, BLOG_DATA } from '@/types/interfaces';
+import Pagination from '@/components/Default/Pagination/Pagination';
 
 function Index() {
   const { loading, request } = useRequest();
   const [page, setPage] = useState(1);
   const { ButtonLoader } = useLoading();
   const [data, setData]: any = useState(null);
+
+  const [lastPage, setLastPage] = useState(1);
+  const [maxLength, setMaxLength] = useState(7);
   const initialize = useCallback(async () => {
     const req: any = (await request('getBlogPage', { page })) as REQUEST;
-    console.log(req?.data);
     if (req?.status) {
       if (page === 1) {
         setData(req?.data?.result);
       } else {
         setData((p: any) => [...p, ...(req?.data?.result ?? [])]);
       }
+      setLastPage(req?.data?.page);
+      setMaxLength(req?.data?.total);
     }
   }, [page]);
 
   useEffect(() => {
     initialize();
   }, [initialize]);
-  const onReachEnd = useCallback(() => {
-    console.log('Loading...');
-    if (!loading?.getBlogPage_LOADING) {
-      setPage(p => p + 1);
-    }
-  }, [loading]);
 
   const children = useMemo(() => {
     return (
@@ -73,13 +71,26 @@ function Index() {
         <link rel="icon" href="favicon.ico" />
       </Head>
       <FrontContainer>
-        <section className="inner-blog pt-120">
+        <section className="inner-blog pt-50 pt-50">
           <div className="container">
+            <div className="row align-items-center">
+              <div className="col-lg-12">
+                <div
+                  className="section-title center-align mb-50 text-center wow fadeInDown animated"
+                  data-animation="fadeInDown"
+                  data-delay=".4s"
+                >
+                  <h5>
+                  <i className="fas fa-blog"></i> Our Blog
+                  </h5>
+                  <h2>Blog Post</h2>
+                </div>
+              </div>
+            </div>
             <div className="row">
               <div className="col-lg-8">
-                <List onReachEnd={onReachEnd} style={{ height: '90%' }}>
-                  {children}
-                </List>
+                {children}
+                <Pagination currentPage={page} lastPage={lastPage} maxLength={maxLength} setCurrentPage={setPage} />
               </div>
               <div className="col-sm-12 col-md-12 col-lg-4">
                 <aside className="sidebar-widget">

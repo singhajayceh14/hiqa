@@ -121,6 +121,44 @@ class HomeController {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }
   };
+
+  getAllDetails= async (req, res) => {
+    try {
+      const params = _.extend(
+        req.query || {},
+        req.params || {},
+        req.body || {}
+      );
+
+      let  result = '';
+      if(params.slug){
+        result = await TableSchema.get(
+          { where: {status:'1', slug:params.slug} },
+          Courses
+        );
+        if(params?.type === 'event'){
+          result = await TableSchema.get(
+            { where: {status:'1', slug:params.slug} },
+            Events
+          );
+        }else if(params?.type === 'blog'){
+          result = await TableSchema.get(
+            { where: {status:'1', slug:params.slug} },
+            Blogs
+          );
+        }
+      }
+      
+      if(result){
+        return res.success(result, req.__("DETAILS_SUCCESS"));
+      }else{
+        return res.warn({}, req.__("DETAILS_ERROR"));
+      }
+     
+    } catch (error) {
+      return res.serverError({}, req.__("SERVER_ERROR"), error);
+    }
+  }
 }
 
 module.exports = new HomeController();

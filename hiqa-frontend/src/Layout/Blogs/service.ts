@@ -16,3 +16,13 @@ export async function getBlogPage(action: ACTION): Promise<unknown> {
   }
 }
 
+export async function getBlogDetailsPage(action: ACTION): Promise<unknown> {
+  const { payload } = action;
+  const res: ReturnType<any> = await api(`${API_URL}get-details/blog`, 'POST', { data: payload });
+  if (res.status) {
+    return res;
+  } else {
+    // Handle Errors
+    if (res.errors) return handleErrors(res.errors);
+  }
+}

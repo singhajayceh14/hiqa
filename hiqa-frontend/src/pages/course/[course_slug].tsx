@@ -1,4 +1,4 @@
-import CourseDetails from '@/Layout/Course/Components/CourseDetails';
+import CourseDetails from '@/Layout/Course/CourseDetails';
 
 function Index() {
   return (

@@ -131,6 +131,8 @@ export interface SETTINGS_DATA {
   phone: string;
   youtube_url: string;
   twitter_url: string;
+  longitude: string;
+  latitude: string;
 }
 
 export interface EVENT_DATA {

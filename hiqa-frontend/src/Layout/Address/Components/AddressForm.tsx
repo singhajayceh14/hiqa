@@ -32,7 +32,6 @@ function AddressForm(props: ADDRESS_PROPS) {
   const { request, loading } = useRequest();
   const { ButtonLoader } = useLoading();
   const { state } = props;
-  console.log(state?.addressDetail?.isDefault);
   return (
     <Formik
       enableReinitialize={true}

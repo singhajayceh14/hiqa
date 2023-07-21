@@ -6172,3 +6172,65 @@ Error: Route.post() requires a callback function but got a [object Undefined]
 [2023-07-21T09:29:18.703Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
 [2023-07-21T09:30:38.391Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
 [2023-07-21T09:30:38.395Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T16:46:55.611Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T16:46:55.649Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T16:46:55.656Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T16:46:55.658Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T16:47:14.519Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T16:47:14.534Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T16:47:14.566Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T16:47:14.576Z] [error]: 500 - [ 'Error' ] - Error: find And Count All Error!!! SequelizeDatabaseError: Unknown column 'updatedAt' in 'field list'
+[2023-07-21T17:58:39.135Z] [error]: uncaughtException: Route.post() requires a callback function but got a [object Undefined]
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\route.js:211:15)
+    at Function.proto.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\index.js:521:19)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\home\home.routes.js:10:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\home\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+[2023-07-21T18:03:44.694Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:03:44.702Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:03:44.712Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:03:44.713Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:04:16.393Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:04:16.397Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:04:16.405Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:04:16.432Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:06:51.748Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:06:51.752Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:06:51.760Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:06:51.761Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:08:53.633Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:08:53.640Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:08:53.647Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:08:53.655Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:11:33.237Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:11:33.240Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:11:33.246Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:11:33.251Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:12:20.896Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:12:20.899Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:12:20.903Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:12:20.904Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:13:13.653Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:13:13.675Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:13:13.680Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:13:13.690Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:38:32.616Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:38:32.620Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:38:32.626Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T18:38:32.680Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T20:01:50.893Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T20:01:50.905Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T20:01:50.919Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-21T20:01:50.923Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value

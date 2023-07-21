@@ -14,7 +14,7 @@ function Index() {
         <link rel="icon" href="favicon.ico" />
       </Head>
       <FrontContainer>
-        <section className="about-area about-p pt-90 pb-120 p-relative fix">
+        <section className="about-area about-p pt-50 pb-50 p-relative fix">
           <div className="container">
             <div className="row justify-content-center align-items-center">
               <div className="col-lg-6 col-md-12 col-sm-12">
@@ -23,7 +23,7 @@ function Index() {
                   data-animation="fadeInLeft"
                   data-delay=".4s"
                 >
-                  <img src="assets/img/features/about_img_04.png" alt="img" />
+                  <img src="/assets/img/features/about_img_02.png" alt="img" />
                 </div>
               </div>
               <div className="col-lg-6 col-md-12 col-sm-12">

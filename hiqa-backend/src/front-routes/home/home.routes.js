@@ -7,4 +7,5 @@ router.post("/course-list", HomeController.getCourseSlugName);
 
 router.post("/get-home", HomeController.getHome);
 router.post("/get-list/:type", HomeController.getAllList);
+router.post("/get-details/:type", HomeController.getAllDetails);
 module.exports = router;

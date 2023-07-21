@@ -1,15 +1,10 @@
 import React, { memo, useCallback, useEffect, useState, useMemo } from 'react';
 import Head from 'next/head';
 
-import FrontContainer from '@/Layout/FrontContainer';
-import { useRequest } from '@/components/App';
-import { REQUEST } from '@/types/interfaces';
-import { useCommonReducer } from '@/components/App/reducer';
-import Modal from '@/components/Default/Modal';
+// Components
 import SliderPage from './Components/SliderPage';
 import AboutPage from './Components/AboutPage';
 import CoursePage from './Components/CoursePage';
-
 import AdmissionPage from './Components/AdmissionPage';
 import BlogPage from './Components/BlogPage';
 import ScholarshipPage from './Components/ScholarshipPage';
@@ -19,6 +14,11 @@ import LogoSliderPage from './Components/LogoSliderPage';
 import FaqPage from './Components/FaqPage';
 import SubscribePage from './Components/SubscribePage';
 
+import FrontContainer from '@/Layout/FrontContainer';
+import { useRequest } from '@/components/App';
+import { REQUEST } from '@/types/interfaces';
+import Modal from '@/components/Default/Modal';
+import { useCommonReducer } from '@/components/App/reducer';
 import { SuspenseLoader } from '@/components/App/Loader';
 
 function Index() {
@@ -42,7 +42,7 @@ function Index() {
   useEffect(() => {
     getFrontPage();
     handleOpen();
-  }, []);
+  },[]);
 
   const closeModal = () => {
     setShow(false);

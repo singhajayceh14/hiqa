@@ -1,4 +1,4 @@
-import BlogDetails from '@/Layout/Blogs/Components/BlogDetails';
+import BlogDetails from '@/Layout/Blogs/BlogDetails';
 
 function Index() {
   return (

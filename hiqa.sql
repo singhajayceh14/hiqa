@@ -130,7 +130,7 @@ CREATE TABLE `events` (
   `event_twitter_url` text,
   `status` tinyint(2) NOT NULL,
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `udpatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

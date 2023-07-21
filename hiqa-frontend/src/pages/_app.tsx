@@ -19,6 +19,7 @@ import '../assets/css/meanmenu.css';
 import '../assets/css/default.css';
 import '../assets/css/style.css';
 import '../assets/css/responsive.css';
+
 interface AppComponentProps extends AppProps {
   pageProps: any;
   Component: NextComponentType & {
