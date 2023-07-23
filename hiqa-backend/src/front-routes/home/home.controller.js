@@ -71,7 +71,7 @@ class HomeController {
       );
       let blogData =  await TableSchema.getAll(
         {
-          attributes:["id", "title", "short_description",'image'],
+          attributes:["id", "title", "short_description","slug",'image'],
           where: { status: "1" },
           limit: 3,
         },
