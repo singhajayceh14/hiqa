@@ -1,10 +1,10 @@
 import React, { memo, useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 
-import TopHeader from './TopHeader';
-
 import { useApp } from '@/components/App';
 import { COURSE } from '@/types/interfaces';
+
+import TopHeader from './TopHeader';
 
 const Header = () => {
   const { state } = useApp();

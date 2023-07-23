@@ -81,7 +81,7 @@ function Index() {
                   data-delay=".4s"
                 >
                   <h5>
-                  <i className="fas fa-blog"></i> Our Blog
+                    <i className="fas fa-blog"></i> Our Blog
                   </h5>
                   <h2>Blog Post</h2>
                 </div>

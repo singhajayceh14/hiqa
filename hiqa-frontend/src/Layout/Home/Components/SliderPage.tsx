@@ -30,15 +30,31 @@ function SliderPage() {
     dots: false,
     fade: true,
     arrows: true,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
+    prevArrow: (
+      <PrevArrow
+        className={''}
+        style={undefined}
+        onClick={function (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
+    ),
+    nextArrow: (
+      <NextArrow
+        className={''}
+        style={undefined}
+        onClick={function (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
+    ),
     responsive: [{ breakpoint: 1200, settings: { dots: false, arrows: false } }],
   };
 
   return (
     <>
       <section id="home" className="slider-area fix p-relative">
-        <Slider className="slider-active" style={{ background: '#141b22' }} {...settings}>
+        <Slider className="slider-active" {...settings}>
           <div>
             <div
               className="single-slider slider-bg"

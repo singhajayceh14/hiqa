@@ -2,13 +2,13 @@ import React, { memo, useMemo, useState, useCallback, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import BlogDetailsPage from './BlogDetails';
-
 import FrontContainer from '@/Layout/FrontContainer';
 import { SuspenseLoader } from '@/components/App/Loader';
 import { useCommonReducer } from '@/components/App/reducer';
 import { useRequest } from '@/components/App';
 import { REQUEST } from '@/types/interfaces';
+
+import BlogDetailsPage from './BlogDetails';
 
 function Index() {
   const [loading, setLoading] = useState<boolean>(true);

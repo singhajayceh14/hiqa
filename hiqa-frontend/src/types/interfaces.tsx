@@ -89,7 +89,7 @@ export interface ADDRESS_PROPS {
   edit?: boolean;
 }
 
-// COURSE LIST 
+// COURSE LIST
 export interface COURSE {
   id: string;
   name: string;

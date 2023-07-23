@@ -89,7 +89,6 @@ function CourseDetailsPage({ details }: { details: COURSE_DATA }) {
                 <div className="inner-column3">
                   <h3>Course Features</h3>
                   <ul className="project-info clearfix">
-                   
                     <li>
                       <span className="icon fal fa-book" /> <strong>Lectures:</strong> <span>14</span>
                     </li>

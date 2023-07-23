@@ -6,7 +6,10 @@ const VideoPage = () => {
 
   return (
     <>
-      <section className="cta-area cta-bg pt-160 pb-160" style={{ backgroundImage: 'url(assets/img/bg/search_bg.png)' }}>
+      <section
+        className="cta-area cta-bg pt-160 pb-160"
+        style={{ backgroundImage: 'url(assets/img/bg/search_bg.png)' }}
+      >
         <div className="container">
           <div className="row justify-content-center  align-items-center">
             <div className="col-xl-6 col-lg-6 col-md-12">
@@ -40,10 +43,7 @@ const VideoPage = () => {
       {video && (
         <>
           <div className="mfp-bg mfp-ready"></div>
-          <div
-            className="mfp-wrap mfp-close-btn-in mfp-auto-cursor mfp-ready"
-            style={{ overflow: 'hidden' }}
-          >
+          <div className="mfp-wrap mfp-close-btn-in mfp-auto-cursor mfp-ready" style={{ overflow: 'hidden' }}>
             <div className="mfp-container mfp-s-ready mfp-iframe-holder">
               <div className="mfp-content">
                 <div className="mfp-iframe-scaler">
@@ -54,7 +54,7 @@ const VideoPage = () => {
                     className="mfp-iframe"
                     src="//www.youtube.com/embed/gyGsPlt06bo?autoplay=1"
                     frameBorder="0"
-                    allowFullScreen=""
+                    allowFullScreen={true}
                   ></iframe>
                 </div>
               </div>

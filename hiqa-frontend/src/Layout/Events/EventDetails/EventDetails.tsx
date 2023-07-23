@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 
 import { EVENT_DATA } from '@/types/interfaces';
 function EventDetails({ details }: { details: EVENT_DATA }) {
-
   return (
     <>
       <section className="project-detail">
@@ -29,7 +28,7 @@ function EventDetails({ details }: { details: EVENT_DATA }) {
                     building links and marketing the unique value of your site.Etiam pharetra erat sed fermentum feugiat
                     velit mauris egestas quam ut erat justo.
                   </p>
-                 
+
                   <p>
                     Fusce eleifend donec sapien sed phase lusa pellentesque lacus.Vivamus lorem arcu semper duiac. Cras
                     ornare arcu avamus nda leo Etiam ind arcu. Morbi justo mauris tempus pharetra interdum at congue
@@ -86,7 +85,6 @@ function EventDetails({ details }: { details: EVENT_DATA }) {
                       <span className="icon fal fa-phone" />
                       <strong>+91 705 2101 786</strong>
                     </li>
-                   
                   </ul>
                 </div>
               </div>

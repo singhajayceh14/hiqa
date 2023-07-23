@@ -1,12 +1,12 @@
 import React, { memo, useMemo } from 'react';
 import Head from 'next/head';
 
+import FrontContainer from '@/Layout/FrontContainer';
+import { useApp } from '@/components/App';
+
 import TouchPage from './Components/TouchPage';
 import MapPage from './Components/MapPage';
 import ContactForm from './Components/ContactForm';
-
-import FrontContainer from '@/Layout/FrontContainer';
-import { useApp } from '@/components/App';
 
 function Index() {
   const { state } = useApp();

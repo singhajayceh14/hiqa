@@ -28,10 +28,10 @@ function EventDetails() {
                   <p>The page you are looking for not avaible!</p>
                 </div>
                 <div className="slider-btn">
-                    <Link href="/" className="btn ss-btn smoth-scroll">
-                        Home <i className="fal fa-long-arrow-right" />
-                    </Link>
-                    </div>
+                  <Link href="/" className="btn ss-btn smoth-scroll">
+                    Home <i className="fal fa-long-arrow-right" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

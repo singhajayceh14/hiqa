@@ -179,7 +179,6 @@ export const formatDate = (date: string | Date, type?: string) => {
     date = date.toLocaleString('en-US', { timeZone: 'Asia/Calcutta' });
     return moment(date).format(type || 'DD/MM/YYYY hh:mm:ss a');
   }
-
 };
 
 export const getPDFFromBuffer = (bufferArray: number[], filename?: string) => {

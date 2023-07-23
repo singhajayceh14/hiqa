@@ -134,7 +134,6 @@ function Index() {
                     isInvalid={!!errors.email}
                     readOnly
                   />
-                  {errors?.email ? <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback> : null}
                 </Form.Group>
               </Col>
               <Col md={6} lg={6}>
@@ -149,9 +148,6 @@ function Index() {
                     isInvalid={!!errors.email_cc}
                   />
                   <Form.Text className="text-muted">Provide email to CC for Notification</Form.Text>
-                  {errors.email_cc ? (
-                    <Form.Control.Feedback type="invalid">{errors.email_cc}</Form.Control.Feedback>
-                  ) : null}
                 </Form.Group>
               </Col>
               <Col md={6} lg={6}>
@@ -166,9 +162,6 @@ function Index() {
                     value={values.firstname}
                     isInvalid={!!errors.firstname}
                   />
-                  {errors.firstname ? (
-                    <Form.Control.Feedback type="invalid">{errors.firstname}</Form.Control.Feedback>
-                  ) : null}
                 </Form.Group>
               </Col>
               <Col md={6} lg={6}>
@@ -183,9 +176,6 @@ function Index() {
                     value={values.lastname}
                     isInvalid={!!errors.lastname}
                   />
-                  {errors.lastname ? (
-                    <Form.Control.Feedback type="invalid">{errors.lastname}</Form.Control.Feedback>
-                  ) : null}
                 </Form.Group>
               </Col>
               <Col lg={6}>
@@ -200,7 +190,6 @@ function Index() {
                     value={values.phone}
                     isInvalid={!!errors.phone}
                   />
-                  {errors.phone ? <Form.Control.Feedback type="invalid">{errors.phone}</Form.Control.Feedback> : null}
                 </Form.Group>
               </Col>
             </Row>

@@ -2,6 +2,13 @@ import React, { memo, useCallback, useEffect, useState, useMemo } from 'react';
 import Head from 'next/head';
 
 // Components
+import FrontContainer from '@/Layout/FrontContainer';
+import { useRequest } from '@/components/App';
+import { REQUEST } from '@/types/interfaces';
+import Modal from '@/components/Default/Modal';
+import { useCommonReducer } from '@/components/App/reducer';
+import { SuspenseLoader } from '@/components/App/Loader';
+
 import SliderPage from './Components/SliderPage';
 import AboutPage from './Components/AboutPage';
 import CoursePage from './Components/CoursePage';
@@ -13,13 +20,6 @@ import VideoPage from './Components/VideoPage';
 import LogoSliderPage from './Components/LogoSliderPage';
 import FaqPage from './Components/FaqPage';
 import SubscribePage from './Components/SubscribePage';
-
-import FrontContainer from '@/Layout/FrontContainer';
-import { useRequest } from '@/components/App';
-import { REQUEST } from '@/types/interfaces';
-import Modal from '@/components/Default/Modal';
-import { useCommonReducer } from '@/components/App/reducer';
-import { SuspenseLoader } from '@/components/App/Loader';
 
 function Index() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -42,7 +42,7 @@ function Index() {
   useEffect(() => {
     getFrontPage();
     handleOpen();
-  },[]);
+  }, []);
 
   const closeModal = () => {
     setShow(false);

@@ -1,8 +1,4 @@
-export function getPaginationItems(
-  currentPage: number,
-  lastPage: number,
-  maxLength: number
-) {
+export function getPaginationItems(currentPage: number, lastPage: number, maxLength: number) {
   const res: Array<number> = [];
 
   // handle lastPage less than maxLength
@@ -20,10 +16,7 @@ export function getPaginationItems(
     const sideLength = deductedMaxLength / 2;
 
     // handle ellipsis in the middle
-    if (
-      currentPage - firstPage < sideLength ||
-      lastPage - currentPage < sideLength
-    ) {
+    if (currentPage - firstPage < sideLength || lastPage - currentPage < sideLength) {
       for (let j = 1; j <= sideLength + firstPage; j++) {
         res.push(j);
       }
@@ -36,20 +29,13 @@ export function getPaginationItems(
     }
 
     // handle two ellipsis
-    else if (
-      currentPage - firstPage >= deductedMaxLength &&
-      lastPage - currentPage >= deductedMaxLength
-    ) {
+    else if (currentPage - firstPage >= deductedMaxLength && lastPage - currentPage >= deductedMaxLength) {
       const deductedSideLength = sideLength - 1;
 
       res.push(1);
       res.push(NaN);
 
-      for (
-        let l = currentPage - deductedSideLength;
-        l <= currentPage + deductedSideLength;
-        l++
-      ) {
+      for (let l = currentPage - deductedSideLength; l <= currentPage + deductedSideLength; l++) {
         res.push(l);
       }
 
