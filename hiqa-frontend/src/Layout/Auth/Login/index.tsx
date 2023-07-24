@@ -15,7 +15,7 @@ import { REQUEST } from '@/types/interfaces';
 import { useRequest, useLoading } from '@/components/App';
 import { validateAuthentication } from '@/utils/helpers';
 import { useWebPush } from '@/components/WebPush';
-
+import FrontContainer from '@/Layout/FrontContainer';
 // import LOGO from './Components/Logo';
 
 const LoginSchema = Yup.object().shape({
@@ -33,7 +33,7 @@ function Index() {
 
   const validateToken = useCallback(() => {
     if (validateAuthentication()) {
-      if (Cookies.get('rememberme') === '1') return router.push('/dashboard');
+      return router.push('/');
     }
   }, [router]);
 
@@ -48,7 +48,7 @@ function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <AuthLayout>
+      <FrontContainer>
         <div className="loginForm">
           <h2 className="text-capitalize">Login</h2>
           <Formik
@@ -66,7 +66,7 @@ function Index() {
               const req = (await request('LoginUser', values)) as REQUEST;
               if (req.status) {
                 if (values.rememberme) Cookies.set('rememberme', '1');
-                return router.push('/dashboard');
+                return router.push('/');
               }
             }}
           >
@@ -133,7 +133,7 @@ function Index() {
             )}
           </Formik>
         </div>
-      </AuthLayout>
+      </FrontContainer>
     </>
   );
 }

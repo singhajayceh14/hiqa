@@ -1,10 +1,10 @@
 import React, { memo, useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 
+import TopHeader from './TopHeader';
+
 import { useApp } from '@/components/App';
 import { COURSE } from '@/types/interfaces';
-
-import TopHeader from './TopHeader';
 
 const Header = () => {
   const { state } = useApp();
@@ -18,12 +18,12 @@ const Header = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       setIsScrolled(scrollTop > 0);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+ 
 
   const topBar = useMemo(() => <TopHeader personalData={state?.setting_data ?? {}} />, [state?.setting_data]);
 
@@ -78,7 +78,7 @@ const Header = () => {
                   </div>
                 </div>
                 <div className="col-xl-3 col-lg-3 text-right d-none d-lg-block text-right text-xl-right">
-                  <div className="login">
+                  <div className="login"> 
                     <ul>
                       <li>
                         <Link

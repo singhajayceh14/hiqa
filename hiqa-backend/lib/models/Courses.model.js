@@ -30,6 +30,22 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING(255),
         defaultValue: null,
       },
+      general: {
+        type: DataTypes.STRING(255),
+        defaultValue: null,
+      },
+      ews: {
+        type: DataTypes.STRING(255),
+        defaultValue: null,
+      },
+      special_consideration: {
+        type: DataTypes.STRING(255),
+        defaultValue: null,
+      },
+      other: {
+        type: DataTypes.STRING(255),
+        defaultValue: null,
+      },
       status: {
         type: DataTypes.TINYINT(2),
         defaultValue: 0,
@@ -59,7 +75,12 @@ module.exports = function (sequelize, DataTypes) {
       "total_seat",
       "site_visits",
       "status",
+      "general",
+      "ews",
+      "special_consideration",
+      "other",
       "image",
+      
     ];
   };
   return Courses;

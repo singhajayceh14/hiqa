@@ -94,8 +94,11 @@ export const api: API = async (url, method = 'GET', options = {}) => {
         if (e.response.status === 504) {
           toastr('API services are currently Offline', 'warning');
         }
-        if (e.response?.data?.errors?.message === 'jwt expired') {
+        if (e.response?.data?.message === 'jwt expired') {
           logout();
+        }
+        if (e.response.status === 500) {
+          toastr(e.response?.data?.message, 'error');
         }
         return e.response.data;
       }

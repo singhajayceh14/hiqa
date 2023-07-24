@@ -6,6 +6,7 @@ const FrontPages = require("../../../lib/models").front_pages;
 const Banners = require("../../../lib/models").banners;
 const Blogs = require("../../../lib/models").blogs;
 const Events = require("../../../lib/models").events;
+const Qualifications = require("../../../lib/models").qualifications;
 const {
   getPagination,
   getPaginationData,
@@ -31,8 +32,9 @@ class HomeController {
         },
         Settings
       );
+      let qualification= await TableSchema.getAll({},Qualifications      );
       return res.success(
-        { courses_list: getListData, setting_data: settingData },
+        { courses_list: getListData, setting_data: settingData, user:req.user, qualification },
         req.__("GET_LIST_FOUND")
       );
     } catch (error) {

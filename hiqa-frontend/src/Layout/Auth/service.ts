@@ -2,11 +2,12 @@ import { api } from '@/utils/axiosInterceptor';
 import { ACTION } from '@/types/interfaces';
 import { handleErrors, setHeader, toastr } from '@/utils/helpers';
 // import { registerService } from '@/store/services';
+const API_URL = process.env.BACKEND_API_URL + 'auth/';
 
 /* Login User */
 export async function LoginUser(action: ACTION): Promise<unknown> {
   const { payload } = action;
-  const res: ReturnType<any> = await api('/v1/api/auth/login', 'POST', { data: payload });
+  const res: ReturnType<any> = await api(`${API_URL}login`, 'POST', { data: payload });
   if (res.status) {
     if (res?.data?.token) {
       toastr('Login Successful', 'success');

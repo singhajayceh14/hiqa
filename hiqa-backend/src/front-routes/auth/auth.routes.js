@@ -6,26 +6,8 @@ var { verifyToken } = require("../../utils/authentication");
 
 const router = express.Router();
 
-router.post("/register", validate(validator.signup), AuthController.sendOTP);
-router.post(
-  "/verify-otp",
-  validate(validator.verifyotp),
-  AuthController.verifyOtp
-);
-router.post(
-  "/resend-otp",
-  validate(validator.signup),
-  AuthController.reSendOTP
-);
-router.post("/user-details", verifyToken, AuthController.getUserDetails);
-router.get("/user-avatars", AuthController.getUserAvatars);
-router.post("/update-user-details", verifyToken, AuthController.updateUserDetails);
-router.get("/get-streaks", verifyToken, AuthController.getStreaks);
 
-router.post("/logout", verifyToken, AuthController.logout);
-router.post(
-  "/social-login",
-  validate(validator.socialValidator),
-  AuthController.socialLogin
-);
+router.post("/login", validate(validator.login), AuthController.login);
+
+router.get("/get-user-details", verifyToken, AuthController.getUserDetails);
 module.exports = router;

@@ -7,6 +7,7 @@ import { toastr } from '@/utils/helpers';
 
 import { useAlert } from './alert';
 import { useCommonReducer } from './reducer';
+import { validateAuthentication } from '@/utils/helpers';
 // import { reducer, initialState } from './reducer';
 
 interface Props {
@@ -17,6 +18,9 @@ interface VALIDATEZIPCODE {
 }
 
 interface COURSE {
+  (): void;
+}
+interface USER {
   (): void;
 }
 interface ALERT {
@@ -76,7 +80,20 @@ export const AppProvider = ({ children }: Props) => {
       const res: ReturnType<any> = await api(`${process.env.BACKEND_API_URL}home/course-list`, 'POST', {});
       if (res.status) {
         const resData: any = res.data;
-        dispatch({ courseList: resData.courses_list, setting_data: resData.setting_data });
+        dispatch({ courseList: resData.courses_list, setting_data: resData.setting_data, qualification:resData.qualification ?? null });
+      }
+      return [];
+    } catch (error: any) {
+      if (error?.message) toastr(error.message, 'warning');
+      return false;
+    }
+  }, []);
+  const getUserData: USER = useCallback(async () => {
+    try {
+      const res: ReturnType<any> = await api(`${process.env.BACKEND_API_URL}auth/get-user-details`, 'GET');
+      if (res.status) {
+        const resData: any = res.data;
+        dispatch({ user: resData });
       }
       return [];
     } catch (error: any) {
@@ -87,6 +104,8 @@ export const AppProvider = ({ children }: Props) => {
 
   useEffect(() => {
     getCourseList();
+    getUserData();
+    validateAuthentication()
   }, []);
   const value: CONTEXTVALUE = { state, alert, validateZipCode };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

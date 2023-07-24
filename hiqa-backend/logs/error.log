@@ -497,3 +497,99 @@ Error: Route.post() requires a callback function but got a [object Undefined]
 [2023-07-21T20:01:50.905Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
 [2023-07-21T20:01:50.919Z] [error]: 500 - [ 'TableSchemaError' ] - Error: WHERE parameter "slug" has invalid "undefined" value
 [2023-07-21T20:01:50.923Z] [error]: 500 - [ 'Error' ] - Error: Get Error!!! Error: WHERE parameter "slug" has invalid "undefined" value
+[2023-07-24T16:13:56.152Z] [error]: uncaughtException: Route.post() requires a callback function but got a [object Undefined]
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\route.js:211:15)
+    at Function.proto.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\index.js:521:19)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\auth.routes.js:10:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+[2023-07-24T16:20:44.943Z] [error]: uncaughtException: signup is not defined
+ReferenceError: signup is not defined
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\auth.validator.js:9:20)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\auth.routes.js:3:19)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+[2023-07-24T16:20:53.451Z] [error]: uncaughtException: signup is not defined
+ReferenceError: signup is not defined
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\auth.validator.js:9:20)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\auth.routes.js:3:19)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+[2023-07-24T16:21:28.915Z] [error]: uncaughtException: signup is not defined
+ReferenceError: signup is not defined
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\auth.validator.js:9:20)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\auth.routes.js:3:19)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+[2023-07-24T16:22:29.812Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-24T16:22:38.781Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-24T16:24:06.651Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-24T16:24:20.797Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-24T16:24:42.149Z] [error]: 500 - [ 'Error' ] - ReferenceError: verifyPassword is not defined
+[2023-07-24T16:57:58.088Z] [error]: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
+Error: Route.get() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as get] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\route.js:211:15)
+    at Function.proto.<computed> [as get] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\index.js:521:19)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\auth.routes.js:12:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\auth\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+[2023-07-24T17:24:22.925Z] [error]: 500 - [ 'Error' ] - null
