@@ -90,8 +90,8 @@ function Index() {
         )}
       </FrontContainer>
       <Modal id="Eligibility Page" title={'Eligibility Criteria'} size="lg" show={show} onClose={() => closeModal()}>
-        {/* <img src="assets/img/popup/2.png" alt="contact-bg-an-01" /> */}
-        <EligibilityPage />
+        <img src="assets/img/popup/2.png" alt="contact-bg-an-01" />
+        {/* <EligibilityPage /> */}
       </Modal>
     </>
   );

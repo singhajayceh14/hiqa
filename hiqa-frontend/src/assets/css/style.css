@@ -14032,3 +14032,17 @@ transform: rotate(180deg);
 .forms-inputs input:focus{
     box-shadow: none;outline: none;border: 2px solid #000
 }
+.modal {
+    z-index: -1;
+    display: flex !important;
+    justify-content: center;
+  }
+  
+  .modal-open .modal {
+     z-index: 1050;
+  }
+.modal-dialog { /* Width */
+    max-width: 100%;
+    width: auto !important;
+    display: inline-block;
+}
