@@ -23,7 +23,6 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
- 
 
   const topBar = useMemo(() => <TopHeader personalData={state?.setting_data ?? {}} />, [state?.setting_data]);
 
@@ -78,33 +77,62 @@ const Header = () => {
                   </div>
                 </div>
                 <div className="col-xl-3 col-lg-3 text-right d-none d-lg-block text-right text-xl-right">
-                  <div className="login"> 
-                    <ul>
+                  <div className="login">
+                    <ul className="d-flex gap-xl-3 gap-2">
                       <li>
-                        <Link
-                          href=""
-                          className="menu-tigger"
-                          onClick={() => {
-                            setBtnshow(true);
-                          }}
-                        >
-                          <i
-                            className="fal fa-search"
-                            onClick={() => {
-                              setBtnshow(true);
-                            }}
-                          />
-                        </Link>
+                        <div className="second-header-btn">
+                          <Link className="btn signInBtns signUpBtn d-flex align-items-center gap-2" href="/register">
+                            <div className="btnIcon">
+                              <img className="w-100" src="/assets/img/logo/signUp.svg" alt="" />
+                            </div>
+                            <div className="txt d-none d-sm-block">Sign Up</div>
+                          </Link>
+                        </div>
                       </li>
                       <li>
                         <div className="second-header-btn">
-                          <Link href="/contact" className="btn">
-                            Register Now
+                          <Link className="btn signInBtns d-flex align-items-center gap-2" href="/login">
+                            <div className="btnIcon">
+                              <img className="w-100" src="/assets/img/logo/loginIcon.svg" alt="" />
+                            </div>
+                            <div className="txt d-none d-sm-block">Login</div>
                           </Link>
                         </div>
                       </li>
                     </ul>
                   </div>
+
+                  {/* <div className="dropdown userProfile text-end d-none">
+                    <button
+                      className="userImg border-0 p-0 shadow-none rounded-circle overflow-hidden"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <img
+                        className="w-100 h-100"
+                        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+                        alt=""
+                      />
+                    </button>
+                    <ul className="dropdown-menu dropdown-menu-end p-0 overflow-hidden">
+                      <li>
+                        <a className="dropdown-item" href="#">
+                          Menu 1
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href="#">
+                          Menu 2
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href="#">
+                          Menu 3
+                        </a>
+                      </li>
+                    </ul>
+                  </div> */}
                 </div>
                 <div className="col-12">
                   <div className="mobile-menu mean-container">
