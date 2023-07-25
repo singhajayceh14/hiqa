@@ -36,17 +36,14 @@ function AboutPage() {
                   <h5>
                     <i className="fal fa-graduation-cap" /> About Our Institute
                   </h5>
-                  <h2>A Few Words About the Institute</h2>
+                  <h2>We Bring The Right Person To The Correct Place.</h2>
                 </div>
                 <p className="txt-clr">
-                  Our community is being called to reimagine the future. As the only university where a renowned design
-                  school comes together with premier colleges, we are making learning more relevant and
-                  transformational.
+                  We are the first & only Institute in India which provides the best training with the latest
+                  technologies at 100% free of cost.
                 </p>
                 <p>
-                  We are proud to offer top ranige in employment services such and asser payroll and benefits
-                  administrato managemen and asistance with global business range ployment employer readings from
-                  religious texts or literature are also commonly inc compliance.
+                  We provide free Dress, stationery, food, and accommodation to the students admitted to our Institute.
                 </p>
                 <div className="about-content2">
                   <div className="row">
@@ -58,8 +55,7 @@ function AboutPage() {
                               <span>01</span>
                             </div>{' '}
                             <div className="text">
-                              <h3>Doctoral Degrees</h3>{' '}
-                              <p>consectetur adipiscing elit sed do eiusmod tem incid idunt.</p>
+                              <h3>Guaranteed Site Visits</h3> <p>National / International site visits.</p>
                             </div>
                           </div>
                         </li>
@@ -69,8 +65,8 @@ function AboutPage() {
                               <span>02</span>
                             </div>{' '}
                             <div className="text">
-                              <h3>Global Students</h3>{' '}
-                              <p>consectetur adipiscing elit sed do eiusmod tem incid idunt.</p>
+                              <h3>Guaranteed Paid Internship</h3>{' '}
+                              <p>Minimum Internship & Payments</p>
                             </div>
                           </div>
                         </li>
