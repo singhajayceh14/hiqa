@@ -34,7 +34,7 @@ function SliderPage() {
       <PrevArrow
         className={''}
         style={undefined}
-        onClick={function (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+        onClick={function (): void {
           throw new Error('Function not implemented.');
         }}
       />
@@ -43,7 +43,7 @@ function SliderPage() {
       <NextArrow
         className={''}
         style={undefined}
-        onClick={function (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+        onClick={function (): void {
           throw new Error('Function not implemented.');
         }}
       />

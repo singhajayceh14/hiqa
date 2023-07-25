@@ -4,10 +4,11 @@ import { useJsApiLoader } from '@react-google-maps/api';
 import { api } from '@/utils/axiosInterceptor';
 import settings from '@/settings.js';
 import { toastr } from '@/utils/helpers';
+import { validateAuthentication } from '@/utils/helpers';
 
 import { useAlert } from './alert';
 import { useCommonReducer } from './reducer';
-import { validateAuthentication } from '@/utils/helpers';
+
 // import { reducer, initialState } from './reducer';
 
 interface Props {
@@ -28,6 +29,7 @@ interface ALERT {
 }
 interface CONTEXTVALUE {
   state: any;
+  dispatch: any;
   alert: ALERT;
   validateZipCode: VALIDATEZIPCODE;
 }
@@ -80,13 +82,18 @@ export const AppProvider = ({ children }: Props) => {
       const res: ReturnType<any> = await api(`${process.env.BACKEND_API_URL}home/course-list`, 'POST', {});
       if (res.status) {
         const resData: any = res.data;
-        dispatch({ courseList: resData.courses_list, setting_data: resData.setting_data, qualification:resData.qualification ?? null });
+        dispatch({
+          courseList: resData.courses_list,
+          setting_data: resData.setting_data,
+          qualification: resData.qualification ?? null,
+        });
       }
       return [];
     } catch (error: any) {
       if (error?.message) toastr(error.message, 'warning');
       return false;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const getUserData: USER = useCallback(async () => {
     try {
@@ -100,14 +107,16 @@ export const AppProvider = ({ children }: Props) => {
       if (error?.message) toastr(error.message, 'warning');
       return false;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     getCourseList();
     getUserData();
-    validateAuthentication()
+    validateAuthentication();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const value: CONTEXTVALUE = { state, alert, validateZipCode };
+  const value: CONTEXTVALUE = { state, dispatch, alert, validateZipCode };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 

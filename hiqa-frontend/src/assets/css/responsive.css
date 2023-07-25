@@ -1085,9 +1085,11 @@ border: 1px solid #000;
     border-bottom: 1px solid rgba(217, 217, 217, 0.5);
 }
     .mean-container .mean-nav {
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-box-shadow: 3px 4px 15px #0000001A;
-        position: absolute;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 3px 4px 15px #0000001A;
+    position: fixed;
+    width: 100%;
+    right: 0;
 }
   .mean-container .mean-nav ul li a.mean-expand {
     text-align: right;

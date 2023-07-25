@@ -18,7 +18,7 @@ function Index(props: PROPS) {
   return (
     <Modal
       id={props.id}
-      size={props?.size ?? 'sm' }
+      size={props?.size ?? 'sm'}
       show={props.show}
       onHide={hideModal}
       backdrop="static"

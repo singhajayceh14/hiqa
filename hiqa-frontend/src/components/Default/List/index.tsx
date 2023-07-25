@@ -34,6 +34,7 @@ function List(props: PROPS) {
         onReachEnd && onReachEnd();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onReachEnd, scrollContainerRef, onEndReachedThreshold]);
 
   useEffect(() => {

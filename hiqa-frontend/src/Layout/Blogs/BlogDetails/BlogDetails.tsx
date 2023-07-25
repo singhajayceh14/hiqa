@@ -13,11 +13,7 @@ function BlogDetails({ details }: { details: BLOG_DATA }) {
                 <div className="details__content pb-30">
                   <h2>With our vastly improved notifications system, users have more control.</h2>
                   <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo amet set for your cool happiness for lyour loyal city.
-                  </p>
+                  <p>{details.short_description}</p>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

@@ -26,6 +26,7 @@ function Index() {
       setLastPage(req?.data?.page);
       setMaxLength(req?.data?.total);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   useEffect(() => {
@@ -40,7 +41,7 @@ function Index() {
         ) : data.length === 0 ? (
           <span>There is no events found.</span>
         ) : (
-          data?.map((event: EVENT_DATA, key: number) => (
+          data?.map((event: EVENT_DATA) => (
             <div
               className="col-lg-4 col-md-6 wow fadeInUp animated"
               data-animation="fadeInUp"
@@ -70,6 +71,7 @@ function Index() {
         )}
       </div>
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, ButtonLoader, loading]);
   return (
     <>

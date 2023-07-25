@@ -20,8 +20,8 @@ function Notification() {
     <div>
       <Modal
         id={'Notifications' + '_modal'}
+        size="lg"
         title={'Notifications'}
-        width="25%"
         show={state.showNotifications}
         outer={true}
         onClose={() => closeModal('showNotifications')}

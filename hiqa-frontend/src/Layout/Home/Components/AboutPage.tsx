@@ -65,8 +65,7 @@ function AboutPage() {
                               <span>02</span>
                             </div>{' '}
                             <div className="text">
-                              <h3>Guaranteed Paid Internship</h3>{' '}
-                              <p>Minimum Internship & Payments</p>
+                              <h3>Guaranteed Paid Internship</h3> <p>Minimum Internship & Payments</p>
                             </div>
                           </div>
                         </li>

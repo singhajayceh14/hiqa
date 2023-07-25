@@ -536,7 +536,6 @@ label {
 .main-menu {
     position: relative;
     z-index: 9;
-    margin-right: -70px;
 }
 
 .menu .sub-menu li {
@@ -796,7 +795,7 @@ label {
 }
 
 .top-btn:hover {
-    background: transparent linear-gradient(90deg, #ff73500%, #ff7350100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(90deg, #ff7350 0%, #ff735010 0%) 0% 0% no-repeat padding-box;
     color: #fff;
 }
 
@@ -932,6 +931,7 @@ label {
     margin: 0;
     box-shadow: none;
     padding: 0;
+    transform:translate(0, 0px)
 }
 
 .sticky-menu .second-menu::before {
@@ -2372,26 +2372,9 @@ label {
     margin-bottom: 0;
     color: #777;
 }
-.about-content2 .li2 {
-    width: 100%;
-}
 
 .about-content2 .abcontent {
     display: flex;
-}
-
-.about-content2 li .ano2 {
-    font-size: 20px;
-    width: 90px;
-    height: 56px;
-    background: #ff7350;
-    text-align: center;
-    margin-right: 15px;
-    color: #fff;
-    display: block;
-    font-weight: 500;
-    line-height: 56px;
-    font-family: 'Jost', sans-serif;
 }
 
 .about-content2 li .ano {
@@ -2403,7 +2386,7 @@ label {
     margin-right: 15px;
     color: #fff;
     display: block;
-    /*border-radius: 50%;*/
+    border-radius: 50%;
     font-weight: 500;
     line-height: 56px;
     font-family: 'Jost', sans-serif;
@@ -3197,7 +3180,7 @@ section:hover .section-title h2::before {
 .services-box .ss-btn2 {
     width: 60px;
     height: 60px;
-    background: #ff73500% 0% no-repeat padding-box;
+    background: #ff7350 0% 0% no-repeat padding-box;
     box-shadow: 0px 16px 32px #ff735033;
     display: none;
     color: #fff;
@@ -4004,7 +3987,7 @@ section:hover .section-title h2::before {
     top: 50%;
     height: 90px;
     width: 90px;
-    background: transparent linear-gradient(90deg, #ff73500%, #ff7350100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(90deg, #ff7350 0%, #ff735010 0%) 0% 0% no-repeat padding-box;
     z-index: -1;
     border-radius: 50%;
     transform: translate(-50%, -50%);
@@ -4962,7 +4945,7 @@ section:hover .section-title h2::before {
 }
 
 .counter-area .row div:nth-child(4) .single-counter {
-    display: ;
+    /* display: ; */
     border-right: none;
 }
 
@@ -9641,7 +9624,7 @@ p.lost-password a:hover {
 
 .coupon-info p.form-row input[type="submit"]:hover,
 p.checkout-coupon input[type="submit"]:hover {
-    background: #ff7350none repeat scroll 0 0;
+    background: #ff7350 none repeat scroll 0 0;
 }
 
 .coupon-info p.form-row input[type="checkbox"] {
@@ -11287,7 +11270,7 @@ p.checkout-coupon input[type="text"] {
 
 .process-area .col-lg-3.col-md-12:nth-child(2) .process-icon,
 .process-area .col-lg-3.col-md-12:nth-child(2) .no {
-    background: #ff73500% 0% no-repeat padding-box;
+    background: #ff7350 0% 0% no-repeat padding-box;
 }
 
 .process-area .col-lg-3.col-md-12:nth-child(3) .process-icon,
@@ -13776,4 +13759,276 @@ blockquote cite {
 
 .footer-top.wpding {
     background: #010c26;
+}
+
+
+
+
+
+
+
+
+
+/* New CSS 24/07/2023  */
+
+.signInBtns{
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 24px;
+    position: relative;
+}
+.signInBtns::before, .signInBtns::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #125875;
+    border-radius: 0;
+}
+.signInBtns.signUpBtn{
+    background-color: #125875;
+    border-color: #125875;
+    border-radius: 0;
+}
+.signInBtns.signUpBtn:hover {
+    border-color: #ff7350;
+}
+.signInBtns.signUpBtn::before, .signInBtns.signUpBtn::after {
+    background-color: #ff7350;
+    border-radius: 0;
+}
+.signInBtns::before {
+    left: 50%;
+    margin-left: auto;
+}
+.signInBtns::after {
+    right: 50%;
+    margin-right: auto;
+}
+.signInBtns .btnIcon{
+    width: 20px;
+    height: 20px;
+}
+.userProfile .userImg{
+    width: 45px;
+    height: 45px;
+}
+.userProfile .userImg img {
+    object-fit: cover;
+    object-position: top center;
+}
+.userProfile .dropdown-item{
+    font-size: 15px;
+    color: #125875;
+    transition: ease-in-out .3s;
+}
+.userProfile .dropdown-item:hover{
+    background-color: #125875;
+    color: #fff;
+}
+.sideBarMenus{
+    border: 1px solid #125875;
+}
+.sideBarMenus .sidebarHeader{
+    background-color: #125875;
+}
+.sideBarMenus .sidebarHeader .title{
+    font-size: 16px;
+    color: #fff;
+}
+.sidebarBody .sideMenu .sideMenuLink {
+    font-size: 14px;
+    font-weight: 500;
+    color: #125875;
+    padding: 6px 16px;
+    display: block;
+    transition: ease-in-out .3s;
+}
+.sidebarBody .sideMenu .sideMenuLink:hover {
+    background-color: #12587514;
+}
+/* .sidebarBody .sideMenu:last-child {
+    border: none !important;
+} */
+.sidebarBody .sideMenu .sideMenuLink.active,
+.sidebarBody .sideMenu .sideMenuLink:active {
+    background-color: #125875;
+    color: #fff;
+}
+.profileFormOuter .profileImgOuter {
+    width: 100px;
+    height: 100px;
+}
+.profileFormOuter .profileImgOuter img {
+    object-fit: cover;
+    object-position: top center;
+}
+
+.profileFormOuter .customForm .form-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+    line-height: normal;
+    margin-bottom: 8px;
+}
+.profileFormOuter .customForm .form-control, 
+.profileFormOuter .customForm .form-select {
+    font-size: 15px;
+    line-height: normal;
+    padding: 10px 16px;
+}
+.profileFormOuter .customForm .form-control:focus, 
+.profileFormOuter .customForm .form-select:focus {
+    border-color: #ff7350;
+}
+.uploadImgBtn{
+    width: 24px;
+    height: 24px;
+    background-color: #125875;
+    transition: ease-in-out .3s;
+}
+.uploadImgBtn:hover{
+    background-color: #ff7350;
+}
+.offcanvas.sideNavOffCanvas.show{
+visibility: visible;
+}
+.offcanvas.sideNavOffCanvas{
+    width: 100%;
+    max-width: 260px;
+    visibility: visible;
+}
+.btn-close-header {
+    filter: invert(1);
+    opacity: 1;
+    font-size: 12px;
+}
+.pageWraper{
+    transform: translate(0, 0);
+}
+.sidenavOpen{
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: -40px;
+    transition: ease-in-out .3s;
+}
+.sidenavOpen::before{
+    border-radius: 0 !important;
+}
+.offcanvas.sideNavOffCanvas.show .sidenavOpen svg{
+transform: rotate(180deg);
+}
+@media (min-width: 992px) and (max-width: 1200px){
+    .signInBtns {
+        padding: 10px 16px !important;
+        font-size: 14px !important;
+    }
+    .main-menu {
+        text-align: left !important;
+    }
+    .userProfile .userImg {
+        width: 40px;
+        height: 40px;
+    }
+}
+@media (max-width: 991px){
+    /* .mobile-menu {
+        display: block !important;
+    } */
+    /* .sticky-menu .mean-container a.meanmenu-reveal {
+        margin-top: -58px !important;
+    } */
+        
+    .signInBtns .btnIcon{
+        width: 16px;
+        height: 16px;
+    }
+    .signInBtns {
+        font-size: 14px;
+        padding: 11px 24px;
+    }
+    .userProfile .userImg {
+        width: 35px;
+        height: 35px;
+    }
+    .profileFormOuter .profileImgOuter {
+        width: 80px;
+        height: 80px;
+    }
+    /* .customSideNav{
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100%;
+        background-color: #fff;
+    } */
+    .offcanvas.sideNavOffCanvas .sideBarMenus {
+        height: 100%;
+    }
+}
+@media (max-width: 767px){
+    .signInBtns .btnIcon{
+        width: 16px;
+        height: 16px;
+    }
+    .signInBtns {
+        width: 40px !important;
+        height: 40px !important;
+        padding: 6px 6px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+@media (max-width: 575px){
+    .logo {
+        width: 120px !important;
+    }
+    .userProfile .dropdown-item {
+        font-size: 14px;
+        padding: 5px 12px;
+        line-height: normal;
+    }
+    .profileFormOuter .customForm .form-label {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+    .profileFormOuter .customForm .form-control, .profileFormOuter .customForm .form-select {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+    .profileFormOuter .profileImgOuter {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .uploadImgBtn{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+
+.card{
+    border: none;
+}
+.forms-inputs{
+    position: relative
+}
+.forms-inputs span{
+    position: absolute;top:-18px;left: 10px;background-color: #fff;padding: 5px 10px;font-size: 15px
+}
+.forms-inputs input{
+    height: 50px;border: 2px solid #eee
+}
+.forms-inputs input:focus{
+    box-shadow: none;outline: none;border: 2px solid #000
 }

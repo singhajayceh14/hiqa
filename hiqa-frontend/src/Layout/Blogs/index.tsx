@@ -26,6 +26,7 @@ function Index() {
       setLastPage(req?.data?.page);
       setMaxLength(req?.data?.total);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   useEffect(() => {
@@ -61,6 +62,7 @@ function Index() {
         )}
       </div>
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, ButtonLoader, loading]);
   return (
     <>

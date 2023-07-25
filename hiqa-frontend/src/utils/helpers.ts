@@ -231,7 +231,7 @@ export const validateAuthentication = () => {
     // Non Null Assertion ! will remove undefined and null from a type without doing any explicit type checking
     try {
       const decoded: any = jwt_decode(jwtDecodedToken as string);
-      console.log(decoded)
+      console.log(decoded);
       const currentTime = Date.now() / 1000;
       if (decoded && decoded.exp < currentTime) {
         logout();

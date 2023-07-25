@@ -6330,3 +6330,4 @@ Error: Route.get() requires a callback function but got a [object Undefined]
     at Module.require (node:internal/modules/cjs/loader:1005:19)
     at require (node:internal/modules/cjs/helpers:102:18)
 [2023-07-24T17:24:22.925Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-25T18:28:08.329Z] [error]: 500 - [ 'Error' ] - null

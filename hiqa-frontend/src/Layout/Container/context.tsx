@@ -1,9 +1,7 @@
-import React, { useContext, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React, { useContext } from 'react';
 
 import { KEYPAIR } from '@/types/interfaces';
 import { useCommonReducer } from '@/components/App/reducer';
-import { validateAuthentication, getDecodedToken } from '@/utils/helpers';
 
 interface Props {
   children: JSX.Element | JSX.Element[];
@@ -15,7 +13,6 @@ interface CONTEXTVALUE {
 }
 const AppContext = React.createContext<CONTEXTVALUE | null>(null);
 export const ContainerContextProvider = ({ children }: Props) => {
-  const router = useRouter();
   const { state, dispatch } = useCommonReducer({
     profileDetail: {},
 

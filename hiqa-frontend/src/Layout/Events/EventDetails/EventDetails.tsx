@@ -19,6 +19,7 @@ function EventDetails({ details }: { details: EVENT_DATA }) {
               <div className="text-column col-lg-9 col-md-12 col-sm-12">
                 <div className="s-about-content wow fadeInRight" data-animation="fadeInRight" data-delay=".2s">
                   <h2>UI/UX Design Contest 2023</h2>
+                  <p>{details.short_description}</p>
                   <p>
                     The world of search engine optimization is complex and ever-changing, but you can easily understand
                     the basics, and even a small amount of SEO knowledge can make a big difference. Free SEO education
