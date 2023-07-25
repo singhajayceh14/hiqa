@@ -110,7 +110,7 @@ function CourseDetailsPage({ details }: { details: COURSE_DATA }) {
                     <li>
                       <div className="slider-btn">
                         <Link href="/contact" className="btn ss-btn smoth-scroll">
-                          Register <i className="fal fa-long-arrow-right" />
+                          Apply <i className="fal fa-long-arrow-right" />
                         </Link>
                       </div>
                     </li>

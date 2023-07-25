@@ -2372,9 +2372,26 @@ label {
     margin-bottom: 0;
     color: #777;
 }
+.about-content2 .li2 {
+    width: 100%;
+}
 
 .about-content2 .abcontent {
     display: flex;
+}
+
+.about-content2 li .ano2 {
+    font-size: 20px;
+    width: 90px;
+    height: 56px;
+    background: #ff7350;
+    text-align: center;
+    margin-right: 15px;
+    color: #fff;
+    display: block;
+    font-weight: 500;
+    line-height: 56px;
+    font-family: 'Jost', sans-serif;
 }
 
 .about-content2 li .ano {
@@ -2386,7 +2403,7 @@ label {
     margin-right: 15px;
     color: #fff;
     display: block;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     font-weight: 500;
     line-height: 56px;
     font-family: 'Jost', sans-serif;
