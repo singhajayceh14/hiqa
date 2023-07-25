@@ -11,7 +11,6 @@ import { useTranslate } from '@/components/Translate';
 import { REQUEST } from '@/types/interfaces';
 import { useRequest, useLoading, useApp } from '@/components/App';
 import { validateAuthentication } from '@/utils/helpers';
-import { useWebPush } from '@/components/WebPush';
 import FrontContainer from '@/Layout/FrontContainer';
 // import LOGO from './Components/Logo';
 
@@ -27,7 +26,6 @@ function Index() {
   const { request, loading } = useRequest();
   const { ButtonLoader } = useLoading();
   const { trans } = useTranslate();
-  const { getSubscriptionBodyToken } = useWebPush();
 
   const validateToken = useCallback(() => {
     if (validateAuthentication()) {
@@ -74,8 +72,6 @@ function Index() {
                       email: string;
                       password: string;
                     }) => {
-                      const subscription = await getSubscriptionBodyToken();
-                      if (subscription) values['subscription'] = subscription;
                       const req = (await request('LoginUser', values)) as REQUEST;
                       if (req.status) {
                         dispatch({ user: req.data });
