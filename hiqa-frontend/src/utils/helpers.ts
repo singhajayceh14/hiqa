@@ -221,7 +221,7 @@ export const logout = () => {
   setAuthToken(false);
   Cookies.remove('token');
   Cookies.remove('rememberme');
-  router.push('/login');
+  router.push('/');
   // window.location.href = '/';
 };
 

@@ -39,6 +39,7 @@ function LoadStatusList(props: PROPS) {
       removeListener();
     };
   }, []);
+  console.log(typeof children)
   return (
     <div ref={wrapperRef}>
       <span role="button" onClick={showStatusList}>
@@ -52,6 +53,7 @@ function LoadStatusList(props: PROPS) {
         >
           {children && children instanceof Array
             ? children.map((item: JSX.Element | string, index: number) => (
+                
                 <li role="button" key={index}>
                   {item}
                 </li>

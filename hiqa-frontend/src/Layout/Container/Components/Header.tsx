@@ -7,7 +7,7 @@ import styles from '@/styles/Components/Container/Header.module.scss';
 import { logout } from '@/utils/helpers';
 
 function Header() {
-  const toggalClass = () => {
+  const toggleClass = () => {
     const bodyClass = document.querySelector<HTMLBodyElement>('body');
     if (bodyClass) {
       bodyClass.classList.toggle('toggleSidebar');
@@ -20,7 +20,7 @@ function Header() {
           <img src="/assets/images/logo.png" alt="logo" />
         </Link>
       </div>
-      <div onClick={toggalClass}>
+      <div onClick={toggleClass}>
         <img src="/assets/icons/hamburger.png" alt=" " className={styles.hamburger} />
       </div>
       <div className={styles.hdrMenu}>

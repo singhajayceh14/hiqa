@@ -2379,7 +2379,7 @@ label {
 
 .about-content2 li .ano {
     font-size: 20px;
-    width: 90px;
+    width: 65px;
     height: 56px;
     background: #ff7350;
     text-align: center;
@@ -14045,4 +14045,17 @@ transform: rotate(180deg);
     max-width: 100%;
     width: auto !important;
     display: inline-block;
+}
+
+.autocompleteMultipleChip {
+    padding: 6px;
+    background: #ebedef;
+    margin: 3px;
+    border-radius: 0.25rem;
+}
+.autocompleteMultipleChip .fa {
+    padding: 0;
+    margin-left: 0.5rem;
+    background-color: transparent;
+    border: 0;
 }

@@ -1,10 +1,15 @@
 import React, { memo, useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
+import { Button } from 'react-bootstrap';
+
+import TopHeader from './TopHeader';
+
 
 import { useApp } from '@/components/App';
 import { COURSE } from '@/types/interfaces';
-
-import TopHeader from './TopHeader';
+import styles from '@/styles/Components/Container/Header.module.scss';
+import LoadStatusList from '@/components/Default/LoadStatusList';
+import { logout } from '@/utils/helpers';
 
 const Header = () => {
   const { state } = useApp();
@@ -77,37 +82,25 @@ const Header = () => {
 
                 {state?.user ? (
                   <div className="col-auto d-none d-lg-block">
-                    <div className="dropdown userProfile">
-                      <button
-                        className="userImg border-0 p-0 shadow-none rounded-circle overflow-hidden"
-                        type="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        <img
-                          className="w-100 h-100"
-                          src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
-                          alt=""
-                        />
-                      </button>
-                      <ul className="dropdown-menu dropdown-menu-end p-0 overflow-hidden">
-                        <li>
-                          <a className="dropdown-item" href="#">
-                            Menu 1
-                          </a>
-                        </li>
-                        <li>
-                          <a className="dropdown-item" href="#">
-                            Menu 2
-                          </a>
-                        </li>
-                        <li>
-                          <a className="dropdown-item" href="#">
-                            Menu 3
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+                    <LoadStatusList
+                      key={'DropDown'}
+                      label={
+                        <span className={styles.userImg}>
+                          <img src="/assets/images/user.png" alt="User" />
+                        </span>
+                      }
+                      position={'absolute'}
+                    >
+                      <Link href="/" style={{ color: '#757575' }}>
+                        Home
+                      </Link>
+                      <Link href="/profile" style={{ color: '#757575' }}>
+                        My Profile
+                      </Link>
+                      <Button variant="link" style={{ fontSize: '14px', color: '#757575' }} onClick={logout}>
+                        Logout
+                      </Button>
+                    </LoadStatusList>
                   </div>
                 ) : (
                   <div className="col-xl-3 col-lg-3 text-right d-none d-lg-block text-right text-xl-right">
@@ -140,37 +133,25 @@ const Header = () => {
                 <div className="col-12">
                   <div className="mobile-menu mean-container d-flex d-lg-none align-items-center gap-3 top-0 bottom-0 end-0 position-absolute">
                     {state?.user ? (
-                      <div className="dropdown userProfile text-end">
-                        <button
-                          className="userImg border-0 p-0 shadow-none rounded-circle overflow-hidden"
-                          type="button"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                        >
-                          <img
-                            className="w-100 h-100"
-                            src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
-                            alt=""
-                          />
-                        </button>
-                        <ul className="dropdown-menu dropdown-menu-end p-0 overflow-hidden">
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              Menu 1
-                            </a>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              Menu 2
-                            </a>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              Menu 3
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
+                       <LoadStatusList
+                       key={'DropDown'}
+                       label={
+                         <span className={styles.userImg}>
+                           <img src="/assets/images/user.png" alt="User" />
+                         </span>
+                       }
+                       position={'absolute'}
+                     >
+                       <Link href="/" style={{ color: '#757575' }}>
+                         Home
+                       </Link>
+                       <Link href="/profile" style={{ color: '#757575' }}>
+                         My Profile
+                       </Link>
+                       <Button variant="link" style={{ fontSize: '14px', color: '#757575' }} onClick={logout}>
+                         Logout
+                       </Button>
+                     </LoadStatusList>
                     ) : (
                       <ul className="d-flex gap-xl-3 gap-2 ">
                         <li>

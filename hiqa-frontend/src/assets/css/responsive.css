@@ -126,9 +126,7 @@ background-position: 0 -100px;
     .second-menu .main-menu ul li {
   margin-left: 30px;
 }
-    .main-menu {
-  margin-right: -40px;
-}
+
     .call-area h2 {
   color: #fff;
   font-size: 48px;
@@ -347,10 +345,7 @@ background-position: 0 -100px;
     .about-title h2 {
     font-size: 50px;
 }
-    .main-menu {
-    text-align: right;
-        margin-right: -30px;
-}
+
       .testimonial-active .slick-arrow,.home-blog-active .slick-arrow, .home-blog-active2 .slick-arrow{
         display: none!important;
     }

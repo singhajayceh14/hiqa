@@ -20,10 +20,12 @@ interface PROPS {
   onSelect?: (e: React.MouseEvent<HTMLLIElement>, data: data) => string;
   clearOption?: (e: React.MouseEvent<HTMLElement>) => void;
   getvalue?: (data: data) => string;
+  renderValue?: (data: string) => string;
   onMultipleSelect?: (data: MULTIPLEOPTIONS[]) => void;
   // filterfrom?: (data: data) => string;
   filterfrom?: (data: data) => string;
   isOptionsEmpty?: boolean;
+  customError?: any;
 }
 interface MULTIPLEOPTIONS {
   [key: string]: string | number | JSX.Element;
@@ -34,11 +36,13 @@ function Autcomplete(props: PROPS) {
   const [multipleOptions, setmultipleOptions] = React.useState<MULTIPLEOPTIONS[]>([]);
   const [formValue, setformValue] = React.useState('');
   const containerRef = React.useRef(null) as any;
+
   const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
     setstate(!state);
-    if (!props?.data?.length) return;
+    //if (!props?.data?.length) return;
     if (props.onClick) {
       props.onClick(e);
+      setformValue('');
     }
   };
 
@@ -51,6 +55,7 @@ function Autcomplete(props: PROPS) {
       }
     }
   };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setstate(true);
     setformValue(e.target.value);
@@ -58,6 +63,7 @@ function Autcomplete(props: PROPS) {
       props.onChange(e);
     }
   };
+
   const onSelect = (e: React.MouseEvent<HTMLLIElement>, data: data) => {
     if (props.onSelect) {
       const selectValue = props.onSelect(e, data) as string;
@@ -103,6 +109,7 @@ function Autcomplete(props: PROPS) {
       setselected('');
     };
   }, [props.value, props.values]);
+  // console.log('klg-105', props.values);
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (containerRef.current && !containerRef?.current?.contains(event.target)) {
@@ -128,7 +135,7 @@ function Autcomplete(props: PROPS) {
               {multipleOptions.length
                 ? multipleOptions.map((mp, i) => (
                     <Form.Label className="autocompleteMultipleChip" key={i}>
-                      {mp.name}
+                      {props?.renderValue ? props?.renderValue(mp.name as string) : mp.name}
                       <i
                         role={'button'}
                         className="fa fa-times"
@@ -161,8 +168,12 @@ function Autcomplete(props: PROPS) {
                 type={props.type}
                 value={selected || ''}
                 className="filteredText"
+                isInvalid={!!props.customError}
                 readOnly
               />
+              {props.customError ? (
+                <Form.Control.Feedback type="invalid">{props.customError}</Form.Control.Feedback>
+              ) : null}
               <InputGroup.Text>
                 <i title="Clear" onClick={clearOption} className="input_icon_close">
                   x

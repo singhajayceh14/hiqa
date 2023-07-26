@@ -1,9 +1,22 @@
 import { memo, MouseEventHandler } from 'react';
 import Slider from 'react-slick';
 import Link from 'next/link';
+import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 import { COURSE_DATA } from '@/types/interfaces';
+import Modal from '@/components/Default/Modal';
+import { useCommonReducer } from '@/components/App/reducer';
+import CustomAutomplete from '@/components/Default/Autocomplete';
 
+const FormikSchema = Yup.object().shape({
+  course: Yup.array()
+    .of(Yup.string())
+    .min(1, 'Course is required!')
+    .max(50, 'Course is required!')
+    .required('Required'),
+});
 function NextArrow(props: { className?: string; style?: any; onClick?: MouseEventHandler<HTMLButtonElement> }) {
   const { className, style, onClick } = props;
   return (
@@ -22,6 +35,8 @@ function PrevArrow(props: { className?: string; style?: any; onClick?: MouseEven
   );
 }
 const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
+  const { state, dispatch } = useCommonReducer();
+
   const settings = {
     dots: false,
     infinite: true,
@@ -57,6 +72,24 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
       },
     ],
   };
+
+  const courseApplyModal = (course: string) => {
+    const selectedCourse = course_data?.find((sm: COURSE_DATA) => sm.id == course)?.name;
+    dispatch({
+      viewModal: true,
+      selectedCourseId: [course],
+      allCourse: course_data,
+      selectedCourseName: [selectedCourse],
+    });
+  };
+  const closeModal = (key: string) => {
+    dispatch({ [key]: false, selectedCourseId: [], selectedCourseName: [] });
+  };
+  const intitalValues = {
+    course: state?.selectedCourseName || [],
+    courseId: state?.selectedCourseId || [],
+  };
+  console.log(intitalValues);
   return (
     <>
       <section className="courses pt-120 pb-120 p-relative fix">
@@ -88,9 +121,14 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
                     </Link>
                   </div>
                   <div className="courses-content">
-                    {/* <div className="cat">
-                      <i className="fal fa-graduation-cap" /> {course.category}
-                    </div> */}
+                    <div
+                      onClick={() => {
+                        courseApplyModal(course.id);
+                      }}
+                      className="cat"
+                    >
+                      <i className="fal fa-graduation-cap" /> Apply Now
+                    </div>
                     <h3>
                       <Link href={'course/' + course.slug}>{course.name}</Link>
                     </h3>
@@ -108,6 +146,71 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
           </Slider>
         </div>
       </section>
+      <Modal
+        id="courseApply"
+        title={'Course Apply'}
+        size="lg"
+        show={state.viewModal}
+        onClose={() => closeModal('viewModal')}
+      >
+        <div className="container" style={{ width: 500 }}>
+          <Formik
+            enableReinitialize={true}
+            initialValues={intitalValues}
+            validationSchema={FormikSchema}
+            onSubmit={async values => {
+              console.log(intitalValues, values);
+            }}
+          >
+            {({ handleSubmit, handleReset, values, errors, setFieldValue }) => (
+              <Form noValidate onSubmit={handleSubmit} onReset={handleReset}>
+                <Row>
+                  <Col md={12}>
+                    <CustomAutomplete
+                      label={'Select Course'}
+                      placeholder={'Select Course'}
+                      type="text"
+                      loading={false}
+                      // onClick={() => disabledPairedFields()}
+                      clearOption={() => {
+                        setFieldValue('course', []);
+                      }}
+                      name={'course'}
+                      multiple={true}
+                      onMultipleSelect={selected => {
+                        setFieldValue('course', [...selected.map(mp => mp.name)]);
+                        const quoteUsersIds = selected.map(mp => {
+                          if (state.allCourse) {
+                            return state.allCourse?.find((sm: COURSE_DATA) => sm.name === mp.name)?.id;
+                          }
+                        });
+                        setFieldValue('courseId', [...quoteUsersIds]);
+                      }}
+                      onSelect={(e, val) => val.name as string}
+                      isOptionsEmpty={false}
+                      filter={true} //If not remote
+                      //Provide only if we want to render a value again
+                      values={values.course?.map((mp: string) => ({ name: mp })) || []}
+                      data={state.allCourse}
+                      filterfrom={val => val.name as string}
+                      getvalue={val => val.name as string}
+                      renderValue={val => state.allCourse?.find((vl: COURSE_DATA) => vl.name === val)?.name || ''}
+                    />
+                    {errors.course ? <Form.Text className="text-danger">{errors.course as string}</Form.Text> : null}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={12}>
+                    <Button type="submit" className="btn ss-btn" data-animation="fadeInRight" data-delay=".8s">
+                      Apply Now <i className="fal fa-long-arrow-right" />
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </Modal>
     </>
   );
 };
