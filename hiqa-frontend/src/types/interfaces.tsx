@@ -159,3 +159,27 @@ export interface BLOG_DATA {
   image: string;
   long_description?: string;
 }
+
+export interface USER_DATA {
+  id?: string;
+  fullName: string;
+  fatherName: string;
+  email: string;
+  gender: string;
+  mobile: string;
+  dob: string;
+  image: string;
+  address: string;
+  zipcode: string;
+  longitude: string;
+  latitude: string;
+  country: string;
+  state: string;
+  city: string;
+}
+
+export interface ADDRESS {
+  formattedAddress: string;
+  lat: number;
+  lng: number;
+}

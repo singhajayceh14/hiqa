@@ -4,6 +4,7 @@ import '@/styles/App.scss';
 import type { NextComponentType } from 'next';
 import type { AppProps } from 'next/app';
 import SSRProvider from 'react-bootstrap/SSRProvider';
+import { StepsProvider } from 'react-step-builder';
 
 import Container from '@/Layout/Container';
 // import { Loading } from '@/components/App/Loader';
@@ -36,14 +37,16 @@ export default function App({ Component, pageProps }: AppComponentProps) {
   return (
     <ErrorBoundary>
       <SSRProvider>
-        <AppProvider>
-          <Layout>
-            <>
-              {/* <Loading /> */}
-              <Component {...pageProps} />
-            </>
-          </Layout>
-        </AppProvider>
+        <StepsProvider>
+          <AppProvider>
+            <Layout>
+              <>
+                {/* <Loading /> */}
+                <Component {...pageProps} />
+              </>
+            </Layout>
+          </AppProvider>
+        </StepsProvider>
       </SSRProvider>
     </ErrorBoundary>
   );

@@ -112,7 +112,7 @@ function Index() {
           }
         }}
       >
-        {({ handleSubmit, handleChange, values, errors, setFieldValue, setErrors }) => (
+        {({ handleSubmit, handleChange, values, errors, touched, setFieldValue, setErrors }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Row>
               <Col md={6} lg={6}>
@@ -127,7 +127,9 @@ function Index() {
                     value={values.title}
                     isInvalid={!!errors.title}
                   />
-                  {errors?.title ? <Form.Control.Feedback type="invalid">{errors.title}</Form.Control.Feedback> : null}
+                  {errors?.title && touched.title ? (
+                    <Form.Control.Feedback type="invalid">{errors.title}</Form.Control.Feedback>
+                  ) : null}
                 </Form.Group>
               </Col>
               <Col md={6} lg={6}>
@@ -274,14 +276,14 @@ function Index() {
                     onChange={handleChange}
                     value={values.address}
                     isInvalid={!!errors.address}
-                    onSelectOption={(address: { formattedAddress: string; lat: number; lng: number }) => {
+                    onSelectOption={address => {
                       setFieldValue('address', address.formattedAddress, true);
                       setFieldValue('latitude', address.lat, true);
                       setFieldValue('longitude', address.lng, true);
                     }}
                   />
-                  {errors.skype_url ? (
-                    <Form.Control.Feedback type="invalid">{errors.skype_url}</Form.Control.Feedback>
+                  {errors.address ? (
+                    <Form.Control.Feedback type="invalid">{errors.address}</Form.Control.Feedback>
                   ) : null}
                 </Form.Group>
               </Col>
