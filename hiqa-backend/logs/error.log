@@ -594,3 +594,23 @@ Error: Route.get() requires a callback function but got a [object Undefined]
     at require (node:internal/modules/cjs/helpers:102:18)
 [2023-07-24T17:24:22.925Z] [error]: 500 - [ 'Error' ] - null
 [2023-07-25T18:28:08.329Z] [error]: 500 - [ 'Error' ] - null
+[2023-07-28T07:15:49.718Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T07:15:49.725Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T07:15:49.730Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T07:15:49.735Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:30:13.980Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'general' in 'field list'
+[2023-07-28T08:30:14.009Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Unknown column 'general' in 'field list'
+[2023-07-28T08:30:14.093Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'general' in 'field list'
+[2023-07-28T08:30:14.128Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Unknown column 'general' in 'field list'
+[2023-07-28T08:30:14.152Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:30:14.158Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:30:14.165Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:30:14.166Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:30:26.273Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:30:26.277Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:30:26.286Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:30:26.287Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:33:40.546Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:33:40.552Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:33:40.567Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-28T08:33:40.576Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
