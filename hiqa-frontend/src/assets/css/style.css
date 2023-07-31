@@ -13847,16 +13847,6 @@ blockquote cite {
     background-color: #125875;
     color: #fff;
 }
-.sideBarMenus{
-    border: 1px solid #125875;
-}
-.sideBarMenus .sidebarHeader{
-    background-color: #125875;
-}
-.sideBarMenus .sidebarHeader .title{
-    font-size: 16px;
-    color: #fff;
-}
 .sidebarBody .sideMenu .sideMenuLink {
     font-size: 14px;
     font-weight: 500;
@@ -13868,9 +13858,9 @@ blockquote cite {
 .sidebarBody .sideMenu .sideMenuLink:hover {
     background-color: #12587514;
 }
-/* .sidebarBody .sideMenu:last-child {
+.sidebarBody .sideMenu:last-child {
     border: none !important;
-} */
+}
 .sidebarBody .sideMenu .sideMenuLink.active,
 .sidebarBody .sideMenu .sideMenuLink:active {
     background-color: #125875;
@@ -13886,18 +13876,18 @@ blockquote cite {
 }
 
 .profileFormOuter .customForm .form-label {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     color: #000000;
     line-height: normal;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
-.profileFormOuter .customForm .form-control, 
+/* .profileFormOuter .customForm .form-control, 
 .profileFormOuter .customForm .form-select {
     font-size: 15px;
     line-height: normal;
     padding: 10px 16px;
-}
+} */
 .profileFormOuter .customForm .form-control:focus, 
 .profileFormOuter .customForm .form-select:focus {
     border-color: #ff7350;
@@ -13919,7 +13909,7 @@ visibility: visible;
     max-width: 260px;
     visibility: visible;
 }
-.btn-close-header {
+.btn-close {
     filter: invert(1);
     opacity: 1;
     font-size: 12px;
@@ -13943,6 +13933,77 @@ visibility: visible;
 }
 .offcanvas.sideNavOffCanvas.show .sidenavOpen svg{
 transform: rotate(180deg);
+}
+
+
+
+
+
+.profileFormOuter, .sideBarMenus{
+    border-radius: 8px !important;
+    box-shadow: 0 -3px 31px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.02);
+}
+.btnSave {
+    padding: 12px 30px;
+}
+.pageTitle{
+    font-size: 16px;
+    font-weight: bold;
+}
+.profileFormOuter .customForm .form-control, .profileFormOuter .customForm .form-select {
+    /* font-size: 15px; */
+    line-height: normal;
+    padding: 10px 10px;
+}
+.sideBarMenus {
+    max-height: calc(100% - 160px);
+    height: 100%;
+    position: sticky;
+    top: 130px;
+}
+
+.sidebarBody .sideMenu:last-child {
+    border: none !important;
+}
+
+.sideBarMenus .sidebarHeader,  .sideBarOffcanvas .offcanvas-header{
+    background-color: #12587514;
+}
+.sideBarOffcanvas .offcanvas-header .btn-close{
+    filter: none;
+}
+.sideBarMenus .sidebarHeader .title {
+    font-size: 16px;
+    color: #125875;
+}
+.sidebarBody .sideMenu .sideMenuLink .icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    /* background-color: #125875; */
+    transition: ease-in-out .3s;
+}
+.sidebarBody .sideMenu .sideMenuLink .icon svg{
+    transition: ease-in-out .3s;
+}
+.sidebarBody .sideMenu .sideMenuLink.active .icon {
+    /* background-color: #fff; */
+}
+.sidebarBody .sideMenu .sideMenuLink.active .icon svg{
+    filter: brightness(100);
+}
+.sidebarBody .sideMenu .sideMenuLink:hover {
+    background-color: #12587508;
+    letter-spacing: 0.5px;
+}
+.sidebarBody .sideMenu .sideMenuLink.active,
+.sidebarBody .sideMenu .sideMenuLink:active {
+    background-color: #125875;
+    letter-spacing: 0.5px;
+    color: #fff;
+}
+.sidebarBody{
+    overflow: hidden auto;
 }
 @media (min-width: 992px) and (max-width: 1200px){
     .signInBtns {
@@ -13991,6 +14052,11 @@ transform: rotate(180deg);
     .offcanvas.sideNavOffCanvas .sideBarMenus {
         height: 100%;
     }
+    
+    .sideBarMenus {
+        max-height: 100%;
+        position: unset;
+    }
 }
 @media (max-width: 767px){
     .signInBtns .btnIcon{
@@ -14032,49 +14098,4 @@ transform: rotate(180deg);
         width: 20px;
         height: 20px;
     }
-}
-
-
-
-.card{
-    border: none;
-}
-.forms-inputs{
-    position: relative
-}
-.forms-inputs span{
-    position: absolute;top:-18px;left: 10px;background-color: #fff;padding: 5px 10px;font-size: 15px
-}
-.forms-inputs input{
-    height: 50px;border: 2px solid #eee
-}
-.forms-inputs input:focus{
-    box-shadow: none;outline: none;border: 2px solid #000
-}
-.modal {
-    z-index: -1;
-    display: flex !important;
-    justify-content: center;
-  }
-  
-  .modal-open .modal {
-     z-index: 1050;
-  }
-.modal-dialog { /* Width */
-    max-width: 100%;
-    width: auto !important;
-    display: inline-block;
-}
-
-.autocompleteMultipleChip {
-    padding: 6px;
-    background: #ebedef;
-    margin: 3px;
-    border-radius: 0.25rem;
-}
-.autocompleteMultipleChip .fa {
-    padding: 0;
-    margin-left: 0.5rem;
-    background-color: transparent;
-    border: 0;
 }

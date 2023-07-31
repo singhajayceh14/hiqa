@@ -219,9 +219,11 @@ export const urlBase64ToUint8Array = (base64String: string) => {
 export const logout = () => {
   console.log('LogOut');
   setAuthToken(false);
+  setHeader(false,'');
   Cookies.remove('token');
   Cookies.remove('rememberme');
   router.push('/');
+  
   // window.location.href = '/';
 };
 
@@ -243,6 +245,7 @@ export const validateAuthentication = () => {
       return false;
     }
   } else {
+    logout();
     return false;
   }
 };

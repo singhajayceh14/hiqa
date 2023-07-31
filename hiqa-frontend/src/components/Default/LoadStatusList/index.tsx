@@ -39,7 +39,6 @@ function LoadStatusList(props: PROPS) {
       removeListener();
     };
   }, []);
-  console.log(typeof children)
   return (
     <div ref={wrapperRef}>
       <span role="button" onClick={showStatusList}>
