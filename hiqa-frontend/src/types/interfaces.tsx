@@ -95,6 +95,13 @@ export interface COURSE {
   name: string;
   slug: string;
 }
+
+
+export interface QUALIFICATION {
+  id: string;
+  name: string;
+  slug: string;
+}
 // Banner
 export interface BANNER {
   id: string;
@@ -159,8 +166,23 @@ export interface BLOG_DATA {
   image: string;
   long_description?: string;
 }
+export interface DOC_DATA {
+  [key: string]: {
+    name: string;
+    year: string;
+  };
+}
 
-export interface USER_DATA {
+export interface USER_DOC_DATA {
+  id?: string;
+  qualification: string[];
+  qualificationId: string[];
+  qualificationDoc:DOC_DATA;
+  course:string[];
+  courseId:string[];
+
+}
+export interface USER_DATA extends USER_DOC_DATA {
   id?: string;
   fullName: string;
   fatherName: string;
@@ -177,6 +199,9 @@ export interface USER_DATA {
   state: string;
   city: string;
 }
+
+
+
 
 export interface ADDRESS {
   formattedAddress: string;

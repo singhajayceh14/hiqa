@@ -376,7 +376,26 @@ label {
     color: #fff;
     border-color: #125875;
 }
-
+.btn:active{
+    color: #fff;
+    background: #125875;
+    border-color: #125875 !important;
+}
+.btn:focus-visible{
+    color: #fff;
+    background: #125875;
+    border-color: #125875 !important;
+}
+.btn:focus-visible{
+    color: #fff;
+    background: #125875;
+    border-color: #125875 !important;
+}
+.btn-primary:focus{
+    color: #fff;
+    background: #125875;
+    border-color: #125875 !important;
+}
 
 .slider-btn:hover .btn-after {
     margin-top: -50px;

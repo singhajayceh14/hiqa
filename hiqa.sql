@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2023 at 09:11 PM
+-- Generation Time: Jul 31, 2023 at 05:19 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -265,6 +265,9 @@ CREATE TABLE `users` (
   `name` varchar(25) DEFAULT NULL,
   `mobile_number` varchar(11) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `father_name` varchar(255) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
   `email_verified` tinyint(1) DEFAULT NULL,
   `role_id` int(11) DEFAULT NULL,
   `email_verified_at` datetime DEFAULT NULL,
@@ -285,6 +288,13 @@ CREATE TABLE `users` (
   `device_type` varchar(255) DEFAULT NULL,
   `social_type` text,
   `social_id` text,
+  `address` text,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `zipcode` varchar(255) DEFAULT NULL,
+  `latitude` varchar(255) DEFAULT NULL,
+  `longitude` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -293,13 +303,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `mobile_number`, `email`, `email_verified`, `role_id`, `email_verified_at`, `password`, `remember_token`, `status`, `image`, `last_login_at`, `last_login_ip`, `notification_status`, `admin_approved`, `device_id`, `device_token`, `country_code`, `token`, `fcm_token`, `login_expire`, `device_type`, `social_type`, `social_id`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', '9609898985', 'info@hiqa.in', 1, 0, '2023-07-02 12:42:09', '$2b$10$Kcz6qGYeJfvxeZ1EZAs1cepj1M9CUftPT95zcaWwsa8L8Xj.2MNZ2', NULL, 1, '1689052834808-HIQA LOGO.jpg', NULL, NULL, NULL, NULL, NULL, 'asdasdasdas', NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY5MDIxNTkzMywiZXhwIjoxNzIxNzUxOTMzfQ.1gy-o9Ik0k9Zci7O4rl3_Qb9So12sQcNqFXHZuCp5fc', NULL, NULL, 'IOS', NULL, NULL, '2023-04-09 01:39:10', '2023-07-24 21:55:33'),
-(2, 'Ashish', '321654987', 'ashish@yopmail.com', 1, 1, '2023-07-11 12:58:55', NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 12:58:55', '2023-07-11 12:58:55'),
-(3, 'Manoj', '321654654', 'Manoj@yopmail.com', 1, 1, '2023-07-11 12:58:55', NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'Ravi', '123456789', 'ravi@gmail.com', NULL, 1, NULL, NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:09:12', '2023-07-11 15:09:12'),
-(5, 'Test', '123456789', 'test@yopmail.com', NULL, 1, NULL, '$2b$10$KSapbMvmt7jd2ko/E/hRz.VEm7YzmWEpP6fywcrHIsUe6fkRhDSzu', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:22:09', '2023-07-11 15:30:01'),
-(6, 'test 1 Test', '123456789', 'test1@yopmail.com', NULL, 1, NULL, '$2b$10$NKjTefFCt8C7lsUPOAhBM.xw3K6l8V2Sgw4HKkztOiFvpv/WUD976', NULL, 2, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:31:44', '2023-07-12 12:19:55');
+INSERT INTO `users` (`id`, `name`, `mobile_number`, `email`, `father_name`, `dob`, `gender`, `email_verified`, `role_id`, `email_verified_at`, `password`, `remember_token`, `status`, `image`, `last_login_at`, `last_login_ip`, `notification_status`, `admin_approved`, `device_id`, `device_token`, `country_code`, `token`, `fcm_token`, `login_expire`, `device_type`, `social_type`, `social_id`, `address`, `city`, `state`, `country`, `zipcode`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', '9609898985', 'info@hiqa.in', NULL, NULL, NULL, 1, 0, '2023-07-02 12:42:09', '$2b$10$Kcz6qGYeJfvxeZ1EZAs1cepj1M9CUftPT95zcaWwsa8L8Xj.2MNZ2', NULL, 1, '1689052834808-HIQA LOGO.jpg', NULL, NULL, NULL, NULL, NULL, 'asdasdasdas', NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY5MDMxMDY1OSwiZXhwIjoxNzIxODQ2NjU5fQ.fwH-Ge5h32yut-XT5hXcbKXR66Qe5jtP5TQSDHUUdw4', NULL, NULL, 'IOS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-09 01:39:10', '2023-07-26 00:14:19'),
+(2, 'Ashish', '321654987', 'ashish@yopmail.com', NULL, NULL, NULL, 1, 1, '2023-07-11 12:58:55', NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 12:58:55', '2023-07-11 12:58:55'),
+(3, 'Manoj', '321654654', 'Manoj@yopmail.com', NULL, NULL, NULL, 1, 1, '2023-07-11 12:58:55', NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'Ravi', '123456789', 'ravi@gmail.com', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:09:12', '2023-07-11 15:09:12'),
+(5, 'Test', '123456789', 'test@yopmail.com', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$KSapbMvmt7jd2ko/E/hRz.VEm7YzmWEpP6fywcrHIsUe6fkRhDSzu', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:22:09', '2023-07-11 15:30:01'),
+(6, 'test 1 Test', '123456789', 'test1@yopmail.com', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$NKjTefFCt8C7lsUPOAhBM.xw3K6l8V2Sgw4HKkztOiFvpv/WUD976', NULL, 2, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:31:44', '2023-07-12 12:19:55');
 
 --
 -- Indexes for dumped tables
