@@ -6,11 +6,13 @@ import Footer from './Components/Footer';
 type Props = {
   children: JSX.Element | string | JSX.Element[];
 };
-function Container({ children }: Props) {
+function Container(props) {
+  console.log({ props });
+
   return (
     <>
       <Header />
-      {children}
+      {props.children}
       <Footer />
     </>
   );

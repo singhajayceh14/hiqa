@@ -35,9 +35,10 @@ export default function App({ Component, pageProps }: AppComponentProps) {
   const Layout = useMemo(
     () =>
       ({ children }: { children: React.ReactElement<any> }) =>
-        <FrontContainer>{children}</FrontContainer>,
+        <FrontContainer {...Component}>{children}</FrontContainer>,
     [],
   );
+
   // const Layout = Component.auth
   // ? ({ children }: { children: React.ReactElement<any> }) => <Container meta={Component.meta}>{children}</Container>
   // : React.Fragment;
