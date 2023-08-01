@@ -72,76 +72,74 @@ function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <FrontContainer>
-        <section className="inner-blog pt-50 pt-50">
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-lg-12">
-                <div
-                  className="section-title center-align mb-50 text-center wow fadeInDown animated"
-                  data-animation="fadeInDown"
-                  data-delay=".4s"
-                >
-                  <h5>
-                    <i className="fas fa-blog"></i> Our Blog
-                  </h5>
-                  <h2>Blog Post</h2>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-8">
-                {children}
-                <Pagination currentPage={page} lastPage={lastPage} maxLength={maxLength} setCurrentPage={setPage} />
-              </div>
-              <div className="col-sm-12 col-md-12 col-lg-4">
-                <aside className="sidebar-widget">
-                  <section id="custom_html-5" className="widget_text widget widget_custom_html">
-                    <h2 className="widget-title">Follow Us</h2>
-                    <div className="textwidget custom-html-widget">
-                      <div className="widget-social">
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                        <a href="#">
-                          <i className="fab fa-pinterest-p" />
-                        </a>
-                        <a href="#">
-                          <i className="fab fa-facebook-f" />
-                        </a>
-                        <a href="#">
-                          <i className="fab fa-instagram" />
-                        </a>
-                        <a href="#">
-                          <i className="fab fa-wordpress" />
-                        </a>
-                      </div>
-                    </div>
-                  </section>
-
-                  <section id="recent-posts-4" className="widget widget_recent_entries">
-                    <h2 className="widget-title">Recent Posts</h2>
-                    <ul>
-                      <li>
-                        <Link href="#">User Experience Psychology And Performance Smshing</Link>
-                        <span className="post-date">August 19, 2020</span>
-                      </li>
-                      <li>
-                        <Link href="#">Monthly Web Development Up Cost Of JavaScript</Link>
-                        <span className="post-date">August 19, 2020</span>
-                      </li>
-                      <li>
-                        <Link href="#">There are many variation passages of like available.</Link>
-                        <span className="post-date">August 19, 2020</span>
-                      </li>
-                    </ul>
-                  </section>
-                </aside>
+      <section className="inner-blog pt-50 pt-50">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-12">
+              <div
+                className="section-title center-align mb-50 text-center wow fadeInDown animated"
+                data-animation="fadeInDown"
+                data-delay=".4s"
+              >
+                <h5>
+                  <i className="fas fa-blog"></i> Our Blog
+                </h5>
+                <h2>Blog Post</h2>
               </div>
             </div>
           </div>
-        </section>
-      </FrontContainer>
+          <div className="row">
+            <div className="col-lg-8">
+              {children}
+              <Pagination currentPage={page} lastPage={lastPage} maxLength={maxLength} setCurrentPage={setPage} />
+            </div>
+            <div className="col-sm-12 col-md-12 col-lg-4">
+              <aside className="sidebar-widget">
+                <section id="custom_html-5" className="widget_text widget widget_custom_html">
+                  <h2 className="widget-title">Follow Us</h2>
+                  <div className="textwidget custom-html-widget">
+                    <div className="widget-social">
+                      <a href="#">
+                        <i className="fab fa-twitter" />
+                      </a>
+                      <a href="#">
+                        <i className="fab fa-pinterest-p" />
+                      </a>
+                      <a href="#">
+                        <i className="fab fa-facebook-f" />
+                      </a>
+                      <a href="#">
+                        <i className="fab fa-instagram" />
+                      </a>
+                      <a href="#">
+                        <i className="fab fa-wordpress" />
+                      </a>
+                    </div>
+                  </div>
+                </section>
+
+                <section id="recent-posts-4" className="widget widget_recent_entries">
+                  <h2 className="widget-title">Recent Posts</h2>
+                  <ul>
+                    <li>
+                      <Link href="#">User Experience Psychology And Performance Smshing</Link>
+                      <span className="post-date">August 19, 2020</span>
+                    </li>
+                    <li>
+                      <Link href="#">Monthly Web Development Up Cost Of JavaScript</Link>
+                      <span className="post-date">August 19, 2020</span>
+                    </li>
+                    <li>
+                      <Link href="#">There are many variation passages of like available.</Link>
+                      <span className="post-date">August 19, 2020</span>
+                    </li>
+                  </ul>
+                </section>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
