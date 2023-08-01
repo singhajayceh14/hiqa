@@ -65,12 +65,6 @@ function Index() {
   const eventPage = useMemo(() => <EventPage event_data={globalState?.events ?? []} />, [globalState?.events]);
   return (
     <>
-      <Head>
-        <title>Home</title>
-        <meta name="description" content={'Home' || 'HIQA'} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
-      </Head>
       {loading ? (
         <SuspenseLoader color={'#002e6e'} />
       ) : (

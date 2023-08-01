@@ -10,5 +10,6 @@ function Index() {
 Index.auth = false;
 Index.meta = {
   title: 'Home',
+  description:"Home"
 };
 export default Index;

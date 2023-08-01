@@ -38,12 +38,6 @@ function Index() {
   // }, [validateToken]);
   return (
     <>
-      <Head>
-        <title>Login</title>
-        <meta name="description" content={'Login' || 'Xyyper'} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
-      </Head>
       <section className="shop-area pt-50 pb-50  p-relative " data-animation="fadeInUp animated" data-delay=".2s">
         <div className="container">
           <div className="row d-flex justify-content-center wow fadeInDown animated">

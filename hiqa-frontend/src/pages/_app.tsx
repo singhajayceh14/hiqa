@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { useMemo } from 'react';
 import '@/styles/globals.scss';
 import '@/styles/App.scss';
@@ -6,7 +7,6 @@ import type { AppProps } from 'next/app';
 import SSRProvider from 'react-bootstrap/SSRProvider';
 import { StepsProvider } from 'react-step-builder';
 
-import Container from '@/Layout/Container';
 import FrontContainer from '@/Layout/FrontContainer';
 // import { Loading } from '@/components/App/Loader';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
@@ -21,6 +21,7 @@ import '../assets/css/meanmenu.css';
 import '../assets/css/default.css';
 import '../assets/css/style.css';
 import '../assets/css/responsive.css';
+import Meta from '@/Layout/FrontContainer/Components/Meta';
 
 interface AppComponentProps extends AppProps {
   pageProps: any;
@@ -28,6 +29,7 @@ interface AppComponentProps extends AppProps {
     auth?: boolean;
     meta: {
       title: string;
+      description: string;
     };
   };
 }
@@ -39,6 +41,10 @@ export default function App({ Component, pageProps }: AppComponentProps) {
     [],
   );
 
+  const metaComponent = useMemo(
+    () => <Meta title={Component.meta?.title} description={Component.meta?.description} />,
+    [Component.meta],
+  );
   // const Layout = Component.auth
   // ? ({ children }: { children: React.ReactElement<any> }) => <Container meta={Component.meta}>{children}</Container>
   // : React.Fragment;
@@ -49,7 +55,7 @@ export default function App({ Component, pageProps }: AppComponentProps) {
           <AppProvider>
             <Layout>
               <>
-                {/* <Loading /> */}
+                {metaComponent}
                 <Component {...pageProps} />
               </>
             </Layout>

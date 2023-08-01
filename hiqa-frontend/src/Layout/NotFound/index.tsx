@@ -7,13 +7,7 @@ import FrontContainer from '@/Layout/FrontContainer';
 function EventDetails() {
   return (
     <>
-      <Head>
-        <title>Not Found</title>
-        <meta name="description" content={'Not Found' || 'HIQA'} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
-      </Head>
-
+  
       <section className="page_404 align-items-center pb-120 pt-120 p-relative">
         <div className="container">
           <div className="row">

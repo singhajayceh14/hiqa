@@ -75,13 +75,6 @@ function Index() {
   }, [data, ButtonLoader, loading]);
   return (
     <>
-      <Head>
-        <title>Events</title>
-        <meta name="description" content={'Events' || 'HIQA'} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
-      </Head>
-
       <section className="shop-area pt-50 pb-50 p-relative " data-animation="fadeInUp animated" data-delay=".2s">
         <div className="container">
           <div className="row align-items-center">

@@ -7,12 +7,6 @@ import FrontContainer from '@/Layout/FrontContainer';
 function Index() {
   return (
     <>
-      <Head>
-        <title>About Us</title>
-        <meta name="description" content={'About Us' || 'HIQA'} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
-      </Head>
       <section className="about-area about-p pt-50 pb-50 p-relative fix">
         <div className="container">
           <div className="row justify-content-center align-items-center">

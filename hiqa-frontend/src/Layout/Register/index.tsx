@@ -1,5 +1,4 @@
 import React, { memo, useState } from 'react';
-import Head from 'next/head';
 import { Button, Col, Form, Row, Table } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -7,7 +6,6 @@ import { useRouter } from 'next/router';
 import { Steps, useSteps } from 'react-step-builder';
 
 import { REQUEST, USER_DATA, QUALIFICATION, COURSE_DATA } from '@/types/interfaces';
-import FrontContainer from '@/Layout/FrontContainer';
 import { toastr } from '@/utils/helpers';
 import { useApp, useRequest } from '@/components/App';
 import GoogleAutoComplete from '@/components/Default/Maps/Autocomplete';
@@ -121,12 +119,6 @@ function Index() {
 
   return (
     <>
-      <Head>
-        <title>Register</title>
-        <meta name="description" content={'Register' || 'HIQA'} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
-      </Head>
       <section className="shop-area pt-50 pb-50  p-relative " data-animation="fadeInUp animated" data-delay=".2s">
         <div className="container">
           <div className="row d-flex justify-content-center wow fadeInDown animated">
@@ -158,12 +150,12 @@ function Index() {
                     formData.append('address', values.address);
                     formData.append('zipcode', values.zipcode);
 
-                    if (request) {
-                      // const req = (await request('addBanner', formData)) as REQUEST;
-                      // if (req.status) {
-                      //   router.push('/banner');
-                      // }
-                    }
+                    // if (request) {
+                    //   // const req = (await request('addBanner', formData)) as REQUEST;
+                    //   // if (req.status) {
+                    //   //   router.push('/banner');
+                    //   // }
+                    // }
                   }}
                 >
                   {({ handleSubmit, handleChange, values, errors, touched, setFieldValue }) => (

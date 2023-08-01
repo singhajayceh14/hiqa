@@ -8,7 +8,7 @@ function Index() {
     </>
   );
 }
-
+Index.auth = false;
 Index.meta = {
   title: 'Login',
 };

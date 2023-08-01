@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap';
 
 import TopHeader from './TopHeader';
 
-
 import { useApp } from '@/components/App';
 import { COURSE } from '@/types/interfaces';
 import styles from '@/styles/Components/Container/Header.module.scss';
@@ -12,7 +11,7 @@ import LoadStatusList from '@/components/Default/LoadStatusList';
 import { logout } from '@/utils/helpers';
 
 const Header = () => {
-  const { state } = useApp();
+  const { state, dispatch } = useApp();
   const [mobile, setMobile] = useState<boolean>(false);
   const [News, setNews] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
@@ -29,6 +28,12 @@ const Header = () => {
   }, []);
   const topBar = useMemo(() => <TopHeader personalData={state?.setting_data ?? {}} />, [state?.setting_data]);
 
+  const logoutFunction = () => {
+    dispatch({
+      user: null,
+    });
+    logout();
+  };
   return (
     <>
       <header className="header-area header-three">
@@ -97,7 +102,7 @@ const Header = () => {
                       <Link href="/profile" style={{ color: '#757575' }}>
                         My Profile
                       </Link>
-                      <Button variant="link" style={{ fontSize: '14px', color: '#757575' }} onClick={logout}>
+                      <Button variant="link" style={{ fontSize: '14px', color: '#757575' }} onClick={logoutFunction}>
                         Logout
                       </Button>
                     </LoadStatusList>
@@ -133,25 +138,25 @@ const Header = () => {
                 <div className="col-12">
                   <div className="mobile-menu mean-container d-flex d-lg-none align-items-center gap-3 top-0 bottom-0 end-0 position-absolute">
                     {state?.user ? (
-                       <LoadStatusList
-                       key={'DropDown'}
-                       label={
-                         <span className={styles.userImg}>
-                           <img src="/assets/images/user.png" alt="User" />
-                         </span>
-                       }
-                       position={'absolute'}
-                     >
-                       <Link href="/" style={{ color: '#757575' }}>
-                         Home
-                       </Link>
-                       <Link href="/profile" style={{ color: '#757575' }}>
-                         My Profile
-                       </Link>
-                       <Button variant="link" style={{ fontSize: '14px', color: '#757575' }} onClick={logout}>
-                         Logout
-                       </Button>
-                     </LoadStatusList>
+                      <LoadStatusList
+                        key={'DropDown'}
+                        label={
+                          <span className={styles.userImg}>
+                            <img src="/assets/images/user.png" alt="User" />
+                          </span>
+                        }
+                        position={'absolute'}
+                      >
+                        <Link href="/" style={{ color: '#757575' }}>
+                          Home
+                        </Link>
+                        <Link href="/profile" style={{ color: '#757575' }}>
+                          My Profile
+                        </Link>
+                        <Button variant="link" style={{ fontSize: '14px', color: '#757575' }} onClick={logout}>
+                          Logout
+                        </Button>
+                      </LoadStatusList>
                     ) : (
                       <ul className="d-flex gap-xl-3 gap-2 ">
                         <li>
