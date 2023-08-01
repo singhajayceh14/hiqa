@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import '@/styles/globals.scss';
 import '@/styles/App.scss';
 import type { NextComponentType } from 'next';
@@ -7,6 +7,7 @@ import SSRProvider from 'react-bootstrap/SSRProvider';
 import { StepsProvider } from 'react-step-builder';
 
 import Container from '@/Layout/Container';
+import FrontContainer from '@/Layout/FrontContainer';
 // import { Loading } from '@/components/App/Loader';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { AppProvider } from '@/components/App';
@@ -31,9 +32,16 @@ interface AppComponentProps extends AppProps {
   };
 }
 export default function App({ Component, pageProps }: AppComponentProps) {
-  const Layout = Component.auth
-    ? ({ children }: { children: React.ReactElement<any> }) => <Container meta={Component.meta}>{children}</Container>
-    : React.Fragment;
+  const Layout = useMemo(
+    () =>
+      ({ children }: { children: React.ReactElement<any> }) =>
+        <FrontContainer {...Component}>{children}</FrontContainer>,
+    [],
+  );
+
+  // const Layout = Component.auth
+  // ? ({ children }: { children: React.ReactElement<any> }) => <Container meta={Component.meta}>{children}</Container>
+  // : React.Fragment;
   return (
     <ErrorBoundary>
       <SSRProvider>

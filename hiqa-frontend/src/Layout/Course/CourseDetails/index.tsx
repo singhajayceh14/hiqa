@@ -43,7 +43,7 @@ function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <FrontContainer>{loading ? <SuspenseLoader color={'#002e6e'} /> : <>{courseDetailsPage} </>}</FrontContainer>
+      {loading ? <SuspenseLoader color={'#002e6e'} /> : <>{courseDetailsPage} </>}
     </>
   );
 }

@@ -71,25 +71,23 @@ function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <FrontContainer>
-        {loading ? (
-          <SuspenseLoader color={'#002e6e'} />
-        ) : (
-          <React.Fragment>
-            <SliderPage />
-            <AboutPage />
-            {coursePage}
-            {eventPage}
-            <VideoPage />
-            <AdmissionPage />
-            <LogoSliderPage />
-            {blogPage}
-            <ScholarshipPage />
-            <FaqPage />
-            <SubscribePage />
-          </React.Fragment>
-        )}
-      </FrontContainer>
+      {loading ? (
+        <SuspenseLoader color={'#002e6e'} />
+      ) : (
+        <React.Fragment>
+          <SliderPage />
+          <AboutPage />
+          {coursePage}
+          {eventPage}
+          <VideoPage />
+          <AdmissionPage />
+          <LogoSliderPage />
+          {blogPage}
+          <ScholarshipPage />
+          <FaqPage />
+          <SubscribePage />
+        </React.Fragment>
+      )}
       <Modal id="Eligibility Page" title={'Eligibility Criteria'} size="lg" show={show} onClose={() => closeModal()}>
         <img src="assets/img/popup/2.png" alt="contact-bg-an-01" />
         {/* <EligibilityPage /> */}

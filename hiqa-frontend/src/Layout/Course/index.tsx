@@ -76,28 +76,26 @@ function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <FrontContainer>
-        <section className="shop-area pt-50 pb-50  p-relative " data-animation="fadeInUp animated" data-delay=".2s">
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-lg-12">
-                <div
-                  className="section-title center-align mb-50 text-center wow fadeInDown animated"
-                  data-animation="fadeInDown"
-                  data-delay=".4s"
-                >
-                  <h5>
-                    <i className="fal fa-graduation-cap" /> Our Courses
-                  </h5>
-                  <h2>Training Programs</h2>
-                </div>
+      <section className="shop-area pt-50 pb-50  p-relative " data-animation="fadeInUp animated" data-delay=".2s">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-12">
+              <div
+                className="section-title center-align mb-50 text-center wow fadeInDown animated"
+                data-animation="fadeInDown"
+                data-delay=".4s"
+              >
+                <h5>
+                  <i className="fal fa-graduation-cap" /> Our Courses
+                </h5>
+                <h2>Training Programs</h2>
               </div>
             </div>
-            {children}
-            <Pagination currentPage={page} lastPage={lastPage} maxLength={maxLength} setCurrentPage={setPage} />
           </div>
-        </section>
-      </FrontContainer>
+          {children}
+          <Pagination currentPage={page} lastPage={lastPage} maxLength={maxLength} setCurrentPage={setPage} />
+        </div>
+      </section>
     </>
   );
 }

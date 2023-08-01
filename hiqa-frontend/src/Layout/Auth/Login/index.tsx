@@ -27,15 +27,15 @@ function Index() {
   const { ButtonLoader } = useLoading();
   const { trans } = useTranslate();
 
-  const validateToken = useCallback(() => {
-    if (validateAuthentication()) {
-      return router.push('/');
-    }
-  }, [router]);
+  // const validateToken = useCallback(() => {
+  //   if (validateAuthentication()) {
+  //     return router.push('/');
+  //   }
+  // }, [router]);
 
-  useEffect(() => {
-    validateToken();
-  }, [validateToken]);
+  // useEffect(() => {
+  //   validateToken();
+  // }, [validateToken]);
   return (
     <>
       <Head>
@@ -44,92 +44,90 @@ function Index() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <FrontContainer>
-        <section className="shop-area pt-50 pb-50  p-relative " data-animation="fadeInUp animated" data-delay=".2s">
-          <div className="container">
-            <div className="row d-flex justify-content-center wow fadeInDown animated">
-              <div className="col-md-6">
-                <div className="card px-5 py-5" id="form1">
-                  <div
-                    className="section-title center-align mb-50 text-center wow fadeInDown animated"
-                    data-animation="fadeInDown"
-                    data-delay=".4s"
-                  >
-                    <h2>Login</h2>
-                  </div>
-                  <Formik
-                    initialValues={{
-                      email: '',
-                      password: '',
-                      rememberme: false,
-                    }}
-                    validateOnChange={false}
-                    validateOnBlur={false}
-                    validationSchema={LoginSchema}
-                    onSubmit={async (values: {
-                      subscription?: any;
-                      rememberme: boolean;
-                      email: string;
-                      password: string;
-                    }) => {
-                      const req = (await request('LoginUser', values)) as REQUEST;
-                      if (req.status) {
-                        dispatch({ user: req.data });
-                        if (values.rememberme) Cookies.set('rememberme', '1');
-                        return router.push('/');
-                      }
-                    }}
-                  >
-                    {({ handleSubmit, handleChange, values, errors, touched }) => (
-                      <Form noValidate onSubmit={handleSubmit}>
-                        <div className="form-data">
-                          <div className="forms-inputs mb-4">
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                              <Form.Label>Your email address</Form.Label>
-                              <Form.Control
-                                type="email"
-                                name="email"
-                                placeholder="Your email address"
-                                onChange={handleChange}
-                                value={values.email}
-                                isInvalid={!!errors.email}
-                              />
-                              {errors.email && touched.email ? (
-                                <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
-                              ) : null}
-                            </Form.Group>
-                          </div>
-                          <div className="forms-inputs mb-4">
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                              <Form.Label>Your password</Form.Label>
-                              <Form.Control
-                                type="password"
-                                name="password"
-                                placeholder="Your password"
-                                onChange={handleChange}
-                                value={values.password}
-                                isInvalid={!!errors.password}
-                              />
-                              {errors.password && touched.password ? (
-                                <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
-                              ) : null}
-                            </Form.Group>
-                          </div>
-                          <div className="mb-3">
-                            <Button type="submit" className="btn btn-dark w-100 loginBtn">
-                              {loading?.LoginUser_LOADING ? ButtonLoader() : trans('LOGIN')}
-                            </Button>
-                          </div>
-                        </div>
-                      </Form>
-                    )}
-                  </Formik>
+      <section className="shop-area pt-50 pb-50  p-relative " data-animation="fadeInUp animated" data-delay=".2s">
+        <div className="container">
+          <div className="row d-flex justify-content-center wow fadeInDown animated">
+            <div className="col-md-6">
+              <div className="card px-5 py-5" id="form1">
+                <div
+                  className="section-title center-align mb-50 text-center wow fadeInDown animated"
+                  data-animation="fadeInDown"
+                  data-delay=".4s"
+                >
+                  <h2>Login</h2>
                 </div>
+                <Formik
+                  initialValues={{
+                    email: '',
+                    password: '',
+                    rememberme: false,
+                  }}
+                  validateOnChange={false}
+                  validateOnBlur={false}
+                  validationSchema={LoginSchema}
+                  onSubmit={async (values: {
+                    subscription?: any;
+                    rememberme: boolean;
+                    email: string;
+                    password: string;
+                  }) => {
+                    const req = (await request('LoginUser', values)) as REQUEST;
+                    if (req.status) {
+                      dispatch({ user: req.data });
+                      if (values.rememberme) Cookies.set('rememberme', '1');
+                      return router.push('/');
+                    }
+                  }}
+                >
+                  {({ handleSubmit, handleChange, values, errors, touched }) => (
+                    <Form noValidate onSubmit={handleSubmit}>
+                      <div className="form-data">
+                        <div className="forms-inputs mb-4">
+                          <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Your email address</Form.Label>
+                            <Form.Control
+                              type="email"
+                              name="email"
+                              placeholder="Your email address"
+                              onChange={handleChange}
+                              value={values.email}
+                              isInvalid={!!errors.email}
+                            />
+                            {errors.email && touched.email ? (
+                              <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+                            ) : null}
+                          </Form.Group>
+                        </div>
+                        <div className="forms-inputs mb-4">
+                          <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Your password</Form.Label>
+                            <Form.Control
+                              type="password"
+                              name="password"
+                              placeholder="Your password"
+                              onChange={handleChange}
+                              value={values.password}
+                              isInvalid={!!errors.password}
+                            />
+                            {errors.password && touched.password ? (
+                              <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+                            ) : null}
+                          </Form.Group>
+                        </div>
+                        <div className="mb-3">
+                          <Button type="submit" className="btn btn-dark w-100 loginBtn">
+                            {loading?.LoginUser_LOADING ? ButtonLoader() : trans('LOGIN')}
+                          </Button>
+                        </div>
+                      </div>
+                    </Form>
+                  )}
+                </Formik>
               </div>
             </div>
           </div>
-        </section>
-      </FrontContainer>
+        </div>
+      </section>
     </>
   );
 }
