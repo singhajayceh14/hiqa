@@ -6351,3 +6351,4 @@ Error: Route.get() requires a callback function but got a [object Undefined]
 [2023-07-28T08:33:40.552Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
 [2023-07-28T08:33:40.567Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
 [2023-07-28T08:33:40.576Z] [error]: 500 - [ 'Error' ] - Error: Get ALL Error!!! SequelizeDatabaseError: Table 'hiqa.qualifications' doesn't exist
+[2023-07-31T17:28:41.533Z] [error]: 500 - [ 'Error' ] - null
