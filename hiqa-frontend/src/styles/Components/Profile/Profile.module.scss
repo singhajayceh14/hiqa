@@ -8,14 +8,17 @@
 .companyImg {
   width: 108px;
   height: 108px;
-  border-radius: 50%;
-  overflow: hidden;
   display: $block;
-
-  img {
-    object-fit: cover;
-    width: 100%;
+  .imgOuter {
+    display: $block;
+    
+    img {
+      object-fit: cover;
+      object-position: top center;
+      width: 100%;
+    }
   }
+
 }
 
 .companyInformation {
@@ -32,6 +35,7 @@
 .greenBtn {
   background: $green;
   border-color: $green;
+  color:$white
 }
 
 .tabImage {

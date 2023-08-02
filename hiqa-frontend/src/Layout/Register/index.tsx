@@ -129,8 +129,8 @@ function Index() {
             >
               <h4 className="text-capitalize">Registration Form</h4>
             </div>
-            <div className="col-md-12">
-              <div className="card px-5 py-5" id="form1">
+            <div className="col-xxl-8 col-lg-8 ">
+              <div className="card p-lg-5 p-4 profileFormOuter" id="form1">
                 <Formik
                   initialValues={initialValues}
                   validateOnChange={false}
@@ -159,7 +159,7 @@ function Index() {
                   }}
                 >
                   {({ handleSubmit, handleChange, values, errors, touched, setFieldValue }) => (
-                    <Form noValidate onSubmit={handleSubmit}>
+                    <Form noValidate onSubmit={handleSubmit} className='customForm'>
                       <div className="steps_wrapper">
                         <Steps>
                           <div className="step">
@@ -500,21 +500,21 @@ function Index() {
                             <div className="d-flex justify-content-between navigation">
                               <Button
                                 type="button"
-                                className={current === 1 ? 'btn signInBtns d-none' : 'btn signInBtns '}
+                                className={current === 1 ? 'btn btnStyle2 d-none' : 'btn btnStyle2 '}
                                 onClick={prev}
                               >
                                 Prev
                               </Button>
                               <Button
                                 type="button"
-                                className={current === total ? 'btn signInBtns d-none' : 'btn signInBtns'}
+                                className={current === total ? 'btn btnStyle2 d-none' : 'btn btnStyle2'}
                                 onClick={next}
                               >
                                 Next
                               </Button>
                               <Button
                                 type="submit"
-                                className={current === total ? 'btn signInBtns' : 'btn signInBtns d-none'}
+                                className={current === total ? 'btn btnStyle2' : 'btn btnStyle2 d-none'}
                               >
                                 Register
                               </Button>

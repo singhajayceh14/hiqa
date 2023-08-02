@@ -52,7 +52,7 @@ const Header = () => {
                 <div className="col d-none d-lg-block">
                   <div className="main-menu text-right text-xl-right">
                     <nav id="mobile-menu">
-                      <ul>
+                      <ul className="d-flex justify-content-end">
                         <li>
                           <Link href="/">Home</Link>
                         </li>
@@ -146,17 +146,7 @@ const Header = () => {
                           </span>
                         }
                         position={'absolute'}
-                      >
-                        <Link href="/" style={{ color: '#757575' }}>
-                          Home
-                        </Link>
-                        <Link href="/profile" style={{ color: '#757575' }}>
-                          My Profile
-                        </Link>
-                        <Button variant="link" style={{ fontSize: '14px', color: '#757575' }} onClick={logout}>
-                          Logout
-                        </Button>
-                      </LoadStatusList>
+                      ></LoadStatusList>
                     ) : (
                       <ul className="d-flex gap-xl-3 gap-2 ">
                         <li>
@@ -250,6 +240,18 @@ const Header = () => {
                             <li className="mean-last">
                               <Link href="/contact">Contact</Link>
                             </li>
+
+                            {state?.user ? (
+                              <>
+                                <li className="mean-last">
+                                  <Link href="/profile">Profile</Link>
+                                </li>
+                              
+                                <li className="mean-last">
+                                  <Link href="/contact">Logout</Link>
+                                </li>
+                              </>
+                            ) : null}
                           </ul>
                         </nav>
                       )}

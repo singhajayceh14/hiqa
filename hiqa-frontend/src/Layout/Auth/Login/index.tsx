@@ -41,8 +41,8 @@ function Index() {
       <section className="shop-area pt-50 pb-50  p-relative " data-animation="fadeInUp animated" data-delay=".2s">
         <div className="container">
           <div className="row d-flex justify-content-center wow fadeInDown animated">
-            <div className="col-md-6">
-              <div className="card px-5 py-5" id="form1">
+            <div className="col-xxl-6 col-lg-8">
+              <div className="card p-lg-5 p-4" id="form1">
                 <div
                   className="section-title center-align mb-50 text-center wow fadeInDown animated"
                   data-animation="fadeInDown"
@@ -108,8 +108,8 @@ function Index() {
                             ) : null}
                           </Form.Group>
                         </div>
-                        <div className="mb-3">
-                          <Button type="submit" className="btn btn-dark w-100 loginBtn">
+                        <div className="text-end">
+                          <Button type="submit" className="btn btn-dark btnStyle2">
                             {loading?.LoginUser_LOADING ? ButtonLoader() : trans('LOGIN')}
                           </Button>
                         </div>

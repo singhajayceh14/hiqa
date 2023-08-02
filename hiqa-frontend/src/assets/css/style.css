@@ -13781,16 +13781,28 @@ blockquote cite {
 }
 
 
+.autocompleteMultipleChip {
+    background-color: #ebedef;
+    border: 1px solid #d8dbe0;
+    border-radius: 0.25rem;
+    display: inline-block;
+    margin: 0.125rem 0.125rem;
+    padding: calc(0.125rem - 1px) 0.5rem;
+}
 
-
-
+.autocompleteMultipleChip i {
+    background-color: transparent;
+    border: 0;
+    margin-left: 0.5rem;
+    padding: 0;
+}
 
 
 
 
 /* New CSS 24/07/2023  */
 
-.signInBtns{
+.signInBtns, .btnStyle2{
     font-size: 15px;
     font-weight: 500;
     padding: 12px 24px;
@@ -13880,7 +13892,6 @@ blockquote cite {
     font-weight: 500;
     color: #000000;
     line-height: normal;
-    margin-bottom: 10px;
 }
 /* .profileFormOuter .customForm .form-control, 
 .profileFormOuter .customForm .form-select {
