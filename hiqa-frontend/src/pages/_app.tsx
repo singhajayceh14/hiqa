@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }: AppComponentProps) {
     () =>
       ({ children }: { children: React.ReactElement<any> }) =>
         <FrontContainer {...Component}>{children}</FrontContainer>,
-    [],
+    [Component.auth],
   );
 
   const metaComponent = useMemo(

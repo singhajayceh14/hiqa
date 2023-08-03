@@ -1,30 +1,45 @@
-import React, { memo, useEffect } from 'react';
-import router from 'next/router';
+import React, { memo, useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 
-import { useApp } from '@/components/App';
-
+import { useApp, useLoading } from '@/components/App';
 
 type Props = {
   children: JSX.Element | string | JSX.Element[];
   auth?: boolean;
   meta: {
     title: string;
-    description:string;
+    description: string;
   };
 };
 function Container({ children, auth }: Props) {
-  const { state } = useApp();
+  const router = useRouter();
+  const { ButtonLoader } = useLoading();
+  const [initialLoding, setInitialLoding] = useState(true);
+  const { state, getUserData } = useApp();
+  const handelAuth = async () => {
+    if (auth) {
+      if (await getUserData()) {
+        if (initialLoding) setInitialLoding(false);
+        return;
+      } else {
+        const status = await getUserData();
+        if (!status) router.push('/login');
+      }
+    } else {
+      if (initialLoding) setInitialLoding(false);
+      return;
+    }
+  };
 
   useEffect(() => {
-    console.log(state.user, auth)
-    if (state?.user && auth === true) {
-      router.push('/login');
-    }
-  }, [auth]);
-  return (
+    handelAuth();
+  }, [router.pathname]);
+  return initialLoding ? (
+    <ButtonLoader color="#ff7350" />
+  ) : (
     <>
       <Header />
       {children}

@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { Button, Col, Form, Row, Table } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -7,7 +7,7 @@ import { Steps, useSteps } from 'react-step-builder';
 
 import { REQUEST, USER_DATA, QUALIFICATION, COURSE_DATA } from '@/types/interfaces';
 import { toastr } from '@/utils/helpers';
-import { useApp, useRequest } from '@/components/App';
+import { useApp, useLoading, useRequest } from '@/components/App';
 import GoogleAutoComplete from '@/components/Default/Maps/Autocomplete';
 import CustomAutomplete from '@/components/Default/Autocomplete';
 
@@ -41,6 +41,7 @@ const RegisterSchema = Yup.object().shape({
 function Index() {
   const router = useRouter();
   const { state } = useApp();
+  const { ButtonLoader } = useLoading();
   const { request, loading } = useRequest();
   const { prev, next, total, current } = useSteps();
   const [fileData, setfileData] = useState<{
@@ -50,7 +51,11 @@ function Index() {
     file: null,
     preView: '/assets/images/user-profile.png',
   });
-
+  useEffect(() => {
+    if (state?.user) {
+      router.push('/');
+    }
+  }, [state?.user]);
   const onFileChange = async (event: any) => {
     const file = event.target.files[0];
     const fileTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/bmp'];
@@ -117,7 +122,9 @@ function Index() {
     }
   };
 
-  return (
+  return state?.user ? (
+    <ButtonLoader color="#ff7350" />
+  ) : (
     <>
       <section className="shop-area pt-50 pb-50  p-relative " data-animation="fadeInUp animated" data-delay=".2s">
         <div className="container">
@@ -159,7 +166,7 @@ function Index() {
                   }}
                 >
                   {({ handleSubmit, handleChange, values, errors, touched, setFieldValue }) => (
-                    <Form noValidate onSubmit={handleSubmit} className='customForm'>
+                    <Form noValidate onSubmit={handleSubmit} className="customForm">
                       <div className="steps_wrapper">
                         <Steps>
                           <div className="step">

@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, memo } from 'react';
+import React, { useEffect, memo } from 'react';
 import Cookies from 'js-cookie';
-import Head from 'next/head';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { Formik } from 'formik';
@@ -10,8 +9,6 @@ import * as Yup from 'yup';
 import { useTranslate } from '@/components/Translate';
 import { REQUEST } from '@/types/interfaces';
 import { useRequest, useLoading, useApp } from '@/components/App';
-import { validateAuthentication } from '@/utils/helpers';
-import FrontContainer from '@/Layout/FrontContainer';
 // import LOGO from './Components/Logo';
 
 const LoginSchema = Yup.object().shape({
@@ -21,22 +18,20 @@ const LoginSchema = Yup.object().shape({
 });
 
 function Index() {
-  const { dispatch } = useApp();
+  const { state, dispatch } = useApp();
   const router = useRouter();
   const { request, loading } = useRequest();
   const { ButtonLoader } = useLoading();
   const { trans } = useTranslate();
 
-  // const validateToken = useCallback(() => {
-  //   if (validateAuthentication()) {
-  //     return router.push('/');
-  //   }
-  // }, [router]);
-
-  // useEffect(() => {
-  //   validateToken();
-  // }, [validateToken]);
-  return (
+  useEffect(() => {
+    if (state?.user) {
+      router.push('/');
+    }
+  }, [state?.user]);
+  return state?.user ? (
+    <ButtonLoader color="#ff7350" />
+  ) : (
     <>
       <section className="shop-area pt-50 pb-50  p-relative " data-animation="fadeInUp animated" data-delay=".2s">
         <div className="container">

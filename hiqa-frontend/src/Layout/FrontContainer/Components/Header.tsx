@@ -246,7 +246,7 @@ const Header = () => {
                                 <li className="mean-last">
                                   <Link href="/profile">Profile</Link>
                                 </li>
-                              
+
                                 <li className="mean-last">
                                   <Link href="/contact">Logout</Link>
                                 </li>
