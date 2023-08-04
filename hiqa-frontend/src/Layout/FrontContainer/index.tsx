@@ -41,9 +41,9 @@ function Container({ children, auth }: Props) {
     <ButtonLoader color="#ff7350" />
   ) : (
     <>
-      <Header />
+      {/* <Header /> */}
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

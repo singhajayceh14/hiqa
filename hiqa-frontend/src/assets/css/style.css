@@ -13920,11 +13920,6 @@ visibility: visible;
     max-width: 260px;
     visibility: visible;
 }
-.btn-close {
-    filter: invert(1);
-    opacity: 1;
-    font-size: 12px;
-}
 .pageWraper{
     transform: translate(0, 0);
 }

@@ -5,7 +5,7 @@ interface PROPS {
   id: string;
   show: boolean;
   size: any;
-  title: string;
+  title?: string;
   children: JSX.Element | JSX.Element[];
   onClose: () => void;
   outer?: boolean;
@@ -25,9 +25,7 @@ function Index(props: PROPS) {
       keyboard={false}
       centered
     >
-      <Modal.Header closeButton>
-        <Modal.Title>{props.title}</Modal.Title>
-      </Modal.Header>
+      <Modal.Header closeButton={true}>{props?.title ? <Modal.Title>{props.title}</Modal.Title> : null}</Modal.Header>
       <Modal.Body>{props.children}</Modal.Body>
     </Modal>
   );

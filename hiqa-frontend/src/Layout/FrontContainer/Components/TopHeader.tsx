@@ -38,29 +38,10 @@ const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
               <div className="header-cta">
                 <ul>
                   <li>
-                    <div className="call-box">
-                      <div className="icon">
-                        <img src="/assets/img/icon/phone-call.png" alt="img" />
-                      </div>
-                      <div className="text">
-                        <span>Call Now !</span>
-                        <strong>
-                          <Link href="tel:+917052101786">{phone}</Link>
-                        </strong>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="call-box">
-                      <div className="icon">
-                        <img src="/assets/img/icon/mailing.png" alt="img" />
-                      </div>
-                      <div className="text">
-                        <span>Email Now</span>
-                        <strong>
-                          <Link href={'mailto:'}> {email}</Link>
-                        </strong>
-                      </div>
+                    <div className="second-header-btn">
+                      <Link className="btn signInBtns d-flex align-items-center gap-2" href="/contact">
+                        <div className="txt d-none d-sm-block">Enquiry Now</div>
+                      </Link>
                     </div>
                   </li>
                 </ul>
