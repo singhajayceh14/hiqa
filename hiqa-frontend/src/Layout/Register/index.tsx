@@ -1,15 +1,17 @@
-import React, { memo, useState, useEffect } from 'react';
+import React, { memo, useState, useEffect, useCallback } from 'react';
 import { Button, Col, Form, Row, Table } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { Steps, useSteps } from 'react-step-builder';
 
-import { REQUEST, USER_DATA, QUALIFICATION, COURSE_DATA } from '@/types/interfaces';
+import { REQUEST, USER_DATA, QUALIFICATION, COURSE_DATA, COURSE } from '@/types/interfaces';
 import { toastr } from '@/utils/helpers';
 import { useApp, useLoading, useRequest } from '@/components/App';
 import GoogleAutoComplete from '@/components/Default/Maps/Autocomplete';
 import CustomAutomplete from '@/components/Default/Autocomplete';
+import styles from '@/styles/Components/Profile/Profile.module.scss';
+import Modal from '@/components/Default/Modal';
 
 const initialValues: USER_DATA = {
   fullName: '',
@@ -31,6 +33,7 @@ const initialValues: USER_DATA = {
   qualificationDoc: {},
   courseId: [],
   course: [],
+  category: '',
 };
 const RegisterSchema = Yup.object().shape({
   fullName: Yup.string().required('Required'),
@@ -40,7 +43,7 @@ const RegisterSchema = Yup.object().shape({
 
 function Index() {
   const router = useRouter();
-  const { state } = useApp();
+  const { state, dispatch } = useApp();
   const { ButtonLoader } = useLoading();
   const { request, loading } = useRequest();
   const { prev, next, total, current } = useSteps();
@@ -66,6 +69,21 @@ function Index() {
     });
   };
 
+  const onDocChange = async (event: any, name: string) => {
+    const file = event.target.files[0];
+    const formData: FormData = new FormData();
+    formData.append('image', file);
+    const req = (await request('docUpload', formData)) as REQUEST;
+    if (req.status) {
+      //router.push('/banner');
+      const resData: any = req.data;
+      return resData;
+    }
+    return '';
+  };
+  const closeModal = (key: string) => {
+    dispatch({ [key]: false });
+  };
   const getQualification = (q: string) => {
     if (q.toLowerCase() == '12th') {
       return (
@@ -122,6 +140,14 @@ function Index() {
     }
   };
 
+  const getCourseList = useCallback(async (q: string[]) => {
+    const req = (await request('courseList', { q: q.toString() })) as REQUEST;
+    if (req.status) {
+      //router.push('/banner');
+      const resData: any = req.data;
+      dispatch({ courseList: resData.courses_list });
+    }
+  }, []);
   return state?.user ? (
     <ButtonLoader color="#ff7350" />
   ) : (
@@ -139,6 +165,7 @@ function Index() {
             <div className="col-xxl-8 col-lg-8 ">
               <div className="card p-lg-5 p-4 profileFormOuter" id="form1">
                 <Formik
+                  enableReinitialize={true}
                   initialValues={initialValues}
                   validateOnChange={false}
                   validateOnBlur={false}
@@ -149,20 +176,22 @@ function Index() {
                     if (fileData.file) {
                       formData.append('image', fileData.file);
                     }
-                    formData.append('fullName', values.fullName);
-                    formData.append('fatherName', values.fatherName);
-                    formData.append('email', values.email);
-                    formData.append('gender', values.gender);
-                    formData.append('dob', values.dob);
-                    formData.append('address', values.address);
-                    formData.append('zipcode', values.zipcode);
-
-                    // if (request) {
-                    //   // const req = (await request('addBanner', formData)) as REQUEST;
-                    //   // if (req.status) {
-                    //   //   router.push('/banner');
-                    //   // }
-                    // }
+                    let qualificationDoc = JSON.stringify(values.qualificationDoc);
+                    for (var key in values) {
+                      console.log(key);
+                      if (key === 'qualificationDoc') {
+                        formData.append('qualificationDoc', qualificationDoc);
+                      } else {
+                        formData.append(key, values[key]);
+                      }
+                    }
+                    console.log(formData);
+                    if (request) {
+                      const req = (await request('register', formData)) as REQUEST;
+                      if (req.status) {
+                        dispatch({ viewModal: true });
+                      }
+                    }
                   }}
                 >
                   {({ handleSubmit, handleChange, values, errors, touched, setFieldValue }) => (
@@ -282,6 +311,54 @@ function Index() {
                                     onChange={handleChange}
                                   />
                                 </Form.Group>
+                              </Col>
+                              <Col md={6}>
+                                <Form.Group className="mb-3">
+                                  <Form.Label>Category</Form.Label>
+                                  <Form.Select onChange={handleChange} name={`category`} value={values.category}>
+                                    <option>Select Year</option>
+                                    <option value={'gen'}>General</option>
+                                    <option value={'sc'}>SC</option>
+                                    <option value={'st'}>ST</option>
+                                    <option value={'obc'}>OBC</option>
+                                  </Form.Select>
+                                  {errors.dob && touched.dob ? (
+                                    <Form.Control.Feedback type="invalid">{errors.dob}</Form.Control.Feedback>
+                                  ) : null}
+                                </Form.Group>
+                              </Col>
+                              <Col md={6}>
+                                <div className={`${styles.companyProfile} d-flex align-items-center`}>
+                                  <span className={`${styles.companyImg} position-relative`}>
+                                    <span className={`${styles.imgOuter} w-100 h-100 rounded-circle overflow-hidden`}>
+                                      <img
+                                        onError={({ currentTarget }) => {
+                                          currentTarget.onerror = null; // prevents looping
+                                          currentTarget.src = '/assets/images/user-profile.png';
+                                        }}
+                                        src={fileData.preView}
+                                        alt="user-profile"
+                                      />
+                                    </span>
+                                    <div className={styles.companyInformation}>
+                                      <input
+                                        accept="image/png, image/gif, image/jpeg, image/jpg, image/bmp"
+                                        className={'form-control '}
+                                        id="chooseProfilePicture"
+                                        type="file"
+                                        onChange={onFileChange}
+                                        style={{ display: 'none' }}
+                                      />
+
+                                      <label
+                                        htmlFor="chooseProfilePicture"
+                                        className="form-label position-absolute uploadImgBtn rounded-circle p-1 m-0 d-flex align-items-center justify-content-center bottom-0 end-0 mb-md-1 me-md-1"
+                                      >
+                                        <i style={{ color: '#fff', fontSize: '12px' }} className="fa fa-pencil"></i>
+                                      </label>
+                                    </div>
+                                  </span>
+                                </div>
                               </Col>
                             </Row>
                           </div>
@@ -407,9 +484,12 @@ function Index() {
                                             ?.id;
                                         }
                                       });
+                                      getCourseList(quoteUsersIds);
                                       setFieldValue('qualificationId', [...quoteUsersIds]);
                                     }}
-                                    onSelect={(e, val) => val.name as string}
+                                    onSelect={(e, val) => {
+                                      return val.name as string;
+                                    }}
                                     isOptionsEmpty={false}
                                     filter={true} //If not remote
                                     //Provide only if we want to render a value again
@@ -445,6 +525,17 @@ function Index() {
                                               <option>Select Year</option>
                                               {getQualification(q)}
                                             </Form.Select>
+                                          </td>
+                                          <td>
+                                            <Form.Group controlId="formFile">
+                                              <Form.Control
+                                                type="file"
+                                                onChange={async event => {
+                                                  const res = await onDocChange(event, q.toLowerCase());
+                                                  setFieldValue(`qualificationDoc[${q.toLowerCase()}].docs`, res);
+                                                }}
+                                              />
+                                            </Form.Group>
                                           </td>
                                         </tr>
                                       ))}
@@ -537,6 +628,11 @@ function Index() {
           </div>
         </div>
       </section>
+      <Modal id="thankYou" title={'Thank You'} size="lg" show={state.viewModal} onClose={() => closeModal('viewModal')}>
+        <div className="container" style={{ width: 500 }}>
+          <h5>Thank You</h5>
+        </div>
+      </Modal>
     </>
   );
 }

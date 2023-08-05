@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2023 at 05:19 AM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 7.2.5
+-- Generation Time: Aug 05, 2023 at 01:06 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,10 +31,10 @@ CREATE TABLE `banners` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `image` text NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '1',
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `banners`
@@ -53,15 +52,15 @@ INSERT INTO `banners` (`id`, `title`, `image`, `status`, `updatedAt`, `createdAt
 
 CREATE TABLE `blogs` (
   `id` int(11) NOT NULL,
-  `title` text,
-  `slug` text,
-  `short_description` text,
-  `long_description` longtext,
+  `title` text DEFAULT NULL,
+  `slug` text DEFAULT NULL,
+  `short_description` text DEFAULT NULL,
+  `long_description` longtext DEFAULT NULL,
   `image` text NOT NULL,
-  `status` tinyint(2) NOT NULL DEFAULT '1',
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` tinyint(2) NOT NULL DEFAULT 1,
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `blogs`
@@ -82,21 +81,21 @@ INSERT INTO `blogs` (`id`, `title`, `slug`, `short_description`, `long_descripti
 CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `slug` text,
-  `short_description` text,
-  `long_description` text,
-  `image` text,
+  `slug` text DEFAULT NULL,
+  `short_description` text DEFAULT NULL,
+  `long_description` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
   `duraion_course` varchar(255) DEFAULT NULL,
   `total_seat` varchar(255) DEFAULT NULL,
-  `site_visits` text,
-  `general` text,
-  `ews` text,
-  `special_consideration` text,
-  `other` text,
-  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `site_visits` text DEFAULT NULL,
+  `general` text DEFAULT NULL,
+  `ews` text DEFAULT NULL,
+  `special_consideration` text DEFAULT NULL,
+  `other` text DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `courses`
@@ -122,9 +121,9 @@ CREATE TABLE `course_eligibility_details` (
   `id` int(11) NOT NULL,
   `courseId` int(11) NOT NULL,
   `qualificationId` int(11) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `course_eligibility_details`
@@ -132,7 +131,44 @@ CREATE TABLE `course_eligibility_details` (
 
 INSERT INTO `course_eligibility_details` (`id`, `courseId`, `qualificationId`, `createdAt`, `updatedAt`) VALUES
 (1, 1, 1, '2023-07-24 23:37:15', '2023-07-24 23:37:15'),
-(2, 1, 2, '2023-07-24 23:37:15', '2023-07-24 23:37:15');
+(2, 1, 2, '2023-07-24 23:37:15', '2023-07-24 23:37:15'),
+(3, 2, 1, '2023-08-05 14:49:37', '2023-08-05 14:49:37'),
+(4, 2, 2, '2023-08-05 14:49:37', '2023-08-05 14:49:37'),
+(5, 2, 3, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(6, 2, 4, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(7, 2, 8, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(8, 3, 1, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(9, 3, 2, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(10, 3, 3, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(11, 3, 4, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(12, 3, 5, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(13, 3, 6, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(14, 3, 7, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(15, 3, 8, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(16, 4, 1, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(17, 4, 2, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(18, 4, 3, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(19, 4, 4, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(20, 4, 5, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(21, 4, 6, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(22, 4, 7, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(23, 4, 8, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(24, 5, 1, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(25, 5, 2, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(26, 5, 3, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(27, 5, 4, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(28, 5, 5, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(29, 5, 6, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(30, 5, 7, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(31, 5, 8, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(32, 6, 1, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(33, 6, 2, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(34, 6, 3, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(35, 6, 4, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(36, 6, 5, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(37, 6, 6, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(38, 6, 7, '2023-08-05 14:55:10', '2023-08-05 14:55:10'),
+(39, 6, 8, '2023-08-05 14:55:10', '2023-08-05 14:55:10');
 
 -- --------------------------------------------------------
 
@@ -143,21 +179,21 @@ INSERT INTO `course_eligibility_details` (`id`, `courseId`, `qualificationId`, `
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
-  `short_description` longtext,
-  `long_description` longtext,
+  `short_description` longtext DEFAULT NULL,
+  `long_description` longtext DEFAULT NULL,
   `slug` text NOT NULL,
-  `image` text,
+  `image` text DEFAULT NULL,
   `event_date` date DEFAULT NULL,
-  `event_start_time` text,
-  `event_end_time` text,
-  `event_address` text,
-  `event_facebook_url` text,
-  `event_instagram_url` text,
-  `event_twitter_url` text,
+  `event_start_time` text DEFAULT NULL,
+  `event_end_time` text DEFAULT NULL,
+  `event_address` text DEFAULT NULL,
+  `event_facebook_url` text DEFAULT NULL,
+  `event_instagram_url` text DEFAULT NULL,
+  `event_twitter_url` text DEFAULT NULL,
   `status` tinyint(2) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `events`
@@ -181,12 +217,12 @@ CREATE TABLE `front_pages` (
   `id` int(11) NOT NULL,
   `type` varchar(255) DEFAULT NULL,
   `title` text NOT NULL,
-  `description` text,
-  `image` text,
+  `description` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
   `status` tinyint(2) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `front_pages`
@@ -206,9 +242,9 @@ CREATE TABLE `qualifications` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `slug` text NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `qualifications`
@@ -230,22 +266,22 @@ INSERT INTO `qualifications` (`id`, `name`, `slug`, `createdAt`, `updatedAt`) VA
 
 CREATE TABLE `settings` (
   `id` int(11) NOT NULL,
-  `title` text,
-  `sub_title` text,
-  `address` text,
+  `title` text DEFAULT NULL,
+  `sub_title` text DEFAULT NULL,
+  `address` text DEFAULT NULL,
   `latitude` varchar(255) DEFAULT NULL,
   `longitude` varchar(255) DEFAULT NULL,
-  `email` text,
+  `email` text DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
-  `facebook_url` text,
-  `twitter_url` text,
-  `instagram_url` text,
-  `skype_url` text,
-  `linkedin_url` text,
-  `youtube_url` text,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `facebook_url` text DEFAULT NULL,
+  `twitter_url` text DEFAULT NULL,
+  `instagram_url` text DEFAULT NULL,
+  `skype_url` text DEFAULT NULL,
+  `linkedin_url` text DEFAULT NULL,
+  `youtube_url` text DEFAULT NULL,
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `settings`
@@ -273,7 +309,7 @@ CREATE TABLE `users` (
   `email_verified_at` datetime DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `remember_token` varchar(255) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT '0',
+  `status` tinyint(4) DEFAULT 0,
   `image` varchar(255) NOT NULL DEFAULT '',
   `last_login_at` datetime DEFAULT NULL,
   `last_login_ip` varchar(255) DEFAULT NULL,
@@ -282,34 +318,41 @@ CREATE TABLE `users` (
   `device_id` varchar(255) DEFAULT NULL,
   `device_token` varchar(255) DEFAULT NULL,
   `country_code` varchar(255) DEFAULT NULL,
-  `token` text,
-  `fcm_token` text,
+  `token` text DEFAULT NULL,
+  `fcm_token` text DEFAULT NULL,
   `login_expire` tinyint(4) DEFAULT NULL,
   `device_type` varchar(255) DEFAULT NULL,
-  `social_type` text,
-  `social_id` text,
-  `address` text,
+  `social_type` text DEFAULT NULL,
+  `social_id` text DEFAULT NULL,
+  `address` text DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
   `zipcode` varchar(255) DEFAULT NULL,
   `latitude` varchar(255) DEFAULT NULL,
   `longitude` varchar(255) DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `qualification` text DEFAULT NULL,
+  `qualificationId` text DEFAULT NULL,
+  `qualificationDoc` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`qualificationDoc`)),
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `mobile_number`, `email`, `father_name`, `dob`, `gender`, `email_verified`, `role_id`, `email_verified_at`, `password`, `remember_token`, `status`, `image`, `last_login_at`, `last_login_ip`, `notification_status`, `admin_approved`, `device_id`, `device_token`, `country_code`, `token`, `fcm_token`, `login_expire`, `device_type`, `social_type`, `social_id`, `address`, `city`, `state`, `country`, `zipcode`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', '9609898985', 'info@hiqa.in', NULL, NULL, NULL, 1, 0, '2023-07-02 12:42:09', '$2b$10$Kcz6qGYeJfvxeZ1EZAs1cepj1M9CUftPT95zcaWwsa8L8Xj.2MNZ2', NULL, 1, '1689052834808-HIQA LOGO.jpg', NULL, NULL, NULL, NULL, NULL, 'asdasdasdas', NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY5MDMxMDY1OSwiZXhwIjoxNzIxODQ2NjU5fQ.fwH-Ge5h32yut-XT5hXcbKXR66Qe5jtP5TQSDHUUdw4', NULL, NULL, 'IOS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-09 01:39:10', '2023-07-26 00:14:19'),
-(2, 'Ashish', '321654987', 'ashish@yopmail.com', NULL, NULL, NULL, 1, 1, '2023-07-11 12:58:55', NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 12:58:55', '2023-07-11 12:58:55'),
-(3, 'Manoj', '321654654', 'Manoj@yopmail.com', NULL, NULL, NULL, 1, 1, '2023-07-11 12:58:55', NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'Ravi', '123456789', 'ravi@gmail.com', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:09:12', '2023-07-11 15:09:12'),
-(5, 'Test', '123456789', 'test@yopmail.com', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$KSapbMvmt7jd2ko/E/hRz.VEm7YzmWEpP6fywcrHIsUe6fkRhDSzu', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:22:09', '2023-07-11 15:30:01'),
-(6, 'test 1 Test', '123456789', 'test1@yopmail.com', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$NKjTefFCt8C7lsUPOAhBM.xw3K6l8V2Sgw4HKkztOiFvpv/WUD976', NULL, 2, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:31:44', '2023-07-12 12:19:55');
+INSERT INTO `users` (`id`, `name`, `mobile_number`, `email`, `father_name`, `dob`, `gender`, `email_verified`, `role_id`, `email_verified_at`, `password`, `remember_token`, `status`, `image`, `last_login_at`, `last_login_ip`, `notification_status`, `admin_approved`, `device_id`, `device_token`, `country_code`, `token`, `fcm_token`, `login_expire`, `device_type`, `social_type`, `social_id`, `address`, `city`, `state`, `country`, `zipcode`, `latitude`, `longitude`, `category`, `qualification`, `qualificationId`, `qualificationDoc`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', '9609898985', 'info@hiqa.in', NULL, NULL, NULL, 1, 0, '2023-07-02 12:42:09', '$2b$10$Kcz6qGYeJfvxeZ1EZAs1cepj1M9CUftPT95zcaWwsa8L8Xj.2MNZ2', NULL, 1, '1689052834808-HIQA LOGO.jpg', NULL, NULL, NULL, NULL, NULL, 'asdasdasdas', NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY5MTA1NDQxMywiZXhwIjoxNzIyNTkwNDEzfQ.8sja2Hg7ST8nZN20dR5akHUcVDfOdgj9PIgfZ9IU5NU', NULL, NULL, 'IOS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-09 01:39:10', '2023-08-03 14:50:13'),
+(2, 'Ashish', '321654987', 'ashish@yopmail.com', NULL, NULL, NULL, 1, 1, '2023-07-11 12:58:55', NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 12:58:55', '2023-07-11 12:58:55'),
+(3, 'Manoj', '321654654', 'Manoj@yopmail.com', NULL, NULL, NULL, 1, 1, '2023-07-11 12:58:55', NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'Ravi', '123456789', 'ravi@gmail.com', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:09:12', '2023-07-11 15:09:12'),
+(5, 'Test', '123456789', 'test@yopmail.com', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$KSapbMvmt7jd2ko/E/hRz.VEm7YzmWEpP6fywcrHIsUe6fkRhDSzu', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:22:09', '2023-07-11 15:30:01'),
+(6, 'test 1 Test', '123456789', 'test1@yopmail.com', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$NKjTefFCt8C7lsUPOAhBM.xw3K6l8V2Sgw4HKkztOiFvpv/WUD976', NULL, 2, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:31:44', '2023-07-12 12:19:55'),
+(7, NULL, '987654321', 'ashsih@yopmail.cm', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$hBL8CW/qntkARsV3jKWaYuXJjQvG2HYAzZ64R/1xBo54Z48FfqlYK', NULL, 1, '1691232936446-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-05 16:25:36', '2023-08-05 16:25:36'),
+(8, NULL, '987654321', 'ashsih123@yopmail.cm', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$7RdH462c1s8SON23dZDHJegNlqKuN1MKGENwZE/RRLHwvbnWEgTRW', NULL, 1, '1691233024822-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-05 16:27:04', '2023-08-05 16:27:04'),
+(9, NULL, '987654321', 'ashsih12345@yopmail.cm', NULL, '2023-08-17', 'Male', NULL, 1, NULL, '$2b$10$YL.G2Ddc5vx7l9Pi5U/3HuvGuIkJVVDTSHhbRKx0Q4jGuF1fgGFyi', NULL, 1, '1691233215236-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'QRPF+64P, Sitapura Industrial Area, Sitapura, Jaipur, Rajasthan 302022, India', 'Jaipur', 'Rajasthan', 'India', '302022', '26.7855763', '75.8228346', 'st', '12th', '1', '{\"12th\":{\"name\":\"asd\",\"year\":\"appraing\",\"docs\":\"1691233212517-profile picture option6-01.jpg\"}}', '2023-08-05 16:30:15', '2023-08-05 16:30:15');
 
 --
 -- Indexes for dumped tables
@@ -395,7 +438,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `course_eligibility_details`
 --
 ALTER TABLE `course_eligibility_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -425,7 +468,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

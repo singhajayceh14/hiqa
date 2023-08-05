@@ -14,7 +14,8 @@ cron.schedule("0 0 * * *", () => {
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const dir = "./public/uploads/";
+    let dir = "./public/uploads/";
+    console.log(dir);
     fs.exists(dir, (exist) => {
       if (!exist) {
         return fs.mkdir(dir, (error) => cb(error, dir));

@@ -65,7 +65,7 @@ function Index() {
   const eventPage = useMemo(() => <EventPage event_data={globalState?.events ?? []} />, [globalState?.events]);
   return (
     <>
-      {/* {loading ? (
+      {loading ? (
         <SuspenseLoader color={'#002e6e'} />
       ) : (
         <React.Fragment>
@@ -81,7 +81,7 @@ function Index() {
           <FaqPage />
           <SubscribePage />
         </React.Fragment>
-      )} */}
+      )}
       <Modal id="Eligibility Page" size="lg" show={show} onClose={() => closeModal()}>
         <img src="assets/img/popup/2.png" alt="contact-bg-an-01" />
         {/* <EligibilityPage /> */}

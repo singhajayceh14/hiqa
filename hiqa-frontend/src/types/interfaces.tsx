@@ -96,7 +96,6 @@ export interface COURSE {
   slug: string;
 }
 
-
 export interface QUALIFICATION {
   id: string;
   name: string;
@@ -170,6 +169,7 @@ export interface DOC_DATA {
   [key: string]: {
     name: string;
     year: string;
+    docs: string;
   };
 }
 
@@ -177,12 +177,11 @@ export interface USER_DOC_DATA {
   id?: string;
   qualification: string[];
   qualificationId: string[];
-  qualificationDoc:DOC_DATA;
-  course:string[];
-  courseId:string[];
-
+  qualificationDoc: DOC_DATA;
+  course: string[];
+  courseId: string[];
 }
-export interface USER_DATA extends USER_DOC_DATA {
+export interface USER_DATA {
   id?: string;
   fullName: string;
   fatherName: string;
@@ -198,10 +197,9 @@ export interface USER_DATA extends USER_DOC_DATA {
   country: string;
   state: string;
   city: string;
+  category: string;
+  [key: string]: string | number | any;
 }
-
-
-
 
 export interface ADDRESS {
   formattedAddress: string;

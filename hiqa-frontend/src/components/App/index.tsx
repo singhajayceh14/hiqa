@@ -81,7 +81,7 @@ export const AppProvider = ({ children }: Props) => {
   );
   const getCourseList: COURSE = useCallback(async () => {
     try {
-      const res: ReturnType<any> = await api(`${process.env.BACKEND_API_URL}home/course-list`, 'POST', {});
+      const res: ReturnType<any> = await api(`${process.env.BACKEND_API_URL}home/all-list`, 'POST', {});
       if (res.status) {
         const resData: any = res.data;
         dispatch({

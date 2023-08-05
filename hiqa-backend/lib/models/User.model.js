@@ -9,7 +9,11 @@ module.exports = function (sequelize, DataTypes) {
         autoIncrement: true,
       },
       name: {
-        type: DataTypes.STRING(25),
+        type: DataTypes.STRING(255),
+        defaultValue: null,
+      },
+      father_name: {
+        type: DataTypes.STRING(255),
         defaultValue: null,
       },
       mobile_number: {
@@ -86,6 +90,46 @@ module.exports = function (sequelize, DataTypes) {
       device_type: {
         type: DataTypes.STRING(255),
       },
+      gender: {
+        type: DataTypes.STRING(255),
+      },
+      dob: {
+        type: DataTypes.STRING(255),
+      },
+      address: {
+        type: DataTypes.STRING(255),
+      },
+      zipcode: {
+        type: DataTypes.STRING(255),
+      },
+      latitude: {
+        type: DataTypes.STRING(255),
+      },
+      longitude: {
+        type: DataTypes.STRING(255),
+      },
+      country: {
+        type: DataTypes.STRING(255),
+      },
+      state: {
+        type: DataTypes.STRING(255),
+      },
+      city: {
+        type: DataTypes.STRING(255),
+      },
+      qualification: {
+        type: DataTypes.TEXT,
+      },
+      qualificationId: {
+        type: DataTypes.TEXT,
+      },
+      qualificationDoc: {
+        type: DataTypes.TEXT,
+      },
+      category: {
+        type: DataTypes.STRING(255),
+      },
+
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW(0),
