@@ -14,4 +14,11 @@ router.post(
 );
 
 router.get("/get-user-details", verifyToken, AuthController.getUserDetails);
+router.post(
+  "/update-user",
+  upload.fields([{ name: "image", maxCount: 1 }]),
+  verifyToken,
+  AuthController.updateUser
+);
+router.post("/change-password", verifyToken, AuthController.changePassword);
 module.exports = router;

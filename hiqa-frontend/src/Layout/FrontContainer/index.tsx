@@ -18,7 +18,7 @@ function Container({ children, auth }: Props) {
   const router = useRouter();
   const { ButtonLoader } = useLoading();
   const [initialLoding, setInitialLoding] = useState(true);
-  const { state, getUserData } = useApp();
+  const { getUserData } = useApp();
   const handelAuth = async () => {
     if (auth) {
       if (await getUserData()) {
@@ -41,9 +41,9 @@ function Container({ children, auth }: Props) {
     <ButtonLoader color="#ff7350" />
   ) : (
     <>
-      <Header />
+      {/* <Header /> */}
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

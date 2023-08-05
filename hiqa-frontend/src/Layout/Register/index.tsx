@@ -12,6 +12,61 @@ import GoogleAutoComplete from '@/components/Default/Maps/Autocomplete';
 import CustomAutomplete from '@/components/Default/Autocomplete';
 import styles from '@/styles/Components/Profile/Profile.module.scss';
 import Modal from '@/components/Default/Modal';
+export const getQualificationOption = (q: string) => {
+  if (q.toLowerCase() == '12th') {
+    return (
+      <>
+        <option value="appraing">Appraing</option>
+        <option value="passout">Passout</option>
+      </>
+    );
+  }
+  if (q.toLowerCase() == 'iti') {
+    return (
+      <>
+        <option value="1st">1 Year</option>
+        <option value="2nd">2 Year</option>
+        <option value="3nd">3 Year</option>
+      </>
+    );
+  }
+  if (q.toLowerCase() == 'dip') {
+    return (
+      <>
+        <option value="1st">1 Year</option>
+        <option value="2nd">2 Year</option>
+        <option value="3nd">3 Year</option>
+      </>
+    );
+  }
+  if (q.toLowerCase() == 'b.sc') {
+    return (
+      <>
+        <option value="1st">1 Year</option>
+        <option value="2nd">2 Year</option>
+        <option value="3nd">3 Year</option>
+      </>
+    );
+  }
+  if (q.toLowerCase() == 'be') {
+    return (
+      <>
+        <option value="1st">1 Year</option>
+        <option value="2nd">2 Year</option>
+        <option value="3nd">3 Year</option>
+      </>
+    );
+  }
+  if (q.toLowerCase() == 'me') {
+    return (
+      <>
+        <option value="1st">1 Year</option>
+        <option value="2nd">2 Year</option>
+        <option value="3nd">3 Year</option>
+      </>
+    );
+  }
+};
 
 const initialValues: USER_DATA = {
   fullName: '',
@@ -83,61 +138,6 @@ function Index() {
   };
   const closeModal = (key: string) => {
     dispatch({ [key]: false });
-  };
-  const getQualification = (q: string) => {
-    if (q.toLowerCase() == '12th') {
-      return (
-        <>
-          <option value="appraing">Appraing</option>
-          <option value="passout">Passout</option>
-        </>
-      );
-    }
-    if (q.toLowerCase() == 'iti') {
-      return (
-        <>
-          <option value="1st">1 Year</option>
-          <option value="2nd">2 Year</option>
-          <option value="3nd">3 Year</option>
-        </>
-      );
-    }
-    if (q.toLowerCase() == 'dip') {
-      return (
-        <>
-          <option value="1st">1 Year</option>
-          <option value="2nd">2 Year</option>
-          <option value="3nd">3 Year</option>
-        </>
-      );
-    }
-    if (q.toLowerCase() == 'b.sc') {
-      return (
-        <>
-          <option value="1st">1 Year</option>
-          <option value="2nd">2 Year</option>
-          <option value="3nd">3 Year</option>
-        </>
-      );
-    }
-    if (q.toLowerCase() == 'be') {
-      return (
-        <>
-          <option value="1st">1 Year</option>
-          <option value="2nd">2 Year</option>
-          <option value="3nd">3 Year</option>
-        </>
-      );
-    }
-    if (q.toLowerCase() == 'me') {
-      return (
-        <>
-          <option value="1st">1 Year</option>
-          <option value="2nd">2 Year</option>
-          <option value="3nd">3 Year</option>
-        </>
-      );
-    }
   };
 
   const getCourseList = useCallback(async (q: string[]) => {
@@ -523,7 +523,7 @@ function Index() {
                                               value={values.qualificationDoc?.[q.toLowerCase()]?.year || ''}
                                             >
                                               <option>Select Year</option>
-                                              {getQualification(q)}
+                                              {getQualificationOption(q)}
                                             </Form.Select>
                                           </td>
                                           <td>

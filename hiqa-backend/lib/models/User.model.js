@@ -148,6 +148,7 @@ module.exports = function (sequelize, DataTypes) {
     return [
       "id",
       "name",
+      "father_name",
       "email",
       "mobile_number",
       "email_verified",
@@ -155,6 +156,19 @@ module.exports = function (sequelize, DataTypes) {
       "image",
       "token",
       "role_id",
+      "gender",
+      "dob",
+      "address",
+      "zipcode",
+      "latitude",
+      "longitude",
+      "country",
+      "state",
+      "city",
+      "qualification",
+      "qualificationId",
+      "qualificationDoc",
+      "category",
     ];
   };
   return Users;

@@ -1,51 +1,49 @@
-import React, { memo } from 'react';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import React, { memo, useState } from 'react';
+import { Row, Col, Form, Button, Table } from 'react-bootstrap';
 import { Formik } from 'formik';
-import * as Yup from 'yup';
 import Accordion from 'react-bootstrap/Accordion';
 
-import { SuspenseLoader } from '@/components/App/Loader';
 import { useRequest, useLoading, useApp } from '@/components/App';
-import { REQUEST } from '@/types/interfaces';
-import { toastr, phoneRegExp } from '@/utils/helpers';
+import { REQUEST, QUALIFICATION } from '@/types/interfaces';
+import { toastr } from '@/utils/helpers';
+import GoogleAutoComplete from '@/components/Default/Maps/Autocomplete';
+import CustomAutomplete from '@/components/Default/Autocomplete';
 import styles from '@/styles/Components/Profile/Profile.module.scss';
 import SideMenu from '@/Layout/FrontContainer/Components/SideMenu';
-const ProfilePersonalSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
-  name: Yup.string().trim().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
-  mobile_number: Yup.string()
-    .trim()
-    .matches(phoneRegExp, 'Invalid Phone')
-    .min(9, 'Too Short!')
-    .max(11, 'Too Long!')
-    .required('Required'),
-});
+import { getQualificationOption } from '../Register';
 
 function Index() {
   const { request, loading } = useRequest();
   const { state, dispatch } = useApp();
   const { ButtonLoader } = useLoading();
-  // const getProfileUserDetail = useCallback(async () => {
-  //   const req = (await request('getProfileUserDetail')) as REQUEST;
-  //   if (req?.status) {
-  //     dispatch({ user: req.data });
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  const [fileData, setfileData] = useState<{
+    file: File | null;
+    preView: string;
+  }>({
+    file: null,
+    preView: state?.user?.image ? state?.user?.image : '/assets/images/user-profile.png',
+  });
   const onFileChange = async (event: any) => {
     const file = event.target.files[0];
     const fileTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/bmp'];
     if (!fileTypes.includes(file.type)) return toastr('InvalidImage', 'warning');
-    const formData: FormData = new FormData();
-    formData.append('profile_picture', file, file.name);
-    const res = (await request('updateProfileUserDetail', formData)) as REQUEST;
-    if (res?.status) {
-      dispatch({ user: res.data });
-    }
+    setfileData({
+      file: file,
+      preView: URL.createObjectURL(file),
+    });
   };
-  // useEffect(() => {
-  //   getProfileUserDetail();
-  // }, [getProfileUserDetail]);
+  const onDocChange = async (event: any, name: string) => {
+    const file = event.target.files[0];
+    const formData: FormData = new FormData();
+    formData.append('image', file);
+    const req = (await request('docUpload', formData)) as REQUEST;
+    if (req.status) {
+      const resData: any = req.data;
+      return resData;
+    }
+    return '';
+  };
+
   return (
     <>
       {state?.user ? (
@@ -66,23 +64,11 @@ function Index() {
                             currentTarget.onerror = null; // prevents looping
                             currentTarget.src = '/assets/images/user-profile.png';
                           }}
-                          src={state?.user?.image ? `${state?.user?.image}` : '/assets/images/user-profile.png'}
+                          src={fileData.preView}
                           alt="company-profile"
                         />
                       </span>
                       <div className={styles.companyInformation}>
-                        {loading?.getProfileUserDetail_LOADING ? (
-                          <SuspenseLoader color={'#002e6e'} />
-                        ) : (
-                          <>
-                            {state?.user?.firstname && (
-                              <span className={styles.companyName}>
-                                {state?.user?.firstname} {state?.user?.lastname}
-                                <p className="text-muted text-capitalize">{state?.user?.type}</p>
-                              </span>
-                            )}
-                          </>
-                        )}
                         <input
                           accept="image/png, image/gif, image/jpeg, image/jpg, image/bmp"
                           className={'form-control '}
@@ -96,18 +82,7 @@ function Index() {
                           htmlFor="chooseProfilePicture"
                           className="form-label position-absolute uploadImgBtn rounded-circle p-1 m-0 d-flex align-items-center justify-content-center bottom-0 end-0 mb-md-1 me-md-1"
                         >
-                          <svg
-                            width="100%"
-                            height="100%"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M10.7328 2.55952C11.0919 2.20054 11.5789 1.99893 12.0867 1.99902C12.5944 1.99912 13.0814 2.20091 13.4403 2.56002C13.7993 2.91912 14.0009 3.40611 14.0008 3.91387C14.0007 4.42162 13.7989 4.90854 13.4398 5.26752L12.7068 6.00151L9.99883 3.29351L10.7328 2.56052V2.55952ZM9.29283 4.00051L3.33683 9.95451C3.15604 10.1354 3.01979 10.3559 2.93883 10.5985L2.02483 13.3415C1.99538 13.4296 1.99104 13.5241 2.0123 13.6145C2.03356 13.7049 2.07958 13.7876 2.14519 13.8533C2.21081 13.9191 2.29343 13.9652 2.3838 13.9866C2.47416 14.008 2.56871 14.0038 2.65683 13.9745L5.39983 13.0595C5.64283 12.9795 5.86283 12.8425 6.04383 12.6615L11.9998 6.70852L9.29183 3.99952L9.29283 4.00051Z"
-                              fill="white"
-                            />
-                          </svg>
+                          <i style={{ color: '#fff', fontSize: '12px' }} className="fa fa-pencil"></i>
                         </label>
                       </div>
                     </span>
@@ -115,74 +90,138 @@ function Index() {
                   <Formik
                     enableReinitialize={true}
                     initialValues={{
+                      fullName: state?.user?.name || '',
+                      fatherName: state?.user?.father_name || '',
                       email: state?.user?.email || '',
-                      name: state?.user?.name || '',
                       mobile_number: state?.user?.mobile_number || '',
-                      father_name: state?.user?.father_name || '',
-                      dob: state?.user?.dob || '',
                       gender: state?.user?.gender || '',
+                      dob: state?.user?.dob || '',
                       address: state?.user?.address || '',
-                      city: state?.user?.city || '',
-                      state: state?.user?.state || '',
-                      country: state?.user?.country || '',
                       zipcode: state?.user?.zipcode || '',
                       latitude: state?.user?.latitude || '',
                       longitude: state?.user?.longitude || '',
+                      country: state?.user?.country || '',
+                      state: state?.user?.state || '',
+                      city: state?.user?.city || '',
+                      qualification: state?.user?.qualification.split(',') || [],
+                      qualificationId: state?.user?.qualificationId.split(',') || [],
+                      qualificationDoc: JSON.parse(state?.user?.qualificationDoc) || {},
+                      category: state?.user?.category || '',
                     }}
-                    validationSchema={ProfilePersonalSchema}
                     onSubmit={async values => {
-                      const res = (await request('updateProfileUserDetail', values)) as REQUEST;
+                      const res = (await request('updateUser', values)) as REQUEST;
                       if (res?.status) {
                         dispatch({ user: res.data });
                       }
                     }}
                   >
-                    {({ handleSubmit, handleChange, values, errors }) => (
+                    {({ handleSubmit, handleChange, values, errors, touched, setFieldValue }) => (
                       <Form noValidate onSubmit={handleSubmit}>
                         <Accordion defaultActiveKey="0">
                           <Accordion.Item eventKey="0">
                             <Accordion.Header>Personal Information</Accordion.Header>
                             <Accordion.Body>
                               <Row>
-                                <Col md={6} lg={6}>
+                                <Col md={6}>
                                   <Form.Group className="mb-3">
-                                    <Form.Label>{'Email *'}</Form.Label>
+                                    <Form.Label>Full Name *</Form.Label>
                                     <Form.Control
-                                      placeholder="Email"
-                                      name="email"
+                                      type="text"
+                                      name="fullName"
+                                      placeholder="Your full name"
+                                      onChange={handleChange}
+                                      value={values.fullName}
+                                      isInvalid={!!errors.fullName}
+                                    />
+                                  </Form.Group>
+                                </Col>
+                                <Col md={6}>
+                                  <Form.Group className="mb-3">
+                                    <Form.Label>Father's Name *</Form.Label>
+                                    <Form.Control
+                                      type="text"
+                                      name="fatherName"
+                                      placeholder="Your father's name"
+                                      onChange={handleChange}
+                                      value={values.fatherName}
+                                      isInvalid={!!errors.fatherName}
+                                    />
+                                  </Form.Group>
+                                </Col>
+                                <Col md={6}>
+                                  <Form.Group className="mb-3">
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control
                                       type="email"
+                                      name="email"
+                                      placeholder="Your email address"
                                       onChange={handleChange}
                                       value={values.email}
                                       isInvalid={!!errors.email}
-                                      readOnly
                                     />
                                   </Form.Group>
                                 </Col>
-                                <Col md={6} lg={6}>
+                                <Col md={6}>
                                   <Form.Group className="mb-3">
-                                    <Form.Label>{'Name'}</Form.Label>
+                                    <Form.Label>Mobile</Form.Label>
                                     <Form.Control
-                                      placeholder="Name"
-                                      name="name"
                                       type="text"
-                                      onChange={handleChange}
-                                      value={values.name}
-                                      isInvalid={!!errors.name}
-                                    />
-                                  </Form.Group>
-                                </Col>
-                                <Col lg={6}>
-                                  <Form.Group className="mb-3">
-                                    <Form.Label>{'Phone'}</Form.Label>
-                                    <Form.Control
-                                      placeholder="Phone"
-                                      name="mobile_number"
-                                      type="text"
-                                      autoComplete="off"
+                                      name="mobile"
+                                      placeholder="Your mobile no."
                                       onChange={handleChange}
                                       value={values.mobile_number}
                                       isInvalid={!!errors.mobile_number}
                                     />
+                                  </Form.Group>
+                                </Col>
+                                <Col md={6}>
+                                  <Form.Group className="mb-3">
+                                    <Form.Label>Date of Birth</Form.Label>
+                                    <Form.Control
+                                      type="date"
+                                      name="dob"
+                                      placeholder=""
+                                      onChange={handleChange}
+                                      value={values.dob}
+                                      isInvalid={!!errors.dob}
+                                    />
+                                  </Form.Group>
+                                </Col>
+                                <Col md={6}>
+                                  <Form.Label htmlFor="formGender">Gender</Form.Label>
+                                  <Form.Group className="mb-3" controlId="formGender" id="formGender">
+                                    <Form.Check
+                                      inline
+                                      label="Male"
+                                      name="gender"
+                                      type="radio"
+                                      id="inline-male"
+                                      value="Male"
+                                      checked={values.gender === 'Male'}
+                                      onChange={handleChange}
+                                    />
+                                    <Form.Check
+                                      inline
+                                      label="Female"
+                                      name="gender"
+                                      type="radio"
+                                      id="inline-female"
+                                      value="Female"
+                                      checked={values.gender === 'Female'}
+                                      onChange={handleChange}
+                                    />
+                                  </Form.Group>
+                                </Col>
+                                <Col md={6}>
+                                  <Form.Group className="mb-3">
+                                    <Form.Label>Category</Form.Label>
+                                    <Form.Select onChange={handleChange} name={`category`} value={values.category}>
+                                      <option>Select Year</option>
+                                      <option value={'gen'}>General</option>
+                                      <option value={'sc'}>SC</option>
+                                      <option value={'st'}>ST</option>
+                                      <option value={'obc'}>OBC</option>
+                                    </Form.Select>
                                   </Form.Group>
                                 </Col>
                               </Row>
@@ -192,46 +231,167 @@ function Index() {
                             <Accordion.Header>Address Information</Accordion.Header>
                             <Accordion.Body>
                               <Row>
-                                <Col md={6} lg={6}>
+                                <Col md={12}>
                                   <Form.Group className="mb-3">
-                                    <Form.Label>{'Email'}</Form.Label>
-                                    <Form.Control
-                                      placeholder="Email"
-                                      name="email"
-                                      type="email"
-                                      onChange={handleChange}
-                                      value={values.email}
-                                      isInvalid={!!errors.email}
-                                      readOnly
-                                    />
-                                  </Form.Group>
-                                </Col>
-                                <Col md={6} lg={6}>
-                                  <Form.Group className="mb-3">
-                                    <Form.Label>{'Name'}</Form.Label>
-                                    <Form.Control
-                                      placeholder="Name"
-                                      name="name"
-                                      type="text"
-                                      onChange={handleChange}
-                                      value={values.name}
-                                      isInvalid={!!errors.name}
-                                    />
-                                  </Form.Group>
-                                </Col>
-                                <Col lg={6}>
-                                  <Form.Group className="mb-3">
-                                    <Form.Label>{'Phone *'}</Form.Label>
-                                    <Form.Control
-                                      placeholder="Phone"
-                                      name="mobile_number"
+                                    <GoogleAutoComplete
+                                      name="address"
                                       type="text"
                                       autoComplete="off"
+                                      placeholder="Enter Address *"
                                       onChange={handleChange}
-                                      value={values.mobile_number}
-                                      isInvalid={!!errors.mobile_number}
+                                      value={values.address}
+                                      isInvalid={!!errors.address}
+                                      onSelectOption={address => {
+                                        console.log(address);
+                                        setFieldValue('address', address.formattedAddress, true);
+                                        setFieldValue('latitude', address.lat, true);
+                                        setFieldValue('longitude', address.lng, true);
+                                        setFieldValue('state', address.state, true);
+                                        setFieldValue('country', address.country, true);
+                                        setFieldValue('city', address.city, true);
+                                        setFieldValue('zipcode', address.postalCode, true);
+                                      }}
                                     />
                                   </Form.Group>
+                                </Col>
+                                <Col md={6}>
+                                  <Form.Group className="mb-3">
+                                    <Form.Label htmlFor="state">City</Form.Label>
+                                    <Form.Control
+                                      type="text"
+                                      name="city"
+                                      readOnly={true}
+                                      placeholder="Your city"
+                                      value={values.city}
+                                      isInvalid={!!errors.city}
+                                    />
+                                  </Form.Group>
+                                </Col>
+                                <Col md={6}>
+                                  <Form.Group className="mb-3">
+                                    <Form.Label htmlFor="state">State</Form.Label>
+                                    <Form.Control
+                                      type="text"
+                                      name="state"
+                                      readOnly={true}
+                                      placeholder="Your State"
+                                      value={values.state}
+                                      isInvalid={!!errors.state}
+                                    />
+                                  </Form.Group>
+                                </Col>
+                                <Col md={6}>
+                                  <Form.Group className="mb-3">
+                                    <Form.Label htmlFor="country">Country </Form.Label>
+                                    <Form.Control
+                                      type="text"
+                                      name="country"
+                                      readOnly={true}
+                                      placeholder="Your Country"
+                                      value={values.country}
+                                      isInvalid={!!errors.country}
+                                    />
+                                  </Form.Group>
+                                </Col>
+                                <Col md={6}>
+                                  <Form.Group className="mb-3">
+                                    <Form.Label>Postal Code</Form.Label>
+                                    <Form.Control
+                                      type="text"
+                                      name="zipcode"
+                                      placeholder="Your postal code / zipcode"
+                                      onChange={handleChange}
+                                      value={values.zipcode}
+                                      isInvalid={!!errors.zipcode}
+                                    />
+                                  </Form.Group>
+                                </Col>
+                              </Row>
+                            </Accordion.Body>
+                          </Accordion.Item>
+                          <Accordion.Item eventKey="2">
+                            <Accordion.Header>Qualification Information</Accordion.Header>
+                            <Accordion.Body>
+                              <Row>
+                                <Col md={12}>
+                                  <Form.Group className="mb-3">
+                                    <CustomAutomplete
+                                      label={'Select Qualification'}
+                                      placeholder={'Select Qualification'}
+                                      type="text"
+                                      loading={false}
+                                      // onClick={() => disabledPairedFields()}
+                                      clearOption={() => {
+                                        setFieldValue('qualification', []);
+                                      }}
+                                      name={'qualification'}
+                                      multiple={true}
+                                      onMultipleSelect={selected => {
+                                        setFieldValue('qualification', [...selected.map(mp => mp.name)]);
+                                        const quoteUsersIds = selected.map(mp => {
+                                          if (state?.qualification) {
+                                            return state?.qualification?.find(
+                                              (sm: QUALIFICATION) => sm.name === mp.name,
+                                            )?.id;
+                                          }
+                                        });
+                                        setFieldValue('qualificationId', [...quoteUsersIds]);
+                                      }}
+                                      onSelect={(e, val) => {
+                                        return val.name as string;
+                                      }}
+                                      isOptionsEmpty={false}
+                                      filter={true} //If not remote
+                                      //Provide only if we want to render a value again
+                                      values={values.qualification?.map((mp: string) => ({ name: mp })) || []}
+                                      data={state?.qualification}
+                                      filterfrom={val => val.name as string}
+                                      getvalue={val => val.name as string}
+                                      renderValue={val =>
+                                        state?.qualification?.find((vl: QUALIFICATION) => vl.name === val)?.name || ''
+                                      }
+                                    />
+                                  </Form.Group>
+                                  {values.qualification ? (
+                                    <Table striped bordered hover>
+                                      <tbody>
+                                        {values.qualification.map((q: string, index: number) => (
+                                          <tr key={index}>
+                                            <td>
+                                              <Form.Control
+                                                type="text"
+                                                name={`qualificationDoc[${q.toLowerCase()}].name`}
+                                                placeholder={`Your ${q} Institute Name`}
+                                                onChange={handleChange}
+                                                value={values.qualificationDoc?.[q.toLowerCase()]?.name || ''}
+                                              />
+                                            </td>
+                                            <td>
+                                              <Form.Select
+                                                onChange={handleChange}
+                                                name={`qualificationDoc[${q.toLowerCase()}].year`}
+                                                value={values.qualificationDoc?.[q.toLowerCase()]?.year || ''}
+                                              >
+                                                <option>Select Year</option>
+                                                {getQualificationOption(q)}
+                                              </Form.Select>
+                                            </td>
+                                            <td>
+                                              <Form.Group controlId="formFile">
+                                                <Form.Control
+                                                  type="file"
+                                                  onChange={async event => {
+                                                    const res = await onDocChange(event, q.toLowerCase());
+                                                    setFieldValue(`qualificationDoc[${q.toLowerCase()}].docs`, res);
+                                                  }}
+                                                />
+                                              </Form.Group>
+                                            </td>
+                                          </tr>
+                                        ))}
+                                      </tbody>
+                                    </Table>
+                                  ) : null}
                                 </Col>
                               </Row>
                             </Accordion.Body>
@@ -241,7 +401,7 @@ function Index() {
                         <Row className="mx-0">
                           <Col md={12} className="px-0 mt-3 text-end">
                             <Button type="submit" className="btn btnStyle2">
-                              {loading?.PROFILE_UPDATE_USER_DETAIL_LOADING ? <ButtonLoader /> : 'Save'}
+                              {loading?.updateUser_LOADING ? <ButtonLoader /> : 'Save'}
                             </Button>
                           </Col>
                         </Row>

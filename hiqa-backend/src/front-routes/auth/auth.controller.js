@@ -140,6 +140,116 @@ class AuthController {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }
   };
+
+  updateUser = async (req, res) => {
+    try {
+      if (req.files) {
+        if (req.files.image) {
+          req.body.image = req.files.image[0].filename;
+        }
+      }
+      const params = _.extend(
+        req.query || {},
+        req.params || {},
+        req.body || {}
+      );
+      const {
+        fullName,
+        email,
+        mobile,
+        fatherName,
+        gender,
+        dob,
+        address,
+        zipcode,
+        image,
+        latitude,
+        longitude,
+        country,
+        state,
+        city,
+        qualification,
+        qualificationId,
+        qualificationDoc,
+        category,
+      } = params;
+      console.log(params);
+      const updatePayload = {
+        name: fullName,
+        mobile_number: mobile,
+        email: email,
+        father_name: fatherName ?? "",
+        gender: gender ?? "",
+        dob: dob ?? "",
+        address: address ?? "",
+        zipcode: zipcode ?? "",
+        latitude: latitude ?? "",
+        longitude: longitude ?? "",
+        country: country ?? "",
+        state: state ?? "",
+        city: city ?? "",
+        qualification: qualification.toString() ?? "",
+        qualificationId: qualificationId.toString() ?? "",
+        qualificationDoc: JSON.stringify(qualificationDoc) ?? "",
+        category: category ?? "",
+      };
+      if (image) {
+        updatePayload["image"] = image;
+      }
+      let update = await TableSchema.update(
+        updatePayload,
+        {
+          where: { id: req.user.id },
+        },
+        Users
+      );
+      if (update) {
+        let user = await TableSchema.get({ where: { id: req.user.id } }, Users);
+        return res.success(user, req.__("UPDATE_USER"));
+      } else {
+        return res.warn({}, req.__("UPDATE_USER_ERROR"));
+      }
+    } catch (error) {
+      return res.serverError({}, req.__("SERVER_ERROR"), error);
+    }
+  };
+
+  changePassword = async (req, res) => {
+    try {
+      const params = _.extend(
+        req.query || {},
+        req.params || {},
+        req.body || {}
+      );
+      const { password, old_password } = params;
+      let user = await TableSchema.get({ where: { id: req.user.id } }, Users);
+      if (!user) {
+        return res.serverError({}, req.__("USER_NOT_FOUND"));
+      }
+      const hash = await hashPassword(password);
+      const checkPassword = await verifyPassword(old_password, user.password);
+      if (checkPassword) {
+        return res.serverError({}, req.__("OLD_PASSWORD_DONOT_SAME"));
+      }
+      const updatePayload = {
+        password:hash
+      };
+      let update = await TableSchema.update(
+        updatePayload,
+        {
+          where: { id: req.user.id },
+        },
+        Users
+      );
+      if (update) {
+        return res.success({}, req.__("CHANGE_PASSWORD_SUCCESS"));
+      } else {
+        return res.warn({}, req.__("UPDATE_USER_ERROR"));
+      }
+    } catch (error) {
+      return res.serverError({}, req.__("SERVER_ERROR"), error);
+    }
+  };
 }
 
 module.exports = new AuthController();

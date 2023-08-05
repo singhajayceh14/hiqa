@@ -219,7 +219,7 @@ export const urlBase64ToUint8Array = (base64String: string) => {
 export const logout = () => {
   console.log('LogOut');
   setAuthToken(false);
-  setHeader(false,'');
+  setHeader(false, '');
   Cookies.remove('token');
   Cookies.remove('rememberme');
   router.push('/login');
