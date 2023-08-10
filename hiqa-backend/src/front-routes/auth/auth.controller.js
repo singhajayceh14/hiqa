@@ -8,6 +8,8 @@ const {
   verifyPassword,
   hashPassword,
 } = require("../../utils/authentication");
+const { generateRandomString } = require("../../utils/common");
+
 class AuthController {
   register = async (req, res) => {
     try {
@@ -77,6 +79,58 @@ class AuthController {
       } else {
         return res.warn({}, req.__("CREATE_USER_ERROR"));
       }
+    } catch (error) {
+      return res.serverError({}, req.__("SERVER_ERROR"), error);
+    }
+  };
+  forgotPassword = async (req, res) => {
+    try {
+      const params = _.extend(
+        req.query || {},
+        req.params || {},
+        req.body || {}
+      );
+      const { email } = params;
+      const token = generateRandomString();
+      const newUrl =
+        process.env.FRONTEND + "/reset-password?" + "token=" + token;
+      let user = await TableSchema.get({ where: { email: email } }, Users);
+      if (!user) {
+        return res.serverError({}, req.__("USER_NOT_FOUND"));
+      }
+      await TableSchema.update(
+        {
+          reset_password_token: token,
+        },
+        { where: { id: user.id } },
+        Users
+      );
+      return res.success({ url: newUrl }, req.__("EMAIL_SENT_SUCCESS"));
+    } catch (error) {
+      return res.serverError({}, req.__("SERVER_ERROR"), error);
+    }
+  };
+  resetPassword = async (req, res) => {
+    try {
+      const params = _.extend(
+        req.query || {},
+        req.params || {},
+        req.body || {}
+      );
+      const { password, token } = params;
+      let user = await TableSchema.get(
+        { where: { reset_password_token: token } },
+        Users
+      );
+      if (!user) {
+        return res.serverError({}, req.__("INVAILD_TOKEN"));
+      }
+      const requestData = {
+        password: await hashPassword(password),
+        reset_password_token: null,
+      };
+      await TableSchema.update(requestData, { where: { id: user.id } }, Users);
+      return res.success({}, req.__("PASSWORD_RESET_SUCCESS"));
     } catch (error) {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }
@@ -221,18 +275,19 @@ class AuthController {
         req.params || {},
         req.body || {}
       );
-      const { password, old_password } = params;
+      console.log(req.body);
+      const { password, oldPassword } = params;
       let user = await TableSchema.get({ where: { id: req.user.id } }, Users);
       if (!user) {
         return res.serverError({}, req.__("USER_NOT_FOUND"));
       }
-      const hash = await hashPassword(password);
-      const checkPassword = await verifyPassword(old_password, user.password);
+      const hash = await hashPassword(password.toString());
+      const checkPassword = await verifyPassword(oldPassword, user.password);
       if (checkPassword) {
         return res.serverError({}, req.__("OLD_PASSWORD_DONOT_SAME"));
       }
       const updatePayload = {
-        password:hash
+        password: hash,
       };
       let update = await TableSchema.update(
         updatePayload,

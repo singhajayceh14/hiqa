@@ -55,7 +55,14 @@ export function SuspenseLoader(props?: PROPS) {
 }
 
 export function SimpleLoader() {
-  return <Spinner animation="border" variant="primary" />;
+  return (
+    <div className="preloader">
+      <div className="loading">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  );
 }
 export const useLoading = () => {
   return { ButtonLoader, SimpleLoader };

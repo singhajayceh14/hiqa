@@ -16,7 +16,7 @@ type Props = {
 };
 function Container({ children, auth }: Props) {
   const router = useRouter();
-  const { ButtonLoader } = useLoading();
+  const { SimpleLoader } = useLoading();
   const [initialLoding, setInitialLoding] = useState(true);
   const { getUserData } = useApp();
   const handelAuth = async () => {
@@ -38,7 +38,7 @@ function Container({ children, auth }: Props) {
     handelAuth();
   }, [router.pathname]);
   return initialLoding ? (
-    <ButtonLoader color="#ff7350" />
+    <SimpleLoader />
   ) : (
     <>
       {/* <Header /> */}

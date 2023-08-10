@@ -1,7 +1,8 @@
-import React, { useEffect, memo } from 'react';
+import React, { useEffect, memo, useState } from 'react';
 import Cookies from 'js-cookie';
+import Link from 'next/link';
 import Form from 'react-bootstrap/Form';
-import { Button } from 'react-bootstrap';
+import { Button, InputGroup } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
@@ -23,7 +24,7 @@ function Index() {
   const { request, loading } = useRequest();
   const { ButtonLoader } = useLoading();
   const { trans } = useTranslate();
-
+  const [passwordType, setPasswordType] = useState(true);
   useEffect(() => {
     if (state?.user) {
       router.push('/');
@@ -72,39 +73,62 @@ function Index() {
                     <Form noValidate onSubmit={handleSubmit}>
                       <div className="form-data">
                         <div className="forms-inputs mb-4">
-                          <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Your email address</Form.Label>
+                          <InputGroup className="mb-3">
                             <Form.Control
-                              type="email"
+                              type={'email'}
                               name="email"
                               placeholder="Your email address"
                               onChange={handleChange}
                               value={values.email}
                               isInvalid={!!errors.email}
                             />
+                            <InputGroup.Text>
+                              <i role="button" className={'fa fa-user'}></i>
+                            </InputGroup.Text>
                             {errors.email && touched.email ? (
                               <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
                             ) : null}
-                          </Form.Group>
+                          </InputGroup>
                         </div>
                         <div className="forms-inputs mb-4">
-                          <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Your password</Form.Label>
+                          <InputGroup className="mb-3">
                             <Form.Control
-                              type="password"
+                              type={passwordType === true ? 'password' : 'text'}
                               name="password"
                               placeholder="Your password"
                               onChange={handleChange}
                               value={values.password}
                               isInvalid={!!errors.password}
                             />
+                            <InputGroup.Text>
+                              <i
+                                role="button"
+                                className={passwordType === true ? 'fa fa-eye-slash' : 'fa fa-eye'}
+                                onClick={() => setPasswordType(!passwordType)}
+                              ></i>
+                            </InputGroup.Text>
                             {errors.password && touched.password ? (
                               <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
                             ) : null}
-                          </Form.Group>
+                          </InputGroup>
+                        </div>
+                        <div className="d-flex justify-content-between">
+                          <div>
+                            <Form.Group className="rememberMe">
+                              <Form.Check
+                                type="checkbox"
+                                name="rememberme"
+                                label="Remember me"
+                                onChange={handleChange}
+                              />
+                            </Form.Group>
+                          </div>
+                          <div className="forgot">
+                            <Link href="/forgot-password">Forgot password</Link>
+                          </div>
                         </div>
                         <div className="text-end">
-                          <Button type="submit" className="btn btn-dark btnStyle2">
+                          <Button type="submit" className="btn btn-dark btnStyle2 w-100">
                             {loading?.LoginUser_LOADING ? ButtonLoader() : trans('LOGIN')}
                           </Button>
                         </div>

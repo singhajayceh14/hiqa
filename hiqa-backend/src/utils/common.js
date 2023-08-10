@@ -11,7 +11,12 @@ var multer = require("multer");
 cron.schedule("0 0 * * *", () => {
   //console.log("running a task every minute");
 });
-
+const generateRandomString = () => {
+  return (
+    Math.random().toString(36).substring(2, 15) +
+    Math.random().toString(36).substring(2, 15)
+  );
+};
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     let dir = "./public/uploads/";
@@ -130,4 +135,5 @@ module.exports = {
   getPagination,
   getPaginationData,
   sortByOrder,
+  generateRandomString,
 };

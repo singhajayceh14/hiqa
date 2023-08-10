@@ -19,7 +19,30 @@ export async function LoginUser(action: ACTION): Promise<unknown> {
     if (res.errors) return handleErrors(res.errors);
   }
 }
-
+/* Forgot Password User */
+export async function forgotPassword(action: ACTION): Promise<unknown> {
+  const { payload } = action;
+  const res: ReturnType<any> = await api(`${API_URL}forgot-password`, 'POST', { data: payload });
+  if (res.status) {
+    toastr(res.message, 'success');
+    return res;
+  } else {
+    // Handle Errors
+    if (res.errors) return handleErrors(res.errors);
+  }
+}
+/* Forgot Password User */
+export async function RESET_PASSWORD(action: ACTION): Promise<unknown> {
+  const { payload } = action;
+  const res: ReturnType<any> = await api(`${API_URL}reset-password`, 'POST', { data: payload });
+  if (res.status) {
+    toastr(res.message, 'success');
+    return res;
+  } else {
+    // Handle Errors
+    if (res.errors) return handleErrors(res.errors);
+  }
+}
 export async function logoutUser(): Promise<unknown> {
   const res: ReturnType<any> = await api('/v1/api/auth/logout');
   if (res.status) {

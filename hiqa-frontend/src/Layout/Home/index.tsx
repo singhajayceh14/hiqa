@@ -20,7 +20,7 @@ import { useRequest } from '@/components/App';
 import { REQUEST } from '@/types/interfaces';
 import Modal from '@/components/Default/Modal';
 import FrontContainer from '@/Layout/FrontContainer';
-import { SuspenseLoader } from '@/components/App/Loader';
+import { SimpleLoader, SuspenseLoader } from '@/components/App/Loader';
 import { useCommonReducer } from '@/components/App/reducer';
 
 function Index() {
@@ -66,7 +66,7 @@ function Index() {
   return (
     <>
       {loading ? (
-        <SuspenseLoader color={'#002e6e'} />
+        <SimpleLoader />
       ) : (
         <React.Fragment>
           <SliderPage />

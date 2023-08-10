@@ -31,3 +31,19 @@ export async function updateUser(action: ACTION): Promise<unknown> {
     if (res.errors) return handleErrors(res.errors);
   }
 }
+
+/* Update Change Password */
+export async function CHANGE_PASSWORD(action: ACTION): Promise<unknown> {
+  const { payload } = action;
+  const res: ReturnType<any> = await api(`${AUTH_API_URL}change-password`, 'POST', {
+    data: payload,
+  });
+
+  if (res.status) {
+    toastr(res.message, 'success');
+    return res;
+  } else {
+    // Handle Errors
+    if (res.errors) return handleErrors(res.errors);
+  }
+}

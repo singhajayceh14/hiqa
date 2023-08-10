@@ -12,6 +12,8 @@ router.post(
   upload.fields([{ name: "image", maxCount: 1 }]),
   AuthController.register
 );
+router.post("/forgot-password", AuthController.forgotPassword);
+router.post("/reset-password", AuthController.resetPassword);
 
 router.get("/get-user-details", verifyToken, AuthController.getUserDetails);
 router.post(

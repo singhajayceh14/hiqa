@@ -1138,8 +1138,6 @@ label {
     color: #fff;
 }
 
-.header-three {}
-
 .header-three .second-header {
     background: #125875;
 }
@@ -1421,7 +1419,6 @@ label {
     margin-bottom: -5px;
 }
 
-.call-box strong {}
 
 .header-social a {
     color: #fff;
@@ -1951,7 +1948,6 @@ label {
     background: #ff7350;
 }
 
-.s-about-img img {}
 
 .about-img {
     margin-left: -50px;
@@ -2931,13 +2927,6 @@ section:hover .section-title h2::before {
     margin-bottom: 0;
 }
 
-.second-services-content a {
-    /*font-size: 14px;
-	font-weight: 500;
-	color: #444d69;
-	position: relative;
-	transition: .5s;*/
-}
 
 .second-services-content a::after {
     left: -40px;
@@ -3077,13 +3066,6 @@ section:hover .section-title h2::before {
     display: inline-block;
 }
 
-.s-single-services.active .second-services-content h5 {}
-
-.s-single-services.active .second-services-content a,
-#feature-top .s-single-services.active .btn2,
-.s-single-services.active .services-icon .glyph-icon::before {}
-
-.s-single-services.active .second-services-content p {}
 
 .s-single-services.active .active-icon {
     display: block;
@@ -4161,7 +4143,6 @@ section:hover .section-title h2::before {
     color: #fff !important;
     display: flex;
     padding: 10px 25px;
-    float: left;
     margin-right: 25px;
     position: relative;
     border: 2px solid #1f53db;
@@ -4400,7 +4381,6 @@ section:hover .section-title h2::before {
 
 }
 
-.team-active .slick-dots li.slick-active button {}
 
 .team-active .slick-dots li.slick-active button::before {
     opacity: 1;
@@ -4781,7 +4761,6 @@ section:hover .section-title h2::before {
 }
 
 /* 12. project */
-.project h2 {}
 
 .single-project .project-info {
     position: absolute;
@@ -5716,8 +5695,6 @@ section:hover .section-title h2::before {
     margin: auto;
 }
 
-.testimonial-area h2,
-.testimonial-area p {}
 
 .ta-bg {
     height: 475px;
@@ -6232,7 +6209,6 @@ section:hover .section-title h2::before {
     background: no-repeat;
 }
 
-.faq-wrap .card:last-child {}
 
 .faq-wrap .card-header h2 button::after {
     position: absolute;
@@ -6287,7 +6263,6 @@ section:hover .section-title h2::before {
 
 }
 
-.home-blog-active .slick-dots li.slick-active button {}
 
 .home-blog-active .slick-dots li.slick-active button::before {
     opacity: 1;
@@ -6335,7 +6310,6 @@ section:hover .section-title h2::before {
     border-radius: 4px;
 }
 
-.home-blog-active .slick-prev {}
 
 .home-blog-active .slick-arrow:hover,
 .home-blog-active2 .slick-arrow:hover {
@@ -8891,9 +8865,6 @@ pre cite {
 
 /* Here's the new CSS to add... */
 
-.admin-bar .menu-area {}
-
-.admin-bar .second-header {}
 
 .admin-bar .sticky-menu {
     top: 32px;
@@ -9665,7 +9636,6 @@ p.checkout-coupon input[type="submit"]:hover {
     border: medium none;
     color: #fff;
     display: inline-block;
-    float: left;
     font-size: 12px;
     font-weight: 600;
     height: 40px;
@@ -9722,7 +9692,6 @@ p.checkout-coupon input[type="text"] {
 }
 
 .country-select select {
-    -moz-appearance: none;
     border: 1px solid #eaedff;
     height: 45px;
     padding-left: 10px;
@@ -9940,7 +9909,6 @@ p.checkout-coupon input[type="text"] {
 }
 
 .payment-method .btn-link {
-    -moz-user-select: none;
     background: no-repeat;
     border: medium none;
     border-radius: 0;
@@ -12855,7 +12823,6 @@ figcaption {
     margin-top: 30px;
 }
 
-.single-post .footer-widget {}
 
 figure.aligncenter img {
     margin-bottom: 15px;
@@ -12912,9 +12879,6 @@ figure img {
     color: #99A3AC;
 }
 
-.footer-widget .recentcomments a:hover,
-.footer-widget a:hover,
-.footer-widget .widget_categories a:hover {}
 
 .footer-widget .tag-cloud-link:hover {
     color: #fff;
@@ -13083,8 +13047,6 @@ blockquote footer {
 .contact-info .single-cta {
     float: left;
 }
-
-.contact-info p {}
 
 .contact-info h5 {
     color: #141b22;
@@ -13566,7 +13528,6 @@ blockquote cite {
 }
 
 
-.wpding .footer-widget {}
 
 .wpding .footer-widget .widget_categories ul li a,
 .wpding .footer-widget .widget_archive ul li a {
@@ -13992,9 +13953,7 @@ transform: rotate(180deg);
 .sidebarBody .sideMenu .sideMenuLink .icon svg{
     transition: ease-in-out .3s;
 }
-.sidebarBody .sideMenu .sideMenuLink.active .icon {
-    /* background-color: #fff; */
-}
+
 .sidebarBody .sideMenu .sideMenuLink.active .icon svg{
     filter: brightness(100);
 }
@@ -14105,3 +14064,46 @@ transform: rotate(180deg);
         height: 20px;
     }
 }
+
+/* Loading */
+.preloader {
+    height: 100vh;
+    width: 100vw;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loading {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+  }
+  .loading div {
+    position: absolute;
+    background: #ff7350;
+    opacity: 1;
+    border-radius: 50%;
+    animation: loading 1.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  .loading div:nth-child(2) {
+    animation-delay: -.7s;
+  }
+  @keyframes loading {
+    0% {
+      top: 28px;
+      left: 28px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: -1px;
+      left: -1px;
+      width: 58px;
+      height: 58px;
+      opacity: 0;
+    }
+  }
+  

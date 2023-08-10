@@ -81,6 +81,9 @@ module.exports = function (sequelize, DataTypes) {
       token: {
         type: DataTypes.TEXT,
       },
+      reset_password_token: {
+        type: DataTypes.TEXT,
+      },
       social_id: {
         type: DataTypes.TEXT,
       },

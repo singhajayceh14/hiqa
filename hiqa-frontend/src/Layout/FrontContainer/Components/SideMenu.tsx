@@ -1,6 +1,7 @@
 import { useApp } from '@/components/App';
 import { useRouter } from 'next/router';
 import React, { memo } from 'react';
+import Link from 'next/link';
 import { logout } from '@/utils/helpers';
 
 const SideMenu = () => {
@@ -26,8 +27,8 @@ const SideMenu = () => {
           <div className="sidebarBody flex-fill h-100">
             <ul className="p-0 m-0 list-unstyled">
               <li className="sideMenu border-bottom">
-                <a
-                  href="#"
+                <Link
+                  href="/profile"
                   className={`${
                     asPath === '/profile' ? 'active' : ''
                   } sideMenuLink text-decoration-none d-flex align-items-center gap-2`}
@@ -36,11 +37,11 @@ const SideMenu = () => {
                     <i className="fas fa-user"></i>
                   </div>
                   My Profile
-                </a>
+                </Link>
               </li>
               <li className="sideMenu border-bottom">
-                <a
-                  href="#"
+                <Link
+                  href="/change-password"
                   className={`${
                     asPath === '/change-password' ? 'active' : ''
                   } sideMenuLink text-decoration-none d-flex align-items-center gap-2`}
@@ -49,7 +50,7 @@ const SideMenu = () => {
                     <i className="fas fa-key"></i>
                   </div>
                   Change Password
-                </a>
+                </Link>
               </li>
               <li className="sideMenu border-bottom">
                 <button
