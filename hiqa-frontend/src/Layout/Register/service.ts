@@ -46,3 +46,13 @@ export async function docUpload(action: ACTION): Promise<unknown> {
     if (res.errors) return handleErrors(res.errors);
   }
 }
+
+export async function razorpayOrders(): Promise<unknown> {
+  const res: ReturnType<any> = await api(`${HOME_API_URL}razorpay-orders`, 'POST', {});
+  if (res.status) {
+    return res;
+  } else {
+    // Handle Errors
+    if (res.errors) return handleErrors(res.errors);
+  }
+}

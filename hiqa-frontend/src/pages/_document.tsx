@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
@@ -8,6 +9,8 @@ export default function Document() {
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png" />
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
       </Head>
       <body>
         <Main />

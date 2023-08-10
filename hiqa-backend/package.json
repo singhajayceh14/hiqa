@@ -28,6 +28,7 @@
     "node-cron": "^3.0.2",
     "nodemon": "^2.0.22",
     "path": "^0.12.7",
+    "razorpay": "^2.9.1",
     "sequelize": "^6.30.0",
     "slug": "^8.2.2",
     "swagger-ui-express": "^4.6.2",

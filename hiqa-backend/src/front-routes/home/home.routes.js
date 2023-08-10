@@ -15,4 +15,9 @@ router.post(
   upload.fields([{ name: "image", maxCount: 1 }]),
   HomeController.docUpload
 );
+router.post(
+  "/razorpay-orders",
+  HomeController.razorpayOrders
+);
+
 module.exports = router;

@@ -66,7 +66,7 @@ function Index() {
   return (
     <>
       {loading ? (
-        <SimpleLoader />
+        <SuspenseLoader color='#000' />
       ) : (
         <React.Fragment>
           <SliderPage />

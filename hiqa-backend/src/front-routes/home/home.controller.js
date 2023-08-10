@@ -1,4 +1,6 @@
 var _ = require("lodash");
+const Razorpay = require('razorpay');
+const crypto = require('crypto');
 //Model
 const db = require("../../../lib/models");
 const Courses = require("../../../lib/models").courses;
@@ -246,6 +248,25 @@ class HomeController {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }
   };
+  razorpayOrders = async (req, res) => {
+    try {
+      const instance = new Razorpay({
+        key_id: process.env.RAZORPAY_KEY_ID, // YOUR RAZORPAY KEY
+        key_secret: process.env.RAZORPAY_KEY_SECRET, // YOUR RAZORPAY SECRET
+      });
+
+      const options = {
+        amount: 50000,
+        currency: 'INR',
+        receipt: 'receipt_order_74394',
+      };
+
+      const order = await instance.orders.create(options);
+      return res.success(order, req.__("ORDER_SUCCESS"));
+    } catch (error) {
+      return res.serverError({}, req.__("SERVER_ERROR"), error);
+    }
+  }
 }
 
 module.exports = new HomeController();
