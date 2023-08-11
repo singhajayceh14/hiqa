@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useMemo } from 'react';
 import { Button, Col, Form, Row, Table } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -10,6 +10,7 @@ import { useRequest } from '@/components/App';
 import GoogleAutoComplete from '@/components/Default/Maps/Autocomplete';
 import CustomAutomplete from '@/components/Default/Autocomplete';
 import styles from '@/styles/Components/Profile/Profile.module.scss';
+import { phoneRegExp } from '@/utils/helpers';
 
 export const getQualificationOption = (q: string) => {
   if (q.toLowerCase() == '12th') {
@@ -72,7 +73,7 @@ const initialValues: USER_DATA = {
   fatherName: '',
   email: '',
   mobile: '',
-  gender: '',
+  gender: 'Male',
   dob: '',
   address: '',
   zipcode: '',
@@ -87,62 +88,87 @@ const initialValues: USER_DATA = {
   qualificationDoc: {},
   category: '',
 };
-const RegisterSchema = Yup.object().shape({
-  fullName: Yup.string().required('Required'),
-  fatherName: Yup.string().required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
+const FirstRegisterSchema = Yup.object().shape({
+  fullName: Yup.string().required('Name is required'),
+  fatherName: Yup.string().required('Father Name is required'),
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  mobile: Yup.string()
+    .trim()
+    .matches(phoneRegExp, 'Invalid Mobile Number!')
+    .min(9, 'Too Short!')
+    .max(11, 'Too Long!')
+    .required('Mobile is required'),
+});
+const SecondRegisterSchema = Yup.object().shape({
+  address: Yup.string().required('Address is required'),
+  state: Yup.string().required('State is required'),
+  city: Yup.string().required('City is required'),
+  country: Yup.string().required('Country is required'),
+  zipcode: Yup.string().required('Pincode is required'),
+});
+
+const ThirdRegisterSchema = Yup.object().shape({
+  qualification: Yup.array()
+    .of(Yup.string())
+    .min(1, 'Qualification is empty!')
+    .max(50, 'Too Long!')
+    .required('Required'),
 });
 interface PROPS {
   submit: (data: USER_DATA) => void;
-  qualification: QUALIFICATION[] | undefined;
+  qualification: any;
 }
 function Index(props: PROPS) {
   const { request } = useRequest();
+
   const { prev, next, total, current } = useSteps();
   const [fileData, setfileData] = useState<{
-    file: File | null;
     preView: string;
   }>({
-    file: null,
     preView: '/assets/images/user-profile.png',
   });
-  const onFileChange = async (event: any) => {
-    const file = event.target.files[0];
-    const fileTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/bmp'];
-    if (!fileTypes.includes(file.type)) return toastr('InvalidImage', 'warning');
-    setfileData({
-      file: file,
-      preView: URL.createObjectURL(file),
-    });
-  };
 
-  const onDocChange = async (event: any) => {
+  const validationSchema = useMemo(() => {
+    switch (current) {
+      case 1:
+        return FirstRegisterSchema;
+      case 2:
+        return SecondRegisterSchema;
+      case 3:
+        return ThirdRegisterSchema;
+    }
+  }, [current]);
+
+  const onFileChange = async (event: any, type: string) => {
     const file = event.target.files[0];
+    if (type === 'image') {
+      const fileTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/bmp'];
+      if (!fileTypes.includes(file.type)) return toastr('InvalidImage', 'warning');
+    }
+
     const formData: FormData = new FormData();
     formData.append('image', file);
     const req = (await request('docUpload', formData)) as REQUEST;
     if (req.status) {
-      //router.push('/banner');
       const resData: any = req.data;
+      setfileData({
+        preView: URL.createObjectURL(file),
+      });
       return resData;
     }
-    return '';
   };
 
   return (
     <>
       <Formik
-        enableReinitialize={true}
         initialValues={initialValues}
         validateOnChange={false}
         validateOnBlur={false}
-        validationSchema={RegisterSchema}
-        onSubmit={async values => {
-            console.log(values)
-          if (props.submit) props.submit(values);
-        }}
+        validationSchema={validationSchema}
+        validateOnMount={false}
+        onSubmit={props.submit}
       >
-        {({ handleSubmit, handleReset, handleChange, values, errors, touched, setFieldValue }) => (
+        {({ handleSubmit, handleReset, handleChange, values, errors, touched, setFieldValue, validateForm }) => (
           <Form noValidate onSubmit={handleSubmit} onReset={handleReset} className="customForm">
             <div className="steps_wrapper">
               <Steps>
@@ -153,7 +179,7 @@ function Index(props: PROPS) {
                     </div>
                     <Col md={6}>
                       <Form.Group className="mb-3">
-                        <Form.Label>Full Name *</Form.Label>
+                        <Form.Label>Name *</Form.Label>
                         <Form.Control
                           type="text"
                           name="fullName"
@@ -162,7 +188,7 @@ function Index(props: PROPS) {
                           value={values.fullName}
                           isInvalid={!!errors.fullName}
                         />
-                        {errors.fullName && touched.fullName ? (
+                        {errors.fullName ? (
                           <Form.Control.Feedback type="invalid">{errors.fullName}</Form.Control.Feedback>
                         ) : null}
                       </Form.Group>
@@ -178,14 +204,14 @@ function Index(props: PROPS) {
                           value={values.fatherName}
                           isInvalid={!!errors.fatherName}
                         />
-                        {errors.fatherName && touched.fatherName ? (
+                        {errors.fatherName ? (
                           <Form.Control.Feedback type="invalid">{errors.fatherName}</Form.Control.Feedback>
                         ) : null}
                       </Form.Group>
                     </Col>
                     <Col md={6}>
                       <Form.Group className="mb-3">
-                        <Form.Label>Email</Form.Label>
+                        <Form.Label>Email *</Form.Label>
                         <Form.Control
                           type="email"
                           name="email"
@@ -194,14 +220,14 @@ function Index(props: PROPS) {
                           value={values.email}
                           isInvalid={!!errors.email}
                         />
-                        {errors.email && touched.email ? (
+                        {errors.email ? (
                           <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
                         ) : null}
                       </Form.Group>
                     </Col>
                     <Col md={6}>
                       <Form.Group className="mb-3">
-                        <Form.Label>Mobile</Form.Label>
+                        <Form.Label>Mobile *</Form.Label>
                         <Form.Control
                           type="text"
                           name="mobile"
@@ -210,7 +236,7 @@ function Index(props: PROPS) {
                           value={values.mobile}
                           isInvalid={!!errors.mobile}
                         />
-                        {errors.mobile && touched.mobile ? (
+                        {errors.mobile ? (
                           <Form.Control.Feedback type="invalid">{errors.mobile}</Form.Control.Feedback>
                         ) : null}
                       </Form.Group>
@@ -221,14 +247,12 @@ function Index(props: PROPS) {
                         <Form.Control
                           type="date"
                           name="dob"
-                          placeholder=""
+                          placeholder="Date"
                           onChange={handleChange}
                           value={values.dob}
                           isInvalid={!!errors.dob}
                         />
-                        {errors.dob && touched.dob ? (
-                          <Form.Control.Feedback type="invalid">{errors.dob}</Form.Control.Feedback>
-                        ) : null}
+                        {errors.dob ? <Form.Control.Feedback type="invalid">{errors.dob}</Form.Control.Feedback> : null}
                       </Form.Group>
                     </Col>
                     <Col md={6}>
@@ -254,20 +278,23 @@ function Index(props: PROPS) {
                           checked={values.gender === 'Female'}
                           onChange={handleChange}
                         />
+                        {errors.gender ? (
+                          <Form.Control.Feedback type="invalid">{errors.gender}</Form.Control.Feedback>
+                        ) : null}
                       </Form.Group>
                     </Col>
                     <Col md={6}>
                       <Form.Group className="mb-3">
                         <Form.Label>Category</Form.Label>
                         <Form.Select onChange={handleChange} name={`category`} value={values.category}>
-                          <option>Select Year</option>
+                          <option>Select Category</option>
                           <option value={'gen'}>General</option>
                           <option value={'sc'}>SC</option>
                           <option value={'st'}>ST</option>
                           <option value={'obc'}>OBC</option>
                         </Form.Select>
-                        {errors.dob && touched.dob ? (
-                          <Form.Control.Feedback type="invalid">{errors.dob}</Form.Control.Feedback>
+                        {errors.category ? (
+                          <Form.Control.Feedback type="invalid">{errors.category}</Form.Control.Feedback>
                         ) : null}
                       </Form.Group>
                     </Col>
@@ -290,7 +317,10 @@ function Index(props: PROPS) {
                               className={'form-control '}
                               id="chooseProfilePicture"
                               type="file"
-                              onChange={onFileChange}
+                              onChange={async event => {
+                                const res = await onFileChange(event, 'image');
+                                setFieldValue(`image`, res);
+                              }}
                               style={{ display: 'none' }}
                             />
 
@@ -332,7 +362,7 @@ function Index(props: PROPS) {
                             setFieldValue('zipcode', address.postalCode, true);
                           }}
                         />
-                        {errors.address && touched.address ? (
+                        {errors.address ? (
                           <Form.Control.Feedback type="invalid">{errors.address}</Form.Control.Feedback>
                         ) : null}
                       </Form.Group>
@@ -348,6 +378,9 @@ function Index(props: PROPS) {
                           value={values.city}
                           isInvalid={!!errors.city}
                         />
+                        {errors.city ? (
+                          <Form.Control.Feedback type="invalid">{errors.city}</Form.Control.Feedback>
+                        ) : null}
                       </Form.Group>
                     </Col>
                     <Col md={6}>
@@ -361,6 +394,9 @@ function Index(props: PROPS) {
                           value={values.state}
                           isInvalid={!!errors.state}
                         />
+                        {errors.state ? (
+                          <Form.Control.Feedback type="invalid">{errors.state}</Form.Control.Feedback>
+                        ) : null}
                       </Form.Group>
                     </Col>
                     <Col md={6}>
@@ -374,6 +410,9 @@ function Index(props: PROPS) {
                           value={values.country}
                           isInvalid={!!errors.country}
                         />
+                        {errors.country ? (
+                          <Form.Control.Feedback type="invalid">{errors.country}</Form.Control.Feedback>
+                        ) : null}
                       </Form.Group>
                     </Col>
                     <Col md={6}>
@@ -387,7 +426,7 @@ function Index(props: PROPS) {
                           value={values.zipcode}
                           isInvalid={!!errors.zipcode}
                         />
-                        {errors.zipcode && touched.zipcode ? (
+                        {errors.zipcode ? (
                           <Form.Control.Feedback type="invalid">{errors.zipcode}</Form.Control.Feedback>
                         ) : null}
                       </Form.Group>
@@ -428,13 +467,16 @@ function Index(props: PROPS) {
                           filter={true} //If not remote
                           //Provide only if we want to render a value again
                           values={values.qualification?.map((mp: string) => ({ name: mp })) || []}
-                          data={props?.qualification}
+                          data={props?.qualification || []}
                           filterfrom={val => val.name as string}
                           getvalue={val => val.name as string}
                           renderValue={val =>
                             props?.qualification?.find((vl: QUALIFICATION) => vl.name === val)?.name || ''
                           }
                         />
+                        {errors.qualification ? (
+                          <Form.Text className="text-danger">{errors.qualification}</Form.Text>
+                        ) : null}
                       </Form.Group>
                       {values.qualification ? (
                         <>
@@ -466,7 +508,7 @@ function Index(props: PROPS) {
                                       <Form.Control
                                         type="file"
                                         onChange={async event => {
-                                          const res = await onDocChange(event);
+                                          const res = await onFileChange(event, 'doc');
                                           setFieldValue(`qualificationDoc[${q.toLowerCase()}].docs`, res);
                                         }}
                                       />
@@ -496,7 +538,12 @@ function Index(props: PROPS) {
                     <Button
                       type="button"
                       className={current === total ? 'btn btnStyle2 d-none' : 'btn btnStyle2'}
-                      onClick={next}
+                      onClick={async () => {
+                        const checkValidity = await validateForm();
+                        if (Object.keys(checkValidity).length === 0) {
+                          next();
+                        }
+                      }}
                     >
                       Next
                     </Button>

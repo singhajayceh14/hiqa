@@ -254,7 +254,7 @@ function Autcomplete(props: PROPS) {
             </div>
             <div className="footer_custom_autoComplete p-2">
               <div style={{ float: 'right' }}>
-                <Button variant="danger" className='signInBtns' size="sm" onClick={() => setstate(false)}>
+                <Button variant="danger" className="signInBtns" size="sm" onClick={() => setstate(false)}>
                   Cancel
                 </Button>
               </div>

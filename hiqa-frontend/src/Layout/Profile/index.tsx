@@ -10,7 +10,7 @@ import GoogleAutoComplete from '@/components/Default/Maps/Autocomplete';
 import CustomAutomplete from '@/components/Default/Autocomplete';
 import styles from '@/styles/Components/Profile/Profile.module.scss';
 import SideMenu from '@/Layout/FrontContainer/Components/SideMenu';
-import { getQualificationOption } from '../Register';
+import { getQualificationOption } from '../Register/Components/RegisterFrom';
 
 function Index() {
   const { request, loading } = useRequest();

@@ -198,6 +198,7 @@ export interface USER_DATA {
   state: string;
   city: string;
   category: string;
+  qualification: string[];
   [key: string]: string | number | any;
 }
 

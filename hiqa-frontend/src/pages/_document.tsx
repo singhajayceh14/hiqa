@@ -10,7 +10,6 @@ export default function Document() {
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png" />
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
       </Head>
       <body>
         <Main />

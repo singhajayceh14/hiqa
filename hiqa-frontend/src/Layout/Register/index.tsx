@@ -7,11 +7,15 @@ import { Steps, useSteps } from 'react-step-builder';
 
 import RegisterFrom from './Components/RegisterFrom';
 
-import { REQUEST, USER_DATA } from '@/types/interfaces';
+import { REQUEST, USER_DATA, QUALIFICATION } from '@/types/interfaces';
 import { toastr } from '@/utils/helpers';
 import { useApp, useLoading, useRequest } from '@/components/App';
 import Modal from '@/components/Default/Modal';
-
+declare global {
+  interface Window {
+    Razorpay?: any;
+  }
+}
 function Index() {
   const router = useRouter();
   const { state, dispatch } = useApp();
@@ -29,36 +33,19 @@ function Index() {
   };
 
   const registerFormSubmit = async (values: USER_DATA) => {
-    console.log(values);
-    const paymentRes = await makePayment();
-    console.log(paymentRes);
-    // const formData: FormData = new FormData();
-    // if (fileData.file) {
-    //   formData.append('image', fileData.file);
-    // }
-    // const qualificationDoc = JSON.stringify(values.qualificationDoc);
-    // for (const key in values) {
-    //   if (key === 'qualificationDoc') {
-    //     formData.append('qualificationDoc', qualificationDoc);
-    //   } else {
-    //     formData.append(key, values[key]);
-    //   }
-    // }
-    // console.log(formData);
-    // if (request) {
-    //   const req = (await request('register', formData)) as REQUEST;
-    //   if (req.status) {
-    //     dispatch({ viewModal: true });
-    //   }
-    // }
-  };
-  const makePayment = async () => {
-    const resInitialize = await initializeRazorpay();
+    const formData: FormData = new FormData();
 
-    if (!resInitialize) {
-      alert('Razorpay SDK Failed to load');
-      return;
+    const qualificationDoc = JSON.stringify(values.qualificationDoc);
+    for (const key in values) {
+      if (key === 'qualificationDoc') {
+        formData.append('qualificationDoc', qualificationDoc);
+      } else {
+        formData.append(key, values[key]);
+      }
     }
+    await makePayment(values, formData);
+  };
+  const makePayment = async (values: USER_DATA, formData: FormData) => {
     const res = (await request('razorpayOrders')) as REQUEST;
     if (!res) {
       alert('Server error. Are you online?');
@@ -74,42 +61,37 @@ function Index() {
       order_id: result.id,
       description: 'Thankyou for your test donation',
       image: '/assets/img/logo/1112.png',
-      handler: function (response: any) {
+      handler: async function (response: any) {
         // Validate payment at server - using webhooks is a better idea.
-        const data = {
-          orderCreationId: result.id,
-          razorpayPaymentId: response.razorpay_payment_id,
-          razorpayOrderId: response.razorpay_order_id,
-          razorpaySignature: response.razorpay_signature,
-        };
-        console.log(data);
+        formData.append('razorpay_payment_id', response.razorpay_payment_id);
+        formData.append('razorpay_order_id', response.razorpay_order_id);
+        formData.append('razorpay_signature', response.razorpay_signature);
+
+        if (request) {
+          const req = (await request('register', formData)) as REQUEST;
+          if (req.status) {
+            dispatch({ viewModal: true });
+          }
+        }
       },
       prefill: {
-        name: 'HIQA',
-        email: 'hiqa@gmail.com',
-        contact: '8302653003',
+        name: values.fullName,
+        email: values.email,
+        contact: values.mobile,
       },
     };
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   };
-  const initializeRazorpay = () => {
-    return new Promise(resolve => {
-      const script = document.createElement('script');
-      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-      // document.body.appendChild(script);
 
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
-      document.body.appendChild(script);
-    });
-  };
   return state?.user ? (
     <ButtonLoader color="#ff7350" />
   ) : (
@@ -126,7 +108,10 @@ function Index() {
             </div>
             <div className="col-xxl-8 col-lg-8 ">
               <div className="card p-lg-5 p-4 profileFormOuter" id="form1">
-                <RegisterFrom submit={registerFormSubmit} qualification={state.qualification}></RegisterFrom>
+                <RegisterFrom
+                  submit={registerFormSubmit}
+                  qualification={state?.qualification as QUALIFICATION[]}
+                ></RegisterFrom>
               </div>
             </div>
           </div>

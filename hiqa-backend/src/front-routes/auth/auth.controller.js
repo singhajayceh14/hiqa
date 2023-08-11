@@ -44,6 +44,9 @@ class AuthController {
         qualificationId,
         qualificationDoc,
         category,
+        razorpay_payment_id,
+        razorpay_order_id,
+        razorpay_signature,
       } = params;
       let user = await TableSchema.get({ where: { email: email } }, Users);
       if (user) {

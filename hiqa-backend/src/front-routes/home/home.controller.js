@@ -1,6 +1,6 @@
 var _ = require("lodash");
-const Razorpay = require('razorpay');
-const crypto = require('crypto');
+const Razorpay = require("razorpay");
+const crypto = require("crypto");
 //Model
 const db = require("../../../lib/models");
 const Courses = require("../../../lib/models").courses;
@@ -257,8 +257,8 @@ class HomeController {
 
       const options = {
         amount: 50000,
-        currency: 'INR',
-        receipt: 'receipt_order_74394',
+        currency: "INR",
+        receipt: "receipt_order_74394",
       };
 
       const order = await instance.orders.create(options);
@@ -266,7 +266,7 @@ class HomeController {
     } catch (error) {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }
-  }
+  };
 }
 
 module.exports = new HomeController();

@@ -87,7 +87,7 @@ export const AppProvider = ({ children }: Props) => {
         dispatch({
           courseList: resData.courses_list,
           setting_data: resData.setting_data,
-          qualification: resData.qualification ?? null,
+          qualification: resData.qualification ?? [],
         });
       }
       return [];

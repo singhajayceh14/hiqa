@@ -41,9 +41,9 @@ function Container({ children, auth }: Props) {
     <SimpleLoader />
   ) : (
     <>
-      <Header />
+      {/* <Header /> */}
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

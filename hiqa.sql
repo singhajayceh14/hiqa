@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2023 at 12:56 PM
+-- Generation Time: Aug 11, 2023 at 02:50 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -293,6 +293,24 @@ INSERT INTO `settings` (`id`, `title`, `sub_title`, `address`, `latitude`, `long
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `type` text NOT NULL,
+  `razorpay_payment_id` text DEFAULT NULL,
+  `razorpay_order_id` text DEFAULT NULL,
+  `razorpay_signature` text DEFAULT NULL,
+  `payment_status` enum('paid','unpaid') DEFAULT 'unpaid',
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -353,7 +371,9 @@ INSERT INTO `users` (`id`, `name`, `mobile_number`, `email`, `father_name`, `dob
 (6, 'test 1 Test', '123456789', 'test1@yopmail.com', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$NKjTefFCt8C7lsUPOAhBM.xw3K6l8V2Sgw4HKkztOiFvpv/WUD976', NULL, 2, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:31:44', '2023-07-12 12:19:55'),
 (7, NULL, '987654321', 'ashsih@yopmail.cm', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$hBL8CW/qntkARsV3jKWaYuXJjQvG2HYAzZ64R/1xBo54Z48FfqlYK', NULL, 1, '1691232936446-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-05 16:25:36', '2023-08-05 16:25:36'),
 (8, NULL, '987654321', 'ashsih123@yopmail.cm', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$7RdH462c1s8SON23dZDHJegNlqKuN1MKGENwZE/RRLHwvbnWEgTRW', NULL, 1, '1691233024822-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-05 16:27:04', '2023-08-05 16:27:04'),
-(9, 'asdasd', '987654321', 'ashsih12345@yopmail.com', 'asdasdasd', '2023-08-17', 'Male', NULL, 1, NULL, '$2b$10$4jcex1WGxZwmHJ/PTxmXL.CCVFkF4Qu9ivuUREiqas.6Z2GWjtrHi', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImlhdCI6MTY5MTY2MjcwMSwiZXhwIjoxNzIzMTk4NzAxfQ.pSvLaEh43txKjxEzBs_jUVLduwLqCTXKmC9OirdVTkg', NULL, NULL, NULL, NULL, NULL, NULL, 'QRPF+64P, Sitapura Industrial Area, Sitapura, Jaipur, Rajasthan 302022, India', 'Jaipur', 'Rajasthan', 'India', '302022', '26.7855763', '75.8228346', 'st', '12th,ITI', '1,2', '{\"12th\":{\"name\":\"asd\",\"year\":\"appraing\",\"docs\":\"1691233212517-profile picture option6-01.jpg\"},\"iti\":{\"name\":\"asdasdasd\",\"year\":\"1st\"}}', '2023-08-05 16:30:15', '2023-08-10 16:11:15');
+(9, 'asdasd', '987654321', 'ashsih12345@yopmail.com', 'asdasdasd', '2023-08-17', 'Male', NULL, 1, NULL, '$2b$10$4jcex1WGxZwmHJ/PTxmXL.CCVFkF4Qu9ivuUREiqas.6Z2GWjtrHi', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImlhdCI6MTY5MTY2MjcwMSwiZXhwIjoxNzIzMTk4NzAxfQ.pSvLaEh43txKjxEzBs_jUVLduwLqCTXKmC9OirdVTkg', NULL, NULL, NULL, NULL, NULL, NULL, 'QRPF+64P, Sitapura Industrial Area, Sitapura, Jaipur, Rajasthan 302022, India', 'Jaipur', 'Rajasthan', 'India', '302022', '26.7855763', '75.8228346', 'st', '12th,ITI', '1,2', '{\"12th\":{\"name\":\"asd\",\"year\":\"appraing\",\"docs\":\"1691233212517-profile picture option6-01.jpg\"},\"iti\":{\"name\":\"asdasdasd\",\"year\":\"1st\"}}', '2023-08-05 16:30:15', '2023-08-10 16:11:15'),
+(10, 'Ashish', '8302653003', 'ashishsharma@yopmail.com', 'Santosh', '0000-00-00', 'Male', NULL, 1, NULL, '$2b$10$XcNSilRnKjtBqgN3JCRO0uJFtqn.fwT/ClsjP9JMolAudMF6jJWH6', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Airport Rd, Sanganer, Jaipur, Rajasthan 302029, India', 'Jaipur', 'Rajasthan', 'India', '302029', '26.8289443', '75.8056178', '', '12th,ITI', '1,2', '{}', '2023-08-11 17:36:11', '2023-08-11 17:36:11'),
+(11, 'Asu', '8302653003', 'asu@yopmail.com', 'Sahr', '2003-06-11', 'Male', NULL, 1, NULL, '$2b$10$IrwvGVjt3d4yvN/dglXKKuG0co2GJWWv8m.ZrYm.Ntuy9b3h5FBB2', NULL, 1, '1691756795012-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '117, Ajmer Rd, Civil Lines, Jaipur, Rajasthan 302006, India', 'Jaipur', 'Rajasthan', 'India', '302006', '26.9125961', '75.7875605', 'sc', '12th,ITI', '1,2', '{\"12th\":{\"name\":\"asdasd\",\"year\":\"passout\"},\"iti\":{\"name\":\"asdasdasdasdasdsa\",\"year\":\"3nd\"}}', '2023-08-11 17:57:34', '2023-08-11 17:57:34');
 
 --
 -- Indexes for dumped tables
@@ -405,6 +425,12 @@ ALTER TABLE `qualifications`
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -466,10 +492,16 @@ ALTER TABLE `settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
