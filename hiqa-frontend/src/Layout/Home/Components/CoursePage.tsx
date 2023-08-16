@@ -74,22 +74,20 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
   };
 
   const courseApplyModal = (course: string) => {
-    const selectedCourse = course_data?.find((sm: COURSE_DATA) => sm.id == course)?.name;
+    const selectedCourse = course_data?.find((sm: COURSE_DATA) => sm.id == course);
+    const remainingCourse = course_data?.filter((sm: COURSE_DATA) => sm.id != course);
+
     dispatch({
       viewModal: true,
       selectedCourseId: [course],
       allCourse: course_data,
-      selectedCourseName: [selectedCourse],
+      selectedCourse: [selectedCourse],
+      remainingCourse: remainingCourse,
     });
   };
   const closeModal = (key: string) => {
-    dispatch({ [key]: false, selectedCourseId: [], selectedCourseName: [] });
+    dispatch({ [key]: false, selectedCourseId: [], selectedCourse: [], remainingCourse: [] });
   };
-  const intitalValues = {
-    course: state?.selectedCourseName || [],
-    courseId: state?.selectedCourseId || [],
-  };
-  console.log(intitalValues);
   return (
     <>
       <section className="courses pt-120 pb-120 p-relative fix">
@@ -154,61 +152,116 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
         onClose={() => closeModal('viewModal')}
       >
         <div className="container" style={{ width: 500 }}>
-          <Formik
-            enableReinitialize={true}
-            initialValues={intitalValues}
-            validationSchema={FormikSchema}
-            onSubmit={async values => {
-              console.log(intitalValues, values);
-            }}
-          >
-            {({ handleSubmit, handleReset, values, errors, setFieldValue }) => (
-              <Form noValidate onSubmit={handleSubmit} onReset={handleReset}>
-                <Row>
-                  <Col md={12}>
-                    <CustomAutomplete
-                      label={'Select Course'}
-                      placeholder={'Select Course'}
-                      type="text"
-                      loading={false}
-                      // onClick={() => disabledPairedFields()}
-                      clearOption={() => {
-                        setFieldValue('course', []);
-                      }}
-                      name={'course'}
-                      multiple={true}
-                      onMultipleSelect={selected => {
-                        setFieldValue('course', [...selected.map(mp => mp.name)]);
-                        const quoteUsersIds = selected.map(mp => {
-                          if (state.allCourse) {
-                            return state.allCourse?.find((sm: COURSE_DATA) => sm.name === mp.name)?.id;
-                          }
-                        });
-                        setFieldValue('courseId', [...quoteUsersIds]);
-                      }}
-                      onSelect={(e, val) => val.name as string}
-                      isOptionsEmpty={false}
-                      filter={true} //If not remote
-                      //Provide only if we want to render a value again
-                      values={values.course?.map((mp: string) => ({ name: mp })) || []}
-                      data={state.allCourse}
-                      filterfrom={val => val.name as string}
-                      getvalue={val => val.name as string}
-                      renderValue={val => state.allCourse?.find((vl: COURSE_DATA) => vl.name === val)?.name || ''}
-                    />
-                    {errors.course ? <Form.Text className="text-danger">{errors.course as string}</Form.Text> : null}
-                  </Col>
-                </Row>
-                <Row>
-                  <Col md={12}>
-                    <Button type="submit" className="btn ss-btn" data-animation="fadeInRight" data-delay=".8s">
-                      Apply Now <i className="fal fa-long-arrow-right" />
-                    </Button>
-                  </Col>
-                </Row>
-              </Form>
-            )}
-          </Formik>
+          {state?.selectedCourse &&
+            state?.selectedCourse.map((course: COURSE_DATA, index: number) => (
+              <div key={index} className="alreadyAdded">
+                <div className="row g-3">
+                  <div className="col-auto d-sm-flex align-items-center gap-2">
+                    <div className="successIcon rounded-circle overflow-hidden align-items-center justify-content-center d-none d-sm-flex"></div>
+                    <div className="productImgOuter">
+                      <img className="w-100 h-100" src={course.image} alt={course.name} />
+                    </div>
+                  </div>
+                  <div className="col d-flex align-items-center gap-2">
+                    <div className="content">
+                      <div className="title">{course.name}</div>
+                      <div className="subTitle">
+                        <p dangerouslySetInnerHTML={{ __html: course?.short_description ?? '' }} />
+                      </div>
+                    </div>
+                    <div className="successIcon rounded-circle overflow-hidden d-flex align-items-center justify-content-center d-sm-none"></div>
+                    <div className="second-header-btn">
+                      <button type="button" className="btn signInBtns signUpBtn">
+                        <div className="txt">Go to cart</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+          {state?.remainingCourse &&
+            state?.remainingCourse.map((course: COURSE_DATA, index: number) => (
+              <div className="otherProduct border p-3 mt-3">
+                <div className="heading fs-6 fw-bold">Frequently Bought Together</div>
+                <div className="productInner d-flex flex-column gap-3 mt-3">
+                  <div className="productItem position-relative">
+                    <div className="row g-3">
+                      <div className="col-auto">
+                        <div className="productImgOuter position-relative">
+                          <div className="imgInner w-100 h-100 overflow-hidden">
+                            <img
+                              className="w-100 h-100"
+                              src="https://www.tallahassee.com/gcdn/presto/2018/08/14/PTAL/6e4fff76-595d-4069-9112-cfe15dbfaa43-IMG_Stadium.jpeg?width=660&height=319&fit=crop&format=pjpg&auto=webp"
+                              alt=""
+                            />
+                          </div>
+                          <div className="plusIcon position-absolute start-0 end-0 mx-auto d-flex align-items-center justify-content-center z-3 rounded-circle overflow-hidden shadow">
+                            <img src="assets/img/plusIcon.svg" alt="" />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col d-flex gap-2">
+                        <div className="content">
+                          <div className="title">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, iusto.
+                          </div>
+                          <div className="subTitle">Lorem, ipsum dolor.</div>
+                        </div>
+                        <div className="price">
+                          <div className="newPrice">₹499</div>
+                          <div className="oldPrice">
+                            <s>₹999</s>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="productItem position-relative">
+                    <div className="row g-3">
+                      <div className="col-auto">
+                        <div className="productImgOuter position-relative">
+                          <div className="imgInner w-100 h-100 overflow-hidden">
+                            <img
+                              className="w-100 h-100"
+                              src="https://www.tallahassee.com/gcdn/presto/2018/08/14/PTAL/6e4fff76-595d-4069-9112-cfe15dbfaa43-IMG_Stadium.jpeg?width=660&height=319&fit=crop&format=pjpg&auto=webp"
+                              alt=""
+                            />
+                          </div>
+                          <div className="plusIcon position-absolute start-0 end-0 mx-auto d-flex align-items-center justify-content-center z-3 rounded-circle overflow-hidden shadow">
+                            <img src="assets/img/plusIcon.svg" alt="" />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col d-flex gap-2">
+                        <div className="content">
+                          <div className="title">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, iusto.
+                          </div>
+                          <div className="subTitle">Lorem, ipsum dolor.</div>
+                        </div>
+                        <div className="price">
+                          <div className="newPrice">₹499</div>
+                          <div className="oldPrice">
+                            <s>₹999</s>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="totalPayment d-flex align-items-center justify-content-between mt-3">
+                  <div className="payment fs-5">
+                    Total: <b>₹998</b> <s className="fs-6 text-muted">₹1998</s>
+                  </div>
+                  <div className="second-header-btn">
+                    <button type="button" className="btn signInBtns signUpBtn">
+                      <div className="txt">Next</div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
         </div>
       </Modal>
     </>

@@ -26,10 +26,12 @@ class HomeController {
   allList = async (req, res) => {
     try {
       let whereCondition = { status: "1" };
-      if (req?.body?.q) {
+      if (req.user && req.user.qualificationId) {
         let courseDatas = await TableSchema.getAll(
           {
-            where: { qualificationId: { [Op.in]: req?.body?.q.split("") } },
+            where: {
+              qualificationId: { [Op.in]: req.user.qualificationId.split(",") },
+            },
           },
           CourseEligibilityDetails
         );
@@ -69,10 +71,12 @@ class HomeController {
   getCourseSlugName = async (req, res) => {
     try {
       let whereCondition = { status: "1" };
-      if (req?.body?.q) {
+      if (req.user && req.user.qualificationId) {
         let courseDatas = await TableSchema.getAll(
           {
-            where: { qualificationId: { [Op.in]: req?.body?.q.split("") } },
+            where: {
+              qualificationId: { [Op.in]: req.user.qualificationId.split(",") },
+            },
           },
           CourseEligibilityDetails
         );
@@ -101,9 +105,25 @@ class HomeController {
   };
   getHome = async (req, res) => {
     try {
+      let whereCondition = { status: "1" };
+      if (req.user && req.user.qualificationId) {
+        let courseDatas = await TableSchema.getAll(
+          {
+            where: {
+              qualificationId: { [Op.in]: req.user.qualificationId.split(",") },
+            },
+          },
+          CourseEligibilityDetails
+        );
+        const courseIds = courseDatas
+          .filter((item) => item.courseId)
+          .map((item) => item.courseId);
+
+        whereCondition["id"] = { [Op.in]: courseIds };
+      }
       let courseData = await TableSchema.getAll(
         {
-          where: { status: "1" },
+          where: whereCondition,
         },
         Courses
       );

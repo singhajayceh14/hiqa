@@ -43,7 +43,7 @@ function Index() {
   }, []);
   useEffect(() => {
     getFrontPage();
-    handleOpen();
+    //handleOpen();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -66,20 +66,20 @@ function Index() {
   return (
     <>
       {loading ? (
-        <SuspenseLoader color='#000' />
+        <SuspenseLoader color="#000" />
       ) : (
         <React.Fragment>
-          <SliderPage />
-          <AboutPage />
+          {/* <SliderPage />
+          <AboutPage /> */}
           {coursePage}
-          {eventPage}
+          {/* {eventPage}
           <VideoPage />
           <AdmissionPage />
           <LogoSliderPage />
           {blogPage}
           <ScholarshipPage />
           <FaqPage />
-          <SubscribePage />
+          <SubscribePage /> */}
         </React.Fragment>
       )}
       <Modal id="Eligibility Page" size="lg" show={show} onClose={() => closeModal()}>
