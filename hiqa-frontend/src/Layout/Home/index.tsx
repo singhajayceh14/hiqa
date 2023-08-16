@@ -25,7 +25,6 @@ import { useCommonReducer } from '@/components/App/reducer';
 
 function Index() {
   const [loading, setLoading] = useState<boolean>(true);
-
   const { request } = useRequest();
   const { state: globalState, dispatch: globalDispatch } = useCommonReducer();
   const [show, setShow] = useState<boolean>(false);

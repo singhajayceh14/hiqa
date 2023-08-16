@@ -9,6 +9,8 @@ import { COURSE_DATA } from '@/types/interfaces';
 import Modal from '@/components/Default/Modal';
 import { useCommonReducer } from '@/components/App/reducer';
 import CustomAutomplete from '@/components/Default/Autocomplete';
+import { useApp } from '@/components/App';
+import { useRouter } from 'next/router';
 
 const FormikSchema = Yup.object().shape({
   course: Yup.array()
@@ -35,8 +37,9 @@ function PrevArrow(props: { className?: string; style?: any; onClick?: MouseEven
   );
 }
 const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
-  const { state, dispatch } = useCommonReducer();
-
+  const { state } = useApp();
+  const router = useRouter();
+  const { state: globalState, dispatch: globalDispatch } = useCommonReducer();
   const settings = {
     dots: false,
     infinite: true,
@@ -77,7 +80,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
     const selectedCourse = course_data?.find((sm: COURSE_DATA) => sm.id == course);
     const remainingCourse = course_data?.filter((sm: COURSE_DATA) => sm.id != course);
 
-    dispatch({
+    globalDispatch({
       viewModal: true,
       selectedCourseId: [course],
       allCourse: course_data,
@@ -86,7 +89,13 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
     });
   };
   const closeModal = (key: string) => {
-    dispatch({ [key]: false, selectedCourseId: [], selectedCourse: [], remainingCourse: [] });
+    globalDispatch({ [key]: false, selectedCourseId: [], selectedCourse: [], remainingCourse: [] });
+  };
+  const checkoutRedirct = (ids: number[]) => {
+    if (state?.user) {
+    } else {
+      return router.push('/login');
+    }
   };
   return (
     <>
@@ -148,12 +157,12 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
         id="courseApply"
         title={'Course Apply'}
         size="lg"
-        show={state.viewModal}
+        show={globalState.viewModal}
         onClose={() => closeModal('viewModal')}
       >
         <div className="container" style={{ width: 500 }}>
-          {state?.selectedCourse &&
-            state?.selectedCourse.map((course: COURSE_DATA, index: number) => (
+          {globalState?.selectedCourse &&
+            globalState?.selectedCourse.map((course: COURSE_DATA, index: number) => (
               <div key={index} className="alreadyAdded">
                 <div className="row g-3">
                   <div className="col-auto d-sm-flex align-items-center gap-2">
@@ -171,7 +180,13 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
                     </div>
                     <div className="successIcon rounded-circle overflow-hidden d-flex align-items-center justify-content-center d-sm-none"></div>
                     <div className="second-header-btn">
-                      <button type="button" className="btn signInBtns signUpBtn">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          checkoutRedirct(globalState.selectedCourseId);
+                        }}
+                        className="btn signInBtns signUpBtn"
+                      >
                         <div className="txt">Go to Checkout</div>
                       </button>
                     </div>
@@ -180,11 +195,11 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
               </div>
             ))}
 
-          {state?.remainingCourse && (
+          {globalState?.remainingCourse && (
             <div className="otherProduct border p-3 mt-3">
               <div className="heading fs-6 fw-bold">Frequently Bought Together</div>
               <div className="productInner d-flex flex-column gap-3 mt-3">
-                {state?.remainingCourse.map((course: COURSE_DATA, index: number) => (
+                {globalState?.remainingCourse.map((course: COURSE_DATA, index: number) => (
                   <div key={index} className="productItem position-relative">
                     <div className="row g-3">
                       <div className="col-auto">
@@ -214,7 +229,13 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
                   Total: <b>₹998</b> <s className="fs-6 text-muted">₹1998</s>
                 </div>
                 <div className="second-header-btn">
-                  <button type="button" className="btn signInBtns signUpBtn">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      checkoutRedirct(globalState.selectedCourseId);
+                    }}
+                    className="btn signInBtns signUpBtn"
+                  >
                     <div className="txt">Go to Checkout All Course</div>
                   </button>
                 </div>
