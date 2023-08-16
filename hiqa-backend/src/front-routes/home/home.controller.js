@@ -106,11 +106,12 @@ class HomeController {
   getHome = async (req, res) => {
     try {
       let whereCondition = { status: "1" };
-      if (req.user && req.user.qualificationId) {
+      if (req.body && req.body.qualificationId) {
+      
         let courseDatas = await TableSchema.getAll(
           {
             where: {
-              qualificationId: { [Op.in]: req.user.qualificationId.split(",") },
+              qualificationId: { [Op.in]: req.body.qualificationId.split(",") },
             },
           },
           CourseEligibilityDetails

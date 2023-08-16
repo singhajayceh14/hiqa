@@ -13923,7 +13923,7 @@ transform: rotate(180deg);
     padding: 10px 10px;
 }
 .sideBarMenus {
-    max-height: calc(100% - 160px);
+    /* max-height: calc(100% - 160px); */
     height: 100%;
     position: sticky;
     top: 130px;
@@ -14036,6 +14036,11 @@ transform: rotate(180deg);
         align-items: center;
         justify-content: center;
     }
+    .cartModal .signInBtns {
+        width: auto !important;
+        height: auto !important;
+        padding: 10px 16px !important;
+    }
 }
 @media (max-width: 575px){
     .logo {
@@ -14132,7 +14137,7 @@ transform: rotate(180deg);
 .checkoutPageMain .form-select:focus {
     border-color: #125875;
 }
-.checkoutPageMain .pera{
+.checkoutPageMain .pera, .itemPera{
     font-size: 14px;
     color: #9f9f9f;
     line-height: 1.5;
@@ -14234,6 +14239,9 @@ transform: rotate(180deg);
     font-size: 12px;
     opacity: 1;
 }
+.cartModal .modal-title {
+    padding-bottom: 0 !important;
+}
 .successIcon{
     width: 30px;
     height: 30px;
@@ -14279,12 +14287,16 @@ transform: rotate(180deg);
     line-height: 1.3;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     overflow: hidden;
 }
 .cartModal .subTitle {
     font-size: 13px;
     color: #9f9f9f;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 .cartModal .rating{
     font-size: 14px;
@@ -14404,51 +14416,3 @@ transform: rotate(180deg);
     }
 }
 
-
-/* already added */
-.signInBtns.signUpBtn {
-    background-color: #125875;
-    border-color: #125875;
-    border-radius: 0;
-}
-/* .second-header-btn .btn {
-    background: #ff7350;
-    font-size: 16px;
-    color: #fff;
-    position: relative;
-    border-radius: 0;
-} */
-.signInBtns {
-    font-size: 15px;
-    font-weight: 500;
-    padding: 12px 24px;
-    position: relative;
-}
-.signInBtns {
-    font-size: 15px;
-    font-weight: 500;
-    padding: 12px 24px;
-    position: relative;
-}
-.btn {
-    border-radius: 4px;
-    color: #fff;
-    display: inline-block;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 1;
-    margin-bottom: 0;
-    padding: 20px 30px;
-    text-align: center;
-    text-transform: unset;
-    touch-action: manipulation;
-    transition: all 0.3s ease 0s;
-    vertical-align: middle;
-    white-space: nowrap;
-    position: relative;
-    z-index: 1;
-    text-transform: capitalize;
-    background: #ff7350;
-    border: 1px solid #ff7350;
-    overflow: hidden;
-}

@@ -31,7 +31,7 @@ function Index() {
           <div className="row">
             <SideMenu />
             <div className="col-xl-9 col-lg-8">
-              <div className="card profileFormOuter overflowhidden border-0 p-4">
+              <div className="card profileFormOuter overflowhidden border-0 p-4 mb-0">
                 <div className="card-header bg-transparent p-0 border-0 pb-4">
                   <div className="pageTitle">Change Password</div>
                 </div>

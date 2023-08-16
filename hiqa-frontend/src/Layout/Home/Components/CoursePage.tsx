@@ -1,24 +1,13 @@
 import { memo, MouseEventHandler } from 'react';
 import Slider from 'react-slick';
 import Link from 'next/link';
-import { Form, Button, Row, Col } from 'react-bootstrap';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
+import { useRouter } from 'next/router';
 
 import { COURSE_DATA } from '@/types/interfaces';
 import Modal from '@/components/Default/Modal';
 import { useCommonReducer } from '@/components/App/reducer';
-import CustomAutomplete from '@/components/Default/Autocomplete';
 import { useApp } from '@/components/App';
-import { useRouter } from 'next/router';
 
-const FormikSchema = Yup.object().shape({
-  course: Yup.array()
-    .of(Yup.string())
-    .min(1, 'Course is required!')
-    .max(50, 'Course is required!')
-    .required('Required'),
-});
 function NextArrow(props: { className?: string; style?: any; onClick?: MouseEventHandler<HTMLButtonElement> }) {
   const { className, style, onClick } = props;
   return (
@@ -77,7 +66,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
   };
 
   const courseApplyModal = (course: string) => {
-    const selectedCourse = course_data?.find((sm: COURSE_DATA) => sm.id == course);
+    const selectedCourse = course_data?.find((sm: COURSE_DATA) => sm.id == course) as any;
     const remainingCourse = course_data?.filter((sm: COURSE_DATA) => sm.id != course);
 
     globalDispatch({
@@ -91,10 +80,11 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
   const closeModal = (key: string) => {
     globalDispatch({ [key]: false, selectedCourseId: [], selectedCourse: [], remainingCourse: [] });
   };
-  const checkoutRedirct = (ids: number[]) => {
-    if (state?.user) {
-    } else {
+  const checkoutRedirect = (ids: number[]) => {
+    if (!state?.user) {
       return router.push('/login');
+    } else {
+      return router.push('/checkout');
     }
   };
   return (
@@ -128,14 +118,15 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
                     </Link>
                   </div>
                   <div className="courses-content">
-                    <div
+                    <button
+                      type="button"
                       onClick={() => {
                         courseApplyModal(course.id);
                       }}
-                      className="cat"
+                      className="cat border-0 shadow-none"
                     >
                       <i className="fal fa-graduation-cap" /> Apply Now
-                    </div>
+                    </button>
                     <h3>
                       <Link href={'course/' + course.slug}>{course.name}</Link>
                     </h3>
@@ -155,40 +146,48 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
       </section>
       <Modal
         id="courseApply"
-        title={'Course Apply'}
+        title={'Go to Checkout'}
         size="lg"
         show={globalState.viewModal}
         onClose={() => closeModal('viewModal')}
+        className={'cartModal'}
       >
-        <div className="container" style={{ width: 500 }}>
+        <div className=" ">
           {globalState?.selectedCourse &&
             globalState?.selectedCourse.map((course: COURSE_DATA, index: number) => (
               <div key={index} className="alreadyAdded">
                 <div className="row g-3">
-                  <div className="col-auto d-sm-flex align-items-center gap-2">
-                    <div className="successIcon rounded-circle overflow-hidden align-items-center justify-content-center d-none d-sm-flex"></div>
+                  <div className="col-auto d-lg-flex align-items-center gap-2">
+                    <div className="successIcon rounded-circle overflow-hidden align-items-center justify-content-center d-none d-lg-flex"></div>
                     <div className="productImgOuter">
                       <img className="w-100 h-100" src={course.image} alt={course.name} />
                     </div>
                   </div>
-                  <div className="col d-flex align-items-center gap-2">
-                    <div className="content">
-                      <div className="title">{course.name}</div>
-                      <div className="subTitle">
-                        <p dangerouslySetInnerHTML={{ __html: course?.short_description ?? '' }} />
+                  <div className="col">
+                    <div className="row">
+                      <div className="col-lg">
+                        <div className="content">
+                          <div className="title">{course.name}</div>
+                          <p
+                            className="subTitle"
+                            dangerouslySetInnerHTML={{ __html: course?.short_description ?? '' }}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="successIcon rounded-circle overflow-hidden d-flex align-items-center justify-content-center d-sm-none"></div>
-                    <div className="second-header-btn">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          checkoutRedirct(globalState.selectedCourseId);
-                        }}
-                        className="btn signInBtns signUpBtn"
-                      >
-                        <div className="txt">Go to Checkout</div>
-                      </button>
+                      <div className="col-lg-auto col-12 d-flex align-items-center justify-content-end gap-3">
+                        <div className="successIcon rounded-circle overflow-hidden d-flex align-items-center justify-content-center d-lg-none"></div>
+                        <div className="second-header-btn">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              checkoutRedirect(globalState.selectedCourseId);
+                            }}
+                            className="btn signInBtns signUpBtn"
+                          >
+                            <div className="txt">Go to Checkout</div>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -208,7 +207,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
                             <img className="w-100 h-100" src={course.image} alt={course.name} />
                           </div>
                           <div className="plusIcon position-absolute start-0 end-0 mx-auto d-flex align-items-center justify-content-center z-3 rounded-circle overflow-hidden shadow">
-                            <img src="assets/img/plusIcon.svg" alt="" />
+                            <img src="/assets/img/plusIcon.svg" alt="" />
                           </div>
                         </div>
                       </div>
@@ -226,13 +225,13 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
               </div>
               <div className="totalPayment d-flex align-items-center justify-content-between mt-3">
                 <div className="payment fs-5">
-                  Total: <b>₹998</b> <s className="fs-6 text-muted">₹1998</s>
+                  Total: <b>₹998</b>
                 </div>
                 <div className="second-header-btn">
                   <button
                     type="button"
                     onClick={() => {
-                      checkoutRedirct(globalState.selectedCourseId);
+                      checkoutRedirect(globalState.selectedCourseId);
                     }}
                     className="btn signInBtns signUpBtn"
                   >

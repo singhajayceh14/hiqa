@@ -55,7 +55,7 @@ const SideMenu = () => {
               <li className="sideMenu border-bottom">
                 <button
                   onClick={logoutFunction}
-                  className="sideMenuLink text-decoration-none d-flex align-items-center gap-2"
+                  className="sideMenuLink border-0 w-100 bg-transparent shadow-none text-decoration-none d-flex align-items-center gap-2"
                 >
                   <div className="icon d-flex align-items-center justify-content-center">
                     <i className="fas fa-sign-out-alt"></i>

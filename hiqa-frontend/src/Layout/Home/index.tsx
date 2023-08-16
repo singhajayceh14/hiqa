@@ -16,21 +16,25 @@ import FaqPage from './Components/FaqPage';
 import SubscribePage from './Components/SubscribePage';
 import EligibilityPage from './Components/EligibilityPage';
 
-import { useRequest } from '@/components/App';
+import { useApp, useRequest } from '@/components/App';
 import { REQUEST } from '@/types/interfaces';
 import Modal from '@/components/Default/Modal';
-import FrontContainer from '@/Layout/FrontContainer';
 import { SimpleLoader, SuspenseLoader } from '@/components/App/Loader';
 import { useCommonReducer } from '@/components/App/reducer';
 
 function Index() {
+  const { state } = useApp();
   const [loading, setLoading] = useState<boolean>(true);
   const { request } = useRequest();
   const { state: globalState, dispatch: globalDispatch } = useCommonReducer();
   const [show, setShow] = useState<boolean>(false);
 
   const getFrontPage = useCallback(async () => {
-    const res = (await request('getFrontPage', {})) as REQUEST;
+    const payload: any = {};
+    if (state.user) {
+      payload['qualificationId'] = state?.user?.qualificationId;
+    }
+    const res = (await request('getFrontPage', payload)) as REQUEST;
     if (res?.data) {
       const resData: any = res.data;
       setLoading(false);
@@ -39,12 +43,12 @@ function Index() {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state.user]);
   useEffect(() => {
     getFrontPage();
     //handleOpen();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state.user]);
 
   const closeModal = () => {
     setShow(false);
@@ -68,17 +72,17 @@ function Index() {
         <SuspenseLoader color="#000" />
       ) : (
         <React.Fragment>
-          {/* <SliderPage />
-          <AboutPage /> */}
+          <SliderPage />
+          <AboutPage />
           {coursePage}
-          {/* {eventPage}
+          {eventPage}
           <VideoPage />
           <AdmissionPage />
           <LogoSliderPage />
           {blogPage}
           <ScholarshipPage />
           <FaqPage />
-          <SubscribePage /> */}
+          <SubscribePage />
         </React.Fragment>
       )}
       <Modal id="Eligibility Page" size="lg" show={show} onClose={() => closeModal()}>

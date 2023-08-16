@@ -9,6 +9,7 @@ interface PROPS {
   children: JSX.Element | JSX.Element[];
   onClose: () => void;
   outer?: boolean;
+  className?:string;
 }
 
 function Index(props: PROPS) {
@@ -23,6 +24,7 @@ function Index(props: PROPS) {
       onHide={hideModal}
       backdrop="static"
       keyboard={false}
+      className={props.className}
       centered
     >
       <Modal.Header closeButton={true}>{props?.title ? <Modal.Title>{props.title}</Modal.Title> : null}</Modal.Header>
