@@ -172,7 +172,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
                     <div className="successIcon rounded-circle overflow-hidden d-flex align-items-center justify-content-center d-sm-none"></div>
                     <div className="second-header-btn">
                       <button type="button" className="btn signInBtns signUpBtn">
-                        <div className="txt">Go to cart</div>
+                        <div className="txt">Go to Checkout</div>
                       </button>
                     </div>
                   </div>
@@ -180,21 +180,17 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
               </div>
             ))}
 
-          {state?.remainingCourse &&
-            state?.remainingCourse.map((course: COURSE_DATA, index: number) => (
-              <div className="otherProduct border p-3 mt-3">
-                <div className="heading fs-6 fw-bold">Frequently Bought Together</div>
-                <div className="productInner d-flex flex-column gap-3 mt-3">
-                  <div className="productItem position-relative">
+          {state?.remainingCourse && (
+            <div className="otherProduct border p-3 mt-3">
+              <div className="heading fs-6 fw-bold">Frequently Bought Together</div>
+              <div className="productInner d-flex flex-column gap-3 mt-3">
+                {state?.remainingCourse.map((course: COURSE_DATA, index: number) => (
+                  <div key={index} className="productItem position-relative">
                     <div className="row g-3">
                       <div className="col-auto">
                         <div className="productImgOuter position-relative">
                           <div className="imgInner w-100 h-100 overflow-hidden">
-                            <img
-                              className="w-100 h-100"
-                              src="https://www.tallahassee.com/gcdn/presto/2018/08/14/PTAL/6e4fff76-595d-4069-9112-cfe15dbfaa43-IMG_Stadium.jpeg?width=660&height=319&fit=crop&format=pjpg&auto=webp"
-                              alt=""
-                            />
+                            <img className="w-100 h-100" src={course.image} alt={course.name} />
                           </div>
                           <div className="plusIcon position-absolute start-0 end-0 mx-auto d-flex align-items-center justify-content-center z-3 rounded-circle overflow-hidden shadow">
                             <img src="assets/img/plusIcon.svg" alt="" />
@@ -203,65 +199,28 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
                       </div>
                       <div className="col d-flex gap-2">
                         <div className="content">
-                          <div className="title">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, iusto.
-                          </div>
-                          <div className="subTitle">Lorem, ipsum dolor.</div>
-                        </div>
-                        <div className="price">
-                          <div className="newPrice">₹499</div>
-                          <div className="oldPrice">
-                            <s>₹999</s>
+                          <div className="title">{course.name}</div>
+                          <div className="subTitle">
+                            <p dangerouslySetInnerHTML={{ __html: course?.short_description ?? '' }} />
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="productItem position-relative">
-                    <div className="row g-3">
-                      <div className="col-auto">
-                        <div className="productImgOuter position-relative">
-                          <div className="imgInner w-100 h-100 overflow-hidden">
-                            <img
-                              className="w-100 h-100"
-                              src="https://www.tallahassee.com/gcdn/presto/2018/08/14/PTAL/6e4fff76-595d-4069-9112-cfe15dbfaa43-IMG_Stadium.jpeg?width=660&height=319&fit=crop&format=pjpg&auto=webp"
-                              alt=""
-                            />
-                          </div>
-                          <div className="plusIcon position-absolute start-0 end-0 mx-auto d-flex align-items-center justify-content-center z-3 rounded-circle overflow-hidden shadow">
-                            <img src="assets/img/plusIcon.svg" alt="" />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col d-flex gap-2">
-                        <div className="content">
-                          <div className="title">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, iusto.
-                          </div>
-                          <div className="subTitle">Lorem, ipsum dolor.</div>
-                        </div>
-                        <div className="price">
-                          <div className="newPrice">₹499</div>
-                          <div className="oldPrice">
-                            <s>₹999</s>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                ))}
+              </div>
+              <div className="totalPayment d-flex align-items-center justify-content-between mt-3">
+                <div className="payment fs-5">
+                  Total: <b>₹998</b> <s className="fs-6 text-muted">₹1998</s>
                 </div>
-                <div className="totalPayment d-flex align-items-center justify-content-between mt-3">
-                  <div className="payment fs-5">
-                    Total: <b>₹998</b> <s className="fs-6 text-muted">₹1998</s>
-                  </div>
-                  <div className="second-header-btn">
-                    <button type="button" className="btn signInBtns signUpBtn">
-                      <div className="txt">Next</div>
-                    </button>
-                  </div>
+                <div className="second-header-btn">
+                  <button type="button" className="btn signInBtns signUpBtn">
+                    <div className="txt">Go to Checkout All Course</div>
+                  </button>
                 </div>
               </div>
-            ))}
+            </div>
+          )}
         </div>
       </Modal>
     </>
