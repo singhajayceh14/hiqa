@@ -278,7 +278,6 @@ class AuthController {
         req.params || {},
         req.body || {}
       );
-      console.log(req.body);
       const { password, oldPassword } = params;
       let user = await TableSchema.get({ where: { id: req.user.id } }, Users);
       if (!user) {

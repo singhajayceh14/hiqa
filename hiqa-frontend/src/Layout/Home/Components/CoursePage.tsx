@@ -3,10 +3,10 @@ import Slider from 'react-slick';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { COURSE_DATA } from '@/types/interfaces';
+import { REQUEST, COURSE_DATA } from '@/types/interfaces';
 import Modal from '@/components/Default/Modal';
 import { useCommonReducer } from '@/components/App/reducer';
-import { useApp } from '@/components/App';
+import { useApp, useRequest } from '@/components/App';
 
 function NextArrow(props: { className?: string; style?: any; onClick?: MouseEventHandler<HTMLButtonElement> }) {
   const { className, style, onClick } = props;
@@ -26,6 +26,7 @@ function PrevArrow(props: { className?: string; style?: any; onClick?: MouseEven
   );
 }
 const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
+  const { request, loading } = useRequest();
   const { state } = useApp();
   const router = useRouter();
   const { state: globalState, dispatch: globalDispatch } = useCommonReducer();
@@ -67,24 +68,38 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
 
   const courseApplyModal = (course: string) => {
     const selectedCourse = course_data?.find((sm: COURSE_DATA) => sm.id == course) as any;
-    const remainingCourse = course_data?.filter((sm: COURSE_DATA) => sm.id != course);
-
+    const remainingCourse = course_data?.filter((sm: COURSE_DATA) => sm.id != course) as any;
+    const remainingCourseIds = course_data.map((sm: COURSE_DATA) => sm.id);
     globalDispatch({
       viewModal: true,
       selectedCourseId: [course],
       allCourse: course_data,
       selectedCourse: [selectedCourse],
       remainingCourse: remainingCourse,
+      remainingCourseIds: remainingCourseIds,
     });
   };
   const closeModal = (key: string) => {
-    globalDispatch({ [key]: false, selectedCourseId: [], selectedCourse: [], remainingCourse: [] });
+    globalDispatch({
+      [key]: false,
+      selectedCourseId: [],
+      selectedCourse: [],
+      remainingCourse: [],
+      remainingCourseIds: [],
+    });
   };
-  const checkoutRedirect = (ids: number[]) => {
+  const checkoutRedirect = async (ids: number[]) => {
     if (!state?.user) {
       return router.push('/login');
     } else {
-      return router.push('/checkout');
+      const payload: any = {};
+      if (ids) {
+        payload['courseIds'] = ids.toString();
+      }
+      const res = (await request('addToCart', payload)) as REQUEST;
+      if (res?.data) {
+        return router.push('/checkout');
+      }
     }
   };
   return (
@@ -231,7 +246,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
                   <button
                     type="button"
                     onClick={() => {
-                      checkoutRedirect(globalState.selectedCourseId);
+                      checkoutRedirect(globalState?.remainingCourseIds);
                     }}
                     className="btn signInBtns signUpBtn"
                   >

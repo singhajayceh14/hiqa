@@ -201,6 +201,13 @@ export interface USER_DATA {
   qualification: string[];
   [key: string]: string | number | any;
 }
+export interface CART_ITEMS {
+  id: number;
+  cartId: number;
+  userId: number;
+  amount: number;
+  course: COURSE_DATA;
+}
 
 export interface ADDRESS {
   formattedAddress: string;

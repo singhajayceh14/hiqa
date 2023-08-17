@@ -5,3 +5,4 @@ export * from '@/Layout/Blogs/service';
 export * from '@/Layout/Course/service';
 export * from '@/Layout/Events/service';
 export * from '@/Layout/Register/service';
+export * from '@/Layout/Checkout/service';

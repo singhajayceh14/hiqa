@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2023 at 02:50 PM
+-- Generation Time: Aug 17, 2023 at 11:42 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -71,6 +71,55 @@ INSERT INTO `blogs` (`id`, `title`, `slug`, `short_description`, `long_descripti
 (2, 'Cras accumsan nulla nec lacus ultricies placerat.', 'cras-accumsan-nulla-nec-lacus-ultricies-placerat', 'Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.', '<p>The world of search engine optimization is complex and ever-changing, but you can easily understand the basics, and even a small amount of SEO knowledge can make a big difference. Free SEO education is also widely available on the web, including in guides like this! (Woohoo!) This guide is designed to describe all major aspects of SEO, from finding the terms and phrases (keywords) that can generate qualified traffic to your website, to making your site friendly to search engines, to building links and marketing the unique value of your site.Etiam pharetra erat sed fermentum feugiat velit mauris egestas quam ut erat justo.</p>\r\n<br><br><br>\r\n<p>Fusce eleifend donec sapien sed phase lusa pellentesque lacus.Vivamus lorem arcu semper duiac. Cras ornare arcu avamus nda leo Etiam ind arcu. Morbi justo mauris tempus pharetra interdum at congue semper purus. Lorem ipsum dolor sit.The world of search engine optimization is complex and ever-changing, but you can easily understand the basics.</p><br><br>\r\n<p>Lorem ipsum is simply free text used by copytyping refreshing. Neque porro est qui dolorem ipsum quia quaed inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit amet finibus eros. Lorem Ipsum is simply dummy text of the printing.</p>\r\n<br><br>\r\n<br><br>', 'inner_b2.jpg', 1, '2023-07-21 00:53:35', '2023-07-21 00:53:35'),
 (3, 'Cras accumsan nulla nec lacus ultricies placerat.', 'cras-accumsan-nulla-nec-lacus-ultricies-placerat', 'Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.', '<p>The world of search engine optimization is complex and ever-changing, but you can easily understand the basics, and even a small amount of SEO knowledge can make a big difference. Free SEO education is also widely available on the web, including in guides like this! (Woohoo!) This guide is designed to describe all major aspects of SEO, from finding the terms and phrases (keywords) that can generate qualified traffic to your website, to making your site friendly to search engines, to building links and marketing the unique value of your site.Etiam pharetra erat sed fermentum feugiat velit mauris egestas quam ut erat justo.</p>\r\n<br><br><br>\r\n<p>Fusce eleifend donec sapien sed phase lusa pellentesque lacus.Vivamus lorem arcu semper duiac. Cras ornare arcu avamus nda leo Etiam ind arcu. Morbi justo mauris tempus pharetra interdum at congue semper purus. Lorem ipsum dolor sit.The world of search engine optimization is complex and ever-changing, but you can easily understand the basics.</p><br><br>\r\n<p>Lorem ipsum is simply free text used by copytyping refreshing. Neque porro est qui dolorem ipsum quia quaed inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit amet finibus eros. Lorem Ipsum is simply dummy text of the printing.</p>\r\n<br><br>\r\n<br><br>', 'inner_b3.jpg', 1, '2023-07-21 00:52:26', '2023-07-21 00:52:26'),
 (4, 'Cras accumsan nulla nec lacus ultricies placerat.', 'cras-accumsan-nulla-nec-lacus-ultricies-placerat', 'Curabitur sagittis libero tincidunt tempor finibus. Mauris at dignissim ligula, nec tristique orci.', '<p>The world of search engine optimization is complex and ever-changing, but you can easily understand the basics, and even a small amount of SEO knowledge can make a big difference. Free SEO education is also widely available on the web, including in guides like this! (Woohoo!) This guide is designed to describe all major aspects of SEO, from finding the terms and phrases (keywords) that can generate qualified traffic to your website, to making your site friendly to search engines, to building links and marketing the unique value of your site.Etiam pharetra erat sed fermentum feugiat velit mauris egestas quam ut erat justo.</p>\r\n<br><br><br>\r\n<p>Fusce eleifend donec sapien sed phase lusa pellentesque lacus.Vivamus lorem arcu semper duiac. Cras ornare arcu avamus nda leo Etiam ind arcu. Morbi justo mauris tempus pharetra interdum at congue semper purus. Lorem ipsum dolor sit.The world of search engine optimization is complex and ever-changing, but you can easily understand the basics.</p><br><br>\r\n<p>Lorem ipsum is simply free text used by copytyping refreshing. Neque porro est qui dolorem ipsum quia quaed inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit amet finibus eros. Lorem Ipsum is simply dummy text of the printing.</p>\r\n<br><br>\r\n<br><br>', 'inner_b2.jpg', 1, '2023-07-21 00:53:35', '2023-07-21 00:53:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `totalAmount` decimal(10,2) NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `userId`, `totalAmount`, `createdAt`, `updatedAt`) VALUES
+(4, 9, '120.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_items`
+--
+
+CREATE TABLE `cart_items` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `cartId` int(11) NOT NULL,
+  `courseId` int(11) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart_items`
+--
+
+INSERT INTO `cart_items` (`id`, `userId`, `cartId`, `courseId`, `amount`, `createdAt`, `updatedAt`) VALUES
+(8, 9, 4, 1, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18'),
+(9, 9, 4, 2, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18'),
+(10, 9, 4, 3, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18'),
+(11, 9, 4, 4, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18'),
+(12, 9, 4, 5, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18'),
+(13, 9, 4, 6, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18');
 
 -- --------------------------------------------------------
 
@@ -371,7 +420,7 @@ INSERT INTO `users` (`id`, `name`, `mobile_number`, `email`, `father_name`, `dob
 (6, 'test 1 Test', '123456789', 'test1@yopmail.com', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$NKjTefFCt8C7lsUPOAhBM.xw3K6l8V2Sgw4HKkztOiFvpv/WUD976', NULL, 2, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:31:44', '2023-07-12 12:19:55'),
 (7, NULL, '987654321', 'ashsih@yopmail.cm', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$hBL8CW/qntkARsV3jKWaYuXJjQvG2HYAzZ64R/1xBo54Z48FfqlYK', NULL, 1, '1691232936446-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-05 16:25:36', '2023-08-05 16:25:36'),
 (8, NULL, '987654321', 'ashsih123@yopmail.cm', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$7RdH462c1s8SON23dZDHJegNlqKuN1MKGENwZE/RRLHwvbnWEgTRW', NULL, 1, '1691233024822-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-05 16:27:04', '2023-08-05 16:27:04'),
-(9, 'asdasd', '987654321', 'ashsih12345@yopmail.com', 'asdasdasd', '2023-08-17', 'Male', NULL, 1, NULL, '$2b$10$4jcex1WGxZwmHJ/PTxmXL.CCVFkF4Qu9ivuUREiqas.6Z2GWjtrHi', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImlhdCI6MTY5MTY2MjcwMSwiZXhwIjoxNzIzMTk4NzAxfQ.pSvLaEh43txKjxEzBs_jUVLduwLqCTXKmC9OirdVTkg', NULL, NULL, NULL, NULL, NULL, NULL, 'QRPF+64P, Sitapura Industrial Area, Sitapura, Jaipur, Rajasthan 302022, India', 'Jaipur', 'Rajasthan', 'India', '302022', '26.7855763', '75.8228346', 'st', '12th,ITI', '1,2', '{\"12th\":{\"name\":\"asd\",\"year\":\"appraing\",\"docs\":\"1691233212517-profile picture option6-01.jpg\"},\"iti\":{\"name\":\"asdasdasd\",\"year\":\"1st\"}}', '2023-08-05 16:30:15', '2023-08-10 16:11:15'),
+(9, 'asdasd', '987654321', 'ashsih12345@yopmail.com', 'asdasdasd', '2023-08-17', 'Male', NULL, 1, NULL, '$2b$10$4jcex1WGxZwmHJ/PTxmXL.CCVFkF4Qu9ivuUREiqas.6Z2GWjtrHi', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImlhdCI6MTY5MjI1MjQ3NCwiZXhwIjoxNzIzNzg4NDc0fQ.wGuYQnR10lw2i1QcKyqNBDrQ4YASEK-x8aN3RkE0fKA', NULL, NULL, NULL, NULL, NULL, NULL, 'QRPF+64P, Sitapura Industrial Area, Sitapura, Jaipur, Rajasthan 302022, India', 'Jaipur', 'Rajasthan', 'India', '302022', '26.7855763', '75.8228346', 'st', '12th,ITI', '1,2', '{\"12th\":{\"name\":\"asd\",\"year\":\"appraing\",\"docs\":\"1691233212517-profile picture option6-01.jpg\"},\"iti\":{\"name\":\"asdasdasd\",\"year\":\"1st\"}}', '2023-08-05 16:30:15', '2023-08-17 11:37:54'),
 (10, 'Ashish', '8302653003', 'ashishsharma@yopmail.com', 'Santosh', '0000-00-00', 'Male', NULL, 1, NULL, '$2b$10$XcNSilRnKjtBqgN3JCRO0uJFtqn.fwT/ClsjP9JMolAudMF6jJWH6', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Airport Rd, Sanganer, Jaipur, Rajasthan 302029, India', 'Jaipur', 'Rajasthan', 'India', '302029', '26.8289443', '75.8056178', '', '12th,ITI', '1,2', '{}', '2023-08-11 17:36:11', '2023-08-11 17:36:11'),
 (11, 'Asu', '8302653003', 'asu@yopmail.com', 'Sahr', '2003-06-11', 'Male', NULL, 1, NULL, '$2b$10$IrwvGVjt3d4yvN/dglXKKuG0co2GJWWv8m.ZrYm.Ntuy9b3h5FBB2', NULL, 1, '1691756795012-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '117, Ajmer Rd, Civil Lines, Jaipur, Rajasthan 302006, India', 'Jaipur', 'Rajasthan', 'India', '302006', '26.9125961', '75.7875605', 'sc', '12th,ITI', '1,2', '{\"12th\":{\"name\":\"asdasd\",\"year\":\"passout\"},\"iti\":{\"name\":\"asdasdasdasdasdsa\",\"year\":\"3nd\"}}', '2023-08-11 17:57:34', '2023-08-11 17:57:34');
 
@@ -389,6 +438,18 @@ ALTER TABLE `banners`
 -- Indexes for table `blogs`
 --
 ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cart_items`
+--
+ALTER TABLE `cart_items`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -454,6 +515,18 @@ ALTER TABLE `banners`
 --
 ALTER TABLE `blogs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `cart_items`
+--
+ALTER TABLE `cart_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `courses`
