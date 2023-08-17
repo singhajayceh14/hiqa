@@ -23,6 +23,9 @@ module.exports = function (sequelize, DataTypes) {
       payment_status: {
         type: DataTypes.TEXT,
       },
+      amount: {
+        type: DataTypes.DECIMAL(10, 2),
+      },
     },
     { tableName: "transactions" }
   );

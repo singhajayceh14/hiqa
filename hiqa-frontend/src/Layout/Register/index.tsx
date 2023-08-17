@@ -1,15 +1,12 @@
-import React, { memo, useState, useEffect } from 'react';
-import { Button, Col, Form, Row, Table } from 'react-bootstrap';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
+import React, { memo, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Steps, useSteps } from 'react-step-builder';
+import Link from 'next/link';
 
 import RegisterFrom from './Components/RegisterFrom';
 
 import { REQUEST, USER_DATA, QUALIFICATION } from '@/types/interfaces';
-import { toastr } from '@/utils/helpers';
 import { useApp, useLoading, useRequest } from '@/components/App';
+import { toastr } from '@/utils/helpers';
 import Modal from '@/components/Default/Modal';
 declare global {
   interface Window {
@@ -43,19 +40,27 @@ function Index() {
         formData.append(key, values[key]);
       }
     }
-    await makePayment(values, formData);
+    if (values.paymentType === 'now') {
+      await makePayment(values, formData);
+    } else {
+      const req = (await request('register', formData)) as REQUEST;
+      if (req.status) {
+        dispatch({ viewModal: true });
+      }
+    }
   };
   const makePayment = async (values: USER_DATA, formData: FormData) => {
-    const res = (await request('razorpayOrders')) as REQUEST;
+    const registerChargerFees = values.amount + values.verifyAmount;
+    const res = (await request('razorpayOrders', { amount: registerChargerFees })) as REQUEST;
     if (!res) {
-      alert('Server error. Are you online?');
+      toastr('Server error. Are you online?', 'error');
       return;
     }
     const result = res.data as any;
 
     const options = {
       key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
-      name: 'HIQA Pvt Ltd',
+      name: process.env.COMPANY_NAME,
       currency: result.currency,
       amount: result.amount,
       order_id: result.id,
@@ -118,8 +123,24 @@ function Index() {
         </div>
       </section>
       <Modal id="thankYou" title={'Thank You'} size="lg" show={state.viewModal} onClose={() => closeModal('viewModal')}>
-        <div className="container" style={{ width: 500 }}>
-          <h5>Thank You</h5>
+        <div className=" d-flex justify-content-center align-items-center">
+          <div className="col-md-12">
+            <div className="border border-3 border-success"></div>
+            <div className="card  bg-white shadow p-5">
+              <div className="mb-4 text-center" style={{ color: 'green', fontSize: '80px' }}>
+                <i className="fa fa-check-circle"></i>
+              </div>
+              <div className="text-center">
+                <h1>Thank You !</h1>
+                <p>We've send the link to your inbox. Thank you for Registration </p>
+                <div className="d-flex justify-content-center align-items-center">
+                  <Link href={'/login'} className="btn btn-outline-success">
+                    Back Login
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </Modal>
     </>

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2023 at 11:42 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Aug 17, 2023 at 09:25 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,10 +32,10 @@ CREATE TABLE `banners` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `image` text NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
-  `updatedAt` datetime NOT NULL DEFAULT current_timestamp(),
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `banners`
@@ -52,15 +53,15 @@ INSERT INTO `banners` (`id`, `title`, `image`, `status`, `updatedAt`, `createdAt
 
 CREATE TABLE `blogs` (
   `id` int(11) NOT NULL,
-  `title` text DEFAULT NULL,
-  `slug` text DEFAULT NULL,
-  `short_description` text DEFAULT NULL,
-  `long_description` longtext DEFAULT NULL,
+  `title` text,
+  `slug` text,
+  `short_description` text,
+  `long_description` longtext,
   `image` text NOT NULL,
-  `status` tinyint(2) NOT NULL DEFAULT 1,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `status` tinyint(2) NOT NULL DEFAULT '1',
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `blogs`
@@ -84,7 +85,7 @@ CREATE TABLE `carts` (
   `totalAmount` decimal(10,2) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `carts`
@@ -107,7 +108,7 @@ CREATE TABLE `cart_items` (
   `amount` decimal(10,2) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cart_items`
@@ -130,35 +131,37 @@ INSERT INTO `cart_items` (`id`, `userId`, `cartId`, `courseId`, `amount`, `creat
 CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `slug` text DEFAULT NULL,
-  `short_description` text DEFAULT NULL,
-  `long_description` text DEFAULT NULL,
-  `image` text DEFAULT NULL,
+  `slug` text,
+  `short_description` text,
+  `long_description` text,
+  `image` text,
   `duraion_course` varchar(255) DEFAULT NULL,
   `total_seat` varchar(255) DEFAULT NULL,
-  `site_visits` text DEFAULT NULL,
-  `general` text DEFAULT NULL,
-  `ews` text DEFAULT NULL,
-  `special_consideration` text DEFAULT NULL,
-  `other` text DEFAULT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `site_visits` text,
+  `general` text,
+  `ews` text,
+  `special_consideration` text,
+  `other` text,
+  `price` decimal(10,2) NOT NULL,
+  `discount_price` decimal(10,2) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`id`, `name`, `slug`, `short_description`, `long_description`, `image`, `duraion_course`, `total_seat`, `site_visits`, `general`, `ews`, `special_consideration`, `other`, `status`, `createdAt`, `updatedAt`) VALUES
-(1, 'NDT INSPECTOR', 'ndt-inspector', '<p>Minimum Internship Salary: INR 15,000.00 to INR 30,000.00 Per Month<br>Food &amp; Accommodation during training period &amp; Internship period only<br></p>', '', '1689789643696-couress-img-1.png', '60 Days', '120', 'Limited to National Only', '40%', '25%', '25%', '10%', 1, '2023-07-12 12:29:35', '2023-07-19 23:30:43'),
-(2, 'ADVANCED NDT INSPECTOR', 'advanced-ndt-inspector', '<p>Minimum Internship Salary: INR 18,000.00 to INR 40,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689789660262-couress-img-2.png', '60 Days', '120', 'Limited to National Only', '40%', '25%', '25%', '10%', 1, '2023-07-12 12:29:35', '2023-07-19 23:38:00'),
-(3, 'THIRD PARTY INSPECTOR', 'third-party-inspector', '<p>Minimum Internship Salary: INR 20,000.00 to INR 50,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689789670947-couress-img-3.png', '60 Days', '80', 'Limited to National Only', '40%', '25%', '25%', '10%', 1, '2023-07-12 12:29:35', '2023-07-19 23:39:54'),
-(4, 'CIVIL QUALITY ASSURANCE INSPECTOR', 'civil-quality-assurance-inspector', '<p>Minimum Internship Salary: INR 18,000.00 to INR 60,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689789682095-couress-img-4.png', '60 Days', '120', 'Limited to National Only', '40%', '25%', '25%', '10%', 1, '2023-07-12 12:29:35', '2023-07-19 23:40:41'),
-(5, 'STORAGE TANKS QUALITY ASSURANCE INSPECTOR', 'storage-tanks-quality-assurance-inspector', '<p>Minimum Internship Salary: INR 35,000.00 to INR 85,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689789696229-couress-img-5.png', '90 Days', '120', 'National & International', '40%', '25%', '25%', '10%', 1, '2023-07-12 12:29:35', '2023-07-19 23:41:26'),
-(6, 'PRESSURE VESSELS QUALITY ASSURANCE INSPECTOR', 'pressure-vessels-quality-assurance-inspector', '<p>Minimum Internship Salary: INR 35,000.00 to INR 85,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689789900266-couress-img-6.png', '60 Days', '120', 'National & International', '40%', '25%', '25%', '10%', 1, '2023-07-12 12:29:35', '2023-07-19 23:42:38'),
-(7, 'BOILERS QUALITY ASSURANCE INSPECTOR', 'boilers-quality-assurance-inspector', '<p>Minimum Internship Salary: INR 35,000.00 to INR 85,000.00 Per Month<br>Food &amp; Accommodation during training period &amp; Internship period only<br></p>', '', '1689790689082-couress-img-7.png', '90 Days', '120', 'National & International', '40%', '25%', '25%', '10%', 1, '2023-07-12 12:29:35', '2023-07-19 23:48:09'),
-(8, 'PIPELINE QUALITY ASSURANCE INSPECTOR ', 'pipeline-quality-assurance-inspector', '<p>Minimum Internship Salary: INR 25,000.00 to INR 80,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689790662606-couress-img-8.png', '60 Days', '84', 'National & International', '40%', '25%', '25%', '10%', 1, '2023-07-12 12:29:35', '2023-07-19 23:47:42');
+INSERT INTO `courses` (`id`, `name`, `slug`, `short_description`, `long_description`, `image`, `duraion_course`, `total_seat`, `site_visits`, `general`, `ews`, `special_consideration`, `other`, `price`, `discount_price`, `status`, `createdAt`, `updatedAt`) VALUES
+(1, 'NDT INSPECTOR', 'ndt-inspector', '<p>Minimum Internship Salary: INR 15,000.00 to INR 30,000.00 Per Month<br>Food &amp; Accommodation during training period &amp; Internship period only<br></p>', '', '1689789643696-couress-img-1.png', '60 Days', '120', 'Limited to National Only', '40%', '25%', '25%', '10%', '99.00', '50.00', 1, '2023-07-12 12:29:35', '2023-07-19 23:30:43'),
+(2, 'ADVANCED NDT INSPECTOR', 'advanced-ndt-inspector', '<p>Minimum Internship Salary: INR 18,000.00 to INR 40,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689789660262-couress-img-2.png', '60 Days', '120', 'Limited to National Only', '40%', '25%', '25%', '10%', '99.00', '50.00', 1, '2023-07-12 12:29:35', '2023-07-19 23:38:00'),
+(3, 'THIRD PARTY INSPECTOR', 'third-party-inspector', '<p>Minimum Internship Salary: INR 20,000.00 to INR 50,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689789670947-couress-img-3.png', '60 Days', '80', 'Limited to National Only', '40%', '25%', '25%', '10%', '99.00', '50.00', 1, '2023-07-12 12:29:35', '2023-07-19 23:39:54'),
+(4, 'CIVIL QUALITY ASSURANCE INSPECTOR', 'civil-quality-assurance-inspector', '<p>Minimum Internship Salary: INR 18,000.00 to INR 60,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689789682095-couress-img-4.png', '60 Days', '120', 'Limited to National Only', '40%', '25%', '25%', '10%', '99.00', '50.00', 1, '2023-07-12 12:29:35', '2023-07-19 23:40:41'),
+(5, 'STORAGE TANKS QUALITY ASSURANCE INSPECTOR', 'storage-tanks-quality-assurance-inspector', '<p>Minimum Internship Salary: INR 35,000.00 to INR 85,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689789696229-couress-img-5.png', '90 Days', '120', 'National & International', '40%', '25%', '25%', '10%', '99.00', '50.00', 1, '2023-07-12 12:29:35', '2023-07-19 23:41:26'),
+(6, 'PRESSURE VESSELS QUALITY ASSURANCE INSPECTOR', 'pressure-vessels-quality-assurance-inspector', '<p>Minimum Internship Salary: INR 35,000.00 to INR 85,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689789900266-couress-img-6.png', '60 Days', '120', 'National & International', '40%', '25%', '25%', '10%', '99.00', '50.00', 1, '2023-07-12 12:29:35', '2023-07-19 23:42:38'),
+(7, 'BOILERS QUALITY ASSURANCE INSPECTOR', 'boilers-quality-assurance-inspector', '<p>Minimum Internship Salary: INR 35,000.00 to INR 85,000.00 Per Month<br>Food &amp; Accommodation during training period &amp; Internship period only<br></p>', '', '1689790689082-couress-img-7.png', '90 Days', '120', 'National & International', '40%', '25%', '25%', '10%', '99.00', '50.00', 1, '2023-07-12 12:29:35', '2023-07-19 23:48:09'),
+(8, 'PIPELINE QUALITY ASSURANCE INSPECTOR ', 'pipeline-quality-assurance-inspector', '<p>Minimum Internship Salary: INR 25,000.00 to INR 80,000.00 Per Month<br>Food &amp; Accommodation during the training period &amp; Internship period only<br></p>', '', '1689790662606-couress-img-8.png', '60 Days', '84', 'National & International', '40%', '25%', '25%', '10%', '99.00', '50.00', 1, '2023-07-12 12:29:35', '2023-07-19 23:47:42');
 
 -- --------------------------------------------------------
 
@@ -170,9 +173,9 @@ CREATE TABLE `course_eligibility_details` (
   `id` int(11) NOT NULL,
   `courseId` int(11) NOT NULL,
   `qualificationId` int(11) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `course_eligibility_details`
@@ -228,21 +231,21 @@ INSERT INTO `course_eligibility_details` (`id`, `courseId`, `qualificationId`, `
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
-  `short_description` longtext DEFAULT NULL,
-  `long_description` longtext DEFAULT NULL,
+  `short_description` longtext,
+  `long_description` longtext,
   `slug` text NOT NULL,
-  `image` text DEFAULT NULL,
+  `image` text,
   `event_date` date DEFAULT NULL,
-  `event_start_time` text DEFAULT NULL,
-  `event_end_time` text DEFAULT NULL,
-  `event_address` text DEFAULT NULL,
-  `event_facebook_url` text DEFAULT NULL,
-  `event_instagram_url` text DEFAULT NULL,
-  `event_twitter_url` text DEFAULT NULL,
+  `event_start_time` text,
+  `event_end_time` text,
+  `event_address` text,
+  `event_facebook_url` text,
+  `event_instagram_url` text,
+  `event_twitter_url` text,
   `status` tinyint(2) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `events`
@@ -266,12 +269,12 @@ CREATE TABLE `front_pages` (
   `id` int(11) NOT NULL,
   `type` varchar(255) DEFAULT NULL,
   `title` text NOT NULL,
-  `description` text DEFAULT NULL,
-  `image` text DEFAULT NULL,
+  `description` text,
+  `image` text,
   `status` tinyint(2) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `front_pages`
@@ -291,9 +294,9 @@ CREATE TABLE `qualifications` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `slug` text NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `qualifications`
@@ -315,29 +318,31 @@ INSERT INTO `qualifications` (`id`, `name`, `slug`, `createdAt`, `updatedAt`) VA
 
 CREATE TABLE `settings` (
   `id` int(11) NOT NULL,
-  `title` text DEFAULT NULL,
-  `sub_title` text DEFAULT NULL,
-  `address` text DEFAULT NULL,
+  `title` text,
+  `sub_title` text,
+  `address` text,
   `latitude` varchar(255) DEFAULT NULL,
   `longitude` varchar(255) DEFAULT NULL,
-  `email` text DEFAULT NULL,
+  `email` text,
   `phone` varchar(255) DEFAULT NULL,
-  `facebook_url` text DEFAULT NULL,
-  `twitter_url` text DEFAULT NULL,
-  `instagram_url` text DEFAULT NULL,
-  `skype_url` text DEFAULT NULL,
-  `linkedin_url` text DEFAULT NULL,
-  `youtube_url` text DEFAULT NULL,
-  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `facebook_url` text,
+  `twitter_url` text,
+  `instagram_url` text,
+  `skype_url` text,
+  `linkedin_url` text,
+  `youtube_url` text,
+  `registerCharges` decimal(10,2) NOT NULL,
+  `verifyCharges` decimal(10,2) NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `title`, `sub_title`, `address`, `latitude`, `longitude`, `email`, `phone`, `facebook_url`, `twitter_url`, `instagram_url`, `skype_url`, `linkedin_url`, `youtube_url`, `createdAt`, `updatedAt`) VALUES
-(1, 'asdasdasdasdasd', 'asdasdasdasd', 'RTF -04,Royal, tower market, Shipra Suncity, Indirapuram, Ghaziabad, Uttar Pradesh 201012, India', '28.6377532', '77.3780633', 'info@hiqa.in', '96098981231', 'https://www.facebook.com/', 'https://twitter.com/i/flow/login?redirect_after_login=%2F', 'https://www.instagram.com/', 'https://www.skype.com/en/', 'https://www.linkedin.com/home?original_referer=https%3A%2F%2Fwww%2Egoogle%2Ecom%2F&originalSubdomain=in', 'https://www.yuotube.com', '2023-07-13 16:56:01', '2023-07-13 20:40:42');
+INSERT INTO `settings` (`id`, `title`, `sub_title`, `address`, `latitude`, `longitude`, `email`, `phone`, `facebook_url`, `twitter_url`, `instagram_url`, `skype_url`, `linkedin_url`, `youtube_url`, `registerCharges`, `verifyCharges`, `createdAt`, `updatedAt`) VALUES
+(1, 'asdasdasdasdasd', 'asdasdasdasd', 'RTF -04,Royal, tower market, Shipra Suncity, Indirapuram, Ghaziabad, Uttar Pradesh 201012, India', '28.6377532', '77.3780633', 'info@hiqa.in', '96098981231', 'https://www.facebook.com/', 'https://twitter.com/i/flow/login?redirect_after_login=%2F', 'https://www.instagram.com/', 'https://www.skype.com/en/', 'https://www.linkedin.com/home?original_referer=https%3A%2F%2Fwww%2Egoogle%2Ecom%2F&originalSubdomain=in', 'https://www.yuotube.com', '0.00', '0.00', '2023-07-13 16:56:01', '2023-07-13 20:40:42');
 
 -- --------------------------------------------------------
 
@@ -349,13 +354,14 @@ CREATE TABLE `transactions` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `type` text NOT NULL,
-  `razorpay_payment_id` text DEFAULT NULL,
-  `razorpay_order_id` text DEFAULT NULL,
-  `razorpay_signature` text DEFAULT NULL,
+  `amount` int(11) NOT NULL,
+  `razorpay_payment_id` text,
+  `razorpay_order_id` text,
+  `razorpay_signature` text,
   `payment_status` enum('paid','unpaid') DEFAULT 'unpaid',
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -376,7 +382,7 @@ CREATE TABLE `users` (
   `email_verified_at` datetime DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `remember_token` varchar(255) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT 0,
+  `status` tinyint(4) DEFAULT '0',
   `image` varchar(255) NOT NULL DEFAULT '',
   `last_login_at` datetime DEFAULT NULL,
   `last_login_ip` varchar(255) DEFAULT NULL,
@@ -385,14 +391,14 @@ CREATE TABLE `users` (
   `device_id` varchar(255) DEFAULT NULL,
   `device_token` varchar(255) DEFAULT NULL,
   `country_code` varchar(255) DEFAULT NULL,
-  `token` text DEFAULT NULL,
-  `fcm_token` text DEFAULT NULL,
+  `token` text,
+  `fcm_token` text,
   `login_expire` tinyint(4) DEFAULT NULL,
-  `reset_password_token` text DEFAULT NULL,
+  `reset_password_token` text,
   `device_type` varchar(255) DEFAULT NULL,
-  `social_type` text DEFAULT NULL,
-  `social_id` text DEFAULT NULL,
-  `address` text DEFAULT NULL,
+  `social_type` text,
+  `social_id` text,
+  `address` text,
   `city` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
@@ -400,12 +406,12 @@ CREATE TABLE `users` (
   `latitude` varchar(255) DEFAULT NULL,
   `longitude` varchar(255) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
-  `qualification` text DEFAULT NULL,
-  `qualificationId` text DEFAULT NULL,
-  `qualificationDoc` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`qualificationDoc`)),
+  `qualification` text,
+  `qualificationId` text,
+  `qualificationDoc` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`

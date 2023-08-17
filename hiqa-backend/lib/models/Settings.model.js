@@ -50,6 +50,12 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
         defaultValue: null,
       },
+      registerCharges: {
+        type: DataTypes.DECIMAL(10, 2),
+      },
+      verifyCharges: {
+        type: DataTypes.DECIMAL(10, 2),
+      },
     },
     { tableName: "settings" }
   );

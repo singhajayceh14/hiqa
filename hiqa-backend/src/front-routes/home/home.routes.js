@@ -19,5 +19,10 @@ router.post(
   "/razorpay-orders",
   HomeController.razorpayOrders
 );
+router.post(
+  "/verify-register-payment",
+  HomeController.verifyRegisterPayment
+);
+
 
 module.exports = router;

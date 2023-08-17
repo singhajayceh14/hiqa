@@ -47,8 +47,9 @@ export async function docUpload(action: ACTION): Promise<unknown> {
   }
 }
 
-export async function razorpayOrders(): Promise<unknown> {
-  const res: ReturnType<any> = await api(`${HOME_API_URL}razorpay-orders`, 'POST', {});
+export async function razorpayOrders(action: ACTION): Promise<unknown> {
+  const { payload } = action;
+  const res: ReturnType<any> = await api(`${HOME_API_URL}razorpay-orders`, 'POST', { data: payload });
   if (res.status) {
     return res;
   } else {

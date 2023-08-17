@@ -271,23 +271,46 @@ class HomeController {
   };
   razorpayOrders = async (req, res) => {
     try {
-      const instance = new Razorpay({
-        key_id: process.env.RAZORPAY_KEY_ID, // YOUR RAZORPAY KEY
-        key_secret: process.env.RAZORPAY_KEY_SECRET, // YOUR RAZORPAY SECRET
-      });
-
-      const options = {
-        amount: 50000,
-        currency: "INR",
-        receipt: "receipt_order_74394",
-      };
-
-      const order = await instance.orders.create(options);
-      return res.success(order, req.__("ORDER_SUCCESS"));
+      const params = _.extend(
+        req.query || {},
+        req.params || {},
+        req.body || {}
+      );
+      if(params?.amount){
+        const instance = new Razorpay({
+          key_id: process.env.RAZORPAY_KEY_ID, // YOUR RAZORPAY KEY
+          key_secret: process.env.RAZORPAY_KEY_SECRET, // YOUR RAZORPAY SECRET
+        });
+  
+        const options = {
+          amount: params?.amount + "00",
+          currency: "INR",
+          receipt: "HIQA_REGISTER_"+Math.floor(Math.random()*10) + 1,
+        };
+  
+        const order = await instance.orders.create(options);
+        return res.success(order, req.__("ORDER_SUCCESS"));
+      }else{
+        return res.serverError({}, req.__("INVALID_AMOUNT"));
+      }
+      
     } catch (error) {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }
   };
+  verifyRegisterPayment = async (req, res) => {
+    try {
+      const params = _.extend(
+        req.query || {},
+        req.params || {},
+        req.body || {}
+      );
+
+      console.log(JSON.stringify(params, 0, 4));
+    } catch (error) {
+      return res.serverError({}, req.__("SERVER_ERROR"), error);
+    }
+  }
 }
 
 module.exports = new HomeController();

@@ -46,6 +46,12 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING(255),
         defaultValue: null,
       },
+      price: {
+        type: DataTypes.DECIMAL(10, 2),
+      },
+      discount_price: {
+        type: DataTypes.DECIMAL(10, 2),
+      },
       status: {
         type: DataTypes.TINYINT(2),
         defaultValue: 0,

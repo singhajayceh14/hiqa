@@ -74,6 +74,9 @@ const initialValues: USER_DATA = {
   email: '',
   mobile: '',
   gender: 'Male',
+  paymentType: 'now',
+  amount: 299.00,
+  verifyAmount: 99.00,
   dob: '',
   address: '',
   zipcode: '',
@@ -352,7 +355,6 @@ function Index(props: PROPS) {
                           value={values.address}
                           isInvalid={!!errors.address}
                           onSelectOption={address => {
-                            console.log(address);
                             setFieldValue('address', address.formattedAddress, true);
                             setFieldValue('latitude', address.lat, true);
                             setFieldValue('longitude', address.lng, true);
@@ -522,10 +524,76 @@ function Index(props: PROPS) {
                         </>
                       ) : null}
                     </Col>
+                    <Col md={12}>
+                      <Form.Label htmlFor="formPayment">Payment Type</Form.Label>
+                      <Form.Group className="mb-3" controlId="formPayment" id="formPayment">
+                        <Form.Check
+                          inline
+                          label="Pay Now"
+                          name="paymentType"
+                          type="radio"
+                          id="inline-male"
+                          value="now"
+                          checked={values.paymentType === 'now'}
+                          onChange={handleChange}
+                        />
+                        <Form.Check
+                          inline
+                          label="Pay Later"
+                          name="paymentType"
+                          type="radio"
+                          id="inline-female"
+                          value="later"
+                          checked={values.paymentType === 'later'}
+                          onChange={handleChange}
+                        />
+                        {errors.gender ? (
+                          <Form.Control.Feedback type="invalid">{errors.gender}</Form.Control.Feedback>
+                        ) : null}
+                      </Form.Group>
+                    </Col>
                   </Row>
                 </div>
               </Steps>
               <Row>
+                <Col md={12}>
+                  {current === total && values.paymentType === 'now' ? (
+                    <div className="fees-view">
+                      <div className="cont-fees">
+                        <ul>
+                          <li>
+                            <span>Registration Charges :</span>
+                            <span className="price-value">₹ {values.amount}</span>
+                          </li>
+                          <li>
+                            <span>Verification Charges :</span>
+                            <span className="price-value">₹ {values.verifyAmount}</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="terms-wrap">
+                        <h5>Disclaimer</h5>
+                        <p>
+                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                          been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                          galley of type and scrambled it to make a type specimen book
+                        </p>
+                        <p>
+                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                          been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                          galley of type and scrambled it to make a type specimen book
+                        </p>
+                        <div className="term-inner-wrap">
+                          <h5>View Schedule of Changes</h5>
+                          <span className="d-flex">
+                            <input type="checkbox" name="" id="" /> I accept all <a href="#">terms & condtions </a>{' '}
+                            related to HIQA PVT LTD
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+                </Col>
                 <Col md={12}>
                   <div className="d-flex justify-content-between navigation">
                     <Button
@@ -549,7 +617,9 @@ function Index(props: PROPS) {
                     </Button>
 
                     <Button type="submit" className={current === total ? 'btn btnStyle2' : 'btn btnStyle2 d-none'}>
-                      Register
+                      {values.paymentType !== 'now'
+                        ? 'Register'
+                        : `Pay Now ( ₹ ${values.amount + values.verifyAmount} )`}
                     </Button>
                   </div>
                 </Col>

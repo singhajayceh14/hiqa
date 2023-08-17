@@ -126,7 +126,7 @@ class AuthController {
         Users
       );
       if (!user) {
-        return res.serverError({}, req.__("INVAILD_TOKEN"));
+        return res.serverError({}, req.__("INVALID_TOKEN"));
       }
       const requestData = {
         password: await hashPassword(password),
@@ -189,7 +189,6 @@ class AuthController {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }
   };
-
   getUserDetails = async (req, res) => {
     try {
       return res.success(req.user, req.__("USER_DETAILS"));
