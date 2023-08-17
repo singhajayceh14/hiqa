@@ -58,8 +58,17 @@ class OrderController {
         req.params || {},
         req.body || {}
       );
-
-      console.log(JSON.stringify(params, 0, 4));
+      const shasum = crypto.createHmac('sha256', process.env.WEBHOOK_SECRET)
+      shasum.update(JSON.stringify(params))
+      const digest = shasum.digest('hex')
+      if (digest === req.headers['x-razorpay-signature']) {
+        console.log('request is legit')
+        // process it
+        console.log(JSON.stringify(params))
+      } else {
+        console.log('request is Failed')
+        // pass it
+      }
     } catch (error) {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }

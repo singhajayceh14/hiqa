@@ -86,7 +86,8 @@ module.exports = function (sequelize, DataTypes) {
       "special_consideration",
       "other",
       "image",
-      
+      "price",
+      "discount_price"
     ];
   };
   return Courses;
