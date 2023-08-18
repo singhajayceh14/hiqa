@@ -1,12 +1,16 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import { useApp, useLoading, useRequest } from '@/components/App';
 import { useCommonReducer } from '@/components/App/reducer';
 import { REQUEST, CART_ITEMS } from '@/types/interfaces';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
+import { toastr } from '@/utils/helpers';
 
 function Container() {
   const { state } = useApp();
+  const router = useRouter();
   const { request, loading } = useRequest();
   const { state: globalState, dispatch: globalDispatch } = useCommonReducer();
   const { ButtonLoader } = useLoading();
@@ -21,6 +25,10 @@ function Container() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const closeModal = (key: string) => {
+    globalDispatch({ [key]: false });
+  };
   useEffect(() => {
     getCart();
     const script = document.createElement('script');
@@ -30,16 +38,17 @@ function Container() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const makePayment = async () => {
-    const res = (await request('checkout')) as REQUEST;
+    const registerChargerFees = globalState?.cart?.totalAmount;
+    const res = (await request('razorpayOrders', { amount: registerChargerFees, type: 'ORDER' })) as REQUEST;
     if (!res) {
-      alert('Server error. Are you online?');
+      toastr('Server error. Are you online?', 'error');
       return;
     }
     const result = res.data as any;
 
     const options = {
-      key: 'rzp_test_o4ORT3Ja0YEpq8', // Enter the Key ID generated from the Dashboard
-      name: 'HIQA Pvt Ltd',
+      key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
+      name: process.env.COMPANY_NAME,
       currency: result.currency,
       amount: result.amount,
       order_id: result.id,
@@ -47,7 +56,19 @@ function Container() {
       image: '/assets/img/logo/1112.png',
       handler: async function (response: any) {
         // Validate payment at server - using webhooks is a better idea.
-        console.log(response);
+
+        if (request) {
+          const formData: FormData = new FormData();
+          formData.append('receiptId', result.receipt);
+          formData.append('razorpay_payment_id', response.razorpay_payment_id);
+          formData.append('razorpay_order_id', response.razorpay_order_id);
+          formData.append('razorpay_signature', response.razorpay_signature);
+          const req = (await request('checkout', formData)) as REQUEST;
+          if (req.status) {
+            handleOpen();
+            globalDispatch({ viewModal: true });
+          }
+        }
       },
       prefill: {
         name: state?.user?.name,
@@ -55,11 +76,15 @@ function Container() {
         contact: state?.user?.mobile,
       },
     };
-    console.log(options);
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   };
-
+  const handleOpen = () => {
+    const timer = setTimeout(() => {
+      return router.push('/');
+    }, 5000);
+    return () => clearTimeout(timer);
+  };
   return (
     <>
       {globalState?.cart && (
@@ -132,6 +157,33 @@ function Container() {
           </div>
         </div>
       )}
+      <Modal
+        id="thankYou"
+        title={'Thank You'}
+        size="lg"
+        show={globalState.viewModal}
+        onClose={() => closeModal('viewModal')}
+      >
+        <div className=" d-flex justify-content-center align-items-center">
+          <div className="col-md-12">
+            <div className="border border-3 border-success"></div>
+            <div className="card  bg-white shadow p-5">
+              <div className="mb-4 text-center" style={{ color: 'green', fontSize: '80px' }}>
+                <i className="fa fa-check-circle"></i>
+              </div>
+              <div className="text-center">
+                <h1>Thank You !</h1>
+                <p>We've send the link to your inbox. Thank you for Registration </p>
+                <div className="d-flex justify-content-center align-items-center">
+                  <Link href={'/login'} className="btn btn-outline-success">
+                    Back Login
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }

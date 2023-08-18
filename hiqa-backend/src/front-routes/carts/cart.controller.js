@@ -6,6 +6,7 @@ const Courses = require("../../../lib/models").courses;
 
 const Users = require("../../../lib/models").users;
 const db = require("../../../lib/models");
+const Op = db.Sequelize.Op;
 const DBCartItem = db.cart_items;
 const DBCourse = db.courses;
 // Model Schema Function
@@ -13,6 +14,10 @@ const TableSchema = require("../../services");
 const { generateRandomString } = require("../../utils/common");
 
 class CartController {
+  getSum = (array, column) => {
+    let values = array.map((item) => parseInt(item[column]) || 0);
+    return values.reduce((a, b) => a + b);
+  };
   addToCart = async (req, res) => {
     try {
       const params = _.extend(
@@ -32,7 +37,11 @@ class CartController {
           if (params.courseIds !== "") {
             const courseIds = params.courseIds.split(",");
             if (courseIds.length) {
-              const totalAmount = courseIds.length * 20.0;
+              const courseData = await TableSchema.getAll(
+                { where: { id: { [Op.in]: courseIds } }, raw: true },
+                Courses
+              );
+              const totalAmount = this.getSum(courseData, "price");
               let createData = await TableSchema.create(
                 {
                   userId: user.id,
@@ -54,7 +63,7 @@ class CartController {
                         cartId: createData.id,
                         userId: user.id,
                         courseId: course.id,
-                        amount: 20.0,
+                        amount: course.price,
                       },
                       CartItems
                     );

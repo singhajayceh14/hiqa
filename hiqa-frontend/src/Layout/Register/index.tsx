@@ -51,7 +51,7 @@ function Index() {
   };
   const makePayment = async (values: USER_DATA, formData: FormData) => {
     const registerChargerFees = values.amount + values.verifyAmount;
-    const res = (await request('razorpayOrders', { amount: registerChargerFees })) as REQUEST;
+    const res = (await request('razorpayOrders', { amount: registerChargerFees, type: 'REGSITER' })) as REQUEST;
     if (!res) {
       toastr('Server error. Are you online?', 'error');
       return;
@@ -68,6 +68,7 @@ function Index() {
       image: '/assets/img/logo/1112.png',
       handler: async function (response: any) {
         // Validate payment at server - using webhooks is a better idea.
+        formData.append('receiptId', result.receipt);
         formData.append('razorpay_payment_id', response.razorpay_payment_id);
         formData.append('razorpay_order_id', response.razorpay_order_id);
         formData.append('razorpay_signature', response.razorpay_signature);
@@ -75,6 +76,7 @@ function Index() {
         if (request) {
           const req = (await request('register', formData)) as REQUEST;
           if (req.status) {
+            handleOpen();
             dispatch({ viewModal: true });
           }
         }
@@ -85,7 +87,7 @@ function Index() {
         contact: values.mobile,
       },
     };
-
+    console.log(options);
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   };
@@ -96,7 +98,13 @@ function Index() {
     script.async = true;
     document.body.appendChild(script);
   }, []);
-
+  const handleOpen = () => {
+    const timer = setTimeout(() => {
+      return router.push('/');
+    }, 5000);
+    return () => clearTimeout(timer);
+  };
+  useEffect(() => {}, [state.viewModal]);
   return state?.user ? (
     <ButtonLoader color="#ff7350" />
   ) : (

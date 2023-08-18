@@ -107,7 +107,6 @@ class HomeController {
     try {
       let whereCondition = { status: "1" };
       if (req.body && req.body.qualificationId) {
-      
         let courseDatas = await TableSchema.getAll(
           {
             where: {
@@ -276,50 +275,47 @@ class HomeController {
         req.params || {},
         req.body || {}
       );
-      if(params?.amount){
+      if (params?.amount) {
         const instance = new Razorpay({
           key_id: process.env.RAZORPAY_KEY_ID, // YOUR RAZORPAY KEY
           key_secret: process.env.RAZORPAY_KEY_SECRET, // YOUR RAZORPAY SECRET
         });
-  
+        const payment_capture = 1;
         const options = {
-          amount: params?.amount + "00",
+          amount: parseInt(params?.amount) + "00",
           currency: "INR",
-          receipt: "HIQA_REGISTER_"+Math.floor(Math.random()*10) + 1,
+          payment_capture,
         };
-  
+
+        if (params?.type === "REGSITER") {
+          options["receipt"] =
+            "HIQA_REG_" + Math.floor(Math.random() * 9999999) + 1;
+        }
+        if (params?.type === "ORDER") {
+          options["receipt"] =
+            "HIQA_ORD_" + Math.floor(Math.random() * 9999999) + 1;
+        }
         const order = await instance.orders.create(options);
         return res.success(order, req.__("ORDER_SUCCESS"));
-      }else{
+      } else {
         return res.serverError({}, req.__("INVALID_AMOUNT"));
       }
-      
     } catch (error) {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }
   };
   verifyRegisterPayment = async (req, res) => {
     try {
-        const params = _.extend(
-          req.query || {},
-          req.params || {},
-          req.body || {}
-        );
-        const shasum = crypto.createHmac('sha256', process.env.WEBHOOK_SECRET)
-        shasum.update(JSON.stringify(params))
-        const digest = shasum.digest('hex')
-        if (digest === req.headers['x-razorpay-signature']) {
-          console.log('request is legit')
-          // process it
-          console.log(JSON.stringify(params))
-        } else {
-          console.log('request is Failed')
-          // pass it
-        }
+      const params = _.extend(
+        req.query || {},
+        req.params || {},
+        req.body || {}
+      );
+      console.log(JSON.stringify(params));
     } catch (error) {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }
-  }
+  };
 }
 
 module.exports = new HomeController();

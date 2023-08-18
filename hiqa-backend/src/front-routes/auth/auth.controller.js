@@ -1,6 +1,9 @@
 var _ = require("lodash");
 //Model
 const Users = require("../../../lib/models").users;
+const Transactions = require("../../../lib/models").transactions;
+const UserRegisters = require("../../../lib/models").user_registers;
+
 // Model Schema Function
 const TableSchema = require("../../services");
 const {
@@ -47,6 +50,10 @@ class AuthController {
         razorpay_payment_id,
         razorpay_order_id,
         razorpay_signature,
+        amount,
+        verifyAmount,
+        paymentType,
+        receiptId,
       } = params;
       let user = await TableSchema.get({ where: { email: email } }, Users);
       if (user) {
@@ -73,11 +80,35 @@ class AuthController {
         qualificationId: qualificationId ?? "",
         qualificationDoc: qualificationDoc ?? "",
         category: category ?? "",
+        paymentType: paymentType ?? "leter",
         status: 1,
         role_id: 1,
       };
       let create = await TableSchema.create(createPayload, Users);
       if (create) {
+        const userRegisterCreatePayload = {
+          userId: create.id,
+          amount: amount + verifyAmount,
+          payment_status: "unpaid",
+          paymentType: paymentType ?? "leter",
+          receiptId: receiptId,
+          status: "1",
+        };
+        await TableSchema.create(userRegisterCreatePayload, UserRegisters);
+        if (razorpay_payment_id && razorpay_order_id && razorpay_signature) {
+          const traCreatePayload = {
+            userId: create.id,
+            razorpay_payment_id,
+            razorpay_order_id,
+            razorpay_signature,
+            type: "regsiter",
+            amount: amount + verifyAmount,
+            payment_status: "unpaid",
+            receiptId: receiptId,
+          };
+          await TableSchema.create(traCreatePayload, Transactions);
+        }
+
         return res.success(create, req.__("CREATE_USER"));
       } else {
         return res.warn({}, req.__("CREATE_USER_ERROR"));

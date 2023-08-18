@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2023 at 09:25 PM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 7.2.5
+-- Generation Time: Aug 18, 2023 at 12:41 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,10 +31,10 @@ CREATE TABLE `banners` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `image` text NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '1',
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `banners`
@@ -53,15 +52,15 @@ INSERT INTO `banners` (`id`, `title`, `image`, `status`, `updatedAt`, `createdAt
 
 CREATE TABLE `blogs` (
   `id` int(11) NOT NULL,
-  `title` text,
-  `slug` text,
-  `short_description` text,
-  `long_description` longtext,
+  `title` text DEFAULT NULL,
+  `slug` text DEFAULT NULL,
+  `short_description` text DEFAULT NULL,
+  `long_description` longtext DEFAULT NULL,
   `image` text NOT NULL,
-  `status` tinyint(2) NOT NULL DEFAULT '1',
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` tinyint(2) NOT NULL DEFAULT 1,
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `blogs`
@@ -85,14 +84,7 @@ CREATE TABLE `carts` (
   `totalAmount` decimal(10,2) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `carts`
---
-
-INSERT INTO `carts` (`id`, `userId`, `totalAmount`, `createdAt`, `updatedAt`) VALUES
-(4, 9, '120.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -108,19 +100,7 @@ CREATE TABLE `cart_items` (
   `amount` decimal(10,2) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `cart_items`
---
-
-INSERT INTO `cart_items` (`id`, `userId`, `cartId`, `courseId`, `amount`, `createdAt`, `updatedAt`) VALUES
-(8, 9, 4, 1, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18'),
-(9, 9, 4, 2, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18'),
-(10, 9, 4, 3, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18'),
-(11, 9, 4, 4, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18'),
-(12, 9, 4, 5, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18'),
-(13, 9, 4, 6, '20.00', '2023-08-17 12:22:18', '2023-08-17 12:22:18');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -131,23 +111,23 @@ INSERT INTO `cart_items` (`id`, `userId`, `cartId`, `courseId`, `amount`, `creat
 CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `slug` text,
-  `short_description` text,
-  `long_description` text,
-  `image` text,
+  `slug` text DEFAULT NULL,
+  `short_description` text DEFAULT NULL,
+  `long_description` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
   `duraion_course` varchar(255) DEFAULT NULL,
   `total_seat` varchar(255) DEFAULT NULL,
-  `site_visits` text,
-  `general` text,
-  `ews` text,
-  `special_consideration` text,
-  `other` text,
+  `site_visits` text DEFAULT NULL,
+  `general` text DEFAULT NULL,
+  `ews` text DEFAULT NULL,
+  `special_consideration` text DEFAULT NULL,
+  `other` text DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
   `discount_price` decimal(10,2) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `status` tinyint(4) NOT NULL DEFAULT 1,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `courses`
@@ -173,9 +153,9 @@ CREATE TABLE `course_eligibility_details` (
   `id` int(11) NOT NULL,
   `courseId` int(11) NOT NULL,
   `qualificationId` int(11) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `course_eligibility_details`
@@ -231,21 +211,21 @@ INSERT INTO `course_eligibility_details` (`id`, `courseId`, `qualificationId`, `
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
-  `short_description` longtext,
-  `long_description` longtext,
+  `short_description` longtext DEFAULT NULL,
+  `long_description` longtext DEFAULT NULL,
   `slug` text NOT NULL,
-  `image` text,
+  `image` text DEFAULT NULL,
   `event_date` date DEFAULT NULL,
-  `event_start_time` text,
-  `event_end_time` text,
-  `event_address` text,
-  `event_facebook_url` text,
-  `event_instagram_url` text,
-  `event_twitter_url` text,
+  `event_start_time` text DEFAULT NULL,
+  `event_end_time` text DEFAULT NULL,
+  `event_address` text DEFAULT NULL,
+  `event_facebook_url` text DEFAULT NULL,
+  `event_instagram_url` text DEFAULT NULL,
+  `event_twitter_url` text DEFAULT NULL,
   `status` tinyint(2) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `events`
@@ -269,12 +249,12 @@ CREATE TABLE `front_pages` (
   `id` int(11) NOT NULL,
   `type` varchar(255) DEFAULT NULL,
   `title` text NOT NULL,
-  `description` text,
-  `image` text,
+  `description` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
   `status` tinyint(2) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `front_pages`
@@ -287,6 +267,55 @@ INSERT INTO `front_pages` (`id`, `type`, `title`, `description`, `image`, `statu
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `expiry_date` date NOT NULL,
+  `status` tinyint(2) NOT NULL,
+  `receiptId` varchar(255) NOT NULL,
+  `payment_status` enum('pending','success','failed') NOT NULL DEFAULT 'pending',
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `userId`, `amount`, `expiry_date`, `status`, `receiptId`, `payment_status`, `createdAt`, `updatedAt`) VALUES
+(1, 9, '99.00', '2023-09-17', 1, 'HIQA_ORD_5377161', 'pending', '2023-08-18 16:09:03', '2023-08-18 16:09:03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int(11) NOT NULL,
+  `orderId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `courseId` int(11) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `status` enum('start','complete') NOT NULL DEFAULT 'start',
+  `updatedAt` datetime NOT NULL,
+  `createdAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `orderId`, `userId`, `courseId`, `amount`, `status`, `updatedAt`, `createdAt`) VALUES
+(1, 1, 9, 0, '99.00', 'start', '2023-08-18 16:09:05', '2023-08-18 16:09:05');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `qualifications`
 --
 
@@ -294,9 +323,9 @@ CREATE TABLE `qualifications` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `slug` text NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `qualifications`
@@ -318,24 +347,24 @@ INSERT INTO `qualifications` (`id`, `name`, `slug`, `createdAt`, `updatedAt`) VA
 
 CREATE TABLE `settings` (
   `id` int(11) NOT NULL,
-  `title` text,
-  `sub_title` text,
-  `address` text,
+  `title` text DEFAULT NULL,
+  `sub_title` text DEFAULT NULL,
+  `address` text DEFAULT NULL,
   `latitude` varchar(255) DEFAULT NULL,
   `longitude` varchar(255) DEFAULT NULL,
-  `email` text,
+  `email` text DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
-  `facebook_url` text,
-  `twitter_url` text,
-  `instagram_url` text,
-  `skype_url` text,
-  `linkedin_url` text,
-  `youtube_url` text,
+  `facebook_url` text DEFAULT NULL,
+  `twitter_url` text DEFAULT NULL,
+  `instagram_url` text DEFAULT NULL,
+  `skype_url` text DEFAULT NULL,
+  `linkedin_url` text DEFAULT NULL,
+  `youtube_url` text DEFAULT NULL,
   `registerCharges` decimal(10,2) NOT NULL,
   `verifyCharges` decimal(10,2) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `settings`
@@ -353,15 +382,24 @@ INSERT INTO `settings` (`id`, `title`, `sub_title`, `address`, `latitude`, `long
 CREATE TABLE `transactions` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
+  `orderId` int(11) DEFAULT NULL,
   `type` text NOT NULL,
   `amount` int(11) NOT NULL,
-  `razorpay_payment_id` text,
-  `razorpay_order_id` text,
-  `razorpay_signature` text,
+  `razorpay_payment_id` text DEFAULT NULL,
+  `razorpay_order_id` text DEFAULT NULL,
+  `razorpay_signature` text DEFAULT NULL,
   `payment_status` enum('paid','unpaid') DEFAULT 'unpaid',
+  `receiptId` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`id`, `userId`, `orderId`, `type`, `amount`, `razorpay_payment_id`, `razorpay_order_id`, `razorpay_signature`, `payment_status`, `receiptId`, `createdAt`, `updatedAt`) VALUES
+(1, 9, 1, 'order', 99, 'pay_MRV8NHfc9z7qjS', 'order_MRV823zh9Z9RVS', 'ecbaf846c910b0a8a9218767751ad550d587a5a2c892c290467ce42ca7bae734', 'unpaid', 'HIQA_ORD_5377161', '2023-08-18 16:09:05', '2023-08-18 16:09:05');
 
 -- --------------------------------------------------------
 
@@ -382,7 +420,7 @@ CREATE TABLE `users` (
   `email_verified_at` datetime DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `remember_token` varchar(255) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT '0',
+  `status` tinyint(4) DEFAULT 0,
   `image` varchar(255) NOT NULL DEFAULT '',
   `last_login_at` datetime DEFAULT NULL,
   `last_login_ip` varchar(255) DEFAULT NULL,
@@ -391,14 +429,14 @@ CREATE TABLE `users` (
   `device_id` varchar(255) DEFAULT NULL,
   `device_token` varchar(255) DEFAULT NULL,
   `country_code` varchar(255) DEFAULT NULL,
-  `token` text,
-  `fcm_token` text,
+  `token` text DEFAULT NULL,
+  `fcm_token` text DEFAULT NULL,
   `login_expire` tinyint(4) DEFAULT NULL,
-  `reset_password_token` text,
+  `reset_password_token` text DEFAULT NULL,
   `device_type` varchar(255) DEFAULT NULL,
-  `social_type` text,
-  `social_id` text,
-  `address` text,
+  `social_type` text DEFAULT NULL,
+  `social_id` text DEFAULT NULL,
+  `address` text DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
@@ -406,12 +444,12 @@ CREATE TABLE `users` (
   `latitude` varchar(255) DEFAULT NULL,
   `longitude` varchar(255) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
-  `qualification` text,
-  `qualificationId` text,
-  `qualificationDoc` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `qualification` text DEFAULT NULL,
+  `qualificationId` text DEFAULT NULL,
+  `qualificationDoc` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -419,16 +457,26 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `mobile_number`, `email`, `father_name`, `dob`, `gender`, `email_verified`, `role_id`, `email_verified_at`, `password`, `remember_token`, `status`, `image`, `last_login_at`, `last_login_ip`, `notification_status`, `admin_approved`, `device_id`, `device_token`, `country_code`, `token`, `fcm_token`, `login_expire`, `reset_password_token`, `device_type`, `social_type`, `social_id`, `address`, `city`, `state`, `country`, `zipcode`, `latitude`, `longitude`, `category`, `qualification`, `qualificationId`, `qualificationDoc`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', '9609898985', 'info@hiqa.in', NULL, NULL, NULL, 1, 0, '2023-07-02 12:42:09', '$2b$10$Kcz6qGYeJfvxeZ1EZAs1cepj1M9CUftPT95zcaWwsa8L8Xj.2MNZ2', NULL, 1, '1689052834808-HIQA LOGO.jpg', NULL, NULL, NULL, NULL, NULL, 'asdasdasdas', NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY5MTA1NDQxMywiZXhwIjoxNzIyNTkwNDEzfQ.8sja2Hg7ST8nZN20dR5akHUcVDfOdgj9PIgfZ9IU5NU', NULL, NULL, NULL, 'IOS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-09 01:39:10', '2023-08-03 14:50:13'),
-(2, 'Ashish', '321654987', 'ashish@yopmail.com', NULL, NULL, NULL, 1, 1, '2023-07-11 12:58:55', NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 12:58:55', '2023-07-11 12:58:55'),
-(3, 'Manoj', '321654654', 'Manoj@yopmail.com', NULL, NULL, NULL, 1, 1, '2023-07-11 12:58:55', NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'Ravi', '123456789', 'ravi@gmail.com', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:09:12', '2023-07-11 15:09:12'),
-(5, 'Test', '123456789', 'test@yopmail.com', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$KSapbMvmt7jd2ko/E/hRz.VEm7YzmWEpP6fywcrHIsUe6fkRhDSzu', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:22:09', '2023-07-11 15:30:01'),
-(6, 'test 1 Test', '123456789', 'test1@yopmail.com', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$NKjTefFCt8C7lsUPOAhBM.xw3K6l8V2Sgw4HKkztOiFvpv/WUD976', NULL, 2, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-11 15:31:44', '2023-07-12 12:19:55'),
-(7, NULL, '987654321', 'ashsih@yopmail.cm', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$hBL8CW/qntkARsV3jKWaYuXJjQvG2HYAzZ64R/1xBo54Z48FfqlYK', NULL, 1, '1691232936446-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-05 16:25:36', '2023-08-05 16:25:36'),
-(8, NULL, '987654321', 'ashsih123@yopmail.cm', NULL, NULL, NULL, NULL, 1, NULL, '$2b$10$7RdH462c1s8SON23dZDHJegNlqKuN1MKGENwZE/RRLHwvbnWEgTRW', NULL, 1, '1691233024822-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-05 16:27:04', '2023-08-05 16:27:04'),
-(9, 'asdasd', '987654321', 'ashsih12345@yopmail.com', 'asdasdasd', '2023-08-17', 'Male', NULL, 1, NULL, '$2b$10$4jcex1WGxZwmHJ/PTxmXL.CCVFkF4Qu9ivuUREiqas.6Z2GWjtrHi', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImlhdCI6MTY5MjI1MjQ3NCwiZXhwIjoxNzIzNzg4NDc0fQ.wGuYQnR10lw2i1QcKyqNBDrQ4YASEK-x8aN3RkE0fKA', NULL, NULL, NULL, NULL, NULL, NULL, 'QRPF+64P, Sitapura Industrial Area, Sitapura, Jaipur, Rajasthan 302022, India', 'Jaipur', 'Rajasthan', 'India', '302022', '26.7855763', '75.8228346', 'st', '12th,ITI', '1,2', '{\"12th\":{\"name\":\"asd\",\"year\":\"appraing\",\"docs\":\"1691233212517-profile picture option6-01.jpg\"},\"iti\":{\"name\":\"asdasdasd\",\"year\":\"1st\"}}', '2023-08-05 16:30:15', '2023-08-17 11:37:54'),
-(10, 'Ashish', '8302653003', 'ashishsharma@yopmail.com', 'Santosh', '0000-00-00', 'Male', NULL, 1, NULL, '$2b$10$XcNSilRnKjtBqgN3JCRO0uJFtqn.fwT/ClsjP9JMolAudMF6jJWH6', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Airport Rd, Sanganer, Jaipur, Rajasthan 302029, India', 'Jaipur', 'Rajasthan', 'India', '302029', '26.8289443', '75.8056178', '', '12th,ITI', '1,2', '{}', '2023-08-11 17:36:11', '2023-08-11 17:36:11'),
-(11, 'Asu', '8302653003', 'asu@yopmail.com', 'Sahr', '2003-06-11', 'Male', NULL, 1, NULL, '$2b$10$IrwvGVjt3d4yvN/dglXKKuG0co2GJWWv8m.ZrYm.Ntuy9b3h5FBB2', NULL, 1, '1691756795012-cover image option6-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '117, Ajmer Rd, Civil Lines, Jaipur, Rajasthan 302006, India', 'Jaipur', 'Rajasthan', 'India', '302006', '26.9125961', '75.7875605', 'sc', '12th,ITI', '1,2', '{\"12th\":{\"name\":\"asdasd\",\"year\":\"passout\"},\"iti\":{\"name\":\"asdasdasdasdasdsa\",\"year\":\"3nd\"}}', '2023-08-11 17:57:34', '2023-08-11 17:57:34');
+(9, 'asdasd', '987654321', 'ashsih12345@yopmail.com', 'asdasdasd', '2023-08-17', 'Male', NULL, 1, NULL, '$2b$10$4jcex1WGxZwmHJ/PTxmXL.CCVFkF4Qu9ivuUREiqas.6Z2GWjtrHi', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImlhdCI6MTY5MjM1MzQxNCwiZXhwIjoxNzIzODg5NDE0fQ.sNfPVicckWl98hU1AU2GbPJF6SZsgFq6rBu9lQBEN90', NULL, NULL, NULL, NULL, NULL, NULL, 'QRPF+64P, Sitapura Industrial Area, Sitapura, Jaipur, Rajasthan 302022, India', 'Jaipur', 'Rajasthan', 'India', '302022', '26.7855763', '75.8228346', 'st', '12th,ITI', '1,2', '{\"12th\":{\"name\":\"asd\",\"year\":\"appraing\",\"docs\":\"1691233212517-profile picture option6-01.jpg\"},\"iti\":{\"name\":\"asdasdasd\",\"year\":\"1st\"}}', '2023-08-05 16:30:15', '2023-08-18 15:40:14'),
+(16, 'Ashish', '8302653003', 'ashish.sharma@yopmail.com', 'Santosh', '0000-00-00', 'Male', NULL, 1, NULL, '$2b$10$LIwc6gGGfZlPCqIVT7HATOul9DgQbg9sw47t7pb41CgESD8dWD7u.', NULL, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Airport Rd, Sanganer, Jaipur, Rajasthan 302029, India', 'Jaipur', 'Rajasthan', 'India', '302029', '26.8289443', '75.8056178', '', '12th', '1', '{}', '2023-08-18 12:52:58', '2023-08-18 12:52:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_registers`
+--
+
+CREATE TABLE `user_registers` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `paymentType` varchar(255) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `payment_status` text NOT NULL,
+  `receiptId` varchar(255) NOT NULL,
+  `status` tinyint(2) NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `createdAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -483,6 +531,18 @@ ALTER TABLE `front_pages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `qualifications`
 --
 ALTER TABLE `qualifications`
@@ -507,6 +567,13 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_registers`
+--
+ALTER TABLE `user_registers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `receiptId` (`receiptId`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -526,13 +593,13 @@ ALTER TABLE `blogs`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -559,6 +626,18 @@ ALTER TABLE `front_pages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `qualifications`
 --
 ALTER TABLE `qualifications`
@@ -574,13 +653,19 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `user_registers`
+--
+ALTER TABLE `user_registers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

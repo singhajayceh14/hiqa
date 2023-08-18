@@ -126,6 +126,8 @@ export interface COURSE_DATA {
   total_seat?: string;
   site_visits?: string;
   image?: string;
+  price?: string;
+  discount_prices?: string;
 }
 
 export interface SETTINGS_DATA {

@@ -1,11 +1,14 @@
 var _ = require("lodash");
+const moment = require("moment");
 const Razorpay = require("razorpay");
 //Model
 const Carts = require("../../../lib/models").carts;
 const CartItems = require("../../../lib/models").cart_items;
 const Courses = require("../../../lib/models").courses;
-
+const Orders = require("../../../lib/models").orders;
+const OrderItems = require("../../../lib/models").order_items;
 const Users = require("../../../lib/models").users;
+const Transactions = require("../../../lib/models").transactions;
 const db = require("../../../lib/models");
 const DBCartItem = db.cart_items;
 const DBCourse = db.courses;
@@ -26,21 +29,68 @@ class OrderController {
         const cartCondition = { where: { userId: req.user.id } };
         const cartData = await TableSchema.get(cartCondition, Carts);
         if (cartData) {
-          const payment_capture = 1;
-          const instance = new Razorpay({
-            key_id: process.env.RAZORPAY_KEY_ID, // YOUR RAZORPAY KEY
-            key_secret: process.env.RAZORPAY_KEY_SECRET, // YOUR RAZORPAY SECRET
-          });
-          let amount = parseFloat(cartData.totalAmount);
-          const options = {
-            amount: amount + "00",
-            currency: "INR",
-            receipt: "HIQA_ORDER_" + cartData.id,
-            payment_capture,
-          };
+          let createData = await TableSchema.create(
+            {
+              userId: user.id,
+              amount: cartData.totalAmount,
+              expiry_date: moment(new Date())
+                .add(30, "days")
+                .format("YYYY-MM-DD"),
+              status: "1",
+              receiptId: params.receiptId,
+              payment_status: "pending",
+            },
+            Orders
+          );
 
-          const order = await instance.orders.create(options);
-          return res.success(order, req.__("ORDER_SUCCESS"));
+          if (createData) {
+            const cartItems = await TableSchema.getAll(
+              { where: { userId: req.user.id, cartId: cartData.id } },
+              CartItems
+            );
+
+            if (cartItems.length) {
+              for (let index = 0; index < cartItems.length; index++) {
+                const element = cartItems[index];
+
+                await TableSchema.create(
+                  {
+                    orderId: createData.id,
+                    userId: user.id,
+                    courseId: createData.courseId,
+                    amount: element.amount,
+                    status: "start",
+                  },
+                  OrderItems
+                );
+              }
+            }
+
+            if (
+              params?.receiptId &&
+              params?.razorpay_payment_id &&
+              params?.razorpay_order_id &&
+              params?.razorpay_signature
+            ) {
+              const traCreatePayload = {
+                userId: user.id,
+                orderId: createData.id,
+                razorpay_payment_id: params?.razorpay_payment_id,
+                razorpay_order_id: params?.razorpay_order_id,
+                razorpay_signature: params?.razorpay_signature,
+                type: "order",
+                amount: createData.amount,
+                payment_status: "unpaid",
+                receiptId: params?.receiptId,
+              };
+              await TableSchema.create(traCreatePayload, Transactions);
+            }
+            await TableSchema.delete(cartCondition, Carts);
+            await TableSchema.delete(cartCondition, CartItems);
+            return res.success({}, req.__("ORDER_SUCCESS"));
+          } else {
+            return res.serverError({}, req.__("ORDER_FAILED"));
+          }
         } else {
           return res.serverError({}, req.__("CART_NOT_FOUND"));
         }
@@ -58,17 +108,7 @@ class OrderController {
         req.params || {},
         req.body || {}
       );
-      const shasum = crypto.createHmac('sha256', process.env.WEBHOOK_SECRET)
-      shasum.update(JSON.stringify(params))
-      const digest = shasum.digest('hex')
-      if (digest === req.headers['x-razorpay-signature']) {
-        console.log('request is legit')
-        // process it
-        console.log(JSON.stringify(params))
-      } else {
-        console.log('request is Failed')
-        // pass it
-      }
+      console.log(JSON.stringify(params));
     } catch (error) {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }

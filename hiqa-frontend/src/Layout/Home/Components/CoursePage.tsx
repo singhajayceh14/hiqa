@@ -65,11 +65,15 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
       },
     ],
   };
-
+  const getSum = (array: any, column: string) => {
+    let values = array.map((item: any) => parseInt(item[column]) || 0);
+    return values.reduce((a: any, b: any) => a + b);
+  };
   const courseApplyModal = (course: string) => {
     const selectedCourse = course_data?.find((sm: COURSE_DATA) => sm.id == course) as any;
     const remainingCourse = course_data?.filter((sm: COURSE_DATA) => sm.id != course) as any;
     const remainingCourseIds = course_data.map((sm: COURSE_DATA) => sm.id);
+    const comboPrice = getSum(course_data, 'price').toFixed(2);
     globalDispatch({
       viewModal: true,
       selectedCourseId: [course],
@@ -77,6 +81,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
       selectedCourse: [selectedCourse],
       remainingCourse: remainingCourse,
       remainingCourseIds: remainingCourseIds,
+      comboPrice: comboPrice,
     });
   };
   const closeModal = (key: string) => {
@@ -86,6 +91,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
       selectedCourse: [],
       remainingCourse: [],
       remainingCourseIds: [],
+      comboPrice: 0.0,
     });
   };
   const checkoutRedirect = async (ids: number[]) => {
@@ -199,7 +205,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
                             }}
                             className="btn signInBtns signUpBtn"
                           >
-                            <div className="txt">Go to Checkout</div>
+                            <div className="txt">Checkout ₹ {course.price}</div>
                           </button>
                         </div>
                       </div>
@@ -240,7 +246,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
               </div>
               <div className="totalPayment d-flex align-items-center justify-content-between mt-3">
                 <div className="payment fs-5">
-                  Total: <b>₹998</b>
+                  Total: <b>₹ {globalState?.comboPrice}</b>
                 </div>
                 <div className="second-header-btn">
                   <button
@@ -250,7 +256,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
                     }}
                     className="btn signInBtns signUpBtn"
                   >
-                    <div className="txt">Go to Checkout All Course</div>
+                    <div className="txt">All Combo Checkout</div>
                   </button>
                 </div>
               </div>

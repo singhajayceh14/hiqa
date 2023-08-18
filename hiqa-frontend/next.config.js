@@ -21,6 +21,9 @@ const nextConfig = {
   env: {
     REACT_APP_API_UPLOADS: process.env.REACT_APP_API_UPLOADS,
     BACKEND_API_URL: '/v1/front/api/',
+    RAZORPAY_KEY: 'rzp_test_o4ORT3Ja0YEpq8',
+    RAZORPAY_KEY_SECRET: 'P0PtN5LFpx1vkyomlmLJDqLu',
+    COMPANY_NAME: 'HIQA PVT LTD',
   },
   rewrites,
 };

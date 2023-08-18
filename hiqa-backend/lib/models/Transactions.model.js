@@ -8,6 +8,10 @@ module.exports = function (sequelize, DataTypes) {
       userId: {
         type: DataTypes.INTEGER,
       },
+      orderId: {
+        type: DataTypes.INTEGER,
+        defaultValue: null,
+      },
       razorpay_payment_id: {
         type: DataTypes.TEXT,
         defaultValue: null,
@@ -25,6 +29,9 @@ module.exports = function (sequelize, DataTypes) {
       },
       amount: {
         type: DataTypes.DECIMAL(10, 2),
+      },
+      receiptId: {
+        type: DataTypes.STRING(255),
       },
     },
     { tableName: "transactions" }

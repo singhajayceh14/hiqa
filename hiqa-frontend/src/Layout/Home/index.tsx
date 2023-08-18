@@ -46,7 +46,7 @@ function Index() {
   }, [state.user]);
   useEffect(() => {
     getFrontPage();
-    //handleOpen();
+    handleOpen();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.user]);
 
