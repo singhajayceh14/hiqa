@@ -69,11 +69,11 @@ export const getQualificationOption = (q: string) => {
 };
 
 const initialValues: USER_DATA = {
-  fullName: 'Ashish',
-  fatherName: 'Santosh',
-  email: 'ashish.sharma@yopmail.com',
-  mobile: '8302653003',
-  gender: 'Male',
+  fullName: '',
+  fatherName: '',
+  email: '',
+  mobile: '',
+  gender: '',
   paymentType: 'now',
   amount: 299.0,
   verifyAmount: 99.0,
