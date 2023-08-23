@@ -2,13 +2,13 @@ import React, { memo, useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 
-import TopHeader from './TopHeader';
-
 import { useApp } from '@/components/App';
 import { COURSE } from '@/types/interfaces';
 import styles from '@/styles/Components/Container/Header.module.scss';
 import LoadStatusList from '@/components/Default/LoadStatusList';
 import { logout } from '@/utils/helpers';
+
+import TopHeader from './TopHeader';
 
 const Header = () => {
   const { state, dispatch } = useApp();

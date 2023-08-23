@@ -1,16 +1,13 @@
 import React, { useContext, useCallback, useEffect } from 'react';
 import { useJsApiLoader } from '@react-google-maps/api';
+import Cookies from 'js-cookie';
 
 import { api } from '@/utils/axiosInterceptor';
 import settings from '@/settings.js';
 import { toastr } from '@/utils/helpers';
-import { validateAuthentication } from '@/utils/helpers';
 
 import { useAlert } from './alert';
 import { useCommonReducer } from './reducer';
-import Cookies from 'js-cookie';
-
-// import { reducer, initialState } from './reducer';
 
 interface Props {
   children: JSX.Element | JSX.Element[];
@@ -22,9 +19,7 @@ interface VALIDATEZIPCODE {
 interface COURSE {
   (): void;
 }
-interface USER {
-  (): void;
-}
+
 interface ALERT {
   toast: (title: string, icon: any) => void;
 }
@@ -116,10 +111,12 @@ export const AppProvider = ({ children }: Props) => {
     const token = Cookies.get('token') || '';
     getCourseList();
     if (token) getUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const value: CONTEXTVALUE = { state, dispatch, alert, validateZipCode, getUserData };

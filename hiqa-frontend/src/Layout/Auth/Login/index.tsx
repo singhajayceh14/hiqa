@@ -29,6 +29,7 @@ function Index() {
     if (state?.user) {
       router.push('/');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state?.user]);
   return state?.user ? (
     <ButtonLoader color="#ff7350" />

@@ -1,6 +1,6 @@
 import { api } from '@/utils/axiosInterceptor';
 import { ACTION } from '@/types/interfaces';
-import { handleErrors, toastr } from '@/utils/helpers';
+import { handleErrors } from '@/utils/helpers';
 const AUTH_API_URL = process.env.BACKEND_API_URL + 'auth/';
 const HOME_API_URL = process.env.BACKEND_API_URL + 'home/';
 

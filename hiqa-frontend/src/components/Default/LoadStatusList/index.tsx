@@ -52,7 +52,6 @@ function LoadStatusList(props: PROPS) {
         >
           {children && children instanceof Array
             ? children.map((item: JSX.Element | string, index: number) => (
-                
                 <li role="button" key={index}>
                   {item}
                 </li>

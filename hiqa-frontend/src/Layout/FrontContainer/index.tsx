@@ -1,10 +1,10 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+
+import { useApp, useLoading } from '@/components/App';
 
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-
-import { useApp, useLoading } from '@/components/App';
 
 type Props = {
   children: JSX.Element | string | JSX.Element[];
@@ -36,6 +36,7 @@ function Container({ children, auth }: Props) {
 
   useEffect(() => {
     handelAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname]);
   return initialLoding ? (
     <SimpleLoader />

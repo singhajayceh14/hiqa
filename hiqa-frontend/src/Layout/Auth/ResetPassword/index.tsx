@@ -5,10 +5,10 @@ import { Button, Row, Col, InputGroup } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
+import Link from 'next/link';
 
 import { REQUEST } from '@/types/interfaces';
 import { useRequest, useLoading, useApp } from '@/components/App';
-import Link from 'next/link';
 // import LOGO from './Components/Logo';
 
 const LoginSchema = Yup.object().shape({
@@ -31,6 +31,7 @@ function Index() {
     if (state?.user) {
       router.push('/');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state?.user]);
   return state?.user ? (
     <ButtonLoader color="#ff7350" />

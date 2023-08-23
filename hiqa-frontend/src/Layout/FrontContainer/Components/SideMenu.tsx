@@ -1,7 +1,8 @@
-import { useApp } from '@/components/App';
 import { useRouter } from 'next/router';
 import React, { memo } from 'react';
 import Link from 'next/link';
+
+import { useApp } from '@/components/App';
 import { logout } from '@/utils/helpers';
 
 const SideMenu = () => {

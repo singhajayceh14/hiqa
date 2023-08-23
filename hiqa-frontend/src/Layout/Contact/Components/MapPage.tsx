@@ -2,9 +2,9 @@ import React, { memo } from 'react';
 
 import { SETTINGS_DATA } from '@/types/interfaces';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function MapPage(props: { personalData: SETTINGS_DATA }) {
   // eslint-disable-next-line no-unsafe-optional-chaining
-  const { longitude, latitude } = props?.personalData;
 
   return (
     <>

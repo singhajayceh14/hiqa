@@ -1,7 +1,12 @@
 import React, { memo, useCallback, useEffect, useState, useMemo } from 'react';
-import Head from 'next/head';
 
 // Components
+
+import { useApp, useRequest } from '@/components/App';
+import { REQUEST } from '@/types/interfaces';
+import Modal from '@/components/Default/Modal';
+import { SuspenseLoader } from '@/components/App/Loader';
+import { useCommonReducer } from '@/components/App/reducer';
 
 import SliderPage from './Components/SliderPage';
 import AboutPage from './Components/AboutPage';
@@ -14,13 +19,6 @@ import VideoPage from './Components/VideoPage';
 import LogoSliderPage from './Components/LogoSliderPage';
 import FaqPage from './Components/FaqPage';
 import SubscribePage from './Components/SubscribePage';
-import EligibilityPage from './Components/EligibilityPage';
-
-import { useApp, useRequest } from '@/components/App';
-import { REQUEST } from '@/types/interfaces';
-import Modal from '@/components/Default/Modal';
-import { SimpleLoader, SuspenseLoader } from '@/components/App/Loader';
-import { useCommonReducer } from '@/components/App/reducer';
 
 function Index() {
   const { state } = useApp();

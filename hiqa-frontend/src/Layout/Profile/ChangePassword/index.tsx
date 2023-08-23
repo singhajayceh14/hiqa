@@ -51,7 +51,7 @@ function Index() {
                       }
                     }}
                   >
-                    {({ handleSubmit, handleChange, values, errors, touched, setFieldValue }) => (
+                    {({ handleSubmit, handleChange, values, errors }) => (
                       <Form noValidate onSubmit={handleSubmit}>
                         <Row>
                           <Col md={6}>

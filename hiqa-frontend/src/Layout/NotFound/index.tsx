@@ -1,13 +1,9 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
-
-import FrontContainer from '@/Layout/FrontContainer';
 
 function EventDetails() {
   return (
     <>
-  
       <section className="page_404 align-items-center pb-120 pt-120 p-relative">
         <div className="container">
           <div className="row">

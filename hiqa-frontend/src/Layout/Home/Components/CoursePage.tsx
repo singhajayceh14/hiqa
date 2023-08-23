@@ -26,7 +26,7 @@ function PrevArrow(props: { className?: string; style?: any; onClick?: MouseEven
   );
 }
 const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
-  const { request, loading } = useRequest();
+  const { request } = useRequest();
   const { state } = useApp();
   const router = useRouter();
   const { state: globalState, dispatch: globalDispatch } = useCommonReducer();
@@ -66,7 +66,7 @@ const CoursePage = ({ course_data }: { course_data: COURSE_DATA[] }) => {
     ],
   };
   const getSum = (array: any, column: string) => {
-    let values = array.map((item: any) => parseInt(item[column]) || 0);
+    const values = array.map((item: any) => parseInt(item[column]) || 0);
     return values.reduce((a: any, b: any) => a + b);
   };
   const courseApplyModal = (course: string) => {
