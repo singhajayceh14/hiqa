@@ -5,6 +5,8 @@ import Slider from 'react-slick';
 import Background from '../../../assets/img/slider/slider_bg.png';
 import Backgroundtwo from '../../../assets/img/slider/slider_bg_01.png';
 
+import { BANNER_DATA } from '@/types/interfaces';
+
 function NextArrow(props: { className: string; style: any; onClick: MouseEventHandler<HTMLButtonElement> }) {
   const { className, style, onClick } = props;
   return (
@@ -23,7 +25,7 @@ function PrevArrow(props: { className: string; style: any; onClick: MouseEventHa
   );
 }
 
-function SliderPage() {
+function SliderPage({ banner_data }: { banner_data: BANNER_DATA[] }) {
   const settings = {
     autoplay: true,
     autoplaySpeed: 10000,
@@ -50,89 +52,51 @@ function SliderPage() {
     ),
     responsive: [{ breakpoint: 1200, settings: { dots: false, arrows: false } }],
   };
-
+  console.log(banner_data);
   return (
     <>
       <section id="home" className="slider-area fix p-relative">
         <Slider className="slider-active" {...settings}>
-          <div>
-            <div
-              className="single-slider slider-bg"
-              style={{ backgroundImage: `url(${Background.src})`, backgroundSize: 'cover' }}
-            >
-              <div className="container">
-                <div className="row">
-                  <div className="col-lg-7 col-md-7">
-                    <div className="slider-content s-slider-content mt-130">
-                      <h5 data-animation="fadeInUp" data-delay=".4s">
-                        welcome To HIQA
-                      </h5>
-                      <h2 data-animation="fadeInUp" data-delay=".4s">
-                        Education is the best key success in life
-                      </h2>
-                      <p data-animation="fadeInUp" data-delay=".6s">
-                        Donec vitae libero non enim placerat eleifend aliquam erat volutpat. Curabitur diam ex, dapibus
-                        purus sapien, cursus sed nisl tristique, commodo gravida lectus non.
-                      </p>
-                      <div className="slider-btn mt-30">
-                        <Link href="/about" className="btn ss-btn mr-15" data-animation="fadeInLeft" data-delay=".4s">
-                          Discover More <i className="fal fa-long-arrow-right" />
-                        </Link>
-                        <Link
-                          href="/contact"
-                          className="btn ss-btn active"
-                          data-animation="fadeInLeft"
-                          data-delay=".4s"
-                        >
-                          Contact Us <i className="fal fa-long-arrow-right" />
-                        </Link>
+          {banner_data.map((banner: BANNER_DATA, index: number) => (
+            <div key={index}>
+              <div
+                className="single-slider slider-bg"
+                style={{ backgroundImage: `url(${banner.image})`, backgroundSize: 'cover' }}
+              >
+                <div className="container">
+                  <div className="row">
+                    <div className="col-lg-7 col-md-7">
+                      <div className="slider-content s-slider-content mt-130">
+                        <h5 data-animation="fadeInUp" data-delay=".4s">
+                          welcome To HIQA
+                        </h5>
+                        <h2 data-animation="fadeInUp" data-delay=".4s">
+                         {banner.title}
+                        </h2>
+                        <p data-animation="fadeInUp" data-delay=".6s">
+                          {banner.short_description}
+                        </p>
+                        <div className="slider-btn mt-30">
+                          <Link href="/about" className="btn ss-btn mr-15" data-animation="fadeInLeft" data-delay=".4s">
+                            Discover More <i className="fal fa-long-arrow-right" />
+                          </Link>
+                          <Link
+                            href="/contact"
+                            className="btn ss-btn active"
+                            data-animation="fadeInLeft"
+                            data-delay=".4s"
+                          >
+                            Contact Us <i className="fal fa-long-arrow-right" />
+                          </Link>
+                        </div>
                       </div>
                     </div>
+                    <div className="col-lg-5 col-md-5 p-relative"></div>
                   </div>
-                  <div className="col-lg-5 col-md-5 p-relative"></div>
                 </div>
               </div>
             </div>
-          </div>
-          <div>
-            <div
-              className="single-slider slider-bg"
-              style={{ backgroundImage: `url(${Backgroundtwo.src})`, backgroundSize: 'cover' }}
-            >
-              <div className="container">
-                <div className="row">
-                  <div className="col-lg-7 col-md-7">
-                    <div className="slider-content s-slider-content mt-130">
-                      <h5 data-animation="fadeInUp" data-delay=".4s">
-                        welcome To HIQA
-                      </h5>
-                      <h2 data-animation="fadeInUp" data-delay=".4s">
-                        Reinforcing the youth and empowering the country
-                      </h2>
-                      <p data-animation="fadeInUp" data-delay=".6s">
-                        Donec vitae libero non enim placerat eleifend aliquam erat volutpat. Curabitur diam ex, dapibus
-                        purus sapien, cursus sed nisl tristique, commodo gravida lectus non.
-                      </p>
-                      <div className="slider-btn mt-30">
-                        <Link href="/about" className="btn ss-btn mr-15" data-animation="fadeInLeft" data-delay=".4s">
-                          Discover More <i className="fal fa-long-arrow-right" />
-                        </Link>
-                        <Link
-                          href="/contact"
-                          className="btn ss-btn active"
-                          data-animation="fadeInLeft"
-                          data-delay=".4s"
-                        >
-                          Contact Us <i className="fal fa-long-arrow-right" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-5 col-md-5 p-relative"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </Slider>
       </section>
 

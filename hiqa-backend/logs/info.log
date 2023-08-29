@@ -938,3 +938,19 @@ Error: Route.post() requires a callback function but got a [object Undefined]
 [2023-08-18T10:18:11.633Z] [error]: 500 - [ 'Error' ] - ReferenceError: moment is not defined
 [2023-08-18T10:22:31.132Z] [error]: 500 - [ 'Error' ] - TypeError: element.amount.toFixed is not a function
 [2023-08-18T10:23:25.768Z] [error]: 500 - [ 'Error' ] - ReferenceError: Transactions is not defined
+[2023-08-29T14:45:38.307Z] [error]: uncaughtException: Unexpected string
+D:\hiqa\hiqa-backend\lib\models\Banners.model.js:37
+      "image",
+      ^^^^^^^
+
+SyntaxError: Unexpected string
+    at Object.compileFunction (node:vm:352:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1033:15)
+    at Module._compile (node:internal/modules/cjs/loader:1069:27)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at D:\hiqa\hiqa-backend\lib\models\index.js:48:19
+    at Array.forEach (<anonymous>)

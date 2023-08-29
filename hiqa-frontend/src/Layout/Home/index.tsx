@@ -64,13 +64,16 @@ function Index() {
 
   const blogPage = useMemo(() => <BlogPage blog_data={globalState?.blogs ?? []} />, [globalState?.blogs]);
   const eventPage = useMemo(() => <EventPage event_data={globalState?.events ?? []} />, [globalState?.events]);
+  const sliderPage = useMemo(() => <SliderPage banner_data={globalState?.banners ?? []} />, [globalState?.banners]);
+
+
   return (
     <>
       {loading ? (
         <SuspenseLoader color="#000" />
       ) : (
         <React.Fragment>
-          <SliderPage />
+          {sliderPage}
           <AboutPage />
           {coursePage}
           {eventPage}
