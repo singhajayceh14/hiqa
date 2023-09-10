@@ -954,3 +954,4 @@ SyntaxError: Unexpected string
     at require (node:internal/modules/cjs/helpers:102:18)
     at D:\hiqa\hiqa-backend\lib\models\index.js:48:19
     at Array.forEach (<anonymous>)
+[2023-09-10T10:08:18.950Z] [error]: 500 - [ 'Database' ] - [ Unable to connect to the database ] - SequelizeConnectionRefusedError: connect ECONNREFUSED 127.0.0.1:3306

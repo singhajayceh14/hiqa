@@ -47,7 +47,7 @@ const AdmissionPage = () => {
                   Travelling, Local Support, Food & accommodation
                 </p>
                 <div className="slider-btn mt-20">
-                  <Link href="/about" className="btn ss-btn smoth-scroll">
+                  <Link href="/international-site-visit-and-training-program" className="btn ss-btn smoth-scroll">
                     Read More <i className="fal fa-long-arrow-right" />
                   </Link>
                 </div>

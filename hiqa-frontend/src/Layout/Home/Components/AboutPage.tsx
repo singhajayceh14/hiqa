@@ -39,11 +39,18 @@ function AboutPage() {
                   <h2>We Bring The Right Person To The Correct Place.</h2>
                 </div>
                 <p className="txt-clr">
-                  We are the first & only Institute in India which provides the best training with the latest
-                  technologies at 100% free of cost.
+                  Welcome to our distinguished institute, a beacon of hope and opportunity for deserving students
+                  seeking to transform their lives through education and skill development. We stand as a testament to
+                  the belief that merit knows no boundaries, and every individual with potential should have access to
+                  the tools necessary for success. Our mission is simple yet powerful: to provide free training and
+                  unparalleled placement assistance to those who have demonstrated exceptional merit and a thirst for
+                  knowledge.
                 </p>
                 <p>
-                  We provide free Dress, stationery, food, and accommodation to the students admitted to our Institute.
+                  In a world where opportunities are often unevenly distributed, we have committed ourselves to bridging
+                  the gap and paving a path for talented students to shine and thrive. Join us in this journey of
+                  empowerment, where potential meets possibility, and dreams are realized through the synergy of
+                  education and rightful opportunity.
                 </p>
                 <div className="about-content2">
                   <div className="row">
@@ -74,7 +81,7 @@ function AboutPage() {
                   </div>
                 </div>
                 <div className="slider-btn mt-20">
-                  <Link href="/about" className="btn ss-btn smoth-scroll">
+                  <Link href="/hiqa-details" className="btn ss-btn smoth-scroll">
                     Read More <i className="fal fa-long-arrow-right" />
                   </Link>
                 </div>
