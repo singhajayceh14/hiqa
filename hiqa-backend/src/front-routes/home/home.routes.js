@@ -15,14 +15,8 @@ router.post(
   upload.fields([{ name: "image", maxCount: 1 }]),
   HomeController.docUpload
 );
-router.post(
-  "/razorpay-orders",
-  HomeController.razorpayOrders
-);
-router.post(
-  "/verify-register-payment",
-  HomeController.verifyRegisterPayment
-);
+router.post("/razorpay-orders", HomeController.razorpayOrders);
+router.post("/verify-register-payment", HomeController.verifyRegisterPayment);
 
-
+router.get("/share-images", HomeController.shareImage);
 module.exports = router;
