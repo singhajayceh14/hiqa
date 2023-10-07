@@ -1,15 +1,14 @@
-import Home from '@/Layout/Home';
+import HiqaDetails from '@/Layout/About/hiqaDetails';
 
 function Index() {
   return (
     <>
-      <Home />
+      <HiqaDetails />
     </>
   );
 }
 Index.auth = false;
 Index.meta = {
-  title: 'Home',
-  description: 'Home',
+  title: 'HIQA Details',
 };
 export default Index;

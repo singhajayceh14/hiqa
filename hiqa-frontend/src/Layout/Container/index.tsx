@@ -1,18 +1,9 @@
 import React, { memo } from 'react';
 import Head from 'next/head';
-import { Row, Col } from 'react-bootstrap';
-import { useRouter } from 'next/router';
-// import { LoadScript } from '@react-google-maps/api';
-import dynamic from 'next/dynamic';
 
 import { validateAuthentication } from '@/utils/helpers';
 
 import { ContainerContextProvider } from './context';
-
-const FrontContainer = dynamic(() => import('../FrontContainer'), {
-  loading: () => <div></div>,
-  ssr: false,
-});
 
 type META = {
   title: string;
@@ -24,8 +15,7 @@ type Props = {
   footer?: boolean | false;
   meta: META;
 };
-function Container({ children, header, meta }: Props) {
-  const router = useRouter();
+function Container({ children, meta }: Props) {
   return (
     <>
       <Head>

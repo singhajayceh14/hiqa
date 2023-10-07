@@ -6,6 +6,10 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
         defaultValue: null,
       },
+      short_description:{
+        type: DataTypes.TEXT,
+        defaultValue: null,
+      },
       status: {
         type: DataTypes.TINYINT(2),
         defaultValue: 0,
@@ -29,6 +33,7 @@ module.exports = function (sequelize, DataTypes) {
     return [
       "id",
       "title",
+      "short_description",
       "image",
     ];
   };

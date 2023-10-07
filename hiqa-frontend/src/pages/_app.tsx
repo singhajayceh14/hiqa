@@ -38,6 +38,7 @@ export default function App({ Component, pageProps }: AppComponentProps) {
     () =>
       ({ children }: { children: React.ReactElement<any> }) =>
         <FrontContainer {...Component}>{children}</FrontContainer>,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [Component.auth],
   );
 

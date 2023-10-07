@@ -1,8 +1,6 @@
 import React, { memo, useCallback, useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
 
-import FrontContainer from '@/Layout/FrontContainer';
 import { useLoading, useRequest } from '@/components/App';
 import { REQUEST, EVENT_DATA } from '@/types/interfaces';
 import Pagination from '@/components/Default/Pagination/Pagination';

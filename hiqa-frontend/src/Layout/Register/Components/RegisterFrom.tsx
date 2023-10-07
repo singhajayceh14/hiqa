@@ -171,7 +171,7 @@ function Index(props: PROPS) {
         validateOnMount={false}
         onSubmit={props.submit}
       >
-        {({ handleSubmit, handleReset, handleChange, values, errors, touched, setFieldValue, validateForm }) => (
+        {({ handleSubmit, handleReset, handleChange, values, errors, setFieldValue, validateForm }) => (
           <Form noValidate onSubmit={handleSubmit} onReset={handleReset} className="customForm">
             <div className="steps_wrapper">
               <Steps>

@@ -158,6 +158,12 @@ export interface EVENT_DATA {
   event_instagram_url?: string;
   event_twitter_url?: string;
 }
+export interface BANNER_DATA {
+  id: string;
+  title: string;
+  short_description:string;
+  image: string;
+}
 
 export interface BLOG_DATA {
   id: string;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ThreeDots, Bars } from 'react-loader-spinner';
-import Spinner from 'react-bootstrap/Spinner';
 
 interface PROPS {
   color?: string;

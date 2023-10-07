@@ -2,12 +2,12 @@ import React, { memo, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import RegisterFrom from './Components/RegisterFrom';
-
 import { REQUEST, USER_DATA, QUALIFICATION } from '@/types/interfaces';
 import { useApp, useLoading, useRequest } from '@/components/App';
 import { toastr } from '@/utils/helpers';
 import Modal from '@/components/Default/Modal';
+
+import RegisterFrom from './Components/RegisterFrom';
 declare global {
   interface Window {
     Razorpay?: any;
@@ -104,7 +104,6 @@ function Index() {
     }, 5000);
     return () => clearTimeout(timer);
   };
-  useEffect(() => {}, [state.viewModal]);
   return state?.user ? (
     <ButtonLoader color="#ff7350" />
   ) : (

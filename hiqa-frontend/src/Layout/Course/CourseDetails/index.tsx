@@ -1,8 +1,6 @@
 import React, { memo, useMemo, useState, useCallback, useEffect } from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import FrontContainer from '@/Layout/FrontContainer';
 import { SuspenseLoader } from '@/components/App/Loader';
 import { useCommonReducer } from '@/components/App/reducer';
 import { useRequest } from '@/components/App';
@@ -35,17 +33,7 @@ function Index() {
     () => <CourseDetailsPage details={globalState?.details ?? {}} />,
     [globalState?.details],
   );
-  return (
-    <>
-      <Head>
-        <title>Course Details</title>
-        <meta name="description" content={'Course Details' || 'HIQA'} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
-      </Head>
-      {loading ? <SuspenseLoader color={'#002e6e'} /> : <>{courseDetailsPage} </>}
-    </>
-  );
+  return <>{loading ? <SuspenseLoader color={'#002e6e'} /> : <>{courseDetailsPage} </>}</>;
 }
 
 export default memo(Index);

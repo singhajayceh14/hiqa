@@ -1,11 +1,11 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { Button, Modal } from 'react-bootstrap';
 
 import { useApp, useLoading, useRequest } from '@/components/App';
 import { useCommonReducer } from '@/components/App/reducer';
 import { REQUEST, CART_ITEMS } from '@/types/interfaces';
-import { Button, Modal } from 'react-bootstrap';
 import { toastr } from '@/utils/helpers';
 
 function Container() {

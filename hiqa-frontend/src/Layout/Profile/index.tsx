@@ -10,6 +10,7 @@ import GoogleAutoComplete from '@/components/Default/Maps/Autocomplete';
 import CustomAutomplete from '@/components/Default/Autocomplete';
 import styles from '@/styles/Components/Profile/Profile.module.scss';
 import SideMenu from '@/Layout/FrontContainer/Components/SideMenu';
+
 import { getQualificationOption } from '../Register/Components/RegisterFrom';
 
 function Index() {
@@ -32,7 +33,7 @@ function Index() {
       preView: URL.createObjectURL(file),
     });
   };
-  const onDocChange = async (event: any, name: string) => {
+  const onDocChange = async (event: any) => {
     const file = event.target.files[0];
     const formData: FormData = new FormData();
     formData.append('image', file);
@@ -115,7 +116,7 @@ function Index() {
                       }
                     }}
                   >
-                    {({ handleSubmit, handleChange, values, errors, touched, setFieldValue }) => (
+                    {({ handleSubmit, handleChange, values, errors, setFieldValue }) => (
                       <Form noValidate onSubmit={handleSubmit}>
                         <Accordion defaultActiveKey="0">
                           <Accordion.Item eventKey="0">
@@ -381,7 +382,7 @@ function Index() {
                                                 <Form.Control
                                                   type="file"
                                                   onChange={async event => {
-                                                    const res = await onDocChange(event, q.toLowerCase());
+                                                    const res = await onDocChange(event);
                                                     setFieldValue(`qualificationDoc[${q.toLowerCase()}].docs`, res);
                                                   }}
                                                 />

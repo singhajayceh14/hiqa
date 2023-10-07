@@ -29,13 +29,13 @@ const VideoPage = () => {
               </div>
             </div>
             <div className="col-lg-2 col-md-2"></div>
-            <div className="col-lg-4">
+            {/* <div className="col-lg-4">
               <div className="s-video-content">
                 <Link href="#" className="popup-video mb-50" onClick={() => setVideo(true)}>
                   <img src="assets/img/bg/play-button2.png" alt="circle_right" onClick={() => setVideo(true)} />
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

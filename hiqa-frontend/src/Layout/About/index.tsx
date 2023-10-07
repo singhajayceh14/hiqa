@@ -1,8 +1,5 @@
 import React, { memo } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
-
-import FrontContainer from '@/Layout/FrontContainer';
 
 function Index() {
   return (

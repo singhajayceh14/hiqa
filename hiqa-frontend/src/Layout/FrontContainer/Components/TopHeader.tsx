@@ -5,7 +5,7 @@ import { SETTINGS_DATA } from '@/types/interfaces';
 
 const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
   // eslint-disable-next-line no-unsafe-optional-chaining
-  const { email, phone, youtube_url, facebook_url, twitter_url, instagram_url, linkedin_url } = props?.personalData;
+  const { youtube_url, facebook_url, twitter_url, instagram_url, linkedin_url } = props?.personalData;
 
   return (
     <>

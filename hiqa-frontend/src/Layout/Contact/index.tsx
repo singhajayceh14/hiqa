@@ -1,7 +1,5 @@
 import React, { memo, useMemo } from 'react';
-import Head from 'next/head';
 
-import FrontContainer from '@/Layout/FrontContainer';
 import { useApp } from '@/components/App';
 
 import TouchPage from './Components/TouchPage';

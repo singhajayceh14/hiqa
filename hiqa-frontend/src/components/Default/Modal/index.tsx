@@ -9,7 +9,7 @@ interface PROPS {
   children: JSX.Element | JSX.Element[];
   onClose: () => void;
   outer?: boolean;
-  className?:string;
+  className?: string;
 }
 
 function Index(props: PROPS) {
