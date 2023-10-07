@@ -545,7 +545,7 @@ table {
   background-color: $white;
   padding-top: 78px;
   z-index: 1;
-
+  overflow: auto;
   @media (max-width: $lg) {
     left: -286px;
   }
@@ -562,11 +562,13 @@ table {
 
         a {
           display: block;
-          border-radius: 0px 40px 40px 0px;
           position: relative;
           padding: 8px 10px 8px 60px;
-          color: rgba(0, 0, 0, 0.54);
+          color: rgba(0, 0, 0, 0.75);
           font-weight: 600;
+          text-decoration: none;
+          border-bottom: solid 1px #f2f2f2;
+          border-radius: 0;
           font-size: $fs14;
           
           i {

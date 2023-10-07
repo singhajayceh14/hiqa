@@ -122,15 +122,17 @@ label {
   label {
     flex: 0 0 calc(100% - 22px);
     width: calc(100% - 22px);
+    margin-left: 10px;
   }
 }
-
+.rememberMe {
+  width: 160px;
+  margin-left: 1px;
+}
 .customBtn {
   @include button;
   border: none;
   border-radius: 70px;
-  background-color: $primary;
-  background: $primary;
   &:hover,
   &:focus,
   &:active {
@@ -343,6 +345,7 @@ label {
 .dropdown-item.active,
 .dropdown-item:active {
   background-color: $primaryHover !important;
+  color: #ffff !important;
 }
 
 .navbar {
@@ -428,10 +431,11 @@ label {
 
 .cmnTable {
   background: $white;
-  padding: $space20 - 10 $space30;
+  padding: 0;
   border-radius: $border-radius * 3;
   position: relative;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 10px rgb(0 0 0 / 15%);
+
   h3 {
     color: $blue;
     // padding-left: 24px;
@@ -442,7 +446,7 @@ label {
     }
   }
   @media (max-width: $xxl) {
-    padding: $space10 + 5;
+    padding: 0;
     border-radius: $border-radius * 2;
   }
 
@@ -563,7 +567,7 @@ label {
   .react-bootstrap-table-pagination {
     @include d-flex2;
     flex-wrap: wrap;
-    margin-top: $space20;
+    padding: 15px;
 
     @media (max-width: $lg) {
       display: $flex;
@@ -1090,10 +1094,15 @@ label {
 
 .srchIcon {
   &.btn-primary {
-    border-color: transparent;
-    background: transparent;
-    padding: 0;
-
+      border-color: #0d6279;
+      background: #0d6279;
+      padding: 5px 10px;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
     @media (max-width: $md) {
       display: none;
     }
@@ -1182,7 +1191,7 @@ span.react-bs-table-sizePerPage-dropdown.dropdown {
 }
 
 .loginForm {
-  max-width: 350px;
+  max-width: 450px;
   padding: 3vh 16px 16px;
 
   h2 {
@@ -1285,7 +1294,7 @@ span.react-bs-table-sizePerPage-dropdown.dropdown {
 }
 
 .goBackContainer {
-  margin: 7rem 3rem 0rem 0rem !important;
+  margin: 120px 3rem 0rem 0rem !important;
   position: absolute;
   right: 0;
   top: 0;
@@ -1293,8 +1302,8 @@ span.react-bs-table-sizePerPage-dropdown.dropdown {
 }
 
 .goBack {
-  font-size: 30px;
-  color: #3299cc;
+  font-size: 24px;
+  color: #333456;
 }
 
 .form-control:disabled,
@@ -1561,4 +1570,8 @@ span.react-bs-table-sizePerPage-dropdown.dropdown {
 }
 .headingBtn{
   float: right;
+}
+
+.swal2-toast-shown .swal2-container{
+  width: auto !important;
 }

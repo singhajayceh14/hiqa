@@ -21,67 +21,6 @@ function CourseDetailsPage({ details }: { details: COURSE_DATA }) {
                 <h3>Course Overview</h3>
                 <p dangerouslySetInnerHTML={{ __html: details?.short_description ?? '' }} />
                 <p dangerouslySetInnerHTML={{ __html: details?.long_description ?? '' }} />
-                <h4>What You Will Learn</h4>
-                <p>
-                  Fusce eleifend donec sapien sed phase lusa pellentesque lacus.Vivamus lorem arcu semper duiac. Cras
-                  ornare arcu avamus nda leo Etiam ind arcu. Morbi justo mauris tempus pharetra interdum at congue
-                  semper purus. Lorem ipsum dolor sit.The world of search engine optimization is complex and
-                  ever-changing, but you can easily understand the basics.
-                </p>
-                <p>
-                  Lorem ipsum is simply free text used by copytyping refreshing. Neque porro est qui dolorem ipsum quia
-                  quaed inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aelltes port lacus
-                  quis enim var sed efficitur turpis gilla sed sit amet finibus eros. Lorem Ipsum is simply dummy text
-                  of the printing.
-                </p>
-                <ul className="pr-ul">
-                  <li>
-                    <div className="icon">
-                      <i className="fal fa-check" />
-                    </div>
-                    <div className="text">Crawl accessibility so engines can read your website</div>
-                  </li>
-                  <li>
-                    <div className="icon">
-                      <i className="fal fa-check" />
-                    </div>
-                    <div className="text">Share-worthy content that earns links, citations</div>
-                  </li>
-                  <li>
-                    <div className="icon">
-                      <i className="fal fa-check" />
-                    </div>
-                    <div className="text">Keyword optimized to attract searchers &amp; engines</div>
-                  </li>
-                  <li>
-                    <div className="icon">
-                      <i className="fal fa-check" />
-                    </div>
-                    <div className="text">Title, URL, &amp; description to draw high CTR</div>
-                  </li>
-                </ul>
-                <h4>Study Options:</h4>
-                <table className="table table-bordered mb-40">
-                  <thead>
-                    <tr>
-                      <th>Qualification</th>
-                      <th>Length</th>
-                      <th>Code</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Bsc (Hons)</td>
-                      <td>3 years full time</td>
-                      <td>CDX3</td>
-                    </tr>
-                    <tr>
-                      <td>Bsc </td>
-                      <td>4 years full time</td>
-                      <td>CDX4</td>
-                    </tr>
-                  </tbody>
-                </table>
               </div>
             </div>
             <div className="col-lg-3">

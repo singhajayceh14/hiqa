@@ -102,7 +102,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="cta-area cta-bg pt-30 pb-30" style={{ background: '#ff7350' }}>
+      {/* <section className="cta-area cta-bg pt-30 pb-30" style={{ background: '#ff7350' }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
@@ -127,7 +127,7 @@ function Index() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

@@ -45,24 +45,24 @@
   border-radius: $border-radius-sm;
   color: #fff;
   font-size: 16px;
-  background: $blue;
-  border-color: $blue;
+  background: $primary;
+  border-color: $primary;
   padding: 0 $space20;
   text-align: center;
   box-shadow: none;
   display: $inlineBlock;
 
   &:not(:disabled):not(.disabled):active {
-    background: $blue;
-    border-color: $blue;
+    background: $primary;
+    border-color: $primary;
     box-shadow: $none !important;
   }
 
   &:hover,
   &:focus,
   &:active {
-    background-color: $blue;
-    border-color: $blue;
+    background-color: $primary;
+    border-color: $primary;
     color: $white;
   }
 }
