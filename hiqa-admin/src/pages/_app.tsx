@@ -1,6 +1,7 @@
 import React from 'react';
 import '@/styles/globals.scss';
 import '@/styles/App.scss';
+import '@/styles/custom.scss';
 import type { NextComponentType } from 'next';
 import type { AppProps } from 'next/app';
 import SSRProvider from 'react-bootstrap/SSRProvider';

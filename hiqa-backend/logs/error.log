@@ -955,3 +955,7 @@ SyntaxError: Unexpected string
     at D:\hiqa\hiqa-backend\lib\models\index.js:48:19
     at Array.forEach (<anonymous>)
 [2023-09-10T10:08:18.950Z] [error]: 500 - [ 'Database' ] - [ Unable to connect to the database ] - SequelizeConnectionRefusedError: connect ECONNREFUSED 127.0.0.1:3306
+[2023-09-24T06:10:11.493Z] [error]: 500 - [ 'Error' ] - null
+[2023-09-24T06:10:13.986Z] [error]: 500 - [ 'Error' ] - null
+[2023-09-24T06:10:31.730Z] [error]: 500 - [ 'Error' ] - null
+[2023-09-24T06:10:43.589Z] [error]: 500 - [ 'Error' ] - null

@@ -87,7 +87,7 @@ function CourseForm(props: COURSE_PROPS) {
       }}
     >
       {({ handleSubmit, handleChange, values, errors }) => (
-        <Form noValidate onSubmit={handleSubmit} id="addForm">
+        <Form noValidate onSubmit={handleSubmit} id="addForm" className="form-space">
           <div className={styles.formField}>
             <Row>
               <Col md={6}>

@@ -31,9 +31,11 @@ function EditCourse() {
   }, [getCourseDetail, query?.course_id]);
   return (
     <div className={`cmnTable`}>
-      <div className="tableHeading row">
-        <div className="col-md-8 ">
-          <h2>Edit Course</h2>
+      <div className="cmnTableHeader">
+        <div className="tableHeading row">
+          <div className="col-md-8 ">
+            <h2>Edit Course</h2>
+          </div>
         </div>
       </div>
       {globalState?.courseDetail && <CourseForm {...{ state: globalState, edit: true }} />}

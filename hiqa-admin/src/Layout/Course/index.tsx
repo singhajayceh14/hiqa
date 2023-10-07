@@ -72,16 +72,18 @@ function Index() {
   const isLoading = useMemo(() => loading?.removeCourse_LOADING, [loading]);
   return (
     <div className={`cmnTable`}>
-      <div className="tableHeading row">
-        <div className="col-md-8 ">
-          <h2>Course List</h2>
-        </div>
-        <div className="col-md-4 ">
-          <div className="headingBtn">
-            <div className="d-flex ">
-              <Link href="/course/add">
-                <Button className="customBtn">Add Course</Button>
-              </Link>
+      <div className="cmnTableHeader">
+        <div className="tableHeading row">
+          <div className="col-md-8 ">
+            <h2>Course List</h2>
+          </div>
+          <div className="col-md-4 ">
+            <div className="headingBtn">
+              <div className="d-flex ">
+                <Link href="/course/add">
+                  <Button className="customBtn">Add Course</Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
