@@ -8,7 +8,11 @@ const Settings = require("../../../lib/models").settings;
 const FrontPages = require("../../../lib/models").front_pages;
 const Banners = require("../../../lib/models").banners;
 const Blogs = require("../../../lib/models").blogs;
+const Users = require("../../../lib/models").users;
 const Events = require("../../../lib/models").events;
+const Gallery = require("../../../lib/models").gallery;
+
+const Faqs = require("../../../lib/models").faqs;
 const Qualifications = require("../../../lib/models").qualifications;
 const CourseEligibilityDetails =
   require("../../../lib/models").course_eligibility_details;
@@ -166,6 +170,50 @@ class HomeController {
         },
         Blogs
       );
+      let settingData = await TableSchema.get(
+        {
+          where: { id: "1" },
+        },
+        Settings
+      );
+      let totalStudent = await TableSchema.count(
+        {
+          where: { role_id: "1" },
+        },
+        Users
+      );
+      let totalStaff = await TableSchema.count(
+        {
+          where: { role_id: "0" },
+        },
+        Users
+      );
+      let totalCourse = await TableSchema.count(
+        {
+          where: { status: "1" },
+        },
+        Courses
+      );
+      let faqs = await TableSchema.getAll(
+        {
+          where: { status: "1" },
+        },
+        Faqs
+      );
+      const counterData = {
+        totalStudent:
+          settingData?.isCounter == true
+            ? settingData?.totalStudent
+            : totalStudent,
+        totalCourse:
+          settingData?.isCounter == true
+            ? settingData?.totalCourse
+            : totalCourse,
+        totalPlacement:
+          settingData?.isCounter == true ? settingData?.totalPlacement : 0,
+        totalStaff:
+          settingData?.isCounter == true ? settingData?.totalStaff : totalStaff,
+      };
       return res.success(
         {
           courses_list: courseData,
@@ -173,6 +221,8 @@ class HomeController {
           banners: bannersData,
           events: eventData,
           blogs: blogData,
+          counter: counterData,
+          faqs: faqs,
         },
         req.__("GET_LIST_FOUND")
       );
@@ -208,10 +258,31 @@ class HomeController {
           { where: { status: "1" }, order: sort, limit: limit, offset: offset },
           Blogs
         );
+      } else if (params?.type === "gallery") {
+        result = await TableSchema.findAndCountAll(
+          { where: { status: "1" }, order: sort, limit: limit, offset: offset },
+          Blogs
+        );
       }
 
       const resultData = await getPaginationData(result, page, limit);
       return res.success(resultData, req.__("LIST_SUCCESS"));
+    } catch (error) {
+      return res.serverError({}, req.__("SERVER_ERROR"), error);
+    }
+  };
+  getGallery = async (req, res) => {
+    try {
+      let result = await TableSchema.getAll({}, Gallery);
+      return res.success(result, req.__("LIST_SUCCESS"));
+    } catch (error) {
+      return res.serverError({}, req.__("SERVER_ERROR"), error);
+    }
+  };
+  getFaqs = async (req, res) => {
+    try {
+      let result = await TableSchema.getAll({}, Faqs);
+      return res.success(result, req.__("LIST_SUCCESS"));
     } catch (error) {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }
@@ -312,6 +383,44 @@ class HomeController {
         req.body || {}
       );
       console.log(JSON.stringify(params));
+    } catch (error) {
+      return res.serverError({}, req.__("SERVER_ERROR"), error);
+    }
+  };
+  checkEligibility = async (req, res) => {
+    try {
+      let whereCondition = { status: "1" };
+      if (req.body && req.body?.qualificationId) {
+        let courseDatas = await TableSchema.getAll(
+          {
+            where: {
+              qualificationId: { [Op.in]: req.body.qualificationId.split(",") },
+            },
+          },
+          CourseEligibilityDetails
+        );
+        const courseIds = courseDatas
+          .filter((item) => item.courseId)
+          .map((item) => item.courseId);
+
+        whereCondition["id"] = { [Op.in]: courseIds };
+      }
+      let getListData = await TableSchema.getAll(
+        {
+          attributes: [
+            "id",
+            "name",
+            "slug",
+            "image",
+            "short_description",
+            "price",
+            "discount_price",
+          ],
+          where: whereCondition,
+        },
+        Courses
+      );
+      return res.success(getListData, req.__("GET_LIST_FOUND"));
     } catch (error) {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }

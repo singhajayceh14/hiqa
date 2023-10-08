@@ -959,3 +959,96 @@ SyntaxError: Unexpected string
 [2023-09-24T06:10:13.986Z] [error]: 500 - [ 'Error' ] - null
 [2023-09-24T06:10:31.730Z] [error]: 500 - [ 'Error' ] - null
 [2023-09-24T06:10:43.589Z] [error]: 500 - [ 'Error' ] - null
+[2023-10-06T16:55:54.329Z] [error]: 500 - [ 'Error' ] - null
+[2023-10-08T06:46:27.960Z] [error]: 500 - [ 'Error' ] - ReferenceError: User is not defined
+[2023-10-08T06:46:27.973Z] [error]: 500 - [ 'Error' ] - ReferenceError: User is not defined
+[2023-10-08T06:46:27.982Z] [error]: 500 - [ 'Error' ] - ReferenceError: User is not defined
+[2023-10-08T06:48:11.673Z] [error]: 500 - [ 'Error' ] - ReferenceError: User is not defined
+[2023-10-08T06:48:11.741Z] [error]: 500 - [ 'Error' ] - ReferenceError: User is not defined
+[2023-10-08T06:48:11.867Z] [error]: 500 - [ 'Error' ] - ReferenceError: User is not defined
+[2023-10-08T06:48:55.283Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:48:55.287Z] [error]: 500 - [ 'Error' ] - Error: Count Error!!! SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:48:55.290Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:48:55.292Z] [error]: 500 - [ 'Error' ] - Error: Count Error!!! SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:48:55.711Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:48:55.715Z] [error]: 500 - [ 'Error' ] - Error: Count Error!!! SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:48:55.804Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:48:55.806Z] [error]: 500 - [ 'Error' ] - Error: Count Error!!! SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:49:06.429Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:49:06.430Z] [error]: 500 - [ 'Error' ] - Error: Count Error!!! SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:49:06.449Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:49:06.461Z] [error]: 500 - [ 'Error' ] - Error: Count Error!!! SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:49:06.929Z] [error]: 500 - [ 'TableSchemaError' ] - SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T06:49:06.931Z] [error]: 500 - [ 'Error' ] - Error: Count Error!!! SequelizeDatabaseError: Unknown column 'courses.role_id' in 'where clause'
+[2023-10-08T08:48:51.389Z] [error]: uncaughtException: Route.post() requires a callback function but got a [object Undefined]
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\route.js:211:15)
+    at Function.proto.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\index.js:521:19)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\home\home.routes.js:11:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\home\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at D:\hiqa\hiqa-backend\src\front-routes\index.js:8:29
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\index.js:6:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+[2023-10-08T09:22:01.700Z] [error]: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
+Error: Route.get() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as get] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\route.js:211:15)
+    at Function.proto.<computed> [as get] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\index.js:521:19)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\home\home.routes.js:12:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\home\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at D:\hiqa\hiqa-backend\src\front-routes\index.js:8:29
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\index.js:6:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+[2023-10-08T10:32:07.225Z] [error]: uncaughtException: Route.post() requires a callback function but got a [object Undefined]
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\route.js:211:15)
+    at Function.proto.<computed> [as post] (D:\hiqa\hiqa-backend\node_modules\express\lib\router\index.js:521:19)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\home\home.routes.js:15:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\home\index.js:1:18)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at D:\hiqa\hiqa-backend\src\front-routes\index.js:8:29
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\index.js:6:8)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)

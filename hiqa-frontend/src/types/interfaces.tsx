@@ -161,7 +161,7 @@ export interface EVENT_DATA {
 export interface BANNER_DATA {
   id: string;
   title: string;
-  short_description:string;
+  short_description: string;
   image: string;
 }
 
@@ -221,4 +221,14 @@ export interface ADDRESS {
   formattedAddress: string;
   lat: number;
   lng: number;
+}
+export interface FAQS_DATA {
+  id: number;
+  question: string;
+  answer: string;
+}
+
+export interface GALLERY_DATA {
+  id: number;
+  image: string;
 }

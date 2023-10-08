@@ -78,6 +78,9 @@ const Header = () => {
                           <Link href="/about">About Us</Link>
                         </li>
                         <li>
+                          <Link href="/gallery">Gallery</Link>
+                        </li>
+                        <li>
                           <Link href="/contact">Contact</Link>
                         </li>
                       </ul>
@@ -236,6 +239,9 @@ const Header = () => {
                             </li>
                             <li>
                               <Link href="/about">About Us</Link>
+                            </li>
+                            <li>
+                              <Link href="/gallery">Gallery</Link>
                             </li>
                             <li className="mean-last">
                               <Link href="/contact">Contact</Link>

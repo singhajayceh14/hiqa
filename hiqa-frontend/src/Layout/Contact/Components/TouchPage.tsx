@@ -25,19 +25,22 @@ function TouchPage(props: { personalData: SETTINGS_DATA }) {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-4 col-md-4">
-              <div className="services-box text-center">
-                <div className="services-icon">
-                  <img src="assets/img/bg/contact-icon01.png" alt="image" />
-                </div>
-                <div className="services-content2">
-                  <h5>
-                    <a href={'tel:' + phone}>{phone}</a>
-                  </h5>
-                  <p>Phone Support</p>
+            {phone ? (
+              <div className="col-lg-4 col-md-4">
+                <div className="services-box text-center">
+                  <div className="services-icon">
+                    <img src="assets/img/bg/contact-icon01.png" alt="image" />
+                  </div>
+                  <div className="services-content2">
+                    <h5>
+                      <a href={'tel:' + phone}>{phone}</a>
+                    </h5>
+                    <p>Phone Support</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : null}
+
             <div className="col-lg-4 col-md-4">
               <div className="services-box text-center active">
                 <div className="services-icon">

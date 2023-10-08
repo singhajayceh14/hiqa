@@ -8,21 +8,17 @@ router.post("/all-list", HomeController.allList);
 
 router.post("/get-home", HomeController.getHome);
 router.post("/get-list/:type", HomeController.getAllList);
-router.post("/get-details/:type", HomeController.getAllDetails);
+router.get("/get-gallery", HomeController.getGallery);
+router.get("/get-faqs", HomeController.getFaqs);
 
+router.post("/get-details/:type", HomeController.getAllDetails);
+router.post("/check-eligibility", HomeController.checkEligibility);
 router.post(
   "/doc-uploads",
   upload.fields([{ name: "image", maxCount: 1 }]),
   HomeController.docUpload
 );
-router.post(
-  "/razorpay-orders",
-  HomeController.razorpayOrders
-);
-router.post(
-  "/verify-register-payment",
-  HomeController.verifyRegisterPayment
-);
-
+router.post("/razorpay-orders", HomeController.razorpayOrders);
+router.post("/verify-register-payment", HomeController.verifyRegisterPayment);
 
 module.exports = router;

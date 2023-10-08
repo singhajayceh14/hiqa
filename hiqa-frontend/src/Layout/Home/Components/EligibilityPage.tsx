@@ -1,55 +1,125 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 
 import { useApp, useRequest } from '@/components/App';
-import { REQUEST } from '@/types/interfaces';
+import { REQUEST, COURSE_DATA, QUALIFICATION } from '@/types/interfaces';
+import CustomAutomplete from '@/components/Default/Autocomplete';
 
 function EligibilityPage() {
   const { state } = useApp();
   const { request } = useRequest();
+  const [course, setCourse] = useState([]);
+  const [courseId, setCourseId] = useState([]);
 
-  const getQualification = useMemo(
-    () =>
-      state.qualification &&
-      state?.qualification.map((qa: { id: number; slug: string; name: string }) => (
-        <>
-          <option value={qa.slug}>{qa.name}</option>
-        </>
-      )),
+  const initialize = useCallback(async () => {
+    const res = (await request('CheckEligibility', {
+      qualificationId: '',
+    })) as REQUEST;
+    if (res?.status) {
+      setCourse(res?.data);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    [state.qualification],
-  );
+  useEffect(() => {
+    initialize();
+  }, [initialize]);
+
+  const handleOnChange = (id: string) => {
+    const findIdx = courseId.indexOf(id);
+    if (findIdx > -1) {
+      courseId.splice(findIdx, 1);
+    } else {
+      courseId.push(id);
+    }
+    setCourseId({ ...courseId });
+  };
   return (
     <>
       <Formik
         enableReinitialize={true}
         initialValues={{
-          qualification: '',
+          qualification: [],
+          qualificationId: [],
         }}
         onSubmit={async values => {
-          console.log(values);
-          const res = (await request('check-eligibility', values)) as REQUEST;
+          const res = (await request('CheckEligibility', {
+            qualificationId: values.qualificationId.toString(),
+          })) as REQUEST;
           if (res?.status) {
-            return '';
+            localStorage.setItem('qualification', values.qualificationId.toString());
+            setCourse(res?.data);
           }
         }}
       >
-        {({ handleSubmit, handleChange }) => (
+        {({ handleSubmit, handleChange, values, setFieldValue }) => (
           <Form noValidate onSubmit={handleSubmit} className="contact-form mt-10 text-center">
             <div key={234234234234} className="row">
               <div className="col-md-8">
                 <div className="contact-field p-relative c-name mb-10">
-                  <Form.Select onChange={handleChange} aria-label="Default select example" name="qualification">
-                    <option>Select Qualification</option>
-                    {getQualification}
-                  </Form.Select>
+                  <Form.Group className="mb-3">
+                    <CustomAutomplete
+                      label={'Select Qualification'}
+                      placeholder={'Select Qualification'}
+                      type="text"
+                      loading={false}
+                      // onClick={() => disabledPairedFields()}
+                      clearOption={() => {
+                        setFieldValue('qualification', []);
+                      }}
+                      name={'qualification'}
+                      multiple={true}
+                      onMultipleSelect={selected => {
+                        setFieldValue('qualification', [...selected.map(mp => mp.name)]);
+                        const quoteUsersIds = selected.map(mp => {
+                          if (state.qualification) {
+                            return state.qualification?.find((sm: QUALIFICATION) => sm.name === mp.name)?.id;
+                          }
+                        });
+                        setFieldValue('qualificationId', [...quoteUsersIds]);
+                      }}
+                      onSelect={(e, val) => {
+                        return val.name as string;
+                      }}
+                      isOptionsEmpty={false}
+                      filter={true} //If not remote
+                      //Provide only if we want to render a value again
+                      values={values.qualification?.map((mp: string) => ({ name: mp })) || []}
+                      data={state.qualification || []}
+                      filterfrom={val => val.name as string}
+                      getvalue={val => val.name as string}
+                      renderValue={val => state.qualification?.find((vl: QUALIFICATION) => vl.name === val)?.name || ''}
+                    />
+                  </Form.Group>
                 </div>
               </div>
               <div className="col-md-4">
                 <Button type="submit" className="btn ss-btn" data-animation="fadeInRight" data-delay=".8s">
                   Check Eligibility <i className="fal fa-long-arrow-right" />
                 </Button>
+              </div>
+            </div>
+            <div className="modal-course-sec">
+              <h2>Course List</h2>
+              <div className="course_listing_wrap">
+                {course.map((course: COURSE_DATA, index: number) => (
+                  <div key={index} className="course-col">
+                    <label className="single-course">
+                      <input type="checkbox" name="courseId" onChange={() => handleOnChange(course.id)} />
+                      <span className="checkmark"></span>
+                      <div className="d-flex">
+                        <div className="course-img">
+                          <img src={course.image} alt={course.name} />
+                        </div>
+                        <div className="course-cont">
+                          <h3>{course.name}</h3>
+                          <p dangerouslySetInnerHTML={{ __html: course?.short_description ?? '' }} />
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                ))}
               </div>
             </div>
           </Form>

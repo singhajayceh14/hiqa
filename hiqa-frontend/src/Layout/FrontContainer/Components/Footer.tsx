@@ -69,6 +69,23 @@ const Footer = () => {
                 </div>
               </div>
             </div>
+            <div className="col-xl-2 col-lg-2 col-sm-6">
+              <div className="footer-widget mb-30">
+                <div className="f-widget-title">
+                  <h2>More Links</h2>
+                </div>
+                <div className="footer-link">
+                  <ul>
+                    <li>
+                      <Link href="/gallery">Gallery </Link>
+                    </li>
+                    <li>
+                      <Link href="/faqs">FAQS </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
             <div className="col-xl-3 col-lg-3 col-sm-6">
               <div className="footer-widget mb-30">
                 <div className="f-widget-title">
@@ -76,26 +93,32 @@ const Footer = () => {
                 </div>
                 <div className="f-contact">
                   <ul>
-                    <li>
-                      <i className="icon fal fa-phone" />
-                      <span>
-                        <Link href={'tel:'}>{state?.setting_data?.phone}</Link>
-                        <br />
-                        <Link href={'tel:'}>{state?.setting_data?.phone}</Link>
-                      </span>
-                    </li>
-                    <li>
-                      <i className="icon fal fa-envelope" />
-                      <span>
-                        <Link href={'mailto:'}>{state?.setting_data?.email}</Link>
-                        <br />
-                        <Link href={'mailto:'}>{state?.setting_data?.email}</Link>
-                      </span>
-                    </li>
-                    <li>
-                      <i className="icon fal fa-map-marker-check" />
-                      <span>{state?.setting_data?.address}</span>
-                    </li>
+                    {state?.setting_data?.phone ? (
+                      <li>
+                        <i className="icon fal fa-phone" />
+                        <span>
+                          <Link href={'tel:'}>{state?.setting_data?.phone}</Link>
+                          <br />
+                          <Link href={'tel:'}>{state?.setting_data?.phone}</Link>
+                        </span>
+                      </li>
+                    ) : null}
+                    {state?.setting_data?.email ? (
+                      <li>
+                        <i className="icon fal fa-envelope" />
+                        <span>
+                          <Link href={'mailto:'}>{state?.setting_data?.email}</Link>
+                          <br />
+                          <Link href={'mailto:'}>{state?.setting_data?.email}</Link>
+                        </span>
+                      </li>
+                    ) : null}
+                    {state?.setting_data?.address ? (
+                      <li>
+                        <i className="icon fal fa-map-marker-check" />
+                        <span>{state?.setting_data?.address}</span>
+                      </li>
+                    ) : null}
                   </ul>
                 </div>
               </div>

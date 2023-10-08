@@ -6,3 +6,5 @@ export * from '@/Layout/Course/service';
 export * from '@/Layout/Events/service';
 export * from '@/Layout/Register/service';
 export * from '@/Layout/Checkout/service';
+export * from '@/Layout/Gallery/service';
+export * from '@/Layout/StaticPage/service';

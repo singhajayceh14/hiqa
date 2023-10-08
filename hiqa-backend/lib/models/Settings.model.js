@@ -56,6 +56,26 @@ module.exports = function (sequelize, DataTypes) {
       verifyCharges: {
         type: DataTypes.DECIMAL(10, 2),
       },
+      isCounter: {
+        type: DataTypes.TINYINT(2),
+        defaultValue: 0,
+      },
+      totalStudent: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      totalCourse: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      totalPlacement: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      totalStaff: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
     },
     { tableName: "settings" }
   );
@@ -74,6 +94,11 @@ module.exports = function (sequelize, DataTypes) {
       "skype_url",
       "linkedin_url",
       "instagram_url",
+      "isCounter",
+      "totalStudent",
+      "totalCourse",
+      "totalPlacement",
+      "totalStaff",
     ];
   };
   return Settings;

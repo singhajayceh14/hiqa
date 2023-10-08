@@ -38,3 +38,14 @@ export async function getCart(action: ACTION): Promise<unknown> {
     if (res.errors) return handleErrors(res.errors);
   }
 }
+
+export async function CheckEligibility(action: ACTION): Promise<unknown> {
+  const { payload } = action;
+  const res: ReturnType<any> = await api(`${API_URL}check-eligibility`, 'POST', { data: payload });
+  if (res.status) {
+    return res;
+  } else {
+    // Handle Errors
+    if (res.errors) return handleErrors(res.errors);
+  }
+}
