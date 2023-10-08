@@ -4217,7 +4217,7 @@ section:hover .section-title h2::before {
 
 .wp-list ul li {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     overflow: hidden;
     margin-bottom: 45px;
 }

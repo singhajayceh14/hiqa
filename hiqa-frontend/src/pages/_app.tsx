@@ -4,7 +4,6 @@ import '@/styles/globals.scss';
 import '@/styles/App.scss';
 import type { NextComponentType } from 'next';
 import type { AppProps } from 'next/app';
-import SSRProvider from 'react-bootstrap/SSRProvider';
 import { StepsProvider } from 'react-step-builder';
 
 import FrontContainer from '@/Layout/FrontContainer';
@@ -51,18 +50,16 @@ export default function App({ Component, pageProps }: AppComponentProps) {
   // : React.Fragment;
   return (
     <ErrorBoundary>
-      <SSRProvider>
-        <StepsProvider>
-          <AppProvider>
-            <Layout>
-              <>
-                {metaComponent}
-                <Component {...pageProps} />
-              </>
-            </Layout>
-          </AppProvider>
-        </StepsProvider>
-      </SSRProvider>
+      <StepsProvider>
+        <AppProvider>
+          <Layout>
+            <>
+              {metaComponent}
+              <Component {...pageProps} />
+            </>
+          </Layout>
+        </AppProvider>
+      </StepsProvider>
     </ErrorBoundary>
   );
 }
