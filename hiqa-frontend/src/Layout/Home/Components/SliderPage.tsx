@@ -2,10 +2,10 @@ import React, { MouseEventHandler } from 'react';
 import Link from 'next/link';
 import Slider from 'react-slick';
 
+import { BANNER_DATA } from '@/types/interfaces';
+
 import Background from '../../../assets/img/slider/slider_bg.png';
 import Backgroundtwo from '../../../assets/img/slider/slider_bg_01.png';
-
-import { BANNER_DATA } from '@/types/interfaces';
 
 function NextArrow(props: { className: string; style: any; onClick: MouseEventHandler<HTMLButtonElement> }) {
   const { className, style, onClick } = props;
@@ -71,7 +71,7 @@ function SliderPage({ banner_data }: { banner_data: BANNER_DATA[] }) {
                           welcome To HIQA
                         </h5>
                         <h2 data-animation="fadeInUp" data-delay=".4s">
-                         {banner.title}
+                          {banner.title}
                         </h2>
                         <p data-animation="fadeInUp" data-delay=".6s">
                           {banner.short_description}

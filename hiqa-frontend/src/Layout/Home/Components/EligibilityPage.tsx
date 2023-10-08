@@ -13,7 +13,7 @@ function EligibilityPage() {
   const [courseId, setCourseId] = useState([]);
 
   const initialize = useCallback(async () => {
-    const res = (await request('CheckEligibility', {
+    const res: any = (await request('CheckEligibility', {
       qualificationId: '',
     })) as REQUEST;
     if (res?.status) {
@@ -26,15 +26,6 @@ function EligibilityPage() {
     initialize();
   }, [initialize]);
 
-  const handleOnChange = (id: string) => {
-    const findIdx = courseId.indexOf(id);
-    if (findIdx > -1) {
-      courseId.splice(findIdx, 1);
-    } else {
-      courseId.push(id);
-    }
-    setCourseId({ ...courseId });
-  };
   return (
     <>
       <Formik
@@ -44,7 +35,7 @@ function EligibilityPage() {
           qualificationId: [],
         }}
         onSubmit={async values => {
-          const res = (await request('CheckEligibility', {
+          const res: any = (await request('CheckEligibility', {
             qualificationId: values.qualificationId.toString(),
           })) as REQUEST;
           if (res?.status) {
@@ -106,7 +97,7 @@ function EligibilityPage() {
                 {course.map((course: COURSE_DATA, index: number) => (
                   <div key={index} className="course-col">
                     <label className="single-course">
-                      <input type="checkbox" name="courseId" onChange={() => handleOnChange(course.id)} />
+                      <input type="checkbox" name="courseId" />
                       <span className="checkmark"></span>
                       <div className="d-flex">
                         <div className="course-img">
