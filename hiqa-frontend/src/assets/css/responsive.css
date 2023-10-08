@@ -2821,3 +2821,34 @@ margin: 0;
 
 } 
 }
+@media screen and(max-width:767.98px) {
+    .course-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+    
+    .course-img {
+        flex: 0 0 80px;
+        max-width: 80px;
+        height: 80px;
+    }
+    
+    .course-cont {
+        margin-left: 10px;
+    }
+    
+    .course-cont h3 {
+        font-size: 14px;
+    }
+    
+    .course-cont p {
+        font-size: 13px;
+        line-height: 1.2;
+    }
+    
+    label.single-course {
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,38 @@
+[2023-10-08T15:52:06.766Z] [error]: uncaughtException: Cannot find module 'node-html-to-image'
+Require stack:
+- D:\hiqa\hiqa-backend\lib\html-to-image\index.js
+- D:\hiqa\hiqa-backend\src\front-routes\home\home.controller.js
+- D:\hiqa\hiqa-backend\src\front-routes\home\home.routes.js
+- D:\hiqa\hiqa-backend\src\front-routes\home\index.js
+- D:\hiqa\hiqa-backend\src\front-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+Error: Cannot find module 'node-html-to-image'
+Require stack:
+- D:\hiqa\hiqa-backend\lib\html-to-image\index.js
+- D:\hiqa\hiqa-backend\src\front-routes\home\home.controller.js
+- D:\hiqa\hiqa-backend\src\front-routes\home\home.routes.js
+- D:\hiqa\hiqa-backend\src\front-routes\home\index.js
+- D:\hiqa\hiqa-backend\src\front-routes\index.js
+- D:\hiqa\hiqa-backend\src\server.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\lib\html-to-image\index.js:4:25)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\home\home.controller.js:21:32)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (D:\hiqa\hiqa-backend\src\front-routes\home\home.routes.js:2:24)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)

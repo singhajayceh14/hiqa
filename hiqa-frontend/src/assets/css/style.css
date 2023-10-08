@@ -14588,3 +14588,48 @@ label {
 .single-course input:checked ~ .checkmark:after {
   display: block;
 }
+.modal-title.h4 {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !IMPORTANT;
+}
+
+.modal-body .contact-field.p-relative.c-name label.form-label {
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.modal-body .btn.ss-btn.btn.btn-primary {
+    margin-top: 25px;
+    padding: 10px 30px;
+    width: 100%;
+}
+
+.contact-field span.form-control {
+    text-align: left;
+    display: flex;
+}
+
+.course-cont h3 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: left;
+}
+
+.course-cont {
+    text-align: left;
+}
+
+.filterList ul li {
+    text-align: left;
+}
+
+.custom_autoCompleteDiv span.search-icon.input-group-text {
+    position: absolute;
+    height: 22px;
+    padding: 0;
+    top: 24px;
+}
+
+.custom_autoCompleteDiv span.search-icon.input-group-text svg {
+    fill: #000;
+}
