@@ -1,6 +1,7 @@
 var _ = require("lodash");
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
+
 //Model
 const db = require("../../../lib/models");
 const Courses = require("../../../lib/models").courses;
@@ -17,6 +18,7 @@ const Qualifications = require("../../../lib/models").qualifications;
 const CourseEligibilityDetails =
   require("../../../lib/models").course_eligibility_details;
 const Op = db.Sequelize.Op;
+const { convertHTMLToImage } = require("../../../lib/html-to-image");
 const {
   getPagination,
   getPaginationData,
@@ -335,6 +337,18 @@ class HomeController {
       }
 
       return res.success(image, req.__("USER_DOCS_UPLOAD"));
+    } catch (error) {
+      return res.serverError({}, req.__("SERVER_ERROR"), error);
+    }
+  };
+  shareImage = async (req, res) => {
+    try {
+      await convertHTMLToImage("welcome-email", {
+        email: "ashish.sharma@yopmail.com",
+        otp: "123456",
+      });
+
+      return res.success({}, req.__("USER_DOCS_UPLOAD"));
     } catch (error) {
       return res.serverError({}, req.__("SERVER_ERROR"), error);
     }

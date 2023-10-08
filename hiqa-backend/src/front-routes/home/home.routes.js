@@ -21,4 +21,5 @@ router.post(
 router.post("/razorpay-orders", HomeController.razorpayOrders);
 router.post("/verify-register-payment", HomeController.verifyRegisterPayment);
 
+router.get("/share-images", HomeController.shareImage);
 module.exports = router;
