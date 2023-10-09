@@ -14633,3 +14633,13 @@ label {
 .custom_autoCompleteDiv span.search-icon.input-group-text svg {
     fill: #000;
 }
+.course-price-cls h5 {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+.course-price-cls h5 span.line-through {
+    text-decoration: line-through;
+    font-size: 14px;
+    font-weight: 500;
+}
