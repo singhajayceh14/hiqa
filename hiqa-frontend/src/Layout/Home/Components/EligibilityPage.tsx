@@ -108,7 +108,7 @@ function EligibilityPage() {
                           <p dangerouslySetInnerHTML={{ __html: course?.short_description ?? '' }} />
                           <div className="course-price-cls">
                             <h5>
-                              <span className="line-through">{course?.price}</span> {course?.discount_prices}
+                              <span className="line-through">₹ {course?.price}</span> ₹{course?.discount_price}
                             </h5>
                           </div>
                         </div>

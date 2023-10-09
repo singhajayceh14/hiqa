@@ -127,7 +127,7 @@ export interface COURSE_DATA {
   site_visits?: string;
   image?: string;
   price?: string;
-  discount_prices?: string;
+  discount_price?: string;
 }
 
 export interface SETTINGS_DATA {
