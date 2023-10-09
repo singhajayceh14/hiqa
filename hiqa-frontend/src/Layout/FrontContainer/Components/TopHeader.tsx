@@ -1,11 +1,32 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import Link from 'next/link';
 
+import EligibilityPage from '../../Home/Components/EligibilityPage';
+
+import Modal from '@/components/Default/Modal';
 import { SETTINGS_DATA } from '@/types/interfaces';
+import { useApp } from '@/components/App';
+import { Button } from 'react-bootstrap';
 
 const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
   // eslint-disable-next-line no-unsafe-optional-chaining
   const { youtube_url, facebook_url, twitter_url, instagram_url, linkedin_url } = props?.personalData;
+  const { state } = useApp();
+  const [show, setShow] = useState<boolean>(false);
+
+  useEffect(() => {
+    handleOpen();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.user]);
+  const closeModal = () => {
+    setShow(false);
+  };
+  const handleOpen = () => {
+    const timer = setTimeout(() => {
+      setShow(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  };
 
   return (
     <>
@@ -39,9 +60,9 @@ const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
                 <ul>
                   <li>
                     <div className="second-header-btn">
-                      <Link className="btn signInBtns d-flex align-items-center gap-2" href="/contact">
-                        <div className="txt d-none d-sm-block">Enquiry Now</div>
-                      </Link>
+                      <Button className="btn signInBtns d-flex align-items-center gap-2" onClick={() => setShow(true)}>
+                        <div className="txt d-none d-sm-block">Check Eligibility</div>
+                      </Button>
                     </div>
                   </li>
                 </ul>
@@ -50,6 +71,16 @@ const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
           </div>
         </div>
       </div>
+      <Modal
+        className="course_modal"
+        title="Eligibility"
+        id="Eligibility Page"
+        size="lg"
+        show={show}
+        onClose={() => closeModal()}
+      >
+        {state.user ? <img src="assets/img/popup/2.png" alt="contact-bg-an-01" /> : <EligibilityPage />}
+      </Modal>
     </>
   );
 };

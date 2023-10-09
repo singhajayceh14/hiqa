@@ -3358,6 +3358,7 @@ section:hover .section-title h2::before {
     background-color: rgba(18, 88, 117, 0.85);
     padding: 35px;
     transition: all 0.3s ease 0s;
+    height: 100%;
 }
 
 .services-box07:hover,
@@ -14599,7 +14600,7 @@ label {
 }
 
 .modal-body .btn.ss-btn.btn.btn-primary {
-    margin-top: 25px;
+
     padding: 10px 30px;
     width: 100%;
 }
@@ -14641,5 +14642,37 @@ label {
 .course-price-cls h5 span.line-through {
     text-decoration: line-through;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 500;
+}
+
+.course_modal .modal-body {
+    height: 80vh;
+    overflow: auto;
+}
+.course-no h5 {
+    font-size: 16px;
+}
+.courses-content p {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.courses-content p p {
+ margin:0;
+}
+.about-content2 li .ano {
+    flex: 0 0 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: normal;
+}
+
+.about-content2 li .text h3 {
+    margin-bottom: 0;
+    padding-bottom: 10px;
 }

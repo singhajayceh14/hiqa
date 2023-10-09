@@ -10,7 +10,6 @@ function EligibilityPage() {
   const { state } = useApp();
   const { request } = useRequest();
   const [course, setCourse] = useState([]);
-  const [courseId, setCourseId] = useState([]);
 
   const initialize = useCallback(async () => {
     const res: any = (await request('CheckEligibility', {
@@ -52,6 +51,7 @@ function EligibilityPage() {
                   <Form.Group className="mb-3">
                     <CustomAutomplete
                       label={'Select Qualification'}
+                      labelHidden={true}
                       placeholder={'Select Qualification'}
                       type="text"
                       loading={false}
@@ -118,6 +118,16 @@ function EligibilityPage() {
                 ))}
               </div>
             </div>
+            {/* <div className="model-footer">
+              <div className="d-flex flex-wrap justify-content-between w-100 align-items-center">
+                <div className="course-no">
+                  <h5 className="mb-0">2 All Course</h5>
+                </div>
+                <div className="course-add-to-cart">
+                  <button className="btn btn-primary">Add to Cart</button>
+                </div>
+              </div>
+            </div> */}
           </Form>
         )}
       </Formik>

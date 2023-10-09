@@ -7,6 +7,7 @@ interface data {
 interface PROPS {
   name: string;
   label: string;
+  labelHidden?: boolean;
   type: string;
   filter?: boolean;
   loading: boolean;
@@ -130,7 +131,7 @@ function Autcomplete(props: PROPS) {
         {/* <Form.Label>{props.label}</Form.Label> */}
         {props.multiple ? (
           <>
-            <Form.Label>{props.label}</Form.Label>
+            {!props.labelHidden ? <Form.Label>{props.label}</Form.Label> : null}
             <span className="form-control" style={{ height: 'auto' }} onClick={handleClick}>
               {multipleOptions.length
                 ? multipleOptions.map((mp, i) => (
