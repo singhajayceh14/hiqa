@@ -254,7 +254,7 @@ p {
 }
 
 hr {
-    border-bottom: 1px solid #eceff8;
+    border-bottom: 1px solid #13151a;
     border-top: 0 none;
     margin: 30px 0;
     padding: 0;
@@ -14676,3 +14676,150 @@ label {
     margin-bottom: 0;
     padding-bottom: 10px;
 }
+
+.single-course {
+		    display: flex;
+		    border: solid 1px  #cbcbcb;
+		    padding: 10px;
+		    border-radius: 10px;
+		}
+		.course-col {
+			flex: 0 0 50%;
+			max-width: 50%;
+			padding: 0 7.5px;
+			margin-bottom: 15px;
+		}
+		.course-img {
+		    flex: 0 0 100px;
+		    max-width: 100px;
+		    height: 100px;
+		}
+		.course-img img {
+		    border-radius: 5px;
+		    height: 100%;
+		    object-fit: cover;
+		    width: auto;
+		    max-width: 100%;
+		}
+		.course-cont h3 {
+		    font-size: 16px;
+		    font-weight: bold;
+		    margin-bottom: 5px;
+		    display: -webkit-box;
+		    -webkit-line-clamp: 2;
+		    -webkit-box-orient: vertical;
+		    overflow: hidden;
+		}
+		.course-cont {
+		    margin-left: 15px;
+		}
+		.course-cont p {
+		    font-size: 15px;
+		    display: -webkit-box;
+		    -webkit-line-clamp: 2;
+		    -webkit-box-orient: vertical;
+		    overflow: hidden;
+		    margin-bottom: 0;
+		}
+
+		.course_listing_wrap {
+		    display: flex;
+		    flex-wrap: wrap;
+		}
+		.single-course.course-select {
+		    border-color: #ff7350;
+		    background: #ff73502e;
+		}
+
+
+
+
+
+		.single-course {
+		  display: block;
+		  position: relative;
+		  cursor: pointer;
+		  -webkit-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+		.single-course .d-flex {
+		    position: relative;
+		    z-index: 1;
+		}
+		.single-course input {
+		  position: absolute;
+		  opacity: 0;
+		  cursor: pointer;
+		  height: 0;
+		  width: 0;
+		}
+		.checkmark {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    height: 100%;
+		    width: 100%;
+		    border-radius: 10px;
+		}
+		/* When the checkbox is checked, add a blue background */
+		.single-course input:checked ~ .checkmark {
+		  	border-color: #ff7350;
+		    background: #ff73502e;
+		}
+		.checkmark:after {
+		  content: "";
+		  position: absolute;
+		  display: none;
+		}
+		.single-course input:checked ~ .checkmark:after {
+		  display: block;
+		}
+		.course-price-cls h5 {
+		    margin-bottom: 0;
+		    font-size: 16px;
+		    font-weight: 700;
+		}
+		.course-price-cls h5 span.line-through {
+		    text-decoration: line-through;
+		    font-size: 14px;
+		    font-weight: 500;
+		}
+
+
+	/*	New CSS	*/ 
+		.qualification-list label {
+		    flex: 0 0 calc(33.33% - 10px);
+		    padding: 20px;
+		    text-align: center;
+		}
+
+		.qualification-list {
+		    display: flex;
+		    flex-wrap: wrap;
+		    gap: 10px;
+		}
+
+		.qualific-dtl .qua-ic img {
+		    max-width: 75px;
+		    height: 75px;
+		    margin-bottom: 15px;
+		}
+		.qualification-name h5{
+			margin-bottom: 0;
+		}
+		@media (max-width:768px) {
+			.qualification-list label {
+			    flex: 0 0 calc(50% - 10px);
+			}
+
+			.qualific-dtl .qua-ic img {
+			    height: 55px;
+			    margin-bottom: 10px;
+			}
+
+			.qualification-name h5 {
+			    font-size: 15px;
+			}
+		}

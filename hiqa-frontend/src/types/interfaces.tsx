@@ -100,6 +100,7 @@ export interface QUALIFICATION {
   id: string;
   name: string;
   slug: string;
+  image: string;
 }
 // Banner
 export interface BANNER {

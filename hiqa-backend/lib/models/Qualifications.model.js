@@ -10,15 +10,15 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING(255),
         defaultValue: null,
       },
+      image: {
+        type: DataTypes.TEXT,
+        defaultValue: null,
+      },
     },
     { tableName: "qualifications" }
   );
   Qualifications.selectFields = function () {
-    return [
-      "id",
-      "name",
-      "slug",
-    ];
+    return ["id", "name", "slug", "image"];
   };
   return Qualifications;
 };
