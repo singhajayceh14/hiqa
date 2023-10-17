@@ -4,16 +4,26 @@ import Link from 'next/link';
 function Index() {
   return (
     <>
-      <section className="about-area about-p pt-50 pb-50 p-relative fix">
+      <section className="about-area about-p pt-120 pb-120 p-relative fix" style={{ background: '#eff7ff' }}>
+        <div className="animations-02">
+          <img src="assets/img/bg/an-img-02.png" alt="contact-bg-an-01" />
+        </div>
+
         <div className="container">
           <div className="row justify-content-center align-items-center">
             <div className="col-lg-6 col-md-12 col-sm-12">
               <div
-                className="s-about-img3 p-relative  wow fadeInLeft animated"
+                className="s-about-img p-relative  wow fadeInLeft animated"
                 data-animation="fadeInLeft"
                 data-delay=".4s"
               >
-                <img src="/assets/img/features/about_img_02.png" alt="img" />
+                <img src="assets/img/features/about_img_02.png" alt="img" />
+                <div className="about-text second-about">
+                  <span>
+                    25 <sub>+</sub>
+                  </span>
+                  <p>Years of Experience</p>
+                </div>
               </div>
             </div>
             <div className="col-lg-6 col-md-12 col-sm-12">
@@ -29,66 +39,40 @@ function Index() {
                   <h2>We Bring The Right Person To The Correct Place.</h2>
                 </div>
                 <p className="txt-clr">
-                  We are the First & only Institute In India which provides the best training with the latest
-                  technologies at 100% free of cost.
+                  Welcome to our distinguished institute, a beacon of hope and opportunity for deserving students
+                  seeking to transform their lives through education and skill development. We stand as a testament to
+                  the belief that merit knows no boundaries, and every individual with potential should have access to
+                  the tools necessary for success. Our mission is simple yet powerful: to provide free training and
+                  unparalleled placement assistance to those who have demonstrated exceptional merit and a thirst for
+                  knowledge.
                 </p>
-                <p className="txt-clr">
-                  We provide free Dress, stationery, food, and accommodation to the students admitted to our Institute.
+                <p>
+                  In a world where opportunities are often unevenly distributed, we have committed ourselves to bridging
+                  the gap and paving a path for talented students to shine and thrive. Join us in this journey of
+                  empowerment, where potential meets possibility, and dreams are realized through the synergy of
+                  education and rightful opportunity.
                 </p>
                 <div className="about-content2">
                   <div className="row">
                     <div className="col-md-12">
                       <ul className="green2">
-                        <li className="li2">
+                        <li>
                           <div className="abcontent">
-                            <div className="ano2">
+                            <div className="ano">
                               <span>01</span>
                             </div>{' '}
                             <div className="text">
-                              <h4>Guaranteed National Site Visits</h4>{' '}
+                              <h3>Guaranteed Site Visits</h3> <p>National / International site visits.</p>
                             </div>
                           </div>
                         </li>
-                        <li className="li2">
+                        <li>
                           <div className="abcontent">
-                            <div className="ano2">
+                            <div className="ano">
                               <span>02</span>
                             </div>{' '}
                             <div className="text">
-                              <h4>Guaranteed International Site Visits</h4>{' '}
-                            </div>
-                          </div>
-                        </li>
-                        <li className="li2">
-                          <div className="abcontent">
-                            <div className="ano2">
-                              <span>03</span>
-                            </div>{' '}
-                            <div className="text">
-                              <h4>No Charges</h4>{' '}
-                            </div>
-                          </div>
-                        </li>
-                        <li className="li2">
-                          <div className="abcontent">
-                            <div className="ano2">
-                              <span>04</span>
-                            </div>{' '}
-                            <div className="text">
-                              <h4>Guaranteed Minimum Internship & Payments</h4>{' '}
-                            </div>
-                          </div>
-                        </li>
-                        <li className="li2">
-                          <div className="abcontent">
-                            <div className="ano2">
-                              <span>05</span>
-                            </div>{' '}
-                            <div className="text">
-                              <h4>
-                                Site visit - Official at Furtilizer, Checmical,
-                                <br /> Oil, Gas, etc. Industries
-                              </h4>{' '}
+                              <h3>Guaranteed Paid Internship</h3> <p>Minimum Internship & Payments</p>
                             </div>
                           </div>
                         </li>
@@ -101,33 +85,6 @@ function Index() {
           </div>
         </div>
       </section>
-
-      {/* <section className="cta-area cta-bg pt-30 pb-30" style={{ background: '#ff7350' }}>
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8">
-              <div
-                className="section-title cta-title wow fadeInLeft animated"
-                data-animation="fadeInDown animated"
-                data-delay=".2s"
-              >
-                <h2>Qeducato gives you the tools to create an online course.</h2>
-              </div>
-            </div>
-            <div className="col-lg-4 text-right">
-              <div
-                className="cta-btn2 s-cta-btn wow fadeInRight animated"
-                data-animation="fadeInDown animated"
-                data-delay=".2s"
-              >
-                <Link href="/contact" className="btn ss-btn smoth-scroll">
-                  Contact Us <i className="fal fa-long-arrow-right" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 }

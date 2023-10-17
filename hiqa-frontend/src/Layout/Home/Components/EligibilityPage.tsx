@@ -52,7 +52,17 @@ function EligibilityPage() {
                       <div className="qualification-list">
                         {state?.qualification?.map((items: QUALIFICATION, index: number) => (
                           <label key={index} className="single-course">
-                            <input type="radio" name="qualificationId" value={items.id} onChange={handleChange} />
+                            <input
+                              type="radio"
+                              name="qualificationId"
+                              value={items.id}
+                              onChange={events => {
+                                console.log(events);
+                                handleChange(events);
+                                initialize(items.id + ',');
+                                next();
+                              }}
+                            />
 
                             <span className="checkmark"></span>
                             <div className="qualific-dtl">
@@ -113,16 +123,6 @@ function EligibilityPage() {
                 <Col md={12}>
                   <div className="model-footer">
                     <div className="d-flex flex-wrap justify-content-end w-100 align-items-center">
-                      <Button
-                        type="button"
-                        onClick={() => {
-                          initialize(values.qualificationId);
-                          next();
-                        }}
-                        className={current === total ? 'btn btnStyle2 d-none' : 'btn btnStyle2'}
-                      >
-                        Next
-                      </Button>
                       <Button type="submit" className={current === total ? 'btn btnStyle2' : 'btn btnStyle2 d-none'}>
                         Register Now
                       </Button>

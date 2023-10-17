@@ -14,6 +14,9 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <a id="scrollUp" href="#top" style={{ position: 'fixed', zIndex: '2147483647' }}>
+          <i className="fas fa-level-up-alt"></i>
+        </a>
       </body>
     </Html>
   );

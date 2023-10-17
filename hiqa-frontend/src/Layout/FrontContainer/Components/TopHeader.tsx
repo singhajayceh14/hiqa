@@ -1,12 +1,19 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import Link from 'next/link';
 
+import EligibilityPage from '../../Home/Components/EligibilityPage';
+
+import Modal from '@/components/Default/Modal';
 import { SETTINGS_DATA } from '@/types/interfaces';
 
 const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
+  const [show, setShow] = useState<boolean>(false);
+
   // eslint-disable-next-line no-unsafe-optional-chaining
   const { youtube_url, facebook_url, twitter_url, instagram_url, linkedin_url } = props?.personalData;
-
+  const closeModal = () => {
+    setShow(false);
+  };
   return (
     <>
       <div className="header-top second-header d-none d-md-block">
@@ -39,9 +46,15 @@ const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
                 <ul>
                   <li>
                     <div className="second-header-btn">
-                      <Link className="btn signInBtns d-flex align-items-center gap-2" href="/contact">
-                        <div className="txt d-none d-sm-block">Enquiry Now</div>
-                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShow(true);
+                        }}
+                        className="btn signInBtns"
+                      >
+                        <div className="txt d-none d-sm-block">Check Eligibility</div>
+                      </button>
                     </div>
                   </li>
                 </ul>
@@ -50,6 +63,9 @@ const TopHeader = (props: { personalData: SETTINGS_DATA }) => {
           </div>
         </div>
       </div>
+      <Modal title="Eligibility Checker" id="Eligibility Page" size="lg" show={show} onClose={() => closeModal()}>
+        <EligibilityPage />
+      </Modal>
     </>
   );
 };

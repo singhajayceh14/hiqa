@@ -36,3 +36,5 @@ Require stack:
     at Module._compile (node:internal/modules/cjs/loader:1105:14)
     at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
     at Module.load (node:internal/modules/cjs/loader:981:32)
+[2023-10-17T17:06:46.975Z] [error]: 500 - [ 'Error' ] - TypeError: req.body.qualificationId.split is not a function
+[2023-10-17T18:05:02.605Z] [error]: 500 - [ 'Error' ] - null
