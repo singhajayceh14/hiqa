@@ -108,8 +108,6 @@ const Footer = () => {
                         <i className="icon fal fa-envelope" />
                         <span>
                           <Link href={'mailto:'}>{state?.setting_data?.email}</Link>
-                          <br />
-                          <Link href={'mailto:'}>{state?.setting_data?.email}</Link>
                         </span>
                       </li>
                     ) : null}

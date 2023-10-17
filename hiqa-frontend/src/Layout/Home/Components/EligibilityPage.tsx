@@ -103,7 +103,7 @@ function EligibilityPage() {
                                       <h5>
                                         {course?.price !== course?.discount_price ? (
                                           <span className="line-through">₹ {course?.price}</span>
-                                        ) : null}
+                                        ) : null}{' '}
                                         ₹ {course?.discount_price}
                                       </h5>
                                     </div>
