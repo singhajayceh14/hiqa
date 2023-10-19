@@ -7,6 +7,8 @@ import type { AppProps } from 'next/app';
 import { StepsProvider } from 'react-step-builder';
 
 import FrontContainer from '@/Layout/FrontContainer';
+import FreeContainer from '@/Layout/FrontContainer/FreeContainer';
+
 // import { Loading } from '@/components/App/Loader';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { AppProvider } from '@/components/App';
@@ -26,6 +28,7 @@ interface AppComponentProps extends AppProps {
   pageProps: any;
   Component: NextComponentType & {
     auth?: boolean;
+    header?: boolean;
     meta: {
       title: string;
       description: string;
@@ -36,7 +39,11 @@ export default function App({ Component, pageProps }: AppComponentProps) {
   const Layout = useMemo(
     () =>
       ({ children }: { children: React.ReactElement<any> }) =>
-        <FrontContainer {...Component}>{children}</FrontContainer>,
+        Component?.header ? (
+          <FrontContainer {...Component}>{children}</FrontContainer>
+        ) : (
+          <FreeContainer {...Component}>{children}</FreeContainer>
+        ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [Component.auth],
   );

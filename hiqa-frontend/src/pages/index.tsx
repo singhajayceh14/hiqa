@@ -1,13 +1,15 @@
-import Home from '@/Layout/Home';
+import ComingSoon from '@/Layout/ComingSoon';
 
 function Index() {
   return (
     <>
-      <Home />
+      <ComingSoon />
     </>
   );
 }
 Index.auth = false;
+Index.header = false;
+
 Index.meta = {
   title: 'Home',
   description: 'Home',
