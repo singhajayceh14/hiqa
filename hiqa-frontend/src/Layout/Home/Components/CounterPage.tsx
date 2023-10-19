@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import Link from 'next/link';
 import CountUp from 'react-countup';
+import { convert } from '@/utils/helpers';
 
 const AdmissionPage = ({
   counter_data,
@@ -19,6 +20,7 @@ const AdmissionPage = ({
       >
         <div className="counter-area" style={{ background: '#ff7350' }}>
           <div className="container">
+            <h3 className="counterHead">2022 - 2023 Years</h3>
             <div className="row p-relative">
               <div className="col-lg-3 col-md-6 col-sm-12">
                 <div
@@ -27,11 +29,8 @@ const AdmissionPage = ({
                   data-delay=".2s"
                 >
                   <div className="counter p-relative">
-                    <CountUp className="count" start={0} end={counter_data?.totalStudent ?? 0}></CountUp>
-                    <p>
-                      Our Happy <br />
-                      Students
-                    </p>
+                    <span className="count">{convert(counter_data?.totalStudent) ?? 0}</span>
+                    <p>Our Happy Students</p>
                   </div>
                 </div>
               </div>
@@ -42,11 +41,8 @@ const AdmissionPage = ({
                   data-delay=".2s"
                 >
                   <div className="counter p-relative">
-                    <CountUp className="count" start={15} end={counter_data?.totalCourse ?? 0}></CountUp>
-                    <p>
-                      Learning <br />
-                      Courses
-                    </p>
+                    <span className="count">{convert(counter_data?.totalCourse) ?? 0}</span>
+                    <p>Learning Courses</p>
                   </div>
                 </div>
               </div>
@@ -57,10 +53,8 @@ const AdmissionPage = ({
                   data-delay=".2s"
                 >
                   <div className="counter p-relative">
-                    <CountUp className="count" start={12} end={counter_data?.totalPlacement ?? 0}></CountUp>
-                    <p>
-                      Total <br /> Placement
-                    </p>
+                    <span className="count">{convert(counter_data?.totalPlacement) ?? 0}</span>
+                    <p>Total Placement</p>
                   </div>
                 </div>
               </div>
@@ -71,10 +65,8 @@ const AdmissionPage = ({
                   data-delay=".2s"
                 >
                   <div className="counter p-relative">
-                    <CountUp className="count" start={15} end={counter_data?.totalStaff ?? 0}></CountUp>
-                    <p>
-                      Staff <br /> Labs
-                    </p>
+                    <span className="count">{convert(counter_data?.totalStaff) ?? 0}</span>
+                    <p>Staff Labs</p>
                   </div>
                 </div>
               </div>

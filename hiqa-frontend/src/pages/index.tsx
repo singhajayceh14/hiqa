@@ -8,7 +8,7 @@ function Index() {
   );
 }
 Index.auth = false;
-Index.header = false;
+Index.header = true;
 
 Index.meta = {
   title: 'Home',

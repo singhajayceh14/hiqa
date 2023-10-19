@@ -14823,3 +14823,30 @@ label {
 			    font-size: 15px;
 			}
 		}
+        .single-counter p {
+        padding-left:0
+        }
+        .count {
+            font-size: 70px
+        }
+        .counter {
+            padding-left: 0;
+            display: block;
+            text-align: center;
+        }
+.counterHead {
+    font-size: 38px;
+    color: #fff;
+    font-weight: 900;
+    position: relative;
+}
+
+.counterHead:after {
+    content: '';
+    position: absolute;
+    height: 5px;
+    width: 80px;
+    background: #fff;
+    bottom: 10px;
+     left: 0;
+}
