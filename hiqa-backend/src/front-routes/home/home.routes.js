@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/course-list", HomeController.getCourseSlugName);
 router.get("/all-list", HomeController.allList);
 
-router.post("/get-home", HomeController.getHome);
+router.get("/get-home", HomeController.getHome);
 router.post("/get-list/:type", HomeController.getAllList);
 router.get("/get-gallery", HomeController.getGallery);
 router.get("/get-faqs", HomeController.getFaqs);
