@@ -3,8 +3,8 @@ const HomeController = require("./home.controller");
 const { upload } = require("../../utils/common");
 const router = express.Router();
 
-router.post("/course-list", HomeController.getCourseSlugName);
-router.post("/all-list", HomeController.allList);
+router.get("/course-list", HomeController.getCourseSlugName);
+router.get("/all-list", HomeController.allList);
 
 router.post("/get-home", HomeController.getHome);
 router.post("/get-list/:type", HomeController.getAllList);
