@@ -291,10 +291,10 @@ function Index(props: PROPS) {
                         <Form.Label>Category</Form.Label>
                         <Form.Select onChange={handleChange} name={`category`} value={values.category}>
                           <option>Select Category</option>
-                          <option value={'gen'}>General</option>
-                          <option value={'sc'}>SC</option>
-                          <option value={'st'}>ST</option>
-                          <option value={'obc'}>OBC</option>
+                          <option value={'c1'}>All (C1)</option>
+                          <option value={'c2'}>EWS (C2)</option>
+                          <option value={'c3'}>Special Consideration (C3)</option>
+                          <option value={'c4'}>General (C4)</option>
                         </Form.Select>
                         {errors.category ? (
                           <Form.Control.Feedback type="invalid">{errors.category}</Form.Control.Feedback>

@@ -12,7 +12,7 @@ const {
   hashPassword,
 } = require("../../utils/authentication");
 const { generateRandomString } = require("../../utils/common");
-
+const { sendMail } = require("../../../lib/mailer/index");
 class AuthController {
   register = async (req, res) => {
     try {
@@ -26,7 +26,8 @@ class AuthController {
         req.params || {},
         req.body || {}
       );
-      const hash = await hashPassword("123456");
+      const password = Math.floor(100000 + Math.random() * 900000);
+      const hash = await hashPassword(password.toString());
 
       const {
         fullName,
@@ -108,7 +109,10 @@ class AuthController {
           };
           await TableSchema.create(traCreatePayload, Transactions);
         }
-
+        sendMail("welcome-email", "New Register", email, {
+          password: `${password}`,
+          email: `${email}`,
+        });
         return res.success(create, req.__("CREATE_USER"));
       } else {
         return res.warn({}, req.__("CREATE_USER_ERROR"));

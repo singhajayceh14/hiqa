@@ -64,7 +64,7 @@ interface AxiosRequestConfig {
 export const api: API = async (url, method = 'GET', options = {}) => {
   const lang = Cookies.get('lang') || 'en';
   const token = Cookies.get('token') || 'en';
-
+  console.log(url, method)
   let config: AxiosRequestConfig = {
     url,
     method: method || 'GET',
